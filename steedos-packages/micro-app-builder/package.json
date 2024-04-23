@@ -1,8 +1,13 @@
 {
-    "name": "my-steedos-service",
+    "name": "@steedos-labs/micro-app-builder",
     "version": "0.0.1",
     "description": "",
     "main": "package.service.js",
+    "scripts": {
+      "build": "webpack --config webpack.config.js",
+      "build:watch": "webpack --config webpack.config.js --watch",
+      "release": "yarn build && npm publish --registry https://registry.npmjs.org"
+    },
     "dependencies": {
     }
   }

@@ -6,17 +6,22 @@
   ],
   "repository": "git://github.com/steedos-labs/contract.git",
   "scripts": {
+    "build": "yarn workspaces run build",
+    "build:watch": "yarn workspaces run build:watch",
     "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js --hot --repl",
     "repl": "moleculer-runner --repl"
   },
   "dependencies": {
-    "@steedos/service-package-loader": "^2.5",
+    "@steedos/service-package-loader": "^2.7",
     "bcryptjs": "^2.4.3",
     "dotenv-flow": "^3.2.0",
     "moleculer-repl": "^0.7.3",
     "ioredis": "^5.3.1"
   },
   "devDependencies": {
-    "lerna": "^5.4.0"
+    "lerna": "^5.4.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
   }
 }
