@@ -6,6 +6,8 @@
  * @Description: 
  */
 const path = require('path');
+const app = require("./app");
+const appBuilder = require("./app-builder");
 
 const package = require('../package.json');
 const packageName = package.name;
@@ -18,7 +20,7 @@ module.exports = {
     dependencies: [],
     settings: {
         // Base path
-        rest: "/amis-builder",
+        rest: "/app-builder",
         isProduction: process.env.NODE_ENV === "production",
     },
     metadata: {
@@ -30,6 +32,8 @@ module.exports = {
         }
     },
     actions: {
+        app,
+        appBuilder
     },
     hooks: {
     },
