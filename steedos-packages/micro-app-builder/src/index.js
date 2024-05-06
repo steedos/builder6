@@ -1,12 +1,15 @@
 /*
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
- * @LastEditors: 孙浩林 sunhaolin@steedos.com
- * @LastEditTime: 2024-02-19 09:48:55
+ * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
+ * @LastEditTime: 2024-05-06 09:54:13
  * @Description: 
  */
 const path = require('path');
-const app = require("./app");
+// const app = require("./app");
+const app = require("./micro");
+const appSchema = require("./schema/app");
+const pagesSchema = require("./schema/pages");
 const appBuilder = require("./app-builder");
 
 const package = require('../package.json');
@@ -33,7 +36,9 @@ module.exports = {
     },
     actions: {
         app,
-        appBuilder
+        appBuilder,
+        appSchema,
+        pagesSchema
     },
     hooks: {
     },
