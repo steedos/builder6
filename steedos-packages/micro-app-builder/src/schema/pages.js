@@ -2,10 +2,46 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-07 09:22:26
+ * @LastEditTime: 2024-05-07 10:58:48
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+
+const _ = require('lodash');
+
+const getChildrenPages = function(page, pages){
+  return pages.filter(function(item){
+    return item.parent === page.api_name;
+  });
+}
+
+const convertPageSchema = function(page, pages){
+  let pageSchema = page.amis_schema;
+  if(pageSchema && typeof pageSchema === "string"){
+    pageSchema = JSON.parse(pageSchema);
+  }
+  let pageItem = {
+    "label": page.name
+  };
+  if(!_.isEmpty(pageSchema)){
+    Object.assign(pageItem, {
+      "url": page.api_name,
+      "schema": {
+        "type": "page",
+        "title": page.name,
+        "body": pageSchema
+      }
+    });
+  }
+  let childrenPages = getChildrenPages(page, pages);
+  if(childrenPages && childrenPages.length){
+    pageItem.children = childrenPages.map(function(item){
+      return convertPageSchema(item, pages);
+    });
+  }
+  return pageItem;
+}
+
 module.exports = {
   rest: [{
     method: "GET",
@@ -47,20 +83,13 @@ module.exports = {
       "children": []
     });
 
+    const rootPage = schema.pages[1];
+
     pages.forEach((item) => {
-      let pageSchema = item.amis_schema;
-      if(typeof pageSchema === "string"){
-        pageSchema = JSON.parse(pageSchema);
+      if(!item.parent){
+        const pageItem = convertPageSchema(item, pages);
+        rootPage.children.push(pageItem);
       }
-      schema.pages[1].children.push({
-        "label": item.name,
-        "url": item.api_name,
-        "schema": {
-          "type": "page",
-          "title": item.name,
-          "body": pageSchema
-        }
-      });
     });
 
     const pages__ = [

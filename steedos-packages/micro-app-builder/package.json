@@ -9,5 +9,6 @@
       "release": "yarn build && npm publish --registry https://registry.npmjs.org"
     },
     "dependencies": {
+      "lodash": "^4.17.21"
     }
   }
