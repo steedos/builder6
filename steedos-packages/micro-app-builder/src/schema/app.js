@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-07 05:50:34
+ * @LastEditTime: 2024-05-07 09:25:02
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -35,28 +35,21 @@ module.exports = {
 
     let appLebel = app.name;
 
-    let appSchema = app.amis_schema;
-    if(typeof appSchema === "string"){
-      appSchema = JSON.parse(appSchema);
-    }
-
     const schema = {
       type: 'app',
       brandName: appLebel,
       logo: '/public/logo.png',
-      header: {
-        type: 'tpl',
-        inline: false,
-        className: 'w-full',
-        tpl: '<div class="flex justify-between"><div>顶部区域左侧</div><div>顶部区域右侧</div></div>'
-      },
+      // header: {
+      //   type: 'tpl',
+      //   inline: false,
+      //   className: 'w-full',
+      //   tpl: '<div class="flex justify-between"><div>顶部区域左侧</div><div>顶部区域右侧</div></div>'
+      // },
       // footer: '<div class="p-2 text-center bg-light">底部区域</div>',
       // asideBefore: '<div class="p-2 text-center">菜单前面区域</div>',
       // asideAfter: '<div class="p-2 text-center">菜单后面区域</div>',
       api: `/mab/schema/\${spaceId}/apps/\${appId}/pages`
     };
-
-    Object.assign(schema, appSchema);
 
     return {
       "status": 0,

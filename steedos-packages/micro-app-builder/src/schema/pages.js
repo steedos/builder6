@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-07 05:20:18
+ * @LastEditTime: 2024-05-07 09:22:26
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -41,9 +41,9 @@ module.exports = {
       "redirect": pages[0].api_name
     });
 
-    // 不加示例作为分组，直接循环显示pages菜单显示不出来
+    // 顶层不加分组，直接循环显示pages菜单显示不出来
     schema.pages.push({
-      "label": "示例",
+      "label": "",//设置为空不显示出来，以后要增加分组能力再放开
       "children": []
     });
 
