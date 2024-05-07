@@ -19,6 +19,7 @@
     "ioredis": "^5.3.1"
   },
   "devDependencies": {
+    "@steedos/schemas": "^2.7",
     "lerna": "^5.4.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
