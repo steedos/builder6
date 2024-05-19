@@ -5,3 +5,4 @@ label: 名称
 required: true
 searchable: true
 type: text
+sort_no: 10

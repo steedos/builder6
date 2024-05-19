@@ -24,6 +24,6 @@ optionsFunction: !<tag:yaml.org,2002:js/function> |-
 
 
   }
-required: true
-sort_no: 30
+required: false
 type: lookup
+sort_no: 30

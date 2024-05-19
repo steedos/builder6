@@ -10,6 +10,10 @@ fields:
     label: Logo 图标
     help: 
     description: 
+  logo:
+    label: Logo 图片
+    help: 
+    description: 
   name:
     label: 名称
     help: 
