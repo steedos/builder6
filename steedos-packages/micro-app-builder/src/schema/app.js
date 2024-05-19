@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-07 09:25:02
+ * @LastEditTime: 2024-05-19 10:05:47
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -34,11 +34,21 @@ module.exports = {
     let app = apps[0];
 
     let appLebel = app.name;
+    let appIcon = app.icon;
+
+    let svgLogo;
+    if (appIcon) {
+      svgLogo = `
+        <svg class="slds-icon slds-icon_container slds-icon-standard-${appIcon.replace(/_/g, "-")}" aria-hidden="true">
+          <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#${appIcon}"></use>
+        </svg>
+      `;
+    }
 
     const schema = {
       type: 'app',
       brandName: appLebel,
-      logo: '/public/logo.png',
+      logo: svgLogo,
       // header: {
       //   type: 'tpl',
       //   inline: false,

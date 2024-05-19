@@ -1,0 +1,21 @@
+name: micro_apps
+label: 微应用
+description: 
+fields:
+  api_name:
+    label: API 名称
+    help: 
+    description: 
+  icon:
+    label: Logo 图标
+    help: 
+    description: 
+  name:
+    label: 名称
+    help: 
+    description: 
+listviews:
+  all:
+    label: 所有
+  recent:
+    label: 最近查看

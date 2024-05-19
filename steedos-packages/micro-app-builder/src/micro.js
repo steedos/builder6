@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-08 01:57:21
+ * @LastEditTime: 2024-05-19 09:41:07
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -65,6 +65,7 @@ module.exports = {
             title="default"
             href="https://unpkg.steedos.cn/amis@3.2.0/sdk/sdk.css"
           />
+          <link rel="stylesheet" href="/main_head.css?platform=browser">
           <link rel="stylesheet" href="https://unpkg.steedos.cn/amis@3.2.0/sdk/helper.css" />
           <link
             rel="stylesheet"
