@@ -1,5 +1,6 @@
 name: recent
 columns:
+  - field: label
   - field: name
 crud_mode: table
 filter_scope: space

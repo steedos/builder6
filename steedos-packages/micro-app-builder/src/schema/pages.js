@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-07 10:58:48
+ * @LastEditTime: 2024-05-22 03:22:12
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -11,7 +11,7 @@ const _ = require('lodash');
 
 const getChildrenPages = function(page, pages){
   return pages.filter(function(item){
-    return item.parent === page.api_name;
+    return item.parent === page.name;
   });
 }
 
@@ -25,7 +25,7 @@ const convertPageSchema = function(page, pages){
   };
   if(!_.isEmpty(pageSchema)){
     Object.assign(pageItem, {
-      "url": page.api_name,
+      "url": page.name,
       "schema": {
         "type": "page",
         "title": page.name,
@@ -74,7 +74,7 @@ module.exports = {
     schema.pages.push({
       "label": "Home",
       "url": "/",
-      "redirect": pages[0].api_name
+      "redirect": pages[0].name
     });
 
     // 顶层不加分组，直接循环显示pages菜单显示不出来

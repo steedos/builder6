@@ -2,7 +2,7 @@ name: micro_apps
 label: 微应用
 description: 
 fields:
-  api_name:
+  name:
     label: API 名称
     help: 
     description: 
@@ -14,8 +14,8 @@ fields:
     label: Logo 图片
     help: 
     description: 
-  name:
-    label: 名称
+  label:
+    label: 显示名称
     help: 
     description: 
 listviews:
