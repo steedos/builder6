@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-19 09:41:07
+ * @LastEditTime: 2024-05-22 10:02:02
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -65,13 +65,14 @@ module.exports = {
             title="default"
             href="https://unpkg.steedos.cn/amis@3.2.0/sdk/sdk.css"
           />
+          <script src="/main_head.js?platform=browser"></script>
           <link rel="stylesheet" href="/main_head.css?platform=browser">
+          <!-- 
           <link rel="stylesheet" href="https://unpkg.steedos.cn/amis@3.2.0/sdk/helper.css" />
           <link
             rel="stylesheet"
             href="https://unpkg.steedos.cn/amis@3.2.0/sdk/iconfont.css"
-          />
-          <script src="https://unpkg.steedos.cn/amis@3.2.0/sdk/sdk.js"></script>
+          /><script src="https://unpkg.steedos.cn/amis@3.2.0/sdk/sdk.js"></script> -->
           <script src="https://unpkg.com/history@4.10.1/umd/history.js"></script>
           <style>
             html,
@@ -84,6 +85,20 @@ module.exports = {
               padding: 0;
             }
           </style>
+
+          <script>
+            (function () {
+              // 触发main_head.js中请求资产包脚本文件
+              window.postMessage({ type: "Builder.loaded" }, "*");
+            })();
+          </script>
+
+          <script>
+            (function () {
+              //注册资产包中自定义组件到amis
+              // TODO:
+            })();
+          </script>
         </head>
         <body>
           <div id="root" class="app-wrapper"></div>

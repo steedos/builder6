@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-22 07:10:03
+ * @LastEditTime: 2024-05-22 08:49:25
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -74,7 +74,18 @@ module.exports = {
         "className": "absolute bottom-0 left-0 right-0 rounded-none justify-start",
         "dialog": {
           "title": "弹框",
-          "body": "这是个简单的弹框。"
+          "body": 
+          {
+            "type": "steedos-object-form",
+            "label": "对象表单",
+            "objectApiName": "micro_apps",
+            "recordId": appId,
+            "className": "sm:rounded sm:border-gray-300 bg-white",
+            "layout": "horizontal",
+            "mode": "edit",
+            "fieldsExtend": {
+            }
+          }
         }
       },
       api: `/mab/schema/\${spaceId}/apps/\${appId}/pages`
