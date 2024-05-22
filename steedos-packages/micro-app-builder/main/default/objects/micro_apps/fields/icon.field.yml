@@ -1,6 +1,7 @@
 name: icon
 hidden: false
 label: Logo Icon
+group: Logo
 optionsFunction: !<tag:yaml.org,2002:js/function> |-
   function(
   ) {
