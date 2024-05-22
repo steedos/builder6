@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-22 03:22:12
+ * @LastEditTime: 2024-05-22 06:04:04
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -23,21 +23,34 @@ const convertPageSchema = function(page, pages){
   let pageItem = {
     "label": page.name
   };
-  if(!_.isEmpty(pageSchema)){
-    Object.assign(pageItem, {
-      "url": page.name,
-      "schema": {
-        "type": "page",
-        "title": page.name,
-        "body": pageSchema
-      }
-    });
+  let isSchemaEmpty = _.isEmpty(pageSchema);
+  if(isSchemaEmpty){
+    // page 404界面，没有children且没有配置pageSchema时才需要显示404
+    pageSchema = {
+      "type": "alert",
+      "body": "未找到页面的amis Schema配置，请点击右上角设计器按钮来设计该页面！",
+      "level": "warning"
+    };
   }
+  Object.assign(pageItem, {
+    "url": page.name,
+    "schema": {
+      "type": "page",
+      "title": page.name,
+      "body": pageSchema
+    }
+  });
   let childrenPages = getChildrenPages(page, pages);
   if(childrenPages && childrenPages.length){
     pageItem.children = childrenPages.map(function(item){
       return convertPageSchema(item, pages);
     });
+
+    if(isSchemaEmpty){
+      // 有children且未找到页面的amis Schema配置，单独作为选项卡分组存在，右侧不显示page 404界面
+      delete pageItem.url;
+      delete pageItem.schema;
+    }
   }
   return pageItem;
 }
@@ -87,6 +100,7 @@ module.exports = {
 
     pages.forEach((item) => {
       if(!item.parent){
+        // parent为空表示根路径页面，从根开始，自动递归生成每个页面的children
         const pageItem = convertPageSchema(item, pages);
         rootPage.children.push(pageItem);
       }
