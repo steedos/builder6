@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-23 06:56:57
+ * @LastEditTime: 2024-05-23 09:17:17
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -16,11 +16,14 @@ module.exports = {
   }
   ],
   handler: async function (ctx) {
-
     const {
       spaceId = "",
       appId = ""
     } = ctx.params;
+
+    const {
+      user
+    } = ctx.meta || {};
 
     const appSchema = await ctx.call("@steedos-labs/micro-app-builder.appSchema", {
       spaceId,
@@ -79,11 +82,11 @@ module.exports = {
           Builder.set({
             context: {
               rootUrl: Builder.settings.rootUrl,
-              // tenantId: Creator.USER_CONTEXT.spaceId,
-              // userId: Creator.USER_CONTEXT.userId,
-              // authToken: Creator.USER_CONTEXT.user.authToken
+              tenantId: "${user?.spaceId}",
+              userId: "${user?.userId}",
+              authToken: "${user?.authToken}",
             },
-            // locale: Creator.USER_CONTEXT.user.locale
+            locale: "${user?.locale}"
           })
 
           window.postMessage({ type: "Builder.loaded" }, "*")
@@ -266,10 +269,14 @@ module.exports = {
                   context: {
                     // 全局上下文数据, 非受控的数据，无论哪一层都能获取到，包括弹窗自定义数据映射后都能获取到。
                     // 可以用来放一下全局配置等。比如 API_HOST, 这样页面配置里面可以通过 \${API_HOST} 来获取到。
-                    API_HOST: 'https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com',
+                    // API_HOST: 'https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com',
                     spaceId: "${spaceId}",
-                    appId: "${appId}"
-                  }
+                    appId: "${appId}",
+                    context: {
+                      tenantId: "${user?.spaceId}",
+                      userId: "${user?.userId}",
+                      authToken: "${user?.authToken}"}
+                    }
                 },
                 {
                   // watchRouteChange: fn => {
