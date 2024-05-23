@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-22 10:02:02
+ * @LastEditTime: 2024-05-23 05:56:12
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -34,6 +34,81 @@ module.exports = {
     const baseHref = "/app-builder";
     const language = "zh-CN";
     const favicon = "/app/assets/steedos/favicon.ico";
+
+    const builderJs = `
+      window.lodash = _;
+      window.Creator = {};
+      ; Object.defineProperty(window, 'MonacoEnvironment', { set: () => { }, get: () => undefined });
+      ; (function () {
+        function _innerWaitForThing(obj, path, func) {
+          const timeGap = 100;
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              let thing = null;
+              if (lodash.isFunction(func)) {
+                thing = func(obj, path);
+              } else {
+                thing = lodash.get(obj, path);
+              }
+              if (thing) {
+                return resolve(thing);
+              }
+              reject();
+            }, timeGap);
+          }).catch(() => {
+            return _innerWaitForThing(obj, path, func);
+          });
+        }
+
+        window.waitForThing = (obj, path, func) => {
+          let thing = null;
+          if (lodash.isFunction(func)) {
+            thing = func(obj, path);
+          } else {
+            thing = lodash.get(obj, path);
+          }
+          if (thing) {
+            return Promise.resolve(thing);
+          }
+          return _innerWaitForThing(obj, path, func);
+        };
+
+        Promise.all([
+          waitForThing(window, 'Builder')
+        ]).then(() => {
+          Builder.set({
+            context: {
+              rootUrl: Builder.settings.rootUrl,
+              // tenantId: Creator.USER_CONTEXT.spaceId,
+              // userId: Creator.USER_CONTEXT.userId,
+              // authToken: Creator.USER_CONTEXT.user.authToken
+            },
+            // locale: Creator.USER_CONTEXT.user.locale
+          })
+
+          window.postMessage({ type: "Builder.loaded" }, "*")
+        })
+      })();
+    `;
+
+    const listenAssetsLoaded = `
+      window.addEventListener('message', function (event) {
+        const { data } = event;
+        if (data.type === 'builder.assetsLoaded') {
+          window.assetsLoaded = true;
+        }
+      })
+    `;
+
+    const registryAssetsComponents = `
+      // TODO:这里是不是不应该直接使用amis.render.client.js中的脚本注册资产包中自定义组件，应该单独写个注册脚本
+      Promise.all([
+        waitForThing(window, 'loadJs')
+      ]).then(() => {
+        loadJs(\`\${Builder.settings.rootUrl}/amis-pages/js/amis.render.client.js\`, (script) => {
+        });
+      });
+    `;
 
     return Buffer.from(`
       <!DOCTYPE html>
@@ -89,15 +164,22 @@ module.exports = {
           <script>
             (function () {
               // 触发main_head.js中请求资产包脚本文件
-              window.postMessage({ type: "Builder.loaded" }, "*");
+              ${builderJs}
             })();
+          </script>
+
+          <script>
+          (function () {
+            // 监听message设置window.assetsLoaded
+            ${listenAssetsLoaded}
+          })();
           </script>
 
           <script>
             (function () {
               //注册资产包中自定义组件到amis
-              // TODO:
-            })();
+              ${registryAssetsComponents}
+          })();
           </script>
         </head>
         <body>

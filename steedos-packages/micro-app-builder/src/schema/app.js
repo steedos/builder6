@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-22 08:49:25
+ * @LastEditTime: 2024-05-23 06:14:30
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,7 +12,7 @@ module.exports = {
     fullPath: "/mab/schema/:spaceId/apps/:appId"
   }],
   handler: async function (ctx) {
-    console.log("=app schema==ctx.params===", ctx.params);
+    // console.log("=app schema==ctx.params===", ctx.params);
     const {
       spaceId = "",
       appId = ""
@@ -21,7 +21,7 @@ module.exports = {
     const apps = await this.getObject('micro_apps').find({
       filters: ['name', '=', appId],
     });
-    console.log("=app schema==apps===", apps);
+    // console.log("=app schema==apps===", apps);
 
     if (!apps || !apps.length) {
       return {
@@ -73,17 +73,21 @@ module.exports = {
         "level": "dark",
         "className": "absolute bottom-0 left-0 right-0 rounded-none justify-start",
         "dialog": {
-          "title": "弹框",
+          "title": "设置应用",
+          "size": "lg",
           "body": 
           {
             "type": "steedos-object-form",
             "label": "对象表单",
             "objectApiName": "micro_apps",
-            "recordId": appId,
-            "className": "sm:rounded sm:border-gray-300 bg-white",
-            "layout": "horizontal",
+            "recordId": app._id,
             "mode": "edit",
             "fieldsExtend": {
+              "name":{
+                "amis": {
+                  "visible": false
+                }
+              }
             }
           }
         }
