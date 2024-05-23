@@ -2,10 +2,32 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-23 06:14:30
+ * @LastEditTime: 2024-05-23 08:34:06
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+
+const iconsSourceAdaptor = `
+  if (payload && payload.length) {
+    let data = {};
+    let sldsStandardIcons = _.find(payload, { name: "standard" });
+    sldsStandardIcons = sldsStandardIcons && sldsStandardIcons.icons;
+    data.options = sldsStandardIcons.map(function(item){return{label: item.symbol, value: item.symbol, icon: item.symbol}});
+    payload.data = data;
+  }
+  return payload;
+`;
+
+const iconsSource = {
+  "method": "get",
+  "url": "${context.rootUrl}/ui.icons.json",
+  "requestAdaptor": "",
+  "adaptor": iconsSourceAdaptor,
+  "headers": {
+      "Authorization": "Bearer ${context.tenantId},${context.authToken}"
+  }
+}
+ 
 module.exports = {
   rest: [{
     method: "GET",
@@ -86,6 +108,11 @@ module.exports = {
               "name":{
                 "amis": {
                   "visible": false
+                }
+              },
+              "icon":{
+                "amis": {
+                  "source": iconsSource
                 }
               }
             }
