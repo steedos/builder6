@@ -9,5 +9,7 @@ filters: []
 label: 所有
 shared_to: space
 sort:
+  - field_name: sort_no
+    order: asc
   - field_name: created
-    order: desc
+    order: asc

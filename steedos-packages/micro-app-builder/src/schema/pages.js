@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-28 09:16:34
+ * @LastEditTime: 2024-05-28 09:55:35
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -99,7 +99,7 @@ module.exports = {
   }
   ],
   handler: async function (ctx) {
-    console.log("=pages schema==ctx.params===", ctx.params);
+    // console.log("=pages schema==ctx.params===", ctx.params);
     const {
       spaceId = "",
       appId = ""
@@ -120,8 +120,9 @@ module.exports = {
 
     const tabs = await this.getObject('micro_tabs').find({
       filters: ['micro_app', '=', appId],
+      sort: "sort_no, created"
     });
-    console.log("=app schema==tabs===", tabs);
+    // console.log("=app schema==tabs===", tabs);
     const isTabsEmpty = _.isEmpty(tabs);
 
     const schema = {
@@ -154,7 +155,7 @@ module.exports = {
         rootPage.children.push(pageItem);
       });
     }
-    console.log("=app schema==rootPage.children===", rootPage.children);
+    // console.log("=app schema==rootPage.children===", rootPage.children);
 
     const pages__ = [
       {

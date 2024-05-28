@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: link
 is_enable: true
-label: 微选项卡
+label: 微菜单
 locked: false
 version: 2
