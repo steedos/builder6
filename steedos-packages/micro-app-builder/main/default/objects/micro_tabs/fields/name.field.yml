@@ -2,7 +2,7 @@ name: name
 filterable: true
 index: true
 label: API 名称
-required: true
+required: false
 searchable: true
 sort_no: 80
 type: text
