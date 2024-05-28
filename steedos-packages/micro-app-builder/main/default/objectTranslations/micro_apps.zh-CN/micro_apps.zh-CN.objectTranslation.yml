@@ -18,6 +18,10 @@ fields:
     label: API 名称
     help: 
     description: 
+  home:
+    label: 首页
+    help: 
+    description: 
 listviews:
   all:
     label: 所有

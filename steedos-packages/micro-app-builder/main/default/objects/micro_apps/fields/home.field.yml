@@ -1,4 +1,4 @@
-name: micro_app
+name: home
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -9,11 +9,11 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 微应用
+label: home
 multiple: false
 primary: false
 readonly: false
-reference_to: micro_apps
+reference_to: micro_pages
 reference_to_field: name
 required: false
 searchable: false
@@ -21,6 +21,6 @@ show_as_qr: false
 sort_no: 100
 sortable: true
 static: false
-type: master_detail
+type: lookup
 unique: false
 write_requires_master_read: false
