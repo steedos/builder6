@@ -14,7 +14,7 @@ reference_to: micro_apps
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 100
+sort_no: 70
 sortable: false
 static: false
 type: master_detail
