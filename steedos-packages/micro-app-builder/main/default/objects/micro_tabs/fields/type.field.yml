@@ -26,3 +26,4 @@ static: false
 type: select
 unique: false
 write_requires_master_read: false
+defaultValue: page

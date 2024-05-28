@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-23 08:34:06
+ * @LastEditTime: 2024-05-28 07:45:14
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -87,38 +87,38 @@ module.exports = {
       // },
       // footer: '<div class="p-2 text-center bg-light">底部区域</div>',
       // asideBefore: '<div class="p-2 text-center">菜单前面区域</div>',
-      asideAfter: {
-        "label": "设置应用",
-        "type": "button",
-        "actionType": "dialog",
-        "icon": "fa fa-cog",
-        "level": "dark",
-        "className": "absolute bottom-0 left-0 right-0 rounded-none justify-start",
-        "dialog": {
-          "title": "设置应用",
-          "size": "lg",
-          "body": 
-          {
-            "type": "steedos-object-form",
-            "label": "对象表单",
-            "objectApiName": "micro_apps",
-            "recordId": app._id,
-            "mode": "edit",
-            "fieldsExtend": {
-              "name":{
-                "amis": {
-                  "visible": false
-                }
-              },
-              "icon":{
-                "amis": {
-                  "source": iconsSource
-                }
-              }
-            }
-          }
-        }
-      },
+      // asideAfter: {
+      //   "label": "设置应用",
+      //   "type": "button",
+      //   "actionType": "dialog",
+      //   "icon": "fa fa-cog",
+      //   "level": "dark",
+      //   "className": "absolute bottom-0 left-0 right-0 rounded-none justify-start",
+      //   "dialog": {
+      //     "title": "设置应用",
+      //     "size": "lg",
+      //     "body": 
+      //     {
+      //       "type": "steedos-object-form",
+      //       "label": "对象表单",
+      //       "objectApiName": "micro_apps",
+      //       "recordId": app._id,
+      //       "mode": "edit",
+      //       "fieldsExtend": {
+      //         "name":{
+      //           "amis": {
+      //             "visible": false
+      //           }
+      //         },
+      //         "icon":{
+      //           "amis": {
+      //             "source": iconsSource
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      // },
       api: `/mab/schema/\${spaceId}/apps/\${appId}/pages`
     };
 

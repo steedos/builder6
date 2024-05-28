@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-23 01:42:01
+ * @LastEditTime: 2024-05-28 09:16:34
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -36,21 +36,58 @@ const convertPageSchema = function(page, pages){
     "url": page.name,
     "schema": {
       "type": "page",
-      "title": page.name,
+      "title": page.label,
       "body": pageSchema
     }
   });
-  let childrenPages = getChildrenPages(page, pages);
-  if(childrenPages && childrenPages.length){
-    pageItem.children = childrenPages.map(function(item){
-      return convertPageSchema(item, pages);
-    });
+  // let childrenPages = getChildrenPages(page, pages);
+  // if(childrenPages && childrenPages.length){
+  //   pageItem.children = childrenPages.map(function(item){
+  //     return convertPageSchema(item, pages);
+  //   });
 
-    if(isSchemaEmpty){
-      // 有children且未找到页面的amis Schema配置，单独作为选项卡分组存在，右侧不显示page 404界面
-      delete pageItem.url;
-      delete pageItem.schema;
+  //   if(isSchemaEmpty){
+  //     // 有children且未找到页面的amis Schema配置，单独作为选项卡分组存在，右侧不显示page 404界面
+  //     delete pageItem.url;
+  //     delete pageItem.schema;
+  //   }
+  // }
+  return pageItem;
+}
+
+const convertPageSchemaByTab = function(tab, pages){
+  let pageItem;
+  if(tab.type === "page"){
+    let page = pages.find(function(item){
+      return item.name === tab.micro_page;
+    });
+    if(page){
+      pageItem = convertPageSchema(page);
+      if(tab.is_new_window){
+        pageItem.link = pageItem.url;
+      }
     }
+    else{
+      pageItem = {
+        "label": tab._id,
+        "url": tab._id,
+        "schema": {
+          "type": "page",
+          "title": "404",
+          "body": {
+            "type": "alert",
+            "body": "未找到该选项卡绑定的页面，请为该选项卡指定页面！",
+            "level": "warning"
+          }
+        }
+      };
+    }
+  }
+  else if(tab.type === "url"){
+    pageItem = {
+      "label": tab.label,
+      "link": tab.url
+    };
   }
   return pageItem;
 }
@@ -62,7 +99,7 @@ module.exports = {
   }
   ],
   handler: async function (ctx) {
-    // console.log("=pages schema==ctx.params===", ctx.params);
+    console.log("=pages schema==ctx.params===", ctx.params);
     const {
       spaceId = "",
       appId = ""
@@ -80,6 +117,13 @@ module.exports = {
         "data": {}
       };
     }
+
+    const tabs = await this.getObject('micro_tabs').find({
+      filters: ['micro_app', '=', appId],
+    });
+    console.log("=app schema==tabs===", tabs);
+    const isTabsEmpty = _.isEmpty(tabs);
+
     const schema = {
       "pages": []
     };
@@ -98,13 +142,19 @@ module.exports = {
 
     const rootPage = schema.pages[1];
 
-    pages.forEach((item) => {
-      if(!item.parent){
-        // parent为空表示根路径页面，从根开始，自动递归生成每个页面的children
-        const pageItem = convertPageSchema(item, pages);
+    if(isTabsEmpty){
+      pages.forEach((item) => {
+        const pageItem = convertPageSchema(item);
         rootPage.children.push(pageItem);
-      }
-    });
+      });
+    }
+    else{
+      tabs.forEach((item) => {
+        const pageItem = convertPageSchemaByTab(item, pages);
+        rootPage.children.push(pageItem);
+      });
+    }
+    console.log("=app schema==rootPage.children===", rootPage.children);
 
     const pages__ = [
       {
