@@ -1,4 +1,4 @@
-name: micro_app
+name: micro_page
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -7,20 +7,18 @@ filters: []
 generated: false
 hidden: false
 index: false
-is_name: false
 is_wide: false
-label: 应用
-multiple: false
+label: 页面
 primary: false
 readonly: false
-reference_to: micro_apps
-reference_to_field: name
+reference_to: micro_pages
 required: false
 searchable: false
 show_as_qr: false
 sort_no: 100
-sortable: true
+sortable: false
 static: false
 type: master_detail
 unique: false
+visible_on: '${type == "page"}'
 write_requires_master_read: false

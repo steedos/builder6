@@ -1,4 +1,4 @@
-name: micro_app
+name: url
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -9,18 +9,17 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 应用
+label: 外部链接
 multiple: false
 primary: false
 readonly: false
-reference_to: micro_apps
-reference_to_field: name
 required: false
 searchable: false
 show_as_qr: false
 sort_no: 100
-sortable: true
+sortable: false
 static: false
-type: master_detail
+type: url
 unique: false
+visible_on: '${type == "url"}'
 write_requires_master_read: false
