@@ -2,15 +2,18 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-06 09:54:13
+ * @LastEditTime: 2024-05-28 02:00:54
  * @Description: 
  */
 const path = require('path');
 // const app = require("./app");
 const app = require("./micro");
-const appSchema = require("./schema/app");
-const pagesSchema = require("./schema/pages");
-const appBuilder = require("./app-builder");
+const appSchema = require("./schema//app");
+const pagesSchema = require("./schema//pages");
+const appSettings = require("./micro-settings");
+const appSettingsSchema = require("./schema/settings/app");
+const pagesSettingsSchema = require("./schema/settings/pages");
+// const appBuilder = require("./app-builder");
 
 const package = require('../package.json');
 const packageName = package.name;
@@ -36,9 +39,12 @@ module.exports = {
     },
     actions: {
         app,
-        appBuilder,
+        // appBuilder,
         appSchema,
-        pagesSchema
+        pagesSchema,
+        appSettings,
+        appSettingsSchema,
+        pagesSettingsSchema
     },
     hooks: {
     },
