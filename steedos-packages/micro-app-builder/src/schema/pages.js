@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-28 09:55:35
+ * @LastEditTime: 2024-05-29 01:35:36
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -105,6 +105,24 @@ module.exports = {
       appId = ""
     } = ctx.params;
 
+    const apps = await this.getObject('micro_apps').find({
+      filters: ['name', '=', appId],
+    });
+
+    if (!apps || !apps.length) {
+      return {
+        "status": 0,
+        "msg": "",
+        "data": {
+          "type": "page",
+          "title": "404",
+          "body": "未找到应用" + appId
+        }
+      }
+    }
+
+    let app = apps[0];
+
     const pages = await this.getObject('micro_pages').find({
       filters: ['micro_app', '=', appId],
     });
@@ -132,7 +150,7 @@ module.exports = {
     schema.pages.push({
       "label": "Home",
       "url": "/",
-      "redirect": pages[0].name
+      "redirect": app.home || pages[0].name
     });
 
     // 顶层不加分组，直接循环显示pages菜单显示不出来
