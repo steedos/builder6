@@ -2,14 +2,14 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-28 02:00:54
+ * @LastEditTime: 2024-05-29 09:15:07
  * @Description: 
  */
 const path = require('path');
 // const app = require("./app");
 const app = require("./micro");
-const appSchema = require("./schema//app");
-const pagesSchema = require("./schema//pages");
+const appSchema = require("./schema/app");
+const pagesSchema = require("./schema/pages");
 const appSettings = require("./micro-settings");
 const appSettingsSchema = require("./schema/settings/app");
 const pagesSettingsSchema = require("./schema/settings/pages");
