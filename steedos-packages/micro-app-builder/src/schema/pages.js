@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-29 01:35:36
+ * @LastEditTime: 2024-05-29 05:31:40
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -106,7 +106,7 @@ module.exports = {
     } = ctx.params;
 
     const apps = await this.getObject('micro_apps').find({
-      filters: ['name', '=', appId],
+      filters: [['space', '=', spaceId],['name', '=', appId]],
     });
 
     if (!apps || !apps.length) {
@@ -124,7 +124,7 @@ module.exports = {
     let app = apps[0];
 
     const pages = await this.getObject('micro_pages').find({
-      filters: ['micro_app', '=', appId],
+      filters: [['space', '=', spaceId],['micro_app', '=', appId]],
     });
     // console.log("=app schema==pages===", pages);
 
@@ -137,7 +137,7 @@ module.exports = {
     }
 
     const tabs = await this.getObject('micro_tabs').find({
-      filters: ['micro_app', '=', appId],
+      filters: [['space', '=', spaceId],['micro_app', '=', appId]],
       sort: "sort_no, created"
     });
     // console.log("=app schema==tabs===", tabs);
