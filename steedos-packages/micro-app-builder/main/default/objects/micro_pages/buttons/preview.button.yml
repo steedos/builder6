@@ -1,0 +1,45 @@
+name: preview
+amis_schema: |-
+  {
+      "type": "service",
+      "body": [
+          {
+              "type": "button",
+              "label": "预览",
+              "id": "u:preview",
+              "editorState": "default",
+              "onEvent": {
+                  "click": {
+                      "weight": 0,
+                      "actions": [
+                          {
+                              "actionType": "url",
+                              "args": {
+                                  "url": "/mab/${context.tenantId}/apps/${micro_app}#/${name}"
+                              },
+                              "ignoreError": false
+                          }
+                      ]
+                  }
+              }
+          }
+      ],
+      "regions": [
+          "body"
+      ],
+      "data": {
+          "context": {},
+          "dataComponentId": "",
+          "record_id": "",
+          "record": {},
+          "permissions": {}
+      },
+      "bodyClassName": "p-0",
+      "id": "u:b770226a9371",
+      "dsType": "api"
+  }
+is_enable: true
+label: 预览
+'on': record_only
+type: amis_button
+visible: true
