@@ -15,6 +15,6 @@ searchable_fields: []
 shared_to: space
 sort:
   - field_name: created
-    order: desc
+    order: asc
 sort_no: 100
 type: grid
