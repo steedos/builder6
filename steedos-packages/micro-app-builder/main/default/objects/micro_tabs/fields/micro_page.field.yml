@@ -19,7 +19,7 @@ show_as_qr: false
 sort_no: 40
 sortable: false
 static: false
-type: master_detail
+type: lookup
 unique: false
 visible_on: '${type == "page"}'
 write_requires_master_read: false

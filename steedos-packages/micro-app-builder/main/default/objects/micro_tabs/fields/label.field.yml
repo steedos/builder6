@@ -12,7 +12,7 @@ label: 显示名称
 multiple: false
 primary: false
 readonly: false
-required: false
+required: true
 searchable: false
 show_as_qr: false
 sort_no: 20
@@ -21,6 +21,6 @@ static: false
 type: text
 unique: false
 write_requires_master_read: false
-visible_on: '${type == "url"}'
-amis:
-  requiredOn: '${type == "url"}'
+# visible_on: '${type == "url"}'
+# amis:
+#   requiredOn: '${type == "url"}'
