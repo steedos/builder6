@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-29 09:08:58
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-30 03:31:47
+ * @LastEditTime: 2024-05-30 04:03:52
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/assets.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -16,7 +16,8 @@ const getConfig = (key) => {
 const STEEDOS_UNPKG_URL = getConfig("STEEDOS_UNPKG_URL"),
     STEEDOS_AMIS_URL = getConfig("STEEDOS_AMIS_URL"),
     STEEDOS_PUBLIC_PAGE_ASSETURLS = getConfig("STEEDOS_PUBLIC_PAGE_ASSETURLS"),
-    STEEDOS_AMIS_VERSION = getConfig("STEEDOS_AMIS_VERSION");
+    STEEDOS_AMIS_VERSION = getConfig("STEEDOS_AMIS_VERSION"),
+    ROOT_URL = getConfig("ROOT_URL");
 
 const getEnvData = function (toString) {
     let data = {
@@ -265,6 +266,27 @@ const getRegistryAssetsComponentsScript = function () {
     });
 }
 
+
+// /main_head.css?platform=browser 中加载了以下css，这里按需加载
+// @import url("https://unpkg.steedos.cn/@salesforce-ux/design-system@2.22.2/assets/styles/salesforce-lightning-design-system.min.css");
+// @import url("https://unpkg.steedos.cn/@steedos-widgets/amis@6.3.0-patch.3/lib/themes/antd.css");
+// @import url("https://unpkg.steedos.cn/@steedos-widgets/amis@6.3.0-patch.3/lib/helper.css");
+// @import url("https://unpkg.steedos.cn/@steedos-widgets/amis@6.3.0-patch.3/sdk/iconfont.css");
+// @import url("https://unpkg.steedos.cn/@fortawesome/fontawesome-free@6.2.0/css/all.min.css");
+// @import url("/tailwind/tailwind-steedos.css");
+// @import url("/amis/amis.css");
+const getMainHeadCss = () => {
+    return `
+        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@salesforce-ux/design-system@2.22.2/assets/styles/salesforce-lightning-design-system.min.css" />
+        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@steedos-widgets/amis@6.3.0-patch.3/lib/themes/antd.css" />
+        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@steedos-widgets/amis@6.3.0-patch.3/lib/helper.css" />
+        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@steedos-widgets/amis@6.3.0-patch.3/sdk/iconfont.css" />
+        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" />
+        <link rel="stylesheet" href="/tailwind/tailwind-steedos.css" />
+        <link rel="stylesheet" href="/amis/amis.css" />
+    `
+}
+
 const getMainHeadJs = () => {
     return `
         <script src="${STEEDOS_UNPKG_URL}/lodash@4.17.21/lodash.min.js"></script>
@@ -336,6 +358,7 @@ const getMainBodyJs = (user) => {
 }
 
 module.exports = {
+    getMainHeadCss,
     getMainHeadJs,
     getMainBodyJs
 }
