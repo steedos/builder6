@@ -2,10 +2,13 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-23 09:54:45
+ * @LastEditTime: 2024-05-30 02:39:52
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+const _ = require("lodash")
+const assets = require('./assets');
+
 module.exports = {
   rest: [{
     method: "GET",
@@ -37,62 +40,6 @@ module.exports = {
     const baseHref = "/app-builder";
     const language = "zh-CN";
     const favicon = "/app/assets/steedos/favicon.ico";
-
-    const builderJs = `
-      window.lodash = _;
-      window.Creator = {};
-      ; Object.defineProperty(window, 'MonacoEnvironment', { set: () => { }, get: () => undefined });
-      ; (function () {
-        function _innerWaitForThing(obj, path, func) {
-          const timeGap = 100;
-          return new Promise((resolve, reject) => {
-            setTimeout(() => {
-              let thing = null;
-              if (lodash.isFunction(func)) {
-                thing = func(obj, path);
-              } else {
-                thing = lodash.get(obj, path);
-              }
-              if (thing) {
-                return resolve(thing);
-              }
-              reject();
-            }, timeGap);
-          }).catch(() => {
-            return _innerWaitForThing(obj, path, func);
-          });
-        }
-
-        window.waitForThing = (obj, path, func) => {
-          let thing = null;
-          if (lodash.isFunction(func)) {
-            thing = func(obj, path);
-          } else {
-            thing = lodash.get(obj, path);
-          }
-          if (thing) {
-            return Promise.resolve(thing);
-          }
-          return _innerWaitForThing(obj, path, func);
-        };
-
-        Promise.all([
-          waitForThing(window, 'Builder')
-        ]).then(() => {
-          Builder.set({
-            context: {
-              rootUrl: Builder.settings.rootUrl,
-              tenantId: "${user?.spaceId}",
-              userId: "${user?.userId}",
-              authToken: "${user?.authToken}",
-            },
-            locale: "${user?.locale}"
-          })
-
-          window.postMessage({ type: "Builder.loaded" }, "*")
-        })
-      })();
-    `;
 
     const listenAssetsLoaded = `
       window.addEventListener('message', function (event) {
@@ -307,7 +254,7 @@ module.exports = {
             title="default"
             href="https://unpkg.steedos.cn/amis@3.2.0/sdk/sdk.css"
           />
-          <script src="/main_head.js?platform=browser"></script>
+          ${assets.getMainHeadJs()}
           <link rel="stylesheet" href="/main_head.css?platform=browser">
           <!-- 
           <link rel="stylesheet" href="https://unpkg.steedos.cn/amis@3.2.0/sdk/helper.css" />
@@ -327,11 +274,13 @@ module.exports = {
               padding: 0;
             }
           </style>
-
+        </head>
+        <body>
+          <div id="root" class="app-wrapper"></div>
           <script>
             (function () {
-              // 触发main_head.js中请求资产包脚本文件
-              ${builderJs}
+              // 原platform中builder.client.js中的脚本，主要是定义waitForThing函数，并触发请求资产包脚本文件
+              (${assets.getBuilderClientJs.toString()})(${JSON.stringify(_.pick(user, ['spaceId','userId','authToken', 'locale']))});
             })();
           </script>
 
@@ -348,9 +297,6 @@ module.exports = {
               ${registryAssetsComponents}
           })();
           </script>
-        </head>
-        <body>
-          <div id="root" class="app-wrapper"></div>
           <script>
             (function () {
               ${embedAmis}

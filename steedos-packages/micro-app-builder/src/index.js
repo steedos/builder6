@@ -2,9 +2,10 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-29 09:15:07
+ * @LastEditTime: 2024-05-30 01:33:05
  * @Description: 
  */
+require("./default.steedos.config"); //TODO:不懂为什么拿不到platform中的环境变量默认值，还需要这里执行一次
 const path = require('path');
 // const app = require("./app");
 const app = require("./micro");
