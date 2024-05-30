@@ -2,11 +2,11 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-30 02:39:52
+ * @LastEditTime: 2024-05-30 03:17:07
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-const _ = require("lodash")
+const _ = require("lodash");
 const assets = require('./assets');
 
 module.exports = {
@@ -40,15 +40,6 @@ module.exports = {
     const baseHref = "/app-builder";
     const language = "zh-CN";
     const favicon = "/app/assets/steedos/favicon.ico";
-
-    const listenAssetsLoaded = `
-      window.addEventListener('message', function (event) {
-        const { data } = event;
-        if (data.type === 'builder.assetsLoaded') {
-          window.assetsLoaded = true;
-        }
-      })
-    `;
 
     const registryAssetsComponents = `
       // TODO:这里是不是不应该直接使用amis.render.client.js中的脚本注册资产包中自定义组件，应该单独写个注册脚本
@@ -277,19 +268,7 @@ module.exports = {
         </head>
         <body>
           <div id="root" class="app-wrapper"></div>
-          <script>
-            (function () {
-              // 原platform中builder.client.js中的脚本，主要是定义waitForThing函数，并触发请求资产包脚本文件
-              (${assets.getBuilderClientJs.toString()})(${JSON.stringify(_.pick(user, ['spaceId','userId','authToken', 'locale']))});
-            })();
-          </script>
-
-          <script>
-          (function () {
-            // 监听message设置window.assetsLoaded
-            ${listenAssetsLoaded}
-          })();
-          </script>
+          ${assets.getMainBodyJs(user)}
 
           <script>
             (function () {

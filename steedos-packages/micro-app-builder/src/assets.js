@@ -2,10 +2,12 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-29 09:08:58
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-30 02:43:01
+ * @LastEditTime: 2024-05-30 03:19:16
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/assets.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+
+const _ = require("lodash");
 
 const getConfig = (key) => {
     return process.env[key]
@@ -89,7 +91,7 @@ const getAfterAmisSDKLoadedScript = function () {
 
 
 const getBuilderClientJs = function (user) {
-    window.lodash = _;
+    window.lodash = window._;
     window.Creator = {};
     ; Object.defineProperty(window, 'MonacoEnvironment', { set: () => { }, get: () => undefined });
     ; (function () {
@@ -144,6 +146,15 @@ const getBuilderClientJs = function (user) {
     })();
 }
 
+const listenAssetsLoaded = `
+    window.addEventListener('message', function (event) {
+        const { data } = event;
+        if (data.type === 'builder.assetsLoaded') {
+            window.assetsLoaded = true;
+        }
+    });
+`;
+
 const getMainHeadJs = () => {
     return `
         <script src="${STEEDOS_UNPKG_URL}/lodash@4.17.21/lodash.min.js"></script>
@@ -191,7 +202,25 @@ const getMainHeadJs = () => {
     `;
 }
 
+const getMainBodyJs = (user) => {
+    return `
+        <script>
+            (function () {
+            // 原platform中builder.client.js中的脚本，主要是定义waitForThing函数，并触发请求资产包脚本文件
+            (${getBuilderClientJs.toString()})(${JSON.stringify(_.pick(user, ['spaceId', 'userId', 'authToken', 'locale']))});
+            })();
+        </script>
+
+        <script>
+        (function () {
+          // 监听message设置window.assetsLoaded
+          ${listenAssetsLoaded}
+        })();
+        </script>
+    `
+}
+
 module.exports = {
     getMainHeadJs,
-    getBuilderClientJs
+    getMainBodyJs
 }
