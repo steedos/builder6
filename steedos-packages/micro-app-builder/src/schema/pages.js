@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-29 05:31:40
+ * @LastEditTime: 2024-05-30 09:00:43
  * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -55,12 +55,10 @@ const convertPageSchema = function(page, pages){
   return pageItem;
 }
 
-const convertPageSchemaByTab = function(tab, pages){
+const convertPageSchemaByTab = function(tab, pagesByName){
   let pageItem;
   if(tab.type === "page"){
-    let page = pages.find(function(item){
-      return item.name === tab.micro_page;
-    });
+    let page = pagesByName[tab.micro_page]
     if(page){
       pageItem = convertPageSchema(page);
       if(tab.is_new_window){
@@ -161,15 +159,34 @@ module.exports = {
 
     const rootPage = schema.pages[1];
 
-    if(isTabsEmpty){
+    if (isTabsEmpty) {
       pages.forEach((item) => {
         const pageItem = convertPageSchema(item);
         rootPage.children.push(pageItem);
       });
     }
-    else{
+    else {
+      const pagesByName = _.keyBy(pages, 'name');
       tabs.forEach((item) => {
-        const pageItem = convertPageSchemaByTab(item, pages);
+        const pageItem = convertPageSchemaByTab(item, pagesByName);
+        rootPage.children.push(pageItem);
+      });
+      const tabsByPage = _.keyBy(tabs, 'micro_page');
+      // 没配置到微菜单中的页面也要加到页面清单中，并且配置其visible属性为false以达到隐藏菜单效果
+      const pagesWithoutTab = pages.filter(function (item) {
+        if (tabsByPage[item.name] && tabsByPage[item.name].type === "page") {
+          // tabsByPage中存在类型为page，且绑定到当前page item的tab
+          return false;
+        }
+        else {
+          return true;
+        }
+      });
+      pagesWithoutTab.forEach((item) => {
+        const pageItem = convertPageSchema(item);
+        Object.assign(pageItem, {
+          "visible": false
+        });
         rootPage.children.push(pageItem);
       });
     }
