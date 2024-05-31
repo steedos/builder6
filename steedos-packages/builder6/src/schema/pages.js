@@ -3,7 +3,7 @@
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
  * @LastEditTime: 2024-05-31 03:27:20
- * @FilePath: /microapps/steedos-packages/builder6/src/micro.js
+ * @FilePath: /builder6/steedos-packages/builder6/src/interfaces.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
@@ -58,7 +58,7 @@ const convertPageSchema = function(page, pages){
 const convertPageSchemaByTab = function(tab, pagesByName){
   let pageItem;
   if(tab.type === "page"){
-    let page = pagesByName[tab.micro_page]
+    let page = pagesByName[tab.interface_page]
     if(page){
       pageItem = convertPageSchema(page);
       if(tab.is_new_window){
@@ -103,7 +103,7 @@ module.exports = {
       appId = ""
     } = ctx.params;
 
-    const apps = await this.getObject('micro_apps').find({
+    const apps = await this.getObject('interface_apps').find({
       filters: [['space', '=', spaceId],['name', '=', appId]],
     });
 
@@ -121,8 +121,8 @@ module.exports = {
 
     let app = apps[0];
 
-    const pages = await this.getObject('micro_pages').find({
-      filters: [['space', '=', spaceId],['micro_app', '=', appId]],
+    const pages = await this.getObject('interface_pages').find({
+      filters: [['space', '=', spaceId],['interface_app', '=', appId]],
     });
     // console.log("=app schema==pages===", pages);
 
@@ -134,8 +134,8 @@ module.exports = {
       };
     }
 
-    const tabs = await this.getObject('micro_tabs').find({
-      filters: [['space', '=', spaceId],['micro_app', '=', appId]],
+    const tabs = await this.getObject('interface_tabs').find({
+      filters: [['space', '=', spaceId],['interface_app', '=', appId]],
       sort: "sort_no, created"
     });
     // console.log("=app schema==tabs===", tabs);
@@ -171,7 +171,7 @@ module.exports = {
         const pageItem = convertPageSchemaByTab(item, pagesByName);
         rootPage.children.push(pageItem);
       });
-      const tabsByPage = _.keyBy(tabs, 'micro_page');
+      const tabsByPage = _.keyBy(tabs, 'interface_page');
       // 没配置到微菜单中的页面也要加到页面清单中，并且配置其visible属性为false以达到隐藏菜单效果
       const pagesWithoutTab = pages.filter(function (item) {
         if (tabsByPage[item.name] && tabsByPage[item.name].type === "page") {

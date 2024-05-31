@@ -3,7 +3,7 @@
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
  * @LastEditTime: 2024-05-28 01:50:32
- * @FilePath: /microapps/steedos-packages/builder6/src/micro.js
+ * @FilePath: /builder6/steedos-packages/builder6/src/interfaces.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
@@ -40,7 +40,7 @@ module.exports = {
       appId = ""
     } = ctx.params;
 
-    const apps = await this.getObject('micro_apps').find({
+    const apps = await this.getObject('interface_apps').find({
       filters: ['name', '=', appId],
     });
     // console.log("=app schema==apps===", apps);
@@ -101,7 +101,7 @@ module.exports = {
           {
             "type": "steedos-object-form",
             "label": "对象表单",
-            "objectApiName": "micro_apps",
+            "objectApiName": "interface_apps",
             "recordId": app._id,
             "mode": "edit",
             "fieldsExtend": {

@@ -3,7 +3,7 @@ columns:
   - field: label
   - field: parent
   - field: name
-  - field: micro_app
+  - field: interface_app
 crud_mode: table
 filter_scope: space
 filters: []

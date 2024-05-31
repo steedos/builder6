@@ -1,11 +1,10 @@
-name: micro_tabs
+name: interface_pages
 custom: true
 enable_api: true
 enable_dataloader: true
 enable_enhanced_lookup: true
 enable_events: false
 enable_files: false
-enable_form_tabs: false
 enable_inline_edit: true
 enable_instances: false
 enable_lock_detail: true
@@ -17,8 +16,8 @@ enable_workflow: true
 field_groups:
   - group_name: 系统信息
     collapsed: true
-icon: link
+icon: code_set
 is_enable: true
-label: 微菜单
+label: 微页面
 locked: false
 version: 2

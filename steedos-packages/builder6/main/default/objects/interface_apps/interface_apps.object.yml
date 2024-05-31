@@ -1,4 +1,4 @@
-name: micro_apps
+name: interface_apps
 custom: true
 enable_api: true
 enable_dataloader: true

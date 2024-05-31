@@ -1,16 +1,14 @@
-name: all
+name: recent
 columns:
   - field: label
-  - field: micro_page
+  - field: interface_page
   - field: url
   - field: type
 crud_mode: table
 filter_scope: space
 filters: []
-label: 所有
+label: 最近查看
 shared_to: space
 sort:
-  - field_name: sort_no
-    order: asc
   - field_name: created
-    order: asc
+    order: desc

@@ -1,4 +1,4 @@
-name: micro_pages.user
+name: interface_pages.admin
 allowCreate: true
 allowCreateFiles: true
 allowDelete: true
@@ -7,8 +7,9 @@ allowEdit: true
 allowEditFiles: true
 allowRead: true
 allowReadFiles: true
-modifyAllRecords: false
-permission_set_id: user
+modifyAllFiles: true
+modifyAllRecords: true
+permission_set_id: admin
 viewAllFiles: true
-viewAllRecords: false
+viewAllRecords: true
 field_permissions: []

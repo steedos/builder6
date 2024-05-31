@@ -1,4 +1,4 @@
-name: micro_page
+name: interface_page
 auto_fill_mapping:
   - from: label
     to: label
@@ -14,7 +14,7 @@ is_wide: false
 label: 页面
 primary: false
 readonly: false
-reference_to: micro_pages
+reference_to: interface_pages
 reference_to_field: name
 required: false
 searchable: false

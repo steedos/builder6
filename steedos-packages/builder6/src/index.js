@@ -2,16 +2,16 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-30 01:33:05
+ * @LastEditTime: 2024-05-31 04:07:27
  * @Description: 
  */
 require("./default.steedos.config"); //TODO:不懂为什么拿不到platform中的环境变量默认值，还需要这里执行一次
 const path = require('path');
 // const app = require("./app");
-const app = require("./micro");
+const app = require("./interfaces");
 const appSchema = require("./schema/app");
 const pagesSchema = require("./schema/pages");
-const appSettings = require("./micro-settings");
+const appSettings = require("./interfaces-settings");
 const appSettingsSchema = require("./schema/settings/app");
 const pagesSettingsSchema = require("./schema/settings/pages");
 // const appBuilder = require("./app-builder");
