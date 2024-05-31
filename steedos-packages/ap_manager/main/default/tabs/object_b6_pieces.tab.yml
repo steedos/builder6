@@ -1,8 +1,8 @@
-name: object_ap_pieces
+name: object_b6_pieces
 desktop: true
 icon: record
-label: ap_pieces
+label: pieces
 mobile: true
-object: ap_pieces
+object: b6_pieces
 permissions: []
 type: object

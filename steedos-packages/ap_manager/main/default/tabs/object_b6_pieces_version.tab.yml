@@ -1,8 +1,8 @@
-name: object_ap_pieces_version
+name: object_b6_pieces_version
 desktop: true
 icon: record
 label: Pieces version
 mobile: true
-object: ap_pieces_version
+object: b6_pieces_version
 permissions: []
 type: object

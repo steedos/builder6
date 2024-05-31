@@ -11,11 +11,11 @@ mobile: true
 showSidebar: true
 sort: 9100
 tab_items:
-  object_ap_pieces:
+  object_b6_pieces:
     index: 1
-  object_ap_pieces_version:
+  object_b6_pieces_version:
     index: 2
 tabs:
-  - object_ap_pieces
-  - object_ap_pieces_version
+  - object_b6_pieces
+  - object_b6_pieces_version
 visible: true
