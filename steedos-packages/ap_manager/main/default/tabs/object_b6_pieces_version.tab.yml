@@ -1,8 +1,0 @@
-name: object_b6_pieces_version
-desktop: true
-icon: record
-label: Pieces version
-mobile: true
-object: b6_pieces_version
-permissions: []
-type: object
