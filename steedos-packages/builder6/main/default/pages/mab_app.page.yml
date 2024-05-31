@@ -1,8 +1,0 @@
-name: mab_app
-is_active: true
-label: 微应用App页
-locked: false
-pageAssignments: []
-render_engine: amis
-type: app
-widgets: []
