@@ -11,7 +11,6 @@ label: 应用
 primary: false
 readonly: false
 reference_to: interfaces
-reference_to_field: name
 required: false
 searchable: false
 show_as_qr: false

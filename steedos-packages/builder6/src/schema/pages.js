@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-31 03:27:20
+ * @LastEditTime: 2024-05-31 09:39:07
  * @FilePath: /builder6/steedos-packages/builder6/src/interfaces.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -122,7 +122,7 @@ module.exports = {
     let app = apps[0];
 
     const pages = await this.getObject('interface_pages').find({
-      filters: [['space', '=', spaceId],['interface_app', '=', appId]],
+      filters: [['space', '=', spaceId],['interface_app', '=', app._id]],
     });
     // console.log("=app schema==pages===", pages);
 
@@ -144,11 +144,17 @@ module.exports = {
     const schema = {
       "pages": []
     };
+    let firstPage = pages[0];
+    if(app.home){
+      firstPage = _.find(pages, function(item){
+        return item._id === app.home;
+      });
+    }
     // 自动跳转到第一个page
     schema.pages.push({
       "label": "Home",
       "url": "/",
-      "redirect": app.home || pages[0].name
+      "redirect": firstPage.name || "NOT_FOUND"
     });
 
     // 顶层不加分组，直接循环显示pages菜单显示不出来
