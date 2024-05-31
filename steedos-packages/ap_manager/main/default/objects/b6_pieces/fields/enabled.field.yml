@@ -8,7 +8,7 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: enabled
+label: 启用
 multiple: false
 primary: false
 readonly: false
