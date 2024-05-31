@@ -1,0 +1,28 @@
+name: interface_page
+auto_fill_mapping:
+  - from: label
+    to: label
+create: true
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+filters: []
+generated: false
+hidden: false
+index: false
+is_wide: false
+label: 页面
+primary: false
+readonly: false
+reference_to: interface_pages
+reference_to_field: name
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 20
+sortable: false
+static: false
+type: lookup
+unique: false
+visible_on: '${type == "page"}'
+write_requires_master_read: false

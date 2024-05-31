@@ -3,7 +3,7 @@
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
  * @LastEditTime: 2024-05-28 01:50:49
- * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
+ * @FilePath: /builder6/steedos-packages/builder6/src/interfaces.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
@@ -68,8 +68,8 @@ module.exports = {
       appId = ""
     } = ctx.params;
 
-    const pages = await this.getObject('micro_pages').find({
-      filters: ['micro_app', '=', appId],
+    const pages = await this.getObject('interface_pages').find({
+      filters: ['interface_app', '=', appId],
     });
     // console.log("=app schema==pages===", pages);
 

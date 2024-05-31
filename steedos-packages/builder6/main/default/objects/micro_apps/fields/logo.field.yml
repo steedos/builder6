@@ -1,7 +1,0 @@
-name: logo
-hidden: false
-label: Logo Image
-required: false
-type: image
-sort_no: 20
-group: Logo

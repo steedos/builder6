@@ -1,0 +1,7 @@
+name: object_interfaces
+desktop: true
+label: 微应用
+mobile: true
+object: interfaces
+permissions: []
+type: object
