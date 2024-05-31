@@ -5,6 +5,9 @@ ports:
   - port: 5000 # Steedos
     onOpen: ignore
     visibility: public
+  - port: 3000 # Frontend
+    onOpen: ignore
+    visibility: public
   - port: 1880 # Node-RED
     onOpen: ignore
     visibility: public
@@ -30,6 +33,14 @@ tasks:
       yarn build
       gp await-port 5000
       yarn start
+  - name: Frontend
+    command: |
+      nvm i 18
+      nvm use 18
+      yarn
+      gp await-port 5000
+      yarn dev
+
 
 vscode:
   extensions:
