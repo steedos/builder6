@@ -1,82 +1,10 @@
 
-# Amis Builder
+# ✨ 灵犀人工智能无代码开发平台
 
-# Getting Started
+灵犀 是一个领先的人工智能无代码开发平台。
 
-## Run Steedos Platform
+## 核心功能
 
-First, you must run Steedos Platform. You can follow the [Self Hosting Tutorial](/deploy/deploy-docker) to deploy Steedos on a server, or launch a local Steedos Platform.
-
-```bash
-cd steedos-platform
-docker-compose up
-```
-
-You can also refer to the instructions in the `./steedos-platform` dir to run Steedos Platform with Node.js.
-
-### Register Admin Account
-
-Upon its first launch, the system will prompt you to register an account and create an organization. This account will also become the administrator account for the organization.
-
-### Create an API Key
-
-You can log in to the Steedos server with administrator credentials, go to the settings app, select the API Key menu, and create a new API Key.
-
-## Setup Environment Variable
-
-### Setup TRANSPORTER
-
-The Steedos package operates using the [Moleculer](https://moleculer.services/docs) microservices framework, connecting microservices through the configuration of a unified Transporter.
-
-[Moleculer Transporter](https://moleculer.services/docs/0.14/networking) is an important module if you are running services on multiple nodes. Transporter communicates with other nodes. It transfers events, calls requests and processes responses …etc. If multiple instances of a service are running on different nodes then the requests will be load-balanced among them.
-
-```bash
-TRANSPORTER=redis://127.0.0.1:6379
-```
-:::tip
-Please make sure the TRANSPORTER you configured matches the Steedos server you wish to connect to and that the network is interconnected. 
-:::
-
-:::danger
-For running in a production environment, be sure to configure the Redis password.
-:::
-
-### Setup Metadata Server
-
-Setup environment variables required for metadata synchronization.
-
-```bash
-steedos source:config
-```
-
-- Metadata Server: METADATA_SERVER is the ROOT_URL of the Steedos server you wish to connect to.
-- Metadata API Key: METADATA_APIKEY is used to authenticate your identity. 
-
-This command writes environment variables into the .env.local file, 
-
-```bash
-METADATA_SERVER=
-METADATA_APIKEY=
-```
-
-You can also set the above environment variables directly without running the command.
-
-## Run Steedos Packages
-
-### Install Dependences
-
-```bash
-yarn
-```
-
-### Run Packages
-
-You can use the [moleculer-runner](https://moleculer.services/docs/0.14/runner) command to launch the steedos packages.
-
-```bash
-yarn moleculer-runner steedos-packages/*/package.service.js --hot --repl
-```
-
-:::tip
-Please note that the Steedos DX project supports multi-package development, and the above command simultaneously launches all packages under the steedos-packages folder.
-:::
+- Chatbots: 旨在帮助用户通过聊天机器人自动化各种任务和工作流程。通过将聊天机器人与 Builder6 的强大自动化平台相结合，用户可以在聊天平台中触发和管理自动化工作流，从而大大提升工作效率和客户体验。
+- Automation: 是一个领先的自动化平台，旨在帮助用户将不同的应用程序无缝连接在一起，从而自动化重复性任务，简化工作流程。通过 灵犀，用户可以创建自动化工作流，这些工作流可以在数百个应用程序之间传递信息并触发各种操作。
+- Interfaces: 在简化用户与自动化工作流的交互，提升用户体验和工作效率。用户可以创建自定义的界面，用于触发和管理自动化任务，而无需编写任何代码。这些界面可以在多种平台和设备上运行，使自动化变得更加直观和易于使用。
