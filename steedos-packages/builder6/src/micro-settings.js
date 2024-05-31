@@ -3,7 +3,7 @@
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
  * @LastEditTime: 2024-05-28 01:54:29
- * @FilePath: /microapps/steedos-packages/micro-app-builder/src/micro.js
+ * @FilePath: /microapps/steedos-packages/builder6/src/micro.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
       user
     } = ctx.meta || {};
 
-    const appSchema = await ctx.call("@steedos-labs/micro-app-builder.appSettingsSchema", {
+    const appSchema = await ctx.call("@steedos/builder6.appSettingsSchema", {
       spaceId,
       appId
     });

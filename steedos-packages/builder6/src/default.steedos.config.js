@@ -3,7 +3,7 @@
  * @Date: 2024-05-30 01:31:26
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
  * @LastEditTime: 2024-05-30 01:43:24
- * @FilePath: /microapps/steedos-packages/micro-app-builder/src/default.steedos.config.js
+ * @FilePath: /microapps/steedos-packages/builder6/src/default.steedos.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 "use strict";
