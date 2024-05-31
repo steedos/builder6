@@ -1,0 +1,21 @@
+name: AP Manager
+code: ap_manager
+enable_nav_schema: false
+icon_slds: environment_hub
+is_creator: true
+is_new_window: false
+is_use_ie: false
+is_use_iframe: false
+locked: false
+mobile: true
+showSidebar: true
+sort: 9100
+tab_items:
+  object_ap_pieces:
+    index: 1
+  object_ap_pieces_version:
+    index: 2
+tabs:
+  - object_ap_pieces
+  - object_ap_pieces_version
+visible: true

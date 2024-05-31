@@ -1,0 +1,13 @@
+name: piece_detail
+is_active: true
+label: Piece Detail
+locked: false
+object_name: b6_pieces
+pageAssignments:
+  - type: orgDefault
+    page: piece_detail
+    desktop: true
+    mobile: true
+render_engine: amis
+type: record
+widgets: []

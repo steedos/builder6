@@ -1,0 +1,8 @@
+name: object_ap_pieces
+desktop: true
+icon: record
+label: ap_pieces
+mobile: true
+object: ap_pieces
+permissions: []
+type: object

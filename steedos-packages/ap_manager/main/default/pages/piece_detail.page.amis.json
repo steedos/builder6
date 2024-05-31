@@ -1,0 +1,75 @@
+{
+    "type": "steedos-record-service",
+    "body": [
+        {
+            "type": "steedos-record-detail-header",
+            "label": "标题面板",
+            "objectApiName": "${objectName}",
+            "recordId": "${recordId}",
+            "showBackButton": "${!_inDrawer}",
+            "id": "u:bc319a34f071"
+        },
+        {
+            "type": "tabs",
+            "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
+            "tabs": [
+                {
+                    "title": "详细",
+                    "className": "px-0 py-4",
+                    "body": [
+                        {
+                            "type": "steedos-object-form",
+                            "label": "对象表单",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}",
+                            "id": "u:a930a352ef2c"
+                        }
+                    ],
+                    "id": "u:5d4e7e3f6ecc"
+                },
+                {
+                    "title": "历史版本",
+                    "body": [
+                        {
+                            "type": "steedos-object-table",
+                            "label": "对象表格",
+                            "objectApiName": "b6_pieces_version",
+                            "fields": [
+                                "label",
+                                "name",
+                                "version",
+                                "minimumSupportedRelease",
+                                "maximumSupportedRelease",
+                                "categories",
+                                "created"
+                            ],
+                            "id": "u:f0bb7b5eaf1e",
+                            "crudMode": "table",
+                            "className": "my-2",
+                            "requestAdaptor": "api.data = {\n  query: data.query.replace(/{__filters}/g, JSON.stringify([[\"name\", \"=\", context.record.name]])).replace('{__top}', pageSize).replace('{__skip}', skip).replace('{__sort}', sort.trim())\n}",
+                            "sortField": "created",
+                            "sortOrder": "desc",
+                            "amisCondition": {
+                                "id": "546c5d29820b",
+                                "conjunction": "and",
+                                "children": []
+                            }
+                        }
+                    ],
+                    "id": "u:4c8ce24f6b69"
+                }
+            ],
+            "id": "u:70541330b3bb"
+        }
+    ],
+    "regions": [
+        "body"
+    ],
+    "data": {},
+    "id": "page_b6_pieces_record_detail",
+    "name": "page_b6_pieces_record_detail",
+    "objectApiName": "${objectName}",
+    "bodyClassName": "",
+    "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"
+}

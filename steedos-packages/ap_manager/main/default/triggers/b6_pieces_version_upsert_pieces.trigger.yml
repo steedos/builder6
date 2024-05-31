@@ -1,0 +1,30 @@
+name: b6_pieces_version_upsert_pieces
+listenTo: b6_pieces_version
+when:
+  - afterInsert
+isEnabled: true
+handler: |-
+  // global: {_:lodash, moment, validator, filters}
+  // ctx
+  // objects
+  // services
+
+  const { name } = ctx.params.doc;
+
+  const userSession = await ctx.getUser(ctx.params.userId, ctx.params.spaceId)
+
+  console.log(`ctx.params===>`, ctx.params)
+
+  const pieces = await objects.b6_pieces.find({ filters: ['name', '=', name] });
+
+  if (pieces.length == 0) {
+      await objects.b6_pieces.insert({
+          name: name,
+          latest_version: ctx.params.id
+      }, userSession)
+  } else {
+      await objects.b6_pieces.update(pieces[0]._id, {
+          latest_version: ctx.params.id
+      }, userSession)
+  }
+locked: false
