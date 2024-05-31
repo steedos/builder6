@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-31 09:39:07
+ * @LastEditTime: 2024-05-31 11:00:18
  * @FilePath: /builder6/steedos-packages/builder6/src/interfaces.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -11,7 +11,7 @@ const _ = require('lodash');
 
 const getChildrenPages = function(page, pages){
   return pages.filter(function(item){
-    return item.parent === page.name;
+    return item.parent === page._id;
   });
 }
 
@@ -21,7 +21,7 @@ const convertPageSchema = function(page, pages){
     pageSchema = JSON.parse(pageSchema);
   }
   let pageItem = {
-    "label": page.name
+    "label": page.label
   };
   let isSchemaEmpty = _.isEmpty(pageSchema);
   if(isSchemaEmpty){
@@ -33,7 +33,7 @@ const convertPageSchema = function(page, pages){
     };
   }
   Object.assign(pageItem, {
-    "url": page.name,
+    "url": page._id,
     "schema": {
       "type": "page",
       "title": page.label,
@@ -104,7 +104,7 @@ module.exports = {
     } = ctx.params;
 
     const apps = await this.getObject('interfaces').find({
-      filters: [['space', '=', spaceId],['name', '=', appId]],
+      filters: [['space', '=', spaceId],['_id', '=', appId]],
     });
 
     if (!apps || !apps.length) {
@@ -154,7 +154,7 @@ module.exports = {
     schema.pages.push({
       "label": "Home",
       "url": "/",
-      "redirect": firstPage.name || "NOT_FOUND"
+      "redirect": firstPage._id || "NOT_FOUND"
     });
 
     // 顶层不加分组，直接循环显示pages菜单显示不出来
@@ -172,7 +172,7 @@ module.exports = {
       });
     }
     else {
-      const pagesByName = _.keyBy(pages, 'name');
+      const pagesByName = _.keyBy(pages, '_id');
       tabs.forEach((item) => {
         const pageItem = convertPageSchemaByTab(item, pagesByName);
         rootPage.children.push(pageItem);
@@ -180,7 +180,7 @@ module.exports = {
       const tabsByPage = _.keyBy(tabs, 'interface_page');
       // 没配置到微菜单中的页面也要加到页面清单中，并且配置其visible属性为false以达到隐藏菜单效果
       const pagesWithoutTab = pages.filter(function (item) {
-        if (tabsByPage[item.name] && tabsByPage[item.name].type === "page") {
+        if (tabsByPage[item._id] && tabsByPage[item._id].type === "page") {
           // tabsByPage中存在类型为page，且绑定到当前page item的tab
           return false;
         }
