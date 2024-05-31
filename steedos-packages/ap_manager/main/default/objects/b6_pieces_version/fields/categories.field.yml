@@ -1,0 +1,54 @@
+name: categories
+create: true
+data_type: text
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+generated: false
+hidden: false
+index: false
+is_wide: false
+label: categories
+multiple: true
+options:
+  - label: ARTIFICIAL_INTELLIGENCE
+    value: ARTIFICIAL_INTELLIGENCE
+  - label: COMMUNICATION
+    value: COMMUNICATION
+  - label: COMMERCE
+    value: COMMERCE
+  - label: CORE
+    value: CORE
+  - label: BUSINESS_INTELLIGENCE
+    value: BUSINESS_INTELLIGENCE
+  - label: ACCOUNTING
+    value: ACCOUNTING
+  - label: PRODUCTIVITY
+    value: PRODUCTIVITY
+  - label: CONTENT_AND_FILES
+    value: CONTENT_AND_FILES
+  - label: DEVELOPER_TOOLS
+    value: DEVELOPER_TOOLS
+  - label: CUSTOMER_SUPPORT
+    value: CUSTOMER_SUPPORT
+  - label: FORMS_AND_SURVEYS
+    value: FORMS_AND_SURVEYS
+  - label: HUMAN_RESOURCES
+    value: HUMAN_RESOURCES
+  - label: PAYMENT_PROCESSING
+    value: PAYMENT_PROCESSING
+  - label: MARKETING
+    value: MARKETING
+  - label: SALES_AND_CRM
+    value: SALES_AND_CRM
+primary: false
+readonly: false
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 60
+sortable: true
+static: false
+type: select
+unique: false
+write_requires_master_read: false

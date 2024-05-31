@@ -1,0 +1,26 @@
+name: label
+create: true
+data_type: text
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+filters: []
+formula: name+ "@" + version
+formula_blank_value: blanks
+generated: false
+hidden: false
+index: false
+is_name: true
+is_wide: false
+label: label
+multiple: false
+primary: false
+readonly: true
+searchable: false
+show_as_qr: false
+sort_no: 10
+sortable: true
+static: false
+type: formula
+unique: false
+write_requires_master_read: false

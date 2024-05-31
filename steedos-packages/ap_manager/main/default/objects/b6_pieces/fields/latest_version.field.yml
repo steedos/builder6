@@ -1,0 +1,30 @@
+name: latest_version
+create: true
+depend_on:
+  - name
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+filters:
+  - - name
+    - '='
+    - '${name}'
+generated: false
+hidden: false
+index: false
+is_name: false
+is_wide: false
+label: latest version
+multiple: false
+primary: false
+readonly: false
+reference_to: b6_pieces_version
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 20
+sortable: false
+static: false
+type: lookup
+unique: false
+write_requires_master_read: false
