@@ -10,7 +10,7 @@ is_wide: false
 label: 应用
 primary: false
 readonly: false
-reference_to: interface_apps
+reference_to: interfaces
 reference_to_field: name
 required: false
 searchable: false

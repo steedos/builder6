@@ -40,7 +40,7 @@ module.exports = {
       appId = ""
     } = ctx.params;
 
-    const apps = await this.getObject('interface_apps').find({
+    const apps = await this.getObject('interfaces').find({
       filters: [['space', '=', spaceId],['name', '=', appId]],
     });
     // console.log("=app schema==apps===", apps);
@@ -101,7 +101,7 @@ module.exports = {
       //     {
       //       "type": "steedos-object-form",
       //       "label": "对象表单",
-      //       "objectApiName": "interface_apps",
+      //       "objectApiName": "interfaces",
       //       "recordId": app._id,
       //       "mode": "edit",
       //       "fieldsExtend": {

@@ -103,7 +103,7 @@ module.exports = {
       appId = ""
     } = ctx.params;
 
-    const apps = await this.getObject('interface_apps').find({
+    const apps = await this.getObject('interfaces').find({
       filters: [['space', '=', spaceId],['name', '=', appId]],
     });
 
