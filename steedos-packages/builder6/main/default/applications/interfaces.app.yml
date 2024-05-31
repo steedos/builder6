@@ -11,12 +11,6 @@ sort: 9100
 tab_items:
   object_interfaces:
     index: 1
-  object_interface_pages:
-    index: 2
-  object_interface_tabs:
-    index: 3
 tabs:
   - object_interfaces
-  - object_interface_pages
-  - object_interface_tabs
 visible: true
