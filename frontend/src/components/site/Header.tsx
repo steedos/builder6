@@ -91,15 +91,6 @@ export default function Header() {
             </Transition>
           </Popover> */}
 
-          <a href="/" className="font-semibold leading-6 text-gray-900">
-            产品
-          </a>
-          <a href="/pricing" className="font-semibold leading-6 text-gray-900">
-            报价
-          </a>
-          <a href="/about" className="font-semibold leading-6 text-gray-900">
-            关于我们
-          </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center justify-center">
           <SignIn/>

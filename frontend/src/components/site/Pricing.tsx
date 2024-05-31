@@ -2,8 +2,8 @@
 
 import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
+import { Button } from '@/components/site/Button'
+import { Container } from '@/components/site/Container'
 
 function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -73,7 +73,7 @@ function Plan({
     <section
       className={clsx(
         'flex flex-col rounded-3xl px-6 sm:px-8',
-        featured ? 'order-first bg-green-600 py-8 lg:order-none' : 'lg:py-8',
+        featured ? 'order-first bg-blue-600 py-8 lg:order-none' : 'lg:py-8',
       )}
     >
       <h3 className="mt-5 font-display text-2xl text-white">{name}</h3>
@@ -87,7 +87,7 @@ function Plan({
       </p>
       <div className="pt-4 font-display text-5xl font-light tracking-tight text-white">
         {price}
-        <p className="pt-2 font-normal text-lg">每年</p>
+        <p className="pt-2 font-normal text-lg">用户/年</p>
       </div>
       <ul
         role="list"
@@ -116,16 +116,15 @@ function Plan({
   )
 }
 
-export function PricingAutomation() {
+export function Pricing() {
   return (
-
       <Container>
 
         <div className="md:text-center pt-12">
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
             <span className="relative whitespace-nowrap">
-              <SwirlyDoodle className="absolute left-0 top-1/2 h-[1em] w-full fill-green-400" />
-              <span className="relative">AI 自动化</span>
+              <SwirlyDoodle className="absolute left-0 top-1/2 h-[1em] w-full fill-blue-400" />
+              <span className="relative">AI 智能助手</span>
             </span>{' '}
           </h2>
           <p className="mt-4 text-lg text-slate-400">
@@ -136,38 +135,35 @@ export function PricingAutomation() {
         <Plan
           name="入门版"
           price="免费"
-          description="每月自动化处理 100 个流程任务。"
+          description="提供基于会话的AI智能助手"
           href="/api/form/signup"
           hrefLabel="免费试用"
           features={[
-            'AI自动化平台',
-            '无限流程',
-            '3步骤流程',
+            '免费智能助手',
             '支持 ChatGPT 3.5',
+            '支持 百度 文心一言',
             '手机访问',
-            '每月100次流程执行',
           ]}
         />
         <Plan
           featured
           name="专业版"
-          price="¥1500"
-          description="利用 Builder6 的全部功能自动化高级工作流程。"
+          price="¥300"
+          description="提供基于会话的AI智能助手"
           href="/api/form/signup"
           hrefLabel="免费试用"
           features={[
             '免费版所有功能',
-            '无限步骤流程',
             '支持 ChatGPT 4',
             '支持 ChatGPT 4o',
             '支持 Google Gemini',
-            '每月1500次流程执行',
+            '无限会话',
           ]}
         />
         <Plan
           name="团队版"
-          price="¥3000"
-          description="与您的团队一起构建和管理自动化工作流程。"
+          price="¥600"
+          description="为你的团队开通AI智能助手"
           href="/api/form/signup"
           hrefLabel="联系我们"
           features={[
@@ -175,7 +171,6 @@ export function PricingAutomation() {
             '团队管理',
             '权限管理',
             '单点登录',
-            '每月5000次流程执行',
           ]}
         />
         </div>

@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import { Container } from '@/components/Container'
-import { Logo } from '@/components/Logo'
-import { NavLink } from '@/components/NavLink'
+import { Container } from '@/components/site/Container'
+import { Logo } from '@/components/site/Logo'
+import { NavLink } from '@/components/site/NavLink'
 
 export function GlobalFooter() {
   return (

@@ -34,12 +34,6 @@ const Loading = () => {
 }
 export function SignIn() {
   const session = useSession();
-  if (session.status === 'authenticated' && document.location.pathname === '/') {
-    redirect("/app/dashboard");
-  }
-  if (session.status === 'unauthenticated' && document.location.pathname.startsWith('/app/') ) {
-    redirect("/");
-  }
   const authencated = session?.data?.user ? true : false;
   const name = session?.data?.user?.name;
   const avatarName = name?.charAt(0);

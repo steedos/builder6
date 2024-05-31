@@ -1,5 +1,5 @@
 
-import Icon from '@/components/Icon'
+import Icon from '@/components/site/Icon'
 import { ArrowTrendingUpIcon, CurrencyYenIcon, CalculatorIcon, ChartBarIcon, BuildingOfficeIcon, ArrowPathIcon, CloudArrowUpIcon, LockClosedIcon, DocumentMagnifyingGlassIcon, PuzzlePieceIcon, AdjustmentsHorizontalIcon, InboxArrowDownIcon} from '@heroicons/react/20/solid'
 
 

@@ -18,7 +18,7 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon,  } from '@heroicons/react/20/solid'
 
 import { Logo } from './Logo';
-import { SignIn } from './Signin';
+import { SignIn } from '../Signin';
 import Icon from './Icon';
 
 const products = [
