@@ -1,5 +1,5 @@
 {
-  "name": "@builder6/interfaces",
+  "name": "@steedos/builder6",
   "version": "0.0.1",
   "description": "",
   "main": "package.service.js",
