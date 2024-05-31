@@ -18,7 +18,7 @@ reference_to_field: name
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 100
+sort_no: 20
 sortable: true
 static: false
 type: lookup
