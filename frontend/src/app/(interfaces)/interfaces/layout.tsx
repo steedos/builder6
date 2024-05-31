@@ -43,7 +43,11 @@ import {
   TicketIcon,
 } from '@heroicons/react/20/solid'
 
-export default function Layout({children}) {
+export default function Layout({
+  children
+}: {
+  children: React.ReactNode
+}) {
   return (
     <SidebarLayout
       navbar={
