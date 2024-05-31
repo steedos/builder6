@@ -36,6 +36,7 @@ tasks:
       yarn start
   - name: Frontend
     command: |
+      cd frontend
       nvm i 18
       nvm use 18
       yarn
