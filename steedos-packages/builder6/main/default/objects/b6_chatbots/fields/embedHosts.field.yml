@@ -1,0 +1,4 @@
+name: embedHosts
+type: code
+label: Embed Hosts
+language: json
