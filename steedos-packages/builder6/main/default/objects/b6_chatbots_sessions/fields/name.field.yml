@@ -1,7 +1,5 @@
 name: name
 filterable: true
-group: Setup
-hidden: false
 index: true
 label: 名称
 required: true

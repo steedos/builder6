@@ -1,4 +1,4 @@
-name: chat_bots.admin
+name: chatbots_sessions.admin
 allowCreate: true
 allowCreateFiles: true
 allowDelete: true

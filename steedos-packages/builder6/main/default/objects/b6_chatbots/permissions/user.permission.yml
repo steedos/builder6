@@ -1,4 +1,4 @@
-name: b6_chatbots.user
+name: chat_bots.user
 allowCreate: true
 allowCreateFiles: true
 allowDelete: true

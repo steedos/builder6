@@ -1,11 +1,11 @@
-name: b6_chatbots
+name: b6_chatbots_sessions
 custom: true
 enable_api: true
 enable_dataloader: true
 enable_enhanced_lookup: true
 enable_events: false
 enable_files: false
-enable_form_tabs: true
+enable_form_tabs: false
 enable_inline_edit: true
 enable_instances: false
 enable_lock_detail: true
@@ -15,18 +15,10 @@ enable_tasks: false
 enable_tree: false
 enable_workflow: true
 field_groups:
-  - group_name: Setup
-    collapsed: false
-  - group_name: Instrctions
-    collapsed: true
-  - group_name: Actions
-    collapsed: true
-  - group_name: Style
-    collapsed: true
   - group_name: 系统信息
     collapsed: true
-icon: bot
+icon: sossession
 is_enable: true
-label: Chatbots
+label: Chatbots Sessions
 locked: false
 version: 2

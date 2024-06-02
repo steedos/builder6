@@ -1,4 +1,4 @@
-name: chat_bots.admin
+name: chatbots_sessions.user
 allowCreate: true
 allowCreateFiles: true
 allowDelete: true
@@ -7,9 +7,8 @@ allowEdit: true
 allowEditFiles: true
 allowRead: true
 allowReadFiles: true
-modifyAllFiles: true
-modifyAllRecords: true
-permission_set_id: admin
+modifyAllRecords: false
+permission_set_id: user
 viewAllFiles: true
-viewAllRecords: true
+viewAllRecords: false
 field_permissions: []

@@ -1,0 +1,28 @@
+name: model
+create: true
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+filters: []
+generated: false
+group: Setup
+hidden: false
+index: false
+is_name: false
+is_wide: false
+label: Model
+multiple: false
+options:
+  - label: OpenAI GPT-3.5 Turbo
+    value: gpt-3.5-turbo
+primary: false
+readonly: false
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 50
+sortable: true
+static: false
+type: select
+unique: false
+write_requires_master_read: false
