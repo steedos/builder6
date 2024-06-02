@@ -1,6 +1,8 @@
-name: icon
-hidden: true
-label: Logo Icon
+name: tabs.$.icon
+hidden: false
+label: 图标
+required: false
+type: lookup
 optionsFunction: !<tag:yaml.org,2002:js/function> |-
   function(
   ) {
@@ -24,6 +26,3 @@ optionsFunction: !<tag:yaml.org,2002:js/function> |-
 
 
   }
-required: false
-type: lookup
-sort_no: 60

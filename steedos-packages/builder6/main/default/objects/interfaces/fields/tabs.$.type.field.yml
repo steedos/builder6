@@ -1,0 +1,12 @@
+name: tabs.$.type
+type: select
+hidden: false
+label: 类型
+required: true
+multiple: false
+defaultValue: page
+options:
+  - label: 页面
+    value: page
+  - label: 外部链接
+    value: url
