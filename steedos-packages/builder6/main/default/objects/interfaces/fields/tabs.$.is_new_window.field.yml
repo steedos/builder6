@@ -2,4 +2,6 @@ name: tabs.$.is_new_window
 hidden: false
 label: 新窗口打开
 required: false
+sort_no: 50
 type: boolean
+group: 高级

@@ -4,6 +4,7 @@ label: 页面
 required: false
 visible_on: '${type == "page"}'
 reference_to: interface_pages
+sort_no: 20
 type: lookup
 amis:
   requiredOn: '${type == "page"}'

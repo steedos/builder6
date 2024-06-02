@@ -3,6 +3,8 @@ hidden: false
 label: 图标
 required: false
 type: lookup
+sort_no: 60
+group: 高级
 optionsFunction: !<tag:yaml.org,2002:js/function> |-
   function(
   ) {
