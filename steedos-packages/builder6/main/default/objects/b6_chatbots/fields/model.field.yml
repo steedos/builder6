@@ -1,5 +1,6 @@
 name: model
 create: true
+defaultValue: gpt-3.5-turbo
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -20,7 +21,7 @@ readonly: false
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 50
+sort_no: 60
 sortable: true
 static: false
 type: select

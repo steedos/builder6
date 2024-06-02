@@ -1,14 +1,16 @@
 name: placeholder
 create: true
+defaultValue: Ask me anything
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
+filters: []
 generated: false
 group: Setup
 hidden: false
 index: false
 is_name: false
-is_wide: false
+is_wide: true
 label: User input placeholder
 multiple: false
 primary: false
@@ -16,7 +18,7 @@ readonly: false
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 40
+sort_no: 50
 sortable: true
 static: false
 type: text

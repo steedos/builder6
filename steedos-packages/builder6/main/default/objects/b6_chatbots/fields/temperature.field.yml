@@ -1,5 +1,6 @@
 name: temperature
 create: true
+defaultValue: 0.7
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -17,7 +18,7 @@ required: false
 scale: 0
 searchable: false
 show_as_qr: false
-sort_no: 60
+sort_no: 70
 sortable: true
 static: false
 type: percent

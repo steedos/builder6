@@ -1,4 +1,6 @@
 name: embedHosts
-type: code
+hidden: false
 label: Embed Hosts
 language: json
+sort_no: 10
+type: code

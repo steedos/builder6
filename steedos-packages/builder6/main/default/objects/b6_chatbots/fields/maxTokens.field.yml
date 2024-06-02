@@ -18,7 +18,7 @@ required: false
 scale: 0
 searchable: false
 show_as_qr: false
-sort_no: 90
+sort_no: 100
 sortable: true
 static: false
 type: number

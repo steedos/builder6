@@ -6,5 +6,5 @@ index: true
 label: 名称
 required: true
 searchable: true
-sort_no: 10
+sort_no: 20
 type: text
