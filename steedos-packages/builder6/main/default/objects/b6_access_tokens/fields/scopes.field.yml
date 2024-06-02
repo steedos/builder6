@@ -20,8 +20,8 @@ options:
   - label: 'Create, edit, and delete record comments'
     value: 'comments:write'
   - label: 'See the structure of a base, like table names or field types'
-    value: 'tables:read'
-  - value: 'tables:write'
+    value: 'projects:read'
+  - value: 'projects:write'
     label: 'Edit the structure of a base, like adding new fields or tables'
   - value: 'webhook:write'
     label: >-
