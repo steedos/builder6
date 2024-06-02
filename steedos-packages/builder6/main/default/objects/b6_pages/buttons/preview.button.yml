@@ -1,0 +1,46 @@
+name: preview
+amis_schema: |-
+  {
+      "type": "service",
+      "body": [
+          {
+              "type": "button",
+              "label": "预览",
+              "id": "u:preview",
+              "editorState": "default",
+              "onEvent": {
+                  "click": {
+                      "weight": 0,
+                      "actions": [
+                          {
+                              "actionType": "url",
+                              "args": {
+                                  "url": "${b6_frontend_url}/interfaces/${project_id}/${_id}"
+                              },
+                              "ignoreError": false
+                          }
+                      ]
+                  }
+              }
+          }
+      ],
+      "regions": [
+          "body"
+      ],
+      "data": {
+          "context": {},
+          "dataComponentId": "",
+          "record_id": "",
+          "record": {},
+          "permissions": {},
+          "b6_frontend_url": "https://3000-coral-muskox-8i4awntf.ws.vscode.steedos.cn"
+      },
+      "bodyClassName": "p-0",
+      "id": "u:b770226a9371",
+      "dsType": "api"
+  }
+is_enable: true
+label: 预览
+'on': record_only
+type: amis_button
+visible: true
