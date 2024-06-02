@@ -25,8 +25,8 @@ field_groups:
     collapsed: true
   - group_name: 系统信息
     collapsed: true
-icon: bot
+icon: live_chat
 is_enable: true
-label: Chatbots
+label: B6 Chatbots
 locked: false
 version: 2
