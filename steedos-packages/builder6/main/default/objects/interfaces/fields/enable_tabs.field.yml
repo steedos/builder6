@@ -4,12 +4,14 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 页面上显示菜单
+label: 页面上显示导航
 omit: false
 readonly: false
 required: false
 searchable: false
-sort_no: 40
+sort_no: 100
 sortable: false
-type: boolean
-
+type: toggle
+group: 导航
+amis:
+  mode: normal

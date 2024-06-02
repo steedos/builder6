@@ -1,0 +1,8 @@
+name: tabs.$.label
+hidden: false
+label: 显示名称
+required: false
+type: text
+visible_on: '${type == "url"}'
+amis:
+  requiredOn: '${type == "url"}'

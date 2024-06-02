@@ -1,0 +1,9 @@
+name: tabs.$.url
+hidden: false
+label: 外部链接
+required: false
+type: url
+visible_on: '${type == "url"}'
+amis:
+  requiredOn: '${type == "url"}'
+

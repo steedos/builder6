@@ -1,0 +1,20 @@
+name: tabs
+amis:
+  mode: normal
+  showIndex: true
+  enableDialog: false
+  columns:
+    - type
+    - page
+    - url
+    - label
+    - is_new_window
+    - icon
+hidden: false
+is_wide: true
+label: 菜单
+required: '${enable_tabs}'
+sort_no: 110
+type: table
+visible_on: '${enable_tabs}'
+group: 导航
