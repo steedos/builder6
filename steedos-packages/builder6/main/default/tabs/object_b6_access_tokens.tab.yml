@@ -1,0 +1,8 @@
+name: object_b6_access_tokens
+desktop: true
+icon: apex
+label: B6 Access Tokens
+mobile: true
+object: b6_access_tokens
+permissions: []
+type: object

@@ -1,0 +1,39 @@
+name: scopes
+create: true
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+generated: false
+hidden: false
+index: false
+is_wide: false
+label: Scopes
+multiple: true
+options:
+  - label: See the data in records
+    value: 'data.records:read'
+  - value: 'data.records:write'
+    label: 'Create, edit, and delete records'
+  - value: 'data.recordComments:read'
+    label: 'Create, edit, and delete record comments'
+  - label: 'Create, edit, and delete record comments'
+    value: 'data.recordComments:write'
+  - label: 'See the structure of a base, like table names or field types'
+    value: 'schema.bases:read'
+  - value: 'schema.bases:write'
+    label: 'Edit the structure of a base, like adding new fields or tables'
+  - value: 'webhook:manage'
+    label: >-
+      View, create, delete webhooks for a base, as well as fetch webhook
+      payloads.
+primary: false
+readonly: false
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 100
+sortable: true
+static: false
+type: select
+unique: false
+write_requires_master_read: false
