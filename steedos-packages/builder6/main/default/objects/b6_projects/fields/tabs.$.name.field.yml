@@ -1,0 +1,9 @@
+name: tabs.$.name
+hidden: false
+label: 名称
+required: false
+type: text
+sort_no: 40
+visible_on: '${type == "url"}'
+amis:
+  requiredOn: '${type == "url"}'

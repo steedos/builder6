@@ -1,0 +1,10 @@
+name: tabs.$.url
+hidden: false
+label: 外部链接
+required: false
+type: url
+sort_no: 30
+visible_on: '${type == "url"}'
+amis:
+  requiredOn: '${type == "url"}'
+

@@ -1,0 +1,17 @@
+name: enable_tabs
+filterable: true
+hidden: false
+index: false
+is_name: false
+is_wide: false
+label: 页面上显示菜单
+omit: false
+readonly: false
+required: false
+searchable: false
+sort_no: 100
+sortable: false
+type: toggle
+group: 界面
+amis:
+  mode: normal

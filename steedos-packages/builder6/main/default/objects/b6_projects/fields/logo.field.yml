@@ -1,0 +1,6 @@
+name: logo
+hidden: true
+label: Logo Image
+required: false
+type: image
+sort_no: 50

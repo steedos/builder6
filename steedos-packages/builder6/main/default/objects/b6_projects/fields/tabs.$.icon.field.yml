@@ -1,0 +1,30 @@
+name: tabs.$.icon
+hidden: false
+label: 图标
+required: false
+type: lookup
+sort_no: 60
+group: 高级
+optionsFunction: !<tag:yaml.org,2002:js/function> |-
+  function(
+  ) {
+
+
+
+
+          var options;
+          options = [];
+
+          _.forEach(Creator.resources.sldsIcons.standard, function (svg) {
+            return options.push({
+              value: svg,
+              label: svg,
+              icon: svg
+            });
+          });
+          return options;
+        
+
+
+
+  }

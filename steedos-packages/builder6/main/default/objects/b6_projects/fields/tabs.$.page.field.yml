@@ -1,0 +1,10 @@
+name: tabs.$.page
+hidden: false
+label: 页面
+required: false
+visible_on: '${type == "page"}'
+reference_to: b6_pages
+sort_no: 20
+type: lookup
+amis:
+  requiredOn: '${type == "page"}'
