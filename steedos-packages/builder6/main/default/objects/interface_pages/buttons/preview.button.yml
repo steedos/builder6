@@ -15,7 +15,7 @@ amis_schema: |-
                           {
                               "actionType": "url",
                               "args": {
-                                  "url": "/mab/${context.tenantId}/apps/${interface_app}#/${name}"
+                                  "url": "/mab/${context.tenantId}/apps/${interface_app}#/${_id}"
                               },
                               "ignoreError": false
                           }
