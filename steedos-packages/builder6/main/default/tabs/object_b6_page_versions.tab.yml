@@ -1,0 +1,8 @@
+name: object_b6_page_versions
+desktop: true
+icon: visualforce_page
+label: B6 Page Versions
+mobile: true
+object: b6_page_versions
+permissions: []
+type: object

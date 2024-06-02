@@ -1,0 +1,8 @@
+name: object_b6_pages
+desktop: true
+icon: visualforce_page
+label: B6 Pages
+mobile: true
+object: b6_pages
+permissions: []
+type: object

@@ -1,0 +1,8 @@
+name: object_b6_automations
+desktop: true
+icon: flow
+label: B6 Automations
+mobile: true
+object: b2_automations
+permissions: []
+type: object

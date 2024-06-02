@@ -1,0 +1,8 @@
+name: object_b6_fields
+desktop: true
+icon: steps
+label: B6 Fields
+mobile: true
+object: b6_fields
+permissions: []
+type: object
