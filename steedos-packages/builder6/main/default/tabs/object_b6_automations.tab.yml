@@ -3,6 +3,6 @@ desktop: true
 icon: flow
 label: B6 Automations
 mobile: true
-object: b2_automations
+object: b6_automations
 permissions: []
 type: object
