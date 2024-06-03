@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { pick } from "lodash";
+import './default.steedos.config';
 
 const getConfig = (key) => {
     return process.env[key]

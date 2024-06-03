@@ -42,8 +42,7 @@ import {
   Square2StackIcon,
   TicketIcon,
 } from '@heroicons/react/20/solid'
-import { getMainHeadCss, getMainHeadJs, getMainBodyJs } from '@/assets'
-import '@/default.steedos.config'
+import { getMainHeadCss, getMainHeadJs, getMainBodyJs } from './assets'
 
 export default function Layout({
   children
