@@ -37,13 +37,13 @@ tasks:
       yarn start
   - name: Frontend
     command: |
+      echo "AUTH_URL=$(gp url 3000)" >> frontend/.env.local
+      echo "STEEDOS_ROOT_URL=$(gp url 5000)" >> frontend/.env.local
       cd frontend
       nvm i 18
       nvm use 18
       yarn
       gp await-port 5000
-      echo "AUTH_URL=$(gp url 3000)" >> frontend/.env.local
-      echo "STEEDOS_ROOT_URL=$(gp url 5000)" >> frontend/.env.local
       yarn dev
 
 
