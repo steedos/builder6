@@ -6,7 +6,7 @@ module.exports = {
       if(ctx.eventName != `@${objectApiName}.inserted`){
         return
       }
-      if(objectApiName && id && _.includes(this.settings.SYNC_TO_B6_CLOUD_OBJECTS, objectApiName)){
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SYNC_OBJECTS, objectApiName)){
         await this.builder6Update(objectApiName, id)
       }
     },
@@ -15,7 +15,7 @@ module.exports = {
       if(ctx.eventName != `@${objectApiName}.updated`){
         return
       }
-      if(objectApiName && id && _.includes(this.settings.SYNC_TO_B6_CLOUD_OBJECTS, objectApiName)){
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SYNC_OBJECTS, objectApiName)){
         await this.builder6Update(objectApiName, id)
       }
     },
@@ -24,7 +24,7 @@ module.exports = {
       if(ctx.eventName != `@${objectApiName}.deleted`){
         return
       }
-      if(objectApiName && id && _.includes(this.settings.SYNC_TO_B6_CLOUD_OBJECTS, objectApiName)){
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SYNC_OBJECTS, objectApiName)){
         await this.builder6Delete(objectApiName, id)
       }
     }
