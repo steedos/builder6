@@ -1,5 +1,8 @@
 name: enable_tabs
+amis:
+  mode: normal
 filterable: true
+group: 界面
 hidden: false
 index: false
 is_name: false
@@ -12,6 +15,3 @@ searchable: false
 sort_no: 100
 sortable: false
 type: toggle
-group: 界面
-amis:
-  mode: normal

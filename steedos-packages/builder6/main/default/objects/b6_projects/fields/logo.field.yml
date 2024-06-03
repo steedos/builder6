@@ -2,5 +2,6 @@ name: logo
 hidden: true
 label: Logo Image
 required: false
+sort_no: 190
 type: image
-sort_no: 50
+visible_on: '{{false}}'

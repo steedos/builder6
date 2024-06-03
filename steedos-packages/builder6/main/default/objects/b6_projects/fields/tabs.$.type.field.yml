@@ -1,13 +1,14 @@
 name: tabs.$.type
-type: select
+defaultValue: page
+group: 界面
 hidden: false
 label: 类型
-required: true
 multiple: false
-sort_no: 10
-defaultValue: page
 options:
   - label: 页面
     value: page
   - label: 外部链接
     value: url
+required: true
+sort_no: 150
+type: select

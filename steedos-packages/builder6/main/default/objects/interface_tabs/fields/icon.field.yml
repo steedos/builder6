@@ -10,20 +10,10 @@ is_name: false
 is_wide: false
 label: 图标
 multiple: false
-primary: false
-readonly: false
-required: false
-searchable: false
-show_as_qr: false
-sort_no: 60
-sortable: true
-static: false
-type: lookup
-unique: false
-write_requires_master_read: false
 optionsFunction: !<tag:yaml.org,2002:js/function> |-
   function(
   ) {
+
 
 
 
@@ -43,4 +33,16 @@ optionsFunction: !<tag:yaml.org,2002:js/function> |-
 
 
 
+
   }
+primary: false
+readonly: false
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 60
+sortable: true
+static: false
+type: lookup
+unique: false
+write_requires_master_read: false

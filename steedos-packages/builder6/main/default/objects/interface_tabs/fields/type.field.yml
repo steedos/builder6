@@ -1,5 +1,6 @@
 name: type
 create: true
+defaultValue: page
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -26,4 +27,3 @@ static: false
 type: select
 unique: false
 write_requires_master_read: false
-defaultValue: page

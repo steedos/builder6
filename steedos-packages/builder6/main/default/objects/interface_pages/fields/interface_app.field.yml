@@ -17,7 +17,7 @@ reference_to: interfaces
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 100
+sort_no: 180
 sortable: true
 static: false
 type: master_detail

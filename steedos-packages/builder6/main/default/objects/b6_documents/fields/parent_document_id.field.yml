@@ -16,7 +16,7 @@ reference_to: b6_documents
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 100
+sort_no: 40
 sortable: false
 static: false
 type: lookup

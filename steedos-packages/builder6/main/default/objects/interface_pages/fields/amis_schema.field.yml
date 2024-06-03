@@ -1,8 +1,7 @@
 name: amis_schema
+is_wide: true
 label: Amis Schema
-sort_no: 170
-type: code
 language: json
 required: false
-is_wide: true
-# visible_on: '{{false}}'
+sort_no: 170
+type: code

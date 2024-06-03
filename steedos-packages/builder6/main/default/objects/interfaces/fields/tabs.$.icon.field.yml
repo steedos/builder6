@@ -1,13 +1,11 @@
 name: tabs.$.icon
+group: 高级
 hidden: false
 label: 图标
-required: false
-type: lookup
-sort_no: 60
-group: 高级
 optionsFunction: !<tag:yaml.org,2002:js/function> |-
   function(
   ) {
+
 
 
 
@@ -27,4 +25,8 @@ optionsFunction: !<tag:yaml.org,2002:js/function> |-
 
 
 
+
   }
+required: false
+sort_no: 210
+type: lookup

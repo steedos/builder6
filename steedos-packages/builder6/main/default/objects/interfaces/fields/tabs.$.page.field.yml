@@ -1,10 +1,10 @@
 name: tabs.$.page
-hidden: false
-label: 页面
-required: false
-visible_on: '${type == "page"}'
-reference_to: interface_pages
-sort_no: 20
-type: lookup
 amis:
   requiredOn: '${type == "page"}'
+hidden: false
+label: 页面
+reference_to: interface_pages
+required: false
+sort_no: 150
+type: lookup
+visible_on: '${type == "page"}'

@@ -8,6 +8,7 @@ amis:
     - page
     - url
     - label
+group: 界面
 hidden: false
 is_wide: true
 label: 菜单
@@ -15,4 +16,3 @@ required: '${enable_tabs}'
 sort_no: 110
 type: table
 visible_on: '${enable_tabs}'
-group: 界面

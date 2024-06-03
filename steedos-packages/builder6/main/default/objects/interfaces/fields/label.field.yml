@@ -1,9 +1,9 @@
 name: label
 filterable: true
 index: true
+is_name: true
 label: 显示名称
 required: true
 searchable: true
+sort_no: 120
 type: text
-sort_no: 10
-is_name: true

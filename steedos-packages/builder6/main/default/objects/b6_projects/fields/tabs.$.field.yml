@@ -1,5 +1,7 @@
 name: tabs.$
 blackbox: true
+group: 界面
 hidden: false
 label: Tabs
+sort_no: 120
 type: object
