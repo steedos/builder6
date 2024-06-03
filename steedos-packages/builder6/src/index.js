@@ -15,6 +15,8 @@ const appSettings = require("./interfaces-settings");
 const appSettingsSchema = require("./schema/settings/app");
 const pagesSettingsSchema = require("./schema/settings/pages");
 // const appBuilder = require("./app-builder");
+const events = require('./events')
+const methods = require('./methods')
 
 const package = require('../package.json');
 const packageName = package.name;
@@ -29,6 +31,10 @@ module.exports = {
         // Base path
         rest: "/app-builder",
         isProduction: process.env.NODE_ENV === "production",
+        B6_CLOUD_API: process.env.B6_CLOUD_API,
+        B6_CLOUD_PROJECT_ID: process.env.B6_CLOUD_PROJECT_ID,
+        B6_CLOUD_PROJECT_SECRET: process.env.B6_CLOUD_PROJECT_SECRET,
+        SYNC_TO_B6_CLOUD_OBJECTS: ['b6_chatbots', 'b6_documents', 'b6_document_versions', 'b6_projects', 'b6_tables', 'interfaces', 'interface_pages']
     },
     metadata: {
         $package: {
@@ -49,9 +55,8 @@ module.exports = {
     },
     hooks: {
     },
-    methods: {
-    },
-
+    methods: methods,
+    events: events,
     async started() {
     }
 
