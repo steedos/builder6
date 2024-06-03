@@ -1,13 +1,6 @@
-/*
- * @Author: 殷亮辉 yinlianghui@hotoa.com
- * @Date: 2024-05-29 09:08:58
- * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-31 04:06:11
- * @FilePath: /builder6/steedos-packages/builder6/src/assets.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-
-const _ = require("lodash");
+import React, { Fragment } from 'react';
+import { pick } from "lodash";
+import './default.steedos.config';
 
 const getConfig = (key) => {
     return process.env[key]
@@ -160,60 +153,60 @@ const getRegistryAssetsComponentsScript = function () {
     Promise.all([
         waitForThing(window, 'assetsLoaded'),
         waitForThing(window, 'amis'),
-    ]).then(()=>{
+    ]).then(() => {
         // window.React = window.__React;
         // window.ReactDOM = window.__ReactDOM;
         const AmisRenderers = [];
         let amis = (window.amisRequire && window.amisRequire('amis')) || window.Amis;
         let amisVersion = amis && amis.version;
-        if(amisVersion){
-          const amisVersionClassName = "amis-" + amisVersion.split(".")[0] + "-" + amisVersion.split(".")[1];
-          document.getElementsByTagName('body')[0].className += " " + amisVersionClassName;
+        if (amisVersion) {
+            const amisVersionClassName = "amis-" + amisVersion.split(".")[0] + "-" + amisVersion.split(".")[1];
+            document.getElementsByTagName('body')[0].className += " " + amisVersionClassName;
         }
         let amisLib = amisRequire('amis');
-        amisLib.registerFilter('t', function (key,param) {
-          return typeof key === 'string' ? window.t(key,param) : key;
+        amisLib.registerFilter('t', function (key, param) {
+            return typeof key === 'string' ? window.t(key, param) : key;
         });
         const registerMap = {
-          renderer: amisLib.Renderer,
-          formitem: amisLib.FormItem,
-          options: amisLib.OptionsControl,
+            renderer: amisLib.Renderer,
+            formitem: amisLib.FormItem,
+            options: amisLib.OptionsControl,
         };
 
-        const amisComps = lodash.filter(Builder.registry['meta-components'], function(item){ return item.componentName && item.amis && item.amis.render});
-        
-        lodash.each(amisComps,(comp)=>{
+        const amisComps = lodash.filter(Builder.registry['meta-components'], function (item) { return item.componentName && item.amis && item.amis.render });
+
+        lodash.each(amisComps, (comp) => {
             const Component = Builder.components.find(item => item.name === comp.componentName);
             var type = null;
-            if(comp.amis){
-              type = comp.amis.render.type
+            if (comp.amis) {
+                type = comp.amis.render.type
             }
-            if (Component && !AmisRenderers.includes(type)){
+            if (Component && !AmisRenderers.includes(type)) {
                 try {
                     let AmisWrapper = Component.class
                     AmisRenderers.push(type);
-                    if(comp.componentType === 'amisSchema'){
+                    if (comp.componentType === 'amisSchema') {
                         let amisReact = amisRequire('react');
-                        AmisWrapper = function(props){
-                          // console.log(`AmisWrapper===>`, props)
-                          const { $schema, body, render } = props
-                          const [schema, setSchema] = amisReact.useState(null);
-                          amisReact.useEffect(()=>{
-                            // console.log("AmisWrapper===>==useEffect==", comp.amis.render.type, JSON.stringify(props.data?.recordId))
-                            const result = Component.class(props);
-                            if(result.then && typeof result.then === 'function'){
-                              result.then((data)=>{
-                                // console.log("AmisWrapper===>==useEffect==setSchema", data)
-                                setSchema(data);
-                              })
-                            }else{
-                              // console.log("AmisWrapper===>==useEffect==result", result)
-                              setSchema(result)
-                            }
-                          }, [JSON.stringify($schema)]) //, JSON.stringify(props.data)
+                        AmisWrapper = function (props) {
+                            // console.log(`AmisWrapper===>`, props)
+                            const { $schema, body, render } = props
+                            const [schema, setSchema] = amisReact.useState(null);
+                            amisReact.useEffect(() => {
+                                // console.log("AmisWrapper===>==useEffect==", comp.amis.render.type, JSON.stringify(props.data?.recordId))
+                                const result = Component.class(props);
+                                if (result.then && typeof result.then === 'function') {
+                                    result.then((data) => {
+                                        // console.log("AmisWrapper===>==useEffect==setSchema", data)
+                                        setSchema(data);
+                                    })
+                                } else {
+                                    // console.log("AmisWrapper===>==useEffect==result", result)
+                                    setSchema(result)
+                                }
+                            }, [JSON.stringify($schema)]) //, JSON.stringify(props.data)
 
-                          if (!schema)
-                            return;
+                            if (!schema)
+                                return;
                             // return render('body', {
                             //   "type": "wrapper",
                             //   "className": "h-full flex items-center justify-center",
@@ -223,35 +216,35 @@ const getRegistryAssetsComponentsScript = function () {
                             //   }
                             // })
 
-                          if (props.env.enableAMISDebug && schema) {
-                            console.groupCollapsed(`[steedos render ${type}]`);
-                            console.trace('Component: ', props, 'Generated Amis Schema: ', schema);
-                            console.groupEnd();
-                          }
-                          return amisReact.createElement(amisReact.Fragment, null, amisReact.createElement(amisReact.Fragment, null, schema && render ? render('body', schema) : ''));
+                            if (props.env.enableAMISDebug && schema) {
+                                console.groupCollapsed(`[steedos render ${type}]`);
+                                console.trace('Component: ', props, 'Generated Amis Schema: ', schema);
+                                console.groupEnd();
+                            }
+                            return amisReact.createElement(amisReact.Fragment, null, amisReact.createElement(amisReact.Fragment, null, schema && render ? render('body', schema) : ''));
                         }
-                      }
+                    }
                     // 注册amis渲染器
                     let asset = comp.amis.render;
                     if (!registerMap[asset.usage]) {
-                      console.error(
-                        `自定义组件注册失败，不存在${asset.usage}自定义组件类型。`, comp
-                      );
+                        console.error(
+                            `自定义组件注册失败，不存在${asset.usage}自定义组件类型。`, comp
+                        );
                     } else {
-                      registerMap[asset.usage]({
-                        test: new RegExp(`(^|\/)${asset.type}`),
-                        type: asset.type,
-                        weight: asset.weight,
-                        autoVar: true,
-                      })(AmisWrapper);
-                      // 记录当前创建的amis自定义组件
-                      console.debug('注册了一个自定义amis组件:', {
-                        type: asset.type,
-                        weight: asset.weight,
-                        component: AmisWrapper,
-                        framework: asset.framework,
-                        usage: asset.usage,
-                      });
+                        registerMap[asset.usage]({
+                            test: new RegExp(`(^|\/)${asset.type}`),
+                            type: asset.type,
+                            weight: asset.weight,
+                            autoVar: true,
+                        })(AmisWrapper);
+                        // 记录当前创建的amis自定义组件
+                        console.debug('注册了一个自定义amis组件:', {
+                            type: asset.type,
+                            weight: asset.weight,
+                            component: AmisWrapper,
+                            framework: asset.framework,
+                            usage: asset.usage,
+                        });
                     }
                     // amisRequire("amis").Renderer(
                     //     {
@@ -260,7 +253,7 @@ const getRegistryAssetsComponentsScript = function () {
                     //         autoVar: true,
                     //     }
                     // )(AmisWrapper);
-                } catch(e){console.error(e)}
+                } catch (e) { console.error(e) }
             }
         });
     });
@@ -276,30 +269,30 @@ const getRegistryAssetsComponentsScript = function () {
 // @import url("/tailwind/tailwind-steedos.css");
 // @import url("/amis/amis.css");
 const getMainHeadCss = () => {
-    return `
-        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@salesforce-ux/design-system@2.22.2/assets/styles/salesforce-lightning-design-system.min.css" />
-        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@steedos-widgets/amis@6.3.0-patch.3/lib/themes/antd.css" />
-        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@steedos-widgets/amis@6.3.0-patch.3/lib/helper.css" />
-        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@steedos-widgets/amis@6.3.0-patch.3/sdk/iconfont.css" />
-        <link rel="stylesheet" href="${STEEDOS_UNPKG_URL}/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" />
+    return <Fragment>
+        <link rel="stylesheet" href={STEEDOS_UNPKG_URL + "/@salesforce-ux/design-system@2.22.2/assets/styles/salesforce-lightning-design-system.min.css"} />
+        <link rel="stylesheet" href={STEEDOS_UNPKG_URL + "/@steedos-widgets/amis@6.3.0-patch.3/lib/themes/antd.css"} />
+        {/* <link rel="stylesheet" href={STEEDOS_UNPKG_URL + "/@steedos-widgets/amis@6.3.0-patch.3/lib/helper.css"} />
+        <link rel="stylesheet" href={STEEDOS_UNPKG_URL + "/@steedos-widgets/amis@6.3.0-patch.3/sdk/iconfont.css"} />
+        <link rel="stylesheet" href={STEEDOS_UNPKG_URL + "/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"} />
         <link rel="stylesheet" href="/tailwind/tailwind-steedos.css" />
-        <link rel="stylesheet" href="/amis/amis.css" />
-    `
+        <link rel="stylesheet" href="/amis/amis.css" /> */}
+    </Fragment>
 }
 
 const getMainHeadJs = () => {
-    return `
-        <script src="${STEEDOS_UNPKG_URL}/lodash@4.17.21/lodash.min.js"></script>
-        <script src="${STEEDOS_UNPKG_URL}/@steedos-builder/sdk@1.0.0/dist/index.umd.js"></script>
-        <script src="${STEEDOS_AMIS_URL}/sdk/sdk.js"></script>
-        <script>
+    return <Fragment>
+        <script src={STEEDOS_UNPKG_URL + "/lodash@4.17.21/lodash.min.js"}></script>
+        <script src={STEEDOS_UNPKG_URL + "/@steedos-builder/sdk@1.0.0/dist/index.umd.js"}></script>
+        <script src={STEEDOS_AMIS_URL + "/sdk/sdk.js"}></script>
+        <script dangerouslySetInnerHTML={{ __html: `
             const envData = ${getEnvData(true)};
             (${getAfterBuilderSDKLoadedScript.toString()})(envData);
-        </script>
-        <script>
+        ` }} />
+        <script dangerouslySetInnerHTML={{ __html: `
             (${getAfterAmisSDKLoadedScript.toString()})();
-        </script>
-        <script>
+        ` }} />
+        <script dangerouslySetInnerHTML={{ __html: `
             window.addEventListener('message', function (event) {
                 const { data } = event;
                 if (data.type === 'Builder.loaded') {
@@ -330,34 +323,34 @@ const getMainHeadJs = () => {
 
             window.loadJs = loadJs;
             window.loadCss = loadCss;
-        </script>
-    `;
+        ` }} />
+    </Fragment>
 }
 
 const getMainBodyJs = (user) => {
-    return `
-        <script>
+    return <Fragment>
+        <script dangerouslySetInnerHTML={{ __html: `
             (function () {
                 // 原platform中builder.client.js中的脚本，主要是定义waitForThing函数，并触发请求资产包脚本文件
-                (${getBuilderClientJs.toString()})(${JSON.stringify(_.pick(user, ['spaceId', 'userId', 'authToken', 'locale']))});
+                (${getBuilderClientJs.toString()})(${JSON.stringify(pick(user, ['spaceId', 'userId', 'authToken', 'locale']))});
             })();
-        </script>
-        <script>
+        ` }} />
+        <script dangerouslySetInnerHTML={{ __html: `
             (function () {
                 // 监听message设置window.assetsLoaded
                 ${listenAssetsLoaded}
             })();
-        </script>
-        <script>
+        ` }} />
+        <script dangerouslySetInnerHTML={{ __html: `
             (function () {
                 //注册资产包中自定义组件到amis，参考platform的amis.render.client.js文件中相关脚本
                 (${getRegistryAssetsComponentsScript.toString()})();
             })();
-      </script>
-    `
+        ` }} />
+    </Fragment>
 }
 
-module.exports = {
+export {
     getMainHeadCss,
     getMainHeadJs,
     getMainBodyJs

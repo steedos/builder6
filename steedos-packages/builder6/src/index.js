@@ -2,19 +2,16 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-05-31 04:07:27
+ * @LastEditTime: 2024-06-03 07:13:15
  * @Description: 
  */
-require("./default.steedos.config"); //TODO:不懂为什么拿不到platform中的环境变量默认值，还需要这里执行一次
 const path = require('path');
-// const app = require("./app");
-const app = require("./interfaces");
-const appSchema = require("./schema/app");
-const pagesSchema = require("./schema/pages");
-const appSettings = require("./interfaces-settings");
-const appSettingsSchema = require("./schema/settings/app");
-const pagesSettingsSchema = require("./schema/settings/pages");
-// const appBuilder = require("./app-builder");
+const app = require("./interfaces/interfaces");
+const appSchema = require("./interfaces/schema/app");
+const pagesSchema = require("./interfaces/schema/pages");
+const appSettings = require("./interfaces/interfaces-settings");
+const appSettingsSchema = require("./interfaces/schema/settings/app");
+const pagesSettingsSchema = require("./interfaces/schema/settings/pages");
 const events = require('./events')
 const methods = require('./methods')
 
@@ -46,7 +43,6 @@ module.exports = {
     },
     actions: {
         app,
-        // appBuilder,
         appSchema,
         pagesSchema,
         appSettings,
