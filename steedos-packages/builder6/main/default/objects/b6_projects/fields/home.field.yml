@@ -1,6 +1,6 @@
 name: home
 create: true
-enable_enhanced_lookup: true
+enable_enhanced_lookup: false
 enable_thousands: true
 filterable: false
 filters: []
@@ -24,3 +24,5 @@ static: false
 type: lookup
 unique: false
 write_requires_master_read: false
+amis:
+  mode: normal
