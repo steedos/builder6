@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { pick } from "lodash";
 import './default.steedos.config';
+import Script from 'next/script';
 
 const getConfig = (key) => {
     return process.env[key]
@@ -37,6 +38,7 @@ const getEnvData = function (toString) {
 }
 
 const getAfterBuilderSDKLoadedScript = function (env) {
+    debugger;
     window.Builder = BuilderSDK.Builder;
     window.builder = BuilderSDK.builder;
     window.builder.init('steedos');
@@ -451,18 +453,18 @@ const getMainHeadCss = () => {
 
 const getMainHeadJs = () => {
     return <Fragment>
-        <script src={STEEDOS_UNPKG_URL + "/lodash@4.17.21/lodash.min.js"}></script>
-        <script src={STEEDOS_UNPKG_URL + "/@steedos-builder/sdk@1.0.0/dist/index.umd.js"}></script>
-        <script src={STEEDOS_AMIS_URL + "/sdk/sdk.js"}></script>
-        <script src={"https://unpkg.com" + "/history@4.10.1/umd/history.js"}></script>
-        <script dangerouslySetInnerHTML={{ __html: `
+        <Script src={STEEDOS_UNPKG_URL + "/lodash@4.17.21/lodash.min.js"} strategy="beforeInteractive" />
+        <Script src={STEEDOS_AMIS_URL + "/sdk/sdk.js"} strategy="beforeInteractive" />
+        <Script src={STEEDOS_UNPKG_URL + "/@steedos-builder/sdk@1.0.0/dist/index.umd.js"} strategy="beforeInteractive" />
+        <Script src={"https://unpkg.com" + "/history@4.10.1/umd/history.js"} strategy="beforeInteractive" />
+        <Script dangerouslySetInnerHTML={{ __html: `
             const envData = ${getEnvData(true)};
             (${getAfterBuilderSDKLoadedScript.toString()})(envData);
-        ` }} />
-        <script dangerouslySetInnerHTML={{ __html: `
+        ` }} strategy="beforeInteractive" />
+        <Script dangerouslySetInnerHTML={{ __html: `
             (${getAfterAmisSDKLoadedScript.toString()})();
-        ` }} />
-        <script dangerouslySetInnerHTML={{ __html: `
+        ` }} strategy="beforeInteractive" />
+        <Script dangerouslySetInnerHTML={{ __html: `
             window.addEventListener('message', function (event) {
                 const { data } = event;
                 if (data.type === 'Builder.loaded') {
@@ -493,41 +495,41 @@ const getMainHeadJs = () => {
 
             window.loadJs = loadJs;
             window.loadCss = loadCss;
-        ` }} />
+        ` }} strategy="beforeInteractive" />
     </Fragment>
 }
 
 const getMainBodyJs = (user) => {
     return <Fragment>
-        <script dangerouslySetInnerHTML={{ __html: `
+        <Script dangerouslySetInnerHTML={{ __html: `
             (function () {
                 // 原platform中builder.client.js中的脚本，主要是定义waitForThing函数，并触发请求资产包脚本文件
                 (${getBuilderClientJs.toString()})(${JSON.stringify(pick(user, ['spaceId', 'userId', 'authToken', 'locale']))});
             })();
-        ` }} />
-        <script dangerouslySetInnerHTML={{ __html: `
+        ` }} strategy="beforeInteractive" />
+        <Script dangerouslySetInnerHTML={{ __html: `
             (function () {
                 // 监听message设置window.assetsLoaded
                 ${listenAssetsLoaded}
             })();
-        ` }} />
-        <script dangerouslySetInnerHTML={{ __html: `
+        ` }} strategy="beforeInteractive" />
+        <Script dangerouslySetInnerHTML={{ __html: `
             (function () {
                 //注册资产包中自定义组件到amis，参考platform的amis.render.client.js文件中相关脚本
                 (${getRegistryAssetsComponentsScript.toString()})();
             })();
-        ` }} />
+        ` }} strategy="beforeInteractive" />
     </Fragment>
 }
 
 const getEmbedAmisJs = () => {
     return <Fragment>
-        <script dangerouslySetInnerHTML={{ __html: `
+        <Script dangerouslySetInnerHTML={{ __html: `
             (function () {
                 //注册renderAmis函数到window，参考platform的amis.render.client.js文件中window.renderAmis函数定义
                 (${getRegistryRenderAmisFunctionScript.toString()})();
             })();
-        ` }} />
+        ` }} strategy="beforeInteractive" />
     </Fragment>
 }
 
