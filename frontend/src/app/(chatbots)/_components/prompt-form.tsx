@@ -27,9 +27,9 @@ export function PromptForm({
   const router = useRouter()
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
-//   const { submitUserMessage } = useActions()
-//   const [_, setMessages] = React.useState()
-
+  const { submitUserMessage } = useActions()
+  const [_, setMessages] = useUIState<typeof AI>()
+  console.log(`submitUserMessage===>`, submitUserMessage)
   React.useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus()
@@ -52,17 +52,17 @@ export function PromptForm({
         if (!value) return
 
         // Optimistically add user message UI
-        // setMessages(currentMessages => [
-        //   ...currentMessages,
-        //   {
-        //     id: nanoid(),
-        //     display: <UserMessage>{value}</UserMessage>
-        //   }
-        // ])
+        setMessages(currentMessages => [
+          ...currentMessages,
+          {
+            id: nanoid(),
+            display: <UserMessage>{value}</UserMessage>
+          }
+        ])
 
-        // // Submit and get response message
-        // const responseMessage = await submitUserMessage(value)
-        // setMessages(currentMessages => [...currentMessages, responseMessage])
+        // Submit and get response message
+        const responseMessage = await submitUserMessage(value)
+        setMessages(currentMessages => [...currentMessages, responseMessage])
       }}
     >
       <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background bg-white px-8 sm:rounded-md sm:border sm:px-12">

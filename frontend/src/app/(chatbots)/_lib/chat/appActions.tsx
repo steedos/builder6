@@ -6,7 +6,13 @@ import { redirect } from 'next/navigation'
 import { auth } from '@/auth'
 import { type Chat } from '../../_lib/types'
 
+import { getRecord } from '@/lib/b6CloudDB'
+
 const kv: any = {}
+
+const CHATBOT_OBJECT = "b6_chatbots"
+
+const CHATBOT_MESSAGES_OBJECT = "b6_chatbots_sessions";
 
 export async function getChats(userId?: string | null) {
   if (!userId) {
@@ -32,8 +38,8 @@ export async function getChats(userId?: string | null) {
 }
 
 export async function getChat(id: string, userId: string) {
-  const chat = await kv.hgetall<Chat>(`chat:${id}`)
-
+  const chat = await getRecord(CHATBOT_MESSAGES_OBJECT, id);
+  console.log(`chat====>`, chat)
   if (!chat || (userId && chat.userId !== userId)) {
     return null
   }
@@ -133,13 +139,7 @@ export async function saveChat(chat: Chat) {
   const session = await auth()
 
   if (session && session.user) {
-    const pipeline = kv.pipeline()
-    pipeline.hmset(`chat:${chat.id}`, chat)
-    pipeline.zadd(`user:chat:${chat.userId}`, {
-      score: Date.now(),
-      member: `chat:${chat.id}`
-    })
-    await pipeline.exec()
+    console.log(`chat====>`, chat)
   } else {
     return
   }

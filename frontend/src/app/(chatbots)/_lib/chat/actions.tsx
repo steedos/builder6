@@ -36,10 +36,18 @@ import { SpinnerMessage, UserMessage } from '../../_components/stocks/message'
 import { Chat, Message } from '../../_lib/types'
 import { auth } from '@/auth'
 
+export async function getMissingKeys() {
+  const keysRequired = ['OPENAI_API_KEY']
+  return keysRequired
+    .map(key => (process.env[key] ? '' : key))
+    .filter(key => key !== '')
+}
+
+
 async function confirmPurchase(symbol: string, price: number, amount: number) {
   'use server'
 
-  const aiState = getMutableAIState<typeof AI>()
+  const aiState = getMutableAIState<any>()
 
   const purchasing = createStreamableUI(
     <div className="inline-flex items-start gap-1 md:items-center">
@@ -109,7 +117,7 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
 async function submitUserMessage(content: string) {
   'use server'
 
-  const aiState = getMutableAIState<typeof AI>()
+  const aiState = getMutableAIState<any>()
 
   aiState.update({
     ...aiState.get(),
@@ -123,7 +131,7 @@ async function submitUserMessage(content: string) {
     ]
   })
 
-  let textStream: undefined | ReturnType<typeof createStreamableValue<string>>
+  let textStream: undefined | ReturnType<any>
   let textNode: undefined | React.ReactNode
 
   const result = await streamUI({
@@ -585,13 +593,4 @@ export const getUIStateFromAIState = (aiState: Chat) => {
           <BotMessage content={message.content} />
         ) : null
     }))
-}
-
-
-
-export async function getMissingKeys() {
-const keysRequired = ['OPENAI_API_KEY']
-return keysRequired
-    .map(key => (process.env[key] ? '' : key))
-    .filter(key => key !== '')
 }
