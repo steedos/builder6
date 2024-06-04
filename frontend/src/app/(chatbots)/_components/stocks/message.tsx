@@ -9,7 +9,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import { StreamableValue, useStreamableValue } from 'ai/rsc'
 import { useStreamableText } from '../../_lib/hooks/use-streamable-text'
-
+import { isString } from 'lodash'
 // Different types of message bubbles.
 
 export function UserMessage({ children }: { children: React.ReactNode }) {
@@ -48,6 +48,12 @@ export function BotMessage({
               return <p className="mb-2 last:mb-0">{children}</p>
             },
             code({ node, inline, className, children, ...props }) {
+              if(!children){
+                children = ''
+              }
+              if(isString(children)){
+                children = [children]
+              }
               if (children.length) {
                 if (children[0] == '▍') {
                   return (
@@ -132,3 +138,4 @@ export function SpinnerMessage() {
     </div>
   )
 }
+

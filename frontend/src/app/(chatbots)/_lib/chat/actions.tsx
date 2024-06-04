@@ -8,7 +8,7 @@ import {
   streamUI,
   createStreamableValue
 } from 'ai/rsc'
-import { openai } from '@ai-sdk/openai'
+import { openai, createOpenAI } from '@ai-sdk/openai'
 
 import {
   spinner,
@@ -119,6 +119,7 @@ async function submitUserMessage(content: string) {
 
   const aiState = getMutableAIState<any>()
 
+  const chatbot = aiState.get().chatbot
   aiState.update({
     ...aiState.get(),
     messages: [
@@ -135,23 +136,9 @@ async function submitUserMessage(content: string) {
   let textNode: undefined | React.ReactNode
 
   const result = await streamUI({
-    model: openai('gpt-3.5-turbo'),
+    model: createOpenAI({baseURL: process.env.OPENAI_BASE_URL, apiKey: process.env.OPENAI_API_KEY})('gpt-3.5-turbo'),
     initial: <SpinnerMessage />,
-    system: `\
-    You are a stock trading conversation bot and you can help users buy stocks, step by step.
-    You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
-    
-    Messages inside [] means that it's a UI element or a user event. For example:
-    - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
-    - "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
-    
-    If the user requests purchasing a stock, call \`show_stock_purchase_ui\` to show the purchase UI.
-    If the user just wants the price, call \`show_stock_price\` to show the price.
-    If you want to show trending stocks, call \`list_stocks\`.
-    If you want to show events, call \`get_events\`.
-    If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
-    
-    Besides that, you can also chat with users and do some calculations if needed.`,
+    system: chatbot.directive,
     messages: [
       ...aiState.get().messages.map((message: any) => ({
         role: message.role,
@@ -491,7 +478,27 @@ async function submitUserMessage(content: string) {
   }
 }
 
+type Chatbot = {
+  _id: string
+  id: string
+  userId: string
+  avatarUrl: string
+  defaultMessageMode: string
+  defaultPrompt: string
+  directive: string
+  disclosureText: string
+  displayDisclosure: string
+  embedHosts: string
+  maxTokens: string
+  model: string
+  name: string
+  placeholder: string
+  temperature: string
+  triggers: []
+}
+
 export type AIState = {
+  chatbot: Chatbot
   chatId: string
   messages: Message[]
 }
@@ -507,14 +514,14 @@ export const AI = createAI<AIState, UIState>({
     confirmPurchase
   },
   initialUIState: [],
-  initialAIState: { chatId: nanoid(), messages: [] },
+  initialAIState: { chatbot: {} as any, chatId: nanoid(), messages: [] },
   onGetUIState: async () => {
     'use server'
 
     const session = await auth()
 
     if (session && session.user) {
-      const aiState = getAIState()
+      const aiState: any = getAIState()
 
       if (aiState) {
         const uiState = getUIStateFromAIState(aiState)
@@ -530,16 +537,19 @@ export const AI = createAI<AIState, UIState>({
     const session = await auth()
 
     if (session && session.user) {
-      const { chatId, messages } = state
-
+      const { chatbot, chatId, messages } = state
+      const chatbotId = chatbot.id || chatbot._id;
       const createdAt = new Date()
       const userId = session.user.id as string
-      const path = `/chat/${chatId}`
+      const path = `/chat/${chatbotId}/${chatId}`
 
       const firstMessageContent = messages[0].content as string
       const title = firstMessageContent.substring(0, 100)
 
       const chat: Chat = {
+        chatbotId: chatbotId,
+        model: chatbot.model,
+        imageUrl: chatbot.avatarUrl,
         id: chatId,
         title,
         userId,
@@ -562,26 +572,22 @@ export const getUIStateFromAIState = (aiState: Chat) => {
       id: `${aiState.chatId}-${index}`,
       display:
         message.role === 'tool' ? (
-          message.content.map(tool => {
+          message.content.map((tool: any) => {
             return tool.toolName === 'listStocks' ? (
               <BotCard>
                 {/* TODO: Infer types based on the tool result*/}
-                {/* @ts-expect-error */}
                 <Stocks props={tool.result} />
               </BotCard>
             ) : tool.toolName === 'showStockPrice' ? (
               <BotCard>
-                {/* @ts-expect-error */}
                 <Stock props={tool.result} />
               </BotCard>
             ) : tool.toolName === 'showStockPurchase' ? (
               <BotCard>
-                {/* @ts-expect-error */}
                 <Purchase props={tool.result} />
               </BotCard>
             ) : tool.toolName === 'getEvents' ? (
               <BotCard>
-                {/* @ts-expect-error */}
                 <Events props={tool.result} />
               </BotCard>
             ) : null

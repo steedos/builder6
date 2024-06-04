@@ -29,7 +29,6 @@ export function PromptForm({
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
   const { submitUserMessage } = useActions()
   const [_, setMessages] = useUIState<typeof AI>()
-  console.log(`submitUserMessage===>`, submitUserMessage)
   React.useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus()

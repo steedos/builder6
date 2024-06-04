@@ -6,6 +6,7 @@ import { ChatPanel } from '../_components/chat-panel'
 import { EmptyScreen } from '../_components/empty-screen'
 import { useLocalStorage } from '../_lib/hooks/use-local-storage'
 import { useEffect, useState } from 'react'
+import { useUIState, useAIState } from 'ai/rsc'
 import { Message, Session } from '../_lib/types'
 import { usePathname, useRouter } from 'next/navigation'
 import { useScrollAnchor } from '../_lib/hooks/use-scroll-anchor'
@@ -19,38 +20,11 @@ export interface ChatProps extends React.ComponentProps<'div'> {
 }
 
 export function Chat({ id, className, session, missingKeys }: ChatProps) {
-  id = "ABC"
   const router = useRouter()
   const path = usePathname()
   const [input, setInput] = useState('')
-  const [messages] = useState([{
-    id: "abc1",
-    role: "system",
-    content: "Hi"
-  },{
-    id: "abc2",
-    role: "user",
-    content: "Hi"
-  },{
-    id: "abc3",
-    role: "assistant",
-    content: "Hi"
-  },{
-    id: "abc4",
-    role: "function",
-    content: "Hi"
-  },{
-    id: "abc5",
-    role: "data",
-    content: "Hi"
-  },{
-    id: "abc6",
-    role: "tool",
-    content: "Hi"
-  }])
-  const [aiState] = useState({
-    messages: []
-  })
+  const [messages] = useUIState()
+  const [aiState] = useAIState()
 
   const [_, setNewChatId] = useLocalStorage('newChatId', id)
 

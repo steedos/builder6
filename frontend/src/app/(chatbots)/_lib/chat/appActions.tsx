@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation'
 import { auth } from '@/auth'
 import { type Chat } from '../../_lib/types'
 
-import { getRecord } from '@/lib/b6CloudDB'
+import { getRecord, updateRecord, getRecords } from '@/lib/b6CloudDB'
 
 const kv: any = {}
 
@@ -14,32 +14,31 @@ const CHATBOT_OBJECT = "b6_chatbots"
 
 const CHATBOT_MESSAGES_OBJECT = "b6_chatbots_sessions";
 
-export async function getChats(userId?: string | null) {
-  if (!userId) {
-    return []
+export async function getChatBot(id: string, userId: string) {
+  const chatBot = await getRecord(CHATBOT_OBJECT, id);
+  if (!chatBot || (userId && chatBot.userId !== userId)) {
+    return null
   }
 
+  return chatBot
+}
+
+export async function getChats(userId?: string | null) {
+  // TODO
+  // if (!userId) {
+  //   return []
+  // }
   try {
-    const pipeline = kv.pipeline()
-    const chats: string[] = await kv.zrange(`user:chat:${userId}`, 0, -1, {
-      rev: true
-    })
-
-    for (const chat of chats) {
-      pipeline.hgetall(chat)
-    }
-
-    const results = await pipeline.exec()
-
-    return results as Chat[]
+    const chats: string[] = await getRecords(CHATBOT_MESSAGES_OBJECT);
+    return chats
   } catch (error) {
+    console.log(`error`, error)
     return []
   }
 }
 
 export async function getChat(id: string, userId: string) {
   const chat = await getRecord(CHATBOT_MESSAGES_OBJECT, id);
-  console.log(`chat====>`, chat)
   if (!chat || (userId && chat.userId !== userId)) {
     return null
   }
@@ -139,7 +138,7 @@ export async function saveChat(chat: Chat) {
   const session = await auth()
 
   if (session && session.user) {
-    console.log(`chat====>`, chat)
+    await updateRecord(CHATBOT_MESSAGES_OBJECT, chat.id, chat as any)
   } else {
     return
   }

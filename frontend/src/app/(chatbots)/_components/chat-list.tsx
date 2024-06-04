@@ -1,7 +1,6 @@
 import { UIState } from '../_lib/chat/actions'
 import { Session } from '../_lib/types'
 import Link from 'next/link'
-import { UserMessage } from '../_components/stocks/message'
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons'
 import { Separator } from '../_components/ui/separator'
 
@@ -15,9 +14,6 @@ export function ChatList({ messages, session, isShared }: ChatList) {
   if (!messages.length) {
     return null
   }
-
-  console.log(`isShared`, isShared)
-  console.log(`messages`, messages)
 
   return (
     <div className="relative mx-auto max-w-2xl px-4">
@@ -47,7 +43,7 @@ export function ChatList({ messages, session, isShared }: ChatList) {
 
       {messages.map((message, index) => (
         <div key={message.id}>
-          <UserMessage>{message.content}</UserMessage>
+          {message.display}
           {index < messages.length - 1 && <Separator className="my-4" />}
         </div>
       ))}
