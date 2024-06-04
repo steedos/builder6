@@ -455,6 +455,7 @@ const getMainHeadJs = () => {
         <Script src={STEEDOS_AMIS_URL + "/sdk/sdk.js"} strategy="beforeInteractive" />
         <Script src={STEEDOS_UNPKG_URL + "/@steedos-builder/sdk@1.0.0/dist/index.umd.js"} strategy="beforeInteractive" />
         <Script src={"https://unpkg.com" + "/history@4.10.1/umd/history.js"} strategy="beforeInteractive" />
+        {/* <Script src="/builder-init.js" strategy="beforeInteractive"/> */}
         <Script dangerouslySetInnerHTML={{ __html: `
             const envData = ${getEnvData(true)};
             (${getAfterBuilderSDKLoadedScript.toString()})(envData);
@@ -498,7 +499,6 @@ const getMainHeadJs = () => {
 }
 
 const getMainBodyJs = (user) => {
-    console.log("===getMainBodyJs===", user);
     return <Fragment>
         <Script dangerouslySetInnerHTML={{ __html: `
             (function () {

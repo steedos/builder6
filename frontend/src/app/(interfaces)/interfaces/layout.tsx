@@ -51,7 +51,6 @@ export default async function Layout({
   children: React.ReactNode
 }) {
   const session = await auth();
-  console.log("====session===", session);
   const user = session && session.user || {};
   return (
     <>
