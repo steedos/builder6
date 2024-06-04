@@ -43,7 +43,7 @@ import {
   TicketIcon,
 } from '@heroicons/react/20/solid'
 import { auth } from '@/auth';
-import { getInterface, getSidebarItemsSection } from "../../_lib/tabs";
+import { getInterface, getSidebarItemsSection, getSidebarHomeSection } from "../../_lib/tabs";
 
 export default async function Layout({
   children,
@@ -56,6 +56,7 @@ export default async function Layout({
   let record = await getInterface(params.interface_id);
   console.log("==Layout====interface_id====interface===", record);
   const sidebarItemsSection = await getSidebarItemsSection(record);
+  const sidebarHomeSection = await getSidebarHomeSection(record);
   return (
     <>
       {
@@ -104,8 +105,8 @@ export default async function Layout({
           }
           sidebar={
             <Sidebar>
-              {/* <SidebarHeader>
-                <Dropdown>
+              <SidebarHeader>
+                {/* <Dropdown>
                   <DropdownButton as={SidebarItem} className="lg:mb-2.5">
                     <Avatar src="/tailwind-logo.svg" />
                     <SidebarLabel>Tailwind Labs</SidebarLabel>
@@ -131,18 +132,15 @@ export default async function Layout({
                       <DropdownLabel>New team&hellip;</DropdownLabel>
                     </DropdownItem>
                   </DropdownMenu>
-                </Dropdown>
-                <SidebarSection className="max-lg:hidden">
+                </Dropdown> */}
+                {/* <SidebarSection className="max-lg:hidden">
                   <SidebarItem href="/search">
-                    <MagnifyingGlassIcon />
+                    <HomeIcon />
                     <SidebarLabel>Search</SidebarLabel>
                   </SidebarItem>
-                  <SidebarItem href="/inbox">
-                    <InboxIcon />
-                    <SidebarLabel>Inbox</SidebarLabel>
-                  </SidebarItem>
-                </SidebarSection>
-              </SidebarHeader> */}
+                </SidebarSection> */}
+                {sidebarHomeSection}
+              </SidebarHeader>
               <SidebarBody>
                 {sidebarItemsSection}
                 {/* <SidebarSection>

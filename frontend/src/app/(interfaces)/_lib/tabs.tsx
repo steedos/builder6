@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-06-03 10:03:32
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-04 07:09:04
+ * @LastEditTime: 2024-06-04 07:36:38
  * @FilePath: /builder6/frontend/src/app/(interfaces)/interfaces/lib/data.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -14,6 +14,7 @@ import {
 } from '@/components/sidebar';
 import {
     TicketIcon,
+    HomeIcon
 } from '@heroicons/react/20/solid'
 
 export async function getInterface(projectId: string) {
@@ -30,7 +31,7 @@ export async function getInterface(projectId: string) {
     }
 }
 
-const convertTabItemForSidebarItem = async function(tab: any){
+const convertTabItemForSidebarItem = async function (tab: any) {
     if (tab.type === "url") {
         // 显示为name，链接到url，不用处理
         return tab;
@@ -43,7 +44,7 @@ const convertTabItemForSidebarItem = async function(tab: any){
                 return {
                     ...tab,
                     name: page.name,
-                    url:   `/interfaces/${page.project_id}/${page._id}`
+                    url: `/interfaces/${page.project_id}/${page._id}`
                 }
             }
             else {
@@ -55,23 +56,34 @@ const convertTabItemForSidebarItem = async function(tab: any){
     }
 }
 
-
 export async function getSidebarItemsSection(project: any) {
     const tabs: any = project.tabs;
     const tabsConverted: any = [];
-    for(var i = 0;i < tabs.length;i++){
+    for (var i = 0; i < tabs.length; i++) {
         tabsConverted.push(await convertTabItemForSidebarItem(tabs[i]));
     }
     return (
         <SidebarSection>
             {
                 tabsConverted.map((tab: any, tabIndex: number) => (
-                    <SidebarItem href={tab.url} key={tabIndex} target={tab.is_new_window ? "_blank": ""}>
+                    <SidebarItem href={tab.url} key={tabIndex} target={tab.is_new_window ? "_blank" : ""}>
                         <TicketIcon />
                         <SidebarLabel>{tab.name}</SidebarLabel>
                     </SidebarItem>
                 ))
             }
+        </SidebarSection>
+    );
+}
+
+export async function getSidebarHomeSection(project: any) {
+    const url = `/interfaces/${project._id}`;
+    return (
+        <SidebarSection className="max-lg:hidden">
+            <SidebarItem href={url}>
+                <HomeIcon />
+                <SidebarLabel>{project.name}</SidebarLabel>
+            </SidebarItem>
         </SidebarSection>
     );
 }
