@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 // import { shareChat } from '@/app/actions'
-import { Button } from '@/components/button'
+import { Button } from '../_components/ui/button'
 import { PromptForm } from '../_components/prompt-form'
 import { ButtonScrollToBottom } from '../_components/button-scroll-to-bottom'
 import { IconShare } from '../_components/ui/icons'

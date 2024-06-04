@@ -1,3 +1,10 @@
+/*
+ * @Author: baozhoutao@steedos.com
+ * @Date: 2024-06-03 19:47:10
+ * @LastEditors: baozhoutao@steedos.com
+ * @LastEditTime: 2024-06-04 16:09:37
+ * @Description: 
+ */
 // Inspired by Chatbot-UI and modified to fit the needs of this project
 // @see https://github.com/mckaywrigley/chatbot-ui/blob/main/components/Chat/ChatMessage.tsx
 
@@ -5,11 +12,11 @@ import { Message } from 'ai'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
-import { cn } from '@/lib/utils'
-import { CodeBlock } from '@/components/ui/codeblock'
-import { MemoizedReactMarkdown } from '@/components/markdown'
-import { IconOpenAI, IconUser } from '@/components/ui/icons'
-import { ChatMessageActions } from '@/components/chat-message-actions'
+import { cn } from '../_lib/utils'
+import { CodeBlock } from '../_components/ui/codeblock'
+import { MemoizedReactMarkdown } from '../_components/markdown'
+import { IconOpenAI, IconUser } from '../_components/ui/icons'
+import { ChatMessageActions } from '../_components/chat-message-actions'
 
 export interface ChatMessageProps {
   message: Message
@@ -34,12 +41,12 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
       <div className="flex-1 px-1 ml-4 space-y-2 overflow-hidden">
         <MemoizedReactMarkdown
           className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
-          remarkPlugins={[remarkGfm, remarkMath]}
+          remarkPlugins={[remarkGfm as any, remarkMath]}
           components={{
             p({ children }) {
               return <p className="mb-2 last:mb-0">{children}</p>
             },
-            code({ node, inline, className, children, ...props }) {
+            code({ node, inline, className, children, ...props } : any) {
               if (children.length) {
                 if (children[0] == '▍') {
                   return (

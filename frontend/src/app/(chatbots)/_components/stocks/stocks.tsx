@@ -1,8 +1,14 @@
+/*
+ * @Author: baozhoutao@steedos.com
+ * @Date: 2024-06-03 19:47:10
+ * @LastEditors: baozhoutao@steedos.com
+ * @LastEditTime: 2024-06-04 16:17:24
+ * @Description: 
+ */
 'use client'
 
 import { useActions, useUIState } from 'ai/rsc'
-
-import type { AI } from '@/lib/chat/actions'
+import { AI } from '../../_lib/chat/actions'
 
 interface Stock {
   symbol: string
