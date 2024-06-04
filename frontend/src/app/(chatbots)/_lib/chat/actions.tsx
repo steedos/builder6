@@ -533,7 +533,7 @@ export const AI = createAI<AIState, UIState>({
   },
   onSetAIState: async ({ state }) => {
     'use server'
-
+    console.log(`onSetAIState====>`)
     const session = await auth()
 
     if (session && session.user) {
