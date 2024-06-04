@@ -42,14 +42,17 @@ import {
   Square2StackIcon,
   TicketIcon,
 } from '@heroicons/react/20/solid'
+import { auth } from '@/auth';
 import { getMainHeadCss, getMainHeadJs, getMainBodyJs, getEmbedAmisJs } from '../_lib/assets'
 
-export default function Layout({
+export default async function Layout({
   children
 }: {
   children: React.ReactNode
 }) {
-  const user = {};
+  const session = await auth();
+  console.log("====session===", session);
+  const user = session && session.user || {};
   return (
     <>
       {getMainHeadCss()}

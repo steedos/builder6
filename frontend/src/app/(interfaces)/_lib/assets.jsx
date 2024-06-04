@@ -38,7 +38,6 @@ const getEnvData = function (toString) {
 }
 
 const getAfterBuilderSDKLoadedScript = function (env) {
-    debugger;
     window.Builder = BuilderSDK.Builder;
     window.builder = BuilderSDK.builder;
     window.builder.init('steedos');
@@ -85,54 +84,53 @@ const getAfterAmisSDKLoadedScript = function () {
     window.ReactDOM17 = window.ReactDOM;
 }
 
-
-const getBuilderClientJs = function (user) {
+const getWaitForThingJs = function () {
     window.lodash = window._;
     window.Creator = {};
-    ; Object.defineProperty(window, 'MonacoEnvironment', { set: () => { }, get: () => undefined });
-    ; (function () {
-        function _innerWaitForThing(obj, path, func) {
-            const timeGap = 100;
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    let thing = null;
-                    if (lodash.isFunction(func)) {
-                        thing = func(obj, path);
-                    } else {
-                        thing = lodash.get(obj, path);
-                    }
-                    if (thing) {
-                        return resolve(thing);
-                    }
-                    reject();
-                }, timeGap);
-            }).catch(() => {
-                return _innerWaitForThing(obj, path, func);
-            });
-        }
-
-        window.waitForThing = (obj, path, func) => {
-            let thing = null;
-            if (lodash.isFunction(func)) {
-                thing = func(obj, path);
-            } else {
-                thing = lodash.get(obj, path);
-            }
-            if (thing) {
-                return Promise.resolve(thing);
-            }
+    function _innerWaitForThing(obj, path, func) {
+        const timeGap = 100;
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let thing = null;
+                if (lodash.isFunction(func)) {
+                    thing = func(obj, path);
+                } else {
+                    thing = lodash.get(obj, path);
+                }
+                if (thing) {
+                    return resolve(thing);
+                }
+                reject();
+            }, timeGap);
+        }).catch(() => {
             return _innerWaitForThing(obj, path, func);
-        };
+        });
+    }
 
+    window.waitForThing = (obj, path, func) => {
+        let thing = null;
+        if (lodash.isFunction(func)) {
+            thing = func(obj, path);
+        } else {
+            thing = lodash.get(obj, path);
+        }
+        if (thing) {
+            return Promise.resolve(thing);
+        }
+        return _innerWaitForThing(obj, path, func);
+    };
+}
+
+
+const getBuilderClientJs = function (user) {
+    (function () {
         Promise.all([
             waitForThing(window, 'Builder')
         ]).then(() => {
             Builder.set({
                 context: {
                     rootUrl: Builder.settings.rootUrl,
-                    tenantId: user ? user.spaceId : "",
-                    userId: user ? user.userId : "",
-                    authToken: user ? user.authToken : ""
+                    user: user
                 },
                 locale: user ? user.locale : ""
             })
@@ -500,11 +498,18 @@ const getMainHeadJs = () => {
 }
 
 const getMainBodyJs = (user) => {
+    console.log("===getMainBodyJs===", user);
     return <Fragment>
         <Script dangerouslySetInnerHTML={{ __html: `
             (function () {
+                (${getWaitForThingJs.toString()})();
+            })();
+        ` }} strategy="beforeInteractive" />
+        <Script dangerouslySetInnerHTML={{ __html: `
+            (function () {
                 // 原platform中builder.client.js中的脚本，主要是定义waitForThing函数，并触发请求资产包脚本文件
-                (${getBuilderClientJs.toString()})(${JSON.stringify(pick(user, ['spaceId', 'userId', 'authToken', 'locale']))});
+                var user = ${JSON.stringify(user)};
+                (${getBuilderClientJs.toString()})(user);
             })();
         ` }} strategy="beforeInteractive" />
         <Script dangerouslySetInnerHTML={{ __html: `
