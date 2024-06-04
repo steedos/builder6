@@ -23,6 +23,20 @@ export async function getChatBot(id: string, userId: string) {
   return chatBot
 }
 
+export async function getChatBots(userId?: string | null) {
+  // TODO
+  // if (!userId) {
+  //   return []
+  // }
+  try {
+    const chats: string[] = await getRecords(CHATBOT_OBJECT);
+    return chats
+  } catch (error) {
+    console.log(`error`, error)
+    return []
+  }
+}
+
 export async function getChats(userId?: string | null) {
   // TODO
   // if (!userId) {

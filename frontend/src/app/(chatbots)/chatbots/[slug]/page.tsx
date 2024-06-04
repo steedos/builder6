@@ -6,6 +6,7 @@ import { Session } from '../../_lib/types'
 import { getMissingKeys } from '../../_lib/chat/actions'
 import { AI } from '../../_lib/chat/actions'
 import { getChatBot } from '../../_lib/chat/appActions'
+import { redirect } from 'next/navigation'
 
 export const metadata = {
   title: 'AI Chatbot'
@@ -20,6 +21,9 @@ export interface ChatPageProps {
 export default async function IndexPage({ params }: ChatPageProps) {
   const id = nanoid()
   const session = (await auth()) as Session
+  if (!session?.user) {
+    redirect(`/login`)
+  }
   const missingKeys = await getMissingKeys()
   const userId = session.user.id as string
 const chatbot = await getChatBot(params.slug, userId)
