@@ -259,6 +259,175 @@ const getRegistryAssetsComponentsScript = function () {
     });
 }
 
+const getRegistryRenderAmisFunctionScript = function () {
+    // 执行amis.embed相关逻辑
+    Promise.all([
+        waitForThing(window, 'assetsLoaded'),
+        waitForThing(window, 'amis'),
+    ]).then(() => {
+        let amis = amisRequire('amis/embed');
+        const match = amisRequire('path-to-regexp').match;
+
+        // 如果想用 browserHistory 请切换下这处代码, 其他不用变
+        const history = History.createBrowserHistory();
+        // const history = History.createHashHistory();
+        const app = {
+        };
+
+        function normalizeLink(to, location = history.location) {
+            to = to || '';
+
+            if (to && to[0] === '#') {
+                to = location.pathname + location.search + to;
+            } else if (to && to[0] === '?') {
+                to = location.pathname + to;
+            }
+
+            const idx = to.indexOf('?');
+            const idx2 = to.indexOf('#');
+            let pathname = ~idx
+                ? to.substring(0, idx)
+                : ~idx2
+                    ? to.substring(0, idx2)
+                    : to;
+            let search = ~idx ? to.substring(idx, ~idx2 ? idx2 : undefined) : '';
+            let hash = ~idx2 ? to.substring(idx2) : location.hash;
+
+            if (!pathname) {
+                pathname = location.pathname;
+            } else if (pathname[0] != '/' && !/^https?\:\/\//.test(pathname)) {
+                let relativeBase = location.pathname;
+                const paths = relativeBase.split('/');
+                paths.pop();
+                let m;
+                while ((m = /^\.\.?\//.exec(pathname))) {
+                    if (m[0] === '../') {
+                        paths.pop();
+                    }
+                    pathname = pathname.substring(m[0].length);
+                }
+                pathname = paths.concat(pathname).join('/');
+            }
+
+            return pathname + search + hash;
+        }
+
+        function isCurrentUrl(to, ctx) {
+            if (!to) {
+                return false;
+            }
+            const pathname = history.location.pathname;
+            const link = normalizeLink(to, {
+                ...location,
+                pathname,
+                hash: ''
+            });
+
+            if (!~link.indexOf('http') && ~link.indexOf(':')) {
+                let strict = ctx && ctx.strict;
+                return match(link, {
+                    decode: decodeURIComponent,
+                    strict: typeof strict !== 'undefined' ? strict : true
+                })(pathname);
+            }
+
+            return decodeURI(pathname) === link;
+        }
+
+        let amisInstance = amis.embed(
+            '#root_interface_page',
+            app,
+            {
+                location: history.location,
+                data: {
+                    // 全局数据，是受控的数据
+                },
+                context: {
+                    // 全局上下文数据, 非受控的数据，无论哪一层都能获取到，包括弹窗自定义数据映射后都能获取到。
+                    // 可以用来放一下全局配置等。比如 API_HOST, 这样页面配置里面可以通过 \${API_HOST} 来获取到。
+                    // API_HOST: 'https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com',
+                    spaceId: "${spaceId}",
+                    appId: "${appId}",
+                    context: {
+                        tenantId: "${user?.spaceId}",
+                        userId: "${user?.userId}",
+                        authToken: "${user?.authToken}"
+                    }
+                }
+            },
+            {
+                // watchRouteChange: fn => {
+                //   return history.listen(fn);
+                // },
+                updateLocation: (location, replace) => {
+                    location = normalizeLink(location);
+                    if (location === 'goBack') {
+                        return history.goBack();
+                    } else if (
+                        (!/^https?\:\/\//.test(location) &&
+                            location ===
+                            history.location.pathname + history.location.search) ||
+                        location === history.location.href
+                    ) {
+                        // 目标地址和当前地址一样，不处理，免得重复刷新
+                        return;
+                    } else if (/^https?\:\/\//.test(location) || !history) {
+                        return (window.location.href = location);
+                    }
+
+                    history[replace ? 'replace' : 'push'](location);
+                },
+                jumpTo: (to, action) => {
+                    if (to === 'goBack') {
+                        return history.goBack();
+                    }
+
+                    to = normalizeLink(to);
+
+                    if (isCurrentUrl(to)) {
+                        return;
+                    }
+
+                    if (action && action.actionType === 'url') {
+                        action.blank === false
+                            ? (window.location.href = to)
+                            : window.open(to, '_blank');
+                        return;
+                    } else if (action && action.blank) {
+                        window.open(to, '_blank');
+                        return;
+                    }
+
+                    if (/^https?:\/\//.test(to)) {
+                        window.location.href = to;
+                    } else if (
+                        (!/^https?\:\/\//.test(to) &&
+                            to === history.pathname + history.location.search) ||
+                        to === history.location.href
+                    ) {
+                        // do nothing
+                    } else {
+                        history.push(to);
+                    }
+                },
+                isCurrentUrl: isCurrentUrl,
+                theme: 'antd'
+            }
+        );
+
+        history.listen(state => {
+            amisInstance.updateProps({
+                location: state.location || state
+            });
+        });
+
+
+        window.renderAmisPage = function (schema, data) {
+            console.log("===window.renderAmis===data===", data);
+            amisInstance.updateSchema(schema);
+        };
+    });
+}
 
 // /main_head.css?platform=browser 中加载了以下css，这里按需加载
 // @import url("https://unpkg.steedos.cn/@salesforce-ux/design-system@2.22.2/assets/styles/salesforce-lightning-design-system.min.css");
@@ -285,6 +454,7 @@ const getMainHeadJs = () => {
         <script src={STEEDOS_UNPKG_URL + "/lodash@4.17.21/lodash.min.js"}></script>
         <script src={STEEDOS_UNPKG_URL + "/@steedos-builder/sdk@1.0.0/dist/index.umd.js"}></script>
         <script src={STEEDOS_AMIS_URL + "/sdk/sdk.js"}></script>
+        <script src={"https://unpkg.com" + "/history@4.10.1/umd/history.js"}></script>
         <script dangerouslySetInnerHTML={{ __html: `
             const envData = ${getEnvData(true)};
             (${getAfterBuilderSDKLoadedScript.toString()})(envData);
@@ -350,8 +520,20 @@ const getMainBodyJs = (user) => {
     </Fragment>
 }
 
+const getEmbedAmisJs = () => {
+    return <Fragment>
+        <script dangerouslySetInnerHTML={{ __html: `
+            (function () {
+                //注册renderAmis函数到window，参考platform的amis.render.client.js文件中window.renderAmis函数定义
+                (${getRegistryRenderAmisFunctionScript.toString()})();
+            })();
+        ` }} />
+    </Fragment>
+}
+
 export {
     getMainHeadCss,
     getMainHeadJs,
-    getMainBodyJs
+    getMainBodyJs,
+    getEmbedAmisJs
 }

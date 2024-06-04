@@ -42,7 +42,7 @@ import {
   Square2StackIcon,
   TicketIcon,
 } from '@heroicons/react/20/solid'
-import { getMainHeadCss, getMainHeadJs, getMainBodyJs } from './assets'
+import { getMainHeadCss, getMainHeadJs, getMainBodyJs, getEmbedAmisJs } from '../_lib/assets'
 
 export default function Layout({
   children
@@ -229,6 +229,7 @@ export default function Layout({
         </SidebarLayout>
       }
       {getMainBodyJs(user)}
+      {getEmbedAmisJs()}
     </>
   )
 }
