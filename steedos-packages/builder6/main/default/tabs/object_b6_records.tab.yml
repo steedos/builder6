@@ -1,7 +1,7 @@
 name: object_b6_records
 desktop: true
 icon: record
-label: B6 Records
+label: Records
 mobile: true
 object: b6_records
 permissions: []

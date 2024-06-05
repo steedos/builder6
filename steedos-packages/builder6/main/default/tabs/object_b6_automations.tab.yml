@@ -1,7 +1,7 @@
 name: object_b6_automations
 desktop: true
 icon: flow
-label: B6 Automations
+label: Automations
 mobile: true
 object: b6_automations
 permissions: []

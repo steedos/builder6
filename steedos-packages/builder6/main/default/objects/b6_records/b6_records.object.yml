@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: record
 is_enable: true
-label: B6 Records
+label: Records
 locked: false
 version: 2

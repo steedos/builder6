@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: visualforce_page
 is_enable: true
-label: B6 Pages
+label: Pages
 locked: false
 version: 2

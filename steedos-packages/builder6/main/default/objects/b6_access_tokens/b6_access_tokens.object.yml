@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: apex
 is_enable: true
-label: B6 Access Tokens
+label: Access Tokens
 locked: false
 version: 2

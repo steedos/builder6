@@ -27,6 +27,6 @@ field_groups:
     collapsed: true
 icon: live_chat
 is_enable: true
-label: B6 Chatbots
+label: Chatbots
 locked: false
 version: 2

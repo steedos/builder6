@@ -1,4 +1,6 @@
 name: home
+amis:
+  mode: normal
 create: true
 enable_enhanced_lookup: false
 enable_thousands: true
@@ -24,5 +26,3 @@ static: false
 type: lookup
 unique: false
 write_requires_master_read: false
-amis:
-  mode: normal

@@ -1,7 +1,7 @@
 name: object_b6_tables
 desktop: true
 icon: contact_list
-label: B6 Tables
+label: Tables
 mobile: true
 object: b6_tables
 permissions: []

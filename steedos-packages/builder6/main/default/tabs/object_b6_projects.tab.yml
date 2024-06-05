@@ -1,7 +1,7 @@
 name: object_b6_projects
 desktop: true
 icon: orders
-label: B6 Projects
+label: Projects
 mobile: true
 object: b6_projects
 permissions: []

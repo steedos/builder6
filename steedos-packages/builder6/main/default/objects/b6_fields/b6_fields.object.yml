@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: steps
 is_enable: true
-label: B6 Fields
+label: Table Fields
 locked: false
 version: 2

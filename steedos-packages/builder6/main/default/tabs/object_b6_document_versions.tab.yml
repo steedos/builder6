@@ -1,7 +1,7 @@
 name: object_b6_document_versions
 desktop: true
 icon: knowledge
-label: B6 Document Versions
+label: Document Versions
 mobile: true
 object: b6_document_versions
 permissions: []

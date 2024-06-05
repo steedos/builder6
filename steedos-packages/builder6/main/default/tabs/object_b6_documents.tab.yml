@@ -1,7 +1,7 @@
 name: object_b6_documents
 desktop: true
 icon: knowledge
-label: B6 Documents
+label: Documents
 mobile: true
 object: b6_documents
 permissions: []

@@ -1,7 +1,7 @@
 name: object_b6_chatbots
 desktop: true
 icon: live_chat
-label: B6 Chatbots
+label: Chatbots
 mobile: true
 object: b6_chatbots
 permissions: []
