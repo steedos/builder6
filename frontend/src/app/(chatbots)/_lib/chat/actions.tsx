@@ -136,7 +136,7 @@ async function submitUserMessage(content: string) {
   let textNode: undefined | React.ReactNode
 
   const result = await streamUI({
-    model: createOpenAI({baseURL: process.env.OPENAI_BASE_URL, apiKey: process.env.OPENAI_API_KEY})('gpt-3.5-turbo'),
+    model: createOpenAI({baseURL: process.env.OPENAI_BASE_URL, apiKey: process.env.OPENAI_API_KEY})(chatbot.model),
     initial: <SpinnerMessage />,
     system: chatbot.directive,
     messages: [
@@ -478,7 +478,7 @@ async function submitUserMessage(content: string) {
   }
 }
 
-type Chatbot = {
+export type Chatbot = {
   _id: string
   id: string
   userId: string
@@ -518,29 +518,29 @@ export const AI = createAI<AIState, UIState>({
   onGetUIState: async () => {
     'use server'
 
-    const session = await auth()
+    // const session = await auth()
 
-    if (session && session.user) {
+    // if (session && session.user) {
       const aiState: any = getAIState()
 
       if (aiState) {
         const uiState = getUIStateFromAIState(aiState)
         return uiState
       }
-    } else {
-      return
-    }
+    // } else {
+    //   return
+    // }
   },
   onSetAIState: async ({ state }) => {
     'use server'
     console.log(`onSetAIState====>`)
     const session = await auth()
 
-    if (session && session.user) {
+    // if (session && session.user) {
       const { chatbot, chatId, messages } = state
       const chatbotId = chatbot.id || chatbot._id;
       const createdAt = new Date()
-      const userId = session.user.id as string
+      const userId = session?.user?.id as string
       const path = `/chat/${chatbotId}/${chatId}`
 
       const firstMessageContent = messages[0].content as string
@@ -559,9 +559,9 @@ export const AI = createAI<AIState, UIState>({
       }
 
       await saveChat(chat)
-    } else {
-      return
-    }
+    // } else {
+      // return
+    // }
   }
 })
 

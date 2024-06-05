@@ -11,7 +11,7 @@ group: Setup
 hidden: false
 index: false
 is_name: false
-is_wide: false
+is_wide: true
 label: Greeting type
 multiple: false
 options:
@@ -32,3 +32,15 @@ static: false
 type: select
 unique: false
 write_requires_master_read: false
+amis:
+  "type": "list-select"
+  "options": [
+    {
+      "value": "static",
+      "body": "<div class=\"m-l-sm m-r-sm m-b-sm m-t-xs\"><svg class=\"mb-2 mr-2 slds-icon slds-icon--small slds-icon-text-default test-class inline\" aria-hidden=\"true\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#edit\"></use></svg>\n                                <div class=\"font-medium text-lg inline\">Static</div>\n                                <div class=\"text-sm\">Show the same message at he start of every conversation</div>\n</div>"
+    },
+    {
+      "value": "generated",
+      "body": "<div class=\"m-l-sm m-r-sm  m-b-sm m-t-xs\"><svg class=\"mb-2 mr-2 slds-icon slds-icon--small slds-icon-text-default test-class inline\" aria-hidden=\"true\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#magicwand\"></use></svg>\n                                <div class=\"font-medium text-lg inline\">Generated</div>\n                            <div class=\"text-sm\">Use AI to generate a unique greeting for every conversation</div>\n</div>"
+    }
+  ]

@@ -20,38 +20,20 @@ export interface ChatProps extends React.ComponentProps<'div'> {
 }
 
 export function Chat({ id, className, session, missingKeys }: ChatProps) {
-  const router = useRouter()
-  const path = usePathname()
+  // const router = useRouter()
+  // const path = usePathname()
   const [input, setInput] = useState('')
   const [messages] = useUIState()
-  const [aiState] = useAIState()
+  // const [aiState] = useAIState()
 
-  const [_, setNewChatId] = useLocalStorage('newChatId', id)
+  console.log(`Chat messages===>`, messages)
 
-  useEffect(() => {
-    if (session?.user) {
-      if (!path.includes('chat') && messages.length === 1) {
-        window.history.replaceState({}, '', `/chat/${id}`)
-      }
-    }
-  }, [id, path, session?.user, messages])
-
-  useEffect(() => {
-    const messagesLength = aiState.messages?.length
-    if (messagesLength === 2) {
-      router.refresh()
-    }
-  }, [aiState.messages, router])
-
-  useEffect(() => {
-    setNewChatId(id)
-  })
-
-  useEffect(() => {
-    missingKeys.map(key => {
-      toast.error(`Missing ${key} environment variable!`)
-    })
-  }, [missingKeys])
+  // useEffect(() => {
+  //   const messagesLength = aiState.messages?.length
+  //   if (messagesLength === 2) {
+  //     router.refresh()
+  //   }
+  // }, [aiState.messages, router])
 
   const { messagesRef, scrollRef, visibilityRef, isAtBottom, scrollToBottom } =
     useScrollAnchor()

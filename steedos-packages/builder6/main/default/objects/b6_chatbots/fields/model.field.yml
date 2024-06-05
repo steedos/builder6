@@ -10,7 +10,7 @@ group: Setup
 hidden: false
 index: false
 is_name: false
-is_wide: false
+is_wide: true
 label: Model
 multiple: false
 options:

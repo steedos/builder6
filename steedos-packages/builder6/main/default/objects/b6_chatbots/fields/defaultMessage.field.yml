@@ -1,6 +1,6 @@
-name: temperature
+name: defaultMessage
 create: true
-defaultValue: 0.7
+defaultValue: How can I help you today?
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -9,25 +9,22 @@ generated: false
 group: Setup
 hidden: false
 index: false
+is_name: false
 is_wide: true
-label: Creativity
-precision: 18
+label: Greeting text
+multiple: false
 primary: false
 readonly: false
 required: false
-scale: 0
+rows: 4
 searchable: false
 show_as_qr: false
-sort_no: 70
-sortable: true
+sort_no: 40
+sortable: false
 static: false
-type: number
+type: textarea
 unique: false
 write_requires_master_read: false
+visible_on: "{{defaultMessageMode == 'static' ? true : false}}"
 amis:
-  type: input-range
-  tooltipVisible: true
-  tooltipPlacement: right
-  min: 0
-  max: 1
-  step: 0.1
+  clearValueOnHidden: false

@@ -8,26 +8,24 @@ import { type Chat } from '../../_lib/types'
 
 import { getRecord, updateRecord, getRecords } from '@/lib/b6CloudDB'
 
+import { Chatbot } from './actions'
+
 const kv: any = {}
 
 const CHATBOT_OBJECT = "b6_chatbots"
 
 const CHATBOT_MESSAGES_OBJECT = "b6_chatbots_sessions";
 
-export async function getChatBot(id: string, userId: string) {
+export async function getChatBot(id: string) {
   const chatBot = await getRecord(CHATBOT_OBJECT, id);
-  if (!chatBot || (userId && chatBot.userId !== userId)) {
+  if (!chatBot) {
     return null
   }
 
   return chatBot
 }
 
-export async function getChatBots(userId?: string | null) {
-  // TODO
-  // if (!userId) {
-  //   return []
-  // }
+export async function getChatBots() {
   try {
     const chats: string[] = await getRecords(CHATBOT_OBJECT);
     return chats
@@ -37,11 +35,7 @@ export async function getChatBots(userId?: string | null) {
   }
 }
 
-export async function getChats(userId?: string | null) {
-  // TODO
-  // if (!userId) {
-  //   return []
-  // }
+export async function getChats(chatBot: Chatbot) {
   try {
     const chats: string[] = await getRecords(CHATBOT_MESSAGES_OBJECT);
     return chats
@@ -51,9 +45,9 @@ export async function getChats(userId?: string | null) {
   }
 }
 
-export async function getChat(id: string, userId: string) {
+export async function getChat(id: string) {
   const chat = await getRecord(CHATBOT_MESSAGES_OBJECT, id);
-  if (!chat || (userId && chat.userId !== userId)) {
+  if (!chat) {
     return null
   }
 

@@ -1,6 +1,6 @@
 name: defaultPrompt
 create: true
-defaultValue: How can I help you today?
+defaultValue: Say hello and tell me what you can do.
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -11,7 +11,7 @@ hidden: false
 index: false
 is_name: false
 is_wide: true
-label: Greeting text
+label: Greeting prompt
 multiple: false
 primary: false
 readonly: false
@@ -25,3 +25,6 @@ static: false
 type: textarea
 unique: false
 write_requires_master_read: false
+visible_on: "{{defaultMessageMode != 'static' ? true : false}}"
+amis:
+  clearValueOnHidden: false

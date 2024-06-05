@@ -1,0 +1,118 @@
+{
+    "type": "page",
+    "body": [
+        {
+            "type": "flex",
+            "id": "u:74719a911e29",
+            "items": [
+                {
+                    "type": "container",
+                    "body": [
+                        {
+                            "type": "steedos-object-form",
+                            "label": "对象表单",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}",
+                            "id": "u:3638656e8e37",
+                            "mode": "edit",
+                            "className": "mb-4",
+                            "enableInitApi": false,
+                            "form": {
+                                "id": "u:2efee5835bf6",
+                                "actions": [
+                                    {
+                                        "type": "submit",
+                                        "label": "保存",
+                                        "primary": true,
+                                        "id": "u:66a9cecdc4bb"
+                                    }
+                                ],
+                                "feat": "Insert",
+                                "dsType": "api",
+                                "submitOnChange": false,
+                                "onEvent": {
+                                    "submitSucc": {
+                                        "weight": 0,
+                                        "actions": [
+                                            {
+                                                "actionType": "reload"
+                                            },
+                                            {
+                                                "actionType": "reload",
+                                                "componentId": "u:d0cb32b561f2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "debug": false
+                            }
+                        }
+                    ],
+                    "size": "none",
+                    "style": {
+                        "position": "static",
+                        "display": "block",
+                        "flex": "1 1 auto",
+                        "flexGrow": 1,
+                        "flexBasis": 0
+                    },
+                    "wrapperBody": false,
+                    "isFixedHeight": false,
+                    "isFixedWidth": false,
+                    "id": "u:ea2c8ffc3f55"
+                },
+                {
+                    "type": "container",
+                    "body": [
+                        {
+                            "type": "iframe",
+                            "src": "${window:Meteor.settings.public.B6_FRONTEND_URL}/chatbots/${recordId}",
+                            "id": "u:d0cb32b561f2",
+                            "className": "antd-Panel m-0 sm:rounded-lg shadow-none border-none antd-Panel--form",
+                            "editorState": "default"
+                        }
+                    ],
+                    "size": "none",
+                    "style": {
+                        "position": "static",
+                        "display": "block",
+                        "flex": "1 1 auto",
+                        "flexGrow": 2,
+                        "flexBasis": 0
+                    },
+                    "wrapperBody": false,
+                    "isFixedHeight": false,
+                    "isFixedWidth": false,
+                    "id": "u:06ec39d3ee54"
+                }
+            ],
+            "style": {
+                "position": "relative",
+                "rowGap": "10px",
+                "columnGap": "10px",
+                "flexWrap": "nowrap",
+                "inset": "auto"
+            },
+            "isFixedHeight": false,
+            "isFixedWidth": false,
+            "className": "h-full",
+            "wrapperCustomStyle": {},
+            "editorState": "default"
+        }
+    ],
+    "regions": [
+        "body"
+    ],
+    "data": {},
+    "id": "page_b6_chatbots_record_detail",
+    "name": "page_b6_chatbots_record_detail",
+    "objectApiName": "${objectName}",
+    "bodyClassName": "",
+    "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100",
+    "asideResizor": false,
+    "editorState": "default",
+    "pullRefresh": {
+        "disabled": true
+    }
+}

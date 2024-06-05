@@ -6,9 +6,12 @@ import { Providers } from './_components/providers'
 
 export default function RootLayout({
   children,
+  params
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  params: any
 }) {
+  console.log(`params`, params)
   return (
     <Providers
           attribute="class"

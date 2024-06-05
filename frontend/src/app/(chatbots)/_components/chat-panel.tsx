@@ -5,7 +5,7 @@ import { Button } from '../_components/ui/button'
 import { PromptForm } from '../_components/prompt-form'
 import { ButtonScrollToBottom } from '../_components/button-scroll-to-bottom'
 import { IconShare } from '../_components/ui/icons'
-import { FooterText } from '../_components/footer'
+// import { FooterText } from '../_components/footer'
 // import { ChatShareDialog } from '@/components/chat-share-dialog'
 import { useAIState, useActions, useUIState } from 'ai/rsc'
 // import type { AI } from '@/lib/chat/actions'
@@ -29,7 +29,7 @@ export function ChatPanel({
   isAtBottom,
   scrollToBottom
 }: ChatPanelProps) {
-  // const [aiState] = useAIState({})
+  const [aiState] = useAIState()
   const [messages, setMessages] = React.useState([{
     heading: 'What are the',
     subheading: 'trending memecoins today?',
@@ -75,6 +75,8 @@ export function ChatPanel({
       message: `What are some recent events about $DOGE?`
     }
   ]
+
+  console.log(`aiState.get()`, aiState.chatbot.placeholder)
 
   return (
     <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/30 from-0% to-muted/30 to-50% duration-300 ease-in-out animate-in dark:from-background/10 dark:from-10% dark:to-background/80 peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
@@ -149,8 +151,8 @@ export function ChatPanel({
         ) : null}
 
         <div className="space-y-4 border-t bg-background bg-white px-4 py-2 shadow-lg sm:rounded-t-xl sm:border md:py-4">
-          <PromptForm input={input} setInput={setInput} />
-          <FooterText className="hidden sm:block" />
+          <PromptForm input={input} setInput={setInput} placeholder={aiState.chatbot.placeholder} />
+          {/* <FooterText className="hidden sm:block" /> */}
         </div>
       </div>
     </div>

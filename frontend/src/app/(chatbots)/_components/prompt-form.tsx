@@ -20,10 +20,12 @@ import { AI } from '../_lib/chat/actions'
 
 export function PromptForm({
   input,
-  setInput
+  setInput,
+  placeholder="Send a message."
 }: {
   input: string
   setInput: (value: string) => void
+  placeholder: string
 }) {
   const router = useRouter()
   const { formRef, onKeyDown } = useEnterSubmit()
@@ -65,8 +67,8 @@ export function PromptForm({
         setMessages(currentMessages => [...currentMessages, responseMessage])
       }}
     >
-      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background bg-white px-8 sm:rounded-md sm:border sm:px-12">
-        <Tooltip>
+      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background bg-white pr-8 sm:rounded-md sm:border sm:pr-12">
+        {/* <Tooltip>
           <TooltipTrigger asChild>
             <Button
               variant="outline"
@@ -81,12 +83,12 @@ export function PromptForm({
             </Button>
           </TooltipTrigger>
           <TooltipContent>New Chat</TooltipContent>
-        </Tooltip>
+        </Tooltip> */}
         <Textarea
           ref={inputRef}
           tabIndex={0}
           onKeyDown={onKeyDown}
-          placeholder="Send a message."
+          placeholder={placeholder}
           className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] focus-within:outline-none sm:text-sm border-0 focus:ring-transparent"
           autoFocus
           spellCheck={false}

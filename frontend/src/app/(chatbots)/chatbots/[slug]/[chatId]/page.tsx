@@ -2,7 +2,7 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2024-06-04 11:01:33
  * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-06-04 15:57:30
+ * @LastEditTime: 2024-06-05 14:39:38
  * @Description: 
  */
 import { nanoid } from '../../../_lib/utils'
@@ -42,20 +42,15 @@ export interface ChatPageProps {
 export default async function ChatPage({ params }: ChatPageProps) {
   const session = (await auth()) as Session
   const missingKeys = await getMissingKeys()
-  if (!session?.user) {
-    redirect(`/login`)
-  }
 
-  const userId = session.user.id as string
-  const chatbot = await getChatBot(params.slug, userId)
-  const chat = await getChat(params.chatId, userId)
+  const chatbot = await getChatBot(params.slug)
+  const chat = await getChat(params.chatId)
+
+
+  console.log(`set messages ChatPage=========`)
 
   if (!chat) {
     redirect('/chatbots')
-  }
-
-  if (chat?.userId !== session?.user?.id) {
-    notFound()
   }
 
   return (

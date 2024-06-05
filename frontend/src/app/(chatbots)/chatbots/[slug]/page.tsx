@@ -21,15 +21,18 @@ export interface ChatPageProps {
 export default async function IndexPage({ params }: ChatPageProps) {
   const id = nanoid()
   const session = (await auth()) as Session
-  if (!session?.user) {
-    redirect(`/login`)
-  }
   const missingKeys = await getMissingKeys()
-  const userId = session.user.id as string
-const chatbot = await getChatBot(params.slug, userId)
+  const chatbot = await getChatBot(params.slug)
+
+  console.log(`set messages chatbot.defaultPrompt`, params.slug, chatbot)
 
   return (
-    <AI initialAIState={{ chatbot: chatbot, chatId: id, messages: [] }}>
+    <AI initialAIState={{ chatbot: chatbot, chatId: id, messages: [
+      {
+        id: nanoid(),
+        role: 'assistant',
+        content: chatbot.defaultPrompt
+      }] }}>
       <Chat id={id} session={session} missingKeys={missingKeys} />
     </AI>
   )

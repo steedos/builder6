@@ -8,7 +8,7 @@ group: Setup
 hidden: false
 index: false
 is_name: false
-is_wide: false
+is_wide: true
 label: Disclosure message
 multiple: false
 primary: false
@@ -23,3 +23,8 @@ static: false
 type: textarea
 unique: false
 write_requires_master_read: false
+visible_on: '{{displayDisclosure === true}}'
+description: This input accepts markdown links.
+defaultValue: This is an automated chatbot response. [Learn more](https://builder6.com)
+amis:
+  clearValueOnHidden: false
