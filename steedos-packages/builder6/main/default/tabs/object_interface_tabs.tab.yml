@@ -1,7 +1,0 @@
-name: object_interface_tabs
-desktop: true
-label: 微菜单
-mobile: true
-object: interface_tabs
-permissions: []
-type: object

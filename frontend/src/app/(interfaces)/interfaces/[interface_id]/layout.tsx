@@ -43,7 +43,8 @@ import {
   TicketIcon,
 } from '@heroicons/react/20/solid'
 import { auth } from '@/auth';
-import { getInterface, getSidebarItemsSection, getSidebarHomeSection } from "../../_lib/tabs";
+import { getInterface } from "../../_lib/index";
+import { getSidebarItemsSection, getSidebarHomeSection } from "../../_lib/tabs";
 
 export default async function Layout({
   children,
@@ -52,18 +53,18 @@ export default async function Layout({
   children: React.ReactNode,
   params: { interface_id: string }
 }) {
-  console.log("==Layout====interface_id====params===", params);
   let record = await getInterface(params.interface_id);
-  console.log("==Layout====interface_id====interface===", record);
   const sidebarItemsSection = await getSidebarItemsSection(record);
   const sidebarHomeSection = await getSidebarHomeSection(record);
   return (
     <>
       {
-        <SidebarLayout
-          navbar={
-            <Navbar>
-              {/* <NavbarSpacer />
+        record.enable_tabs ?
+          (
+            <SidebarLayout
+              navbar={
+                <Navbar>
+                  {/* <NavbarSpacer />
               <NavbarSection>
                 <NavbarItem href="/search" aria-label="Search">
                   <MagnifyingGlassIcon />
@@ -101,12 +102,12 @@ export default async function Layout({
                   </DropdownMenu>
                 </Dropdown>
               </NavbarSection> */}
-            </Navbar>
-          }
-          sidebar={
-            <Sidebar>
-              <SidebarHeader>
-                {/* <Dropdown>
+                </Navbar>
+              }
+              sidebar={
+                <Sidebar>
+                  <SidebarHeader>
+                    {/* <Dropdown>
                   <DropdownButton as={SidebarItem} className="lg:mb-2.5">
                     <Avatar src="/tailwind-logo.svg" />
                     <SidebarLabel>Tailwind Labs</SidebarLabel>
@@ -133,17 +134,17 @@ export default async function Layout({
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown> */}
-                {/* <SidebarSection className="max-lg:hidden">
+                    {/* <SidebarSection className="max-lg:hidden">
                   <SidebarItem href="/search">
                     <HomeIcon />
                     <SidebarLabel>Search</SidebarLabel>
                   </SidebarItem>
                 </SidebarSection> */}
-                {sidebarHomeSection}
-              </SidebarHeader>
-              <SidebarBody>
-                {sidebarItemsSection}
-                {/* <SidebarSection>
+                    {sidebarHomeSection}
+                  </SidebarHeader>
+                  <SidebarBody>
+                    {sidebarItemsSection}
+                    {/* <SidebarSection>
                   <SidebarItem href="/interfaces/665c13a33e66e105be5199d5/665c13d23e66e105be5199d6">
                     <HomeIcon />
                     <SidebarLabel>Home</SidebarLabel>
@@ -165,7 +166,7 @@ export default async function Layout({
                     <SidebarLabel>Broadcasts</SidebarLabel>
                   </SidebarItem>
                 </SidebarSection> */}
-                {/* <SidebarSection className="max-lg:hidden">
+                    {/* <SidebarSection className="max-lg:hidden">
                   <SidebarHeading>Upcoming Events</SidebarHeading>
                   <SidebarItem href="/events/1">Bear Hug: Live in Concert</SidebarItem>
                   <SidebarItem href="/events/2">Viking People</SidebarItem>
@@ -183,8 +184,8 @@ export default async function Layout({
                     <SidebarLabel>Changelog</SidebarLabel>
                   </SidebarItem>
                 </SidebarSection> */}
-              </SidebarBody>
-              {/* <SidebarFooter className="max-lg:hidden">
+                  </SidebarBody>
+                  {/* <SidebarFooter className="max-lg:hidden">
                 <Dropdown>
                   <DropdownButton as={SidebarItem}>
                     <span className="flex min-w-0 items-center gap-3">
@@ -224,12 +225,14 @@ export default async function Layout({
                   </DropdownMenu>
                 </Dropdown>
               </SidebarFooter> */}
-            </Sidebar>
-          }
-        >
-          {/* The page content */}
-          {children}
-        </SidebarLayout>
+                </Sidebar>
+              }
+            >
+              {/* The page content */}
+              {children}
+            </SidebarLayout>
+          ) :
+          (children)
       }
     </>
   )

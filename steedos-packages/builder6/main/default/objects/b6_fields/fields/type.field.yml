@@ -1,24 +1,66 @@
 name: type
-create: true
-enable_enhanced_lookup: true
-enable_thousands: true
-filterable: false
-filters: []
-generated: false
-hidden: false
-index: false
-is_name: false
-is_wide: false
-label: Type
-multiple: false
-primary: false
-readonly: false
-required: false
-searchable: false
-show_as_qr: false
-sort_no: 20
-sortable: true
-static: false
-type: text
-unique: false
-write_requires_master_read: false
+label: 字段类型
+options:
+  - label: 文本
+    value: input-text
+  - label: 多行文本
+    value: textarea
+  - label: 数字
+    value: input-number
+  - label: 下拉框
+    value: select
+  - label: 复选框
+    value: checkboxes
+  - label: 单选
+    value: radios
+  - label: 勾选
+    value: checkbox
+  - label: 日期
+    value: input-date
+  - label: 日期时间
+    value: input-time
+  - label: 时间
+    value: currency
+  - label: 文件
+    value: file
+  - label: 图片
+    value: image
+  - label: 树
+    value: tree
+  - label: 开关
+    value: switch
+  - label: 滑块
+    value: input-range
+  - label: 评分
+    value: input-rating
+  - label: 城市选择
+    value: input-city
+  - label: 穿梭器
+    value: transfer
+  - label: 颜色
+    value: input-color
+  - label: 字段集
+    value: fieldset
+  - label: 表格
+    value: input-table
+  - label: 矩阵开关
+    value: matrix-checkboxes
+  - label: 富文本
+    value: input-rich-text
+  - label: 代码编辑器
+    value: editor
+  - label: diff编辑器
+    value: diff-editor
+  - label: 地理位置
+    value: location-picker
+  - label: 子表单
+    value: input-sub-form
+  - label: 隐藏域
+    value: hidden
+  - label: 签名面板
+    value: input-signature
+  - label: 静态展示
+    value: static
+required: true
+sort_no: 50
+type: select

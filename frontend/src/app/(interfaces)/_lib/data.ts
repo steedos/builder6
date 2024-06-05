@@ -2,17 +2,44 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-06-03 10:03:32
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-04 05:38:26
+ * @LastEditTime: 2024-06-05 07:07:52
  * @FilePath: /builder6/frontend/src/app/(interfaces)/interfaces/lib/data.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 const axios = require('axios');
 
-export async function getPageSchema(id: string) {
+export async function getInterface(projectId: string) {
     try {
-        const result = await getRecord("b6_pages", id);
-        if (result?.data?.data?.amis_schema) {
-            return JSON.parse(result.data.data.amis_schema)
+        const result = await getRecord("b6_projects", projectId);
+        if (result?.data?.data) {
+            return result.data.data
+        }
+        else {
+            return {}
+        }
+    } catch (error) {
+        return {}
+    }
+}
+
+export async function getPage(pageId: string) {
+    try {
+        const result = await getRecord("b6_pages", pageId);
+        if (result?.data?.data) {
+            return result.data.data
+        }
+        else {
+            return {}
+        }
+    } catch (error) {
+        return {}
+    }
+}
+
+export function getPageSchema(page: any) {
+    try {
+        if (page?.amis_schema) {
+            return JSON.parse(page.amis_schema)
         }
         else {
             return {}

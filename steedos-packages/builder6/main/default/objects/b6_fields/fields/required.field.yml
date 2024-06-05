@@ -1,0 +1,5 @@
+name: required
+hidden: false
+label: 必填
+sort_no: 380
+type: boolean

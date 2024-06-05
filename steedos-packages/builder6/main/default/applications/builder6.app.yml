@@ -1,6 +1,6 @@
-name: AI Builder
+name: 灵犀 智能
 code: builder6
-description: 'Build external-facing AI Chatbots, with your data.'
+description: 使用业务数据，构建面向客户的专属智能助手。
 enable_nav_schema: false
 icon_slds: recipe
 is_creator: true
@@ -15,11 +15,11 @@ tab_items:
   object_b6_chatbots:
     index: 1
   object_b6_projects:
-    index: 2
-  object_b6_tables:
     index: 3
+  object_b6_tables:
+    index: 2
 tabs:
   - object_b6_chatbots
-  - object_b6_projects
   - object_b6_tables
+  - object_b6_projects
 visible: true

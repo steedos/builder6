@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: contact_list
 is_enable: true
-label: Tables
+label: 数据表
 locked: false
 version: 2

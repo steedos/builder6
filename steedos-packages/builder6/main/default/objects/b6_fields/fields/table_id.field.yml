@@ -7,7 +7,7 @@ generated: false
 hidden: false
 index: false
 is_wide: false
-label: Table
+label: 数据表
 primary: false
 readonly: false
 reference_to: b6_tables
