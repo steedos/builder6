@@ -1,8 +1,8 @@
 /*
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
- * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-03 07:13:15
+ * @LastEditors: baozhoutao@steedos.com
+ * @LastEditTime: 2024-06-05 11:50:30
  * @Description: 
  */
 const path = require('path');
@@ -54,6 +54,9 @@ module.exports = {
     methods: methods,
     events: events,
     async started() {
+        this.broker.call(`steedos-server.setSettings`, {PUBLIC_SETTINGS: {B6_FRONTEND_URL: process.env.B6_FRONTEND_URL}}).catch(()=>{
+            
+        })
     }
 
 }
