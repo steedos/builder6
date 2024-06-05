@@ -9,10 +9,16 @@
     "build": "yarn workspaces run build",
     "build:watch": "yarn workspaces run build:watch",
     "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js --hot --repl",
-    "repl": "moleculer-runner --repl"
+    "repl": "moleculer-runner --repl",
+    "st:start": "steedos start",
+    "st:platform": "docker-compose -f steedos-platform/docker-compose.yml up",
+    "st:platform-ee": "docker-compose -f steedos-platform/docker-compose-ee.yml up",
+    "st:packages": "./node_modules/moleculer/bin/moleculer-runner.js steedos-packages/*/package.service.js --config steedos.dev.config.js",
+    "dev": "ts-node ./node_modules/moleculer/bin/moleculer-runner.js steedos-packages/*/src/index.{js,ts} --config steedos.dev.config.js --hot --repl"
   },
   "dependencies": {
-    "@steedos/service-package-loader": "^2.7",
+    "@steedos/service-community": "2.7.1-beta.26",
+    "@steedos/service-package-loader": "2.7.1-beta.26",
     "bcryptjs": "^2.4.3",
     "dotenv-flow": "^3.2.0",
     "moleculer-repl": "^0.7.3",
@@ -24,5 +30,16 @@
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-node-externals": "^3.0.0"
+  },
+  "resolutions": {
+    "@azure/core-auth": "1.5.0",
+    "@azure/core-client": "1.7.3",
+    "@azure/core-lro": "2.5.4",
+    "@azure/core-rest-pipeline": "1.12.1",
+    "@azure/core-util": "1.5.0",
+    "@azure/keyvault-keys": "4.7.2",
+    "@azure/logger": "1.0.4",
+    "@azure/core-tracing": "1.0.1",
+    "@azure/core-paging": "1.5.0"
   }
 }
