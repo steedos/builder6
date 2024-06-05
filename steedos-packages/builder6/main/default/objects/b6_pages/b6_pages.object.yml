@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: visualforce_page
 is_enable: true
-label: Pages
+label: 页面
 locked: false
 version: 2

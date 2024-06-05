@@ -1,5 +1,6 @@
 name: name
 filterable: true
+hidden: false
 index: true
 label: 名称
 required: true
