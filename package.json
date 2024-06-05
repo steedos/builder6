@@ -8,7 +8,7 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "build:watch": "yarn workspaces run build:watch",
-    "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js --hot --repl",
+    "start": "moleculer-runner steedos-packages/*/package.service.js --config docker-steedos.config.js --hot --repl",
     "repl": "moleculer-runner --repl",
     "st:start": "steedos start",
     "st:platform": "docker-compose -f steedos-platform/docker-compose.yml up",
