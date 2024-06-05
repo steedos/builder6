@@ -27,7 +27,7 @@ export default async function Home({ params }: { params: { interface_id: string,
         schema={pageSchema}
         data={{
           ...params,
-          project,
+          interface: project,
           page,
           context:{
             user
