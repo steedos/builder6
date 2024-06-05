@@ -1,27 +1,24 @@
-name: interface_page
-auto_fill_mapping:
-  - from: label
-    to: label
+name: description
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
-filters: []
 generated: false
 hidden: false
 index: false
-is_wide: false
-label: 页面
+is_name: false
+is_wide: true
+label: 描述
+multiple: false
 primary: false
 readonly: false
-reference_to: interface_pages
 required: false
+rows: 3
 searchable: false
 show_as_qr: false
-sort_no: 20
+sort_no: 30
 sortable: false
 static: false
-type: lookup
+type: textarea
 unique: false
-visible_on: '${type == "page"}'
 write_requires_master_read: false

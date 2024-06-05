@@ -1,6 +1,0 @@
-name: sort_no
-group: '-'
-label: Sort Number
-sort_no: 290
-sortable: true
-type: number

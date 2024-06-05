@@ -1,9 +1,0 @@
-name: tabs.$.url
-amis:
-  requiredOn: '${type == "url"}'
-hidden: false
-label: 外部链接
-required: false
-sort_no: 170
-type: url
-visible_on: '${type == "url"}'

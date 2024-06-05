@@ -1,5 +1,0 @@
-name: tabs.$
-blackbox: true
-hidden: false
-label: Tabs
-type: object
