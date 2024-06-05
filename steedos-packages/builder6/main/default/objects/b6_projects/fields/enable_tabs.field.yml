@@ -7,7 +7,7 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 页面上显示菜单
+label: 启用菜单
 omit: false
 readonly: false
 required: false

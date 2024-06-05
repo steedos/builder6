@@ -1,0 +1,101 @@
+{
+    "type": "steedos-record-service",
+    "body": [
+        {
+            "type": "steedos-record-detail-header",
+            "label": "标题面板",
+            "objectApiName": "${objectName}",
+            "recordId": "${recordId}",
+            "showBackButton": "${!_inDrawer}",
+            "id": "u:ac9fce914461"
+        },
+        {
+            "type": "tabs",
+            "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
+            "tabs": [
+                {
+                    "title": "页面",
+                    "body": [
+                        {
+                            "type": "steedos-object-related-listview",
+                            "label": "相关表",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "id": "u:c99b929fda7d",
+                            "relatedObjectApiName": "b6_pages"
+                        }
+                    ],
+                    "id": "u:5a4da21bad0a",
+                    "className": "px-0"
+                },
+                {
+                    "title": "菜单",
+                    "body": [
+                        {
+                            "type": "steedos-object-form",
+                            "label": "对象表单",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "mode": "edit",
+                            "enableInitApi": false,
+                            "className": "",
+                            "id": "u:b13a38342279",
+                            "fields": [
+                                "enable_tabs",
+                                "tabs",
+                                "tabs.$.page",
+                                "tabs.$.name",
+                                "tabs.$.type",
+                                "tabs.$.url",
+                                "tabs.$.is_new_window",
+                                "tabs.$.icon"
+                            ],
+                            "enableTabs": false,
+                            "tabsMode": "line"
+                        }
+                    ],
+                    "id": "u:27dc7be7cd01"
+                },
+                {
+                    "title": "项目",
+                    "body": [
+                        {
+                            "type": "steedos-object-form",
+                            "label": "对象表单",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}",
+                            "id": "u:38aa1b421c33",
+                            "mode": "read",
+                            "className": "mb-4",
+                            "fields": [
+                                "name",
+                                "description",
+                                "icon",
+                                "created_by",
+                                "created",
+                                "modified_by",
+                                "modified"
+                            ],
+                            "enableTabs": false,
+                            "tabsMode": "vertical",
+                            "enableInitApi": false
+                        }
+                    ],
+                    "className": "px-0 py-4",
+                    "id": "u:5d4e7e3f6ecc"
+                }
+            ],
+            "id": "u:f1bf09ff6742"
+        }
+    ],
+    "regions": [
+        "body"
+    ],
+    "data": {},
+    "id": "page_b6_projects_record_detail",
+    "name": "page_b6_projects_record_detail",
+    "objectApiName": "${objectName}",
+    "bodyClassName": "",
+    "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"
+}

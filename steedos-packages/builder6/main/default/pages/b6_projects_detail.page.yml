@@ -1,0 +1,13 @@
+name: b6_projects_detail
+is_active: true
+label: Projects 记录详情页
+locked: false
+object_name: b6_projects
+pageAssignments:
+  - type: orgDefault
+    page: b6_projects_detail
+    desktop: true
+    mobile: true
+render_engine: amis
+type: record
+widgets: []
