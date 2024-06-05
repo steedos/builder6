@@ -2,11 +2,11 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-06-03 10:03:32
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-05 06:56:12
+ * @LastEditTime: 2024-06-05 10:51:58
  * @FilePath: /builder6/frontend/src/app/(interfaces)/interfaces/lib/data.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { getRecord } from "./data";
+import { getPage } from "./data";
 import {
     SidebarSection,
     SidebarItem,
@@ -24,7 +24,7 @@ const convertTabItemForSidebarItem = async function (tab: any) {
     } else if (tab.type === "page") {
         // 显示为对应的page的name，链接到page的url
         try {
-            const result = await getRecord("b6_pages", tab.page);
+            const result = await getPage(tab.page);
             const page = result?.data?.data;
             if (page) {
                 return {
@@ -43,7 +43,7 @@ const convertTabItemForSidebarItem = async function (tab: any) {
 }
 
 export async function getSidebarItemsSection(project: any) {
-    const tabs: any = project.tabs;
+    const tabs: any = project?.tabs || [];
     const tabsConverted: any = [];
     for (var i = 0; i < tabs.length; i++) {
         tabsConverted.push(await convertTabItemForSidebarItem(tabs[i]));
