@@ -1,5 +1,5 @@
 name: type
-label: Type
+label: 字段类型
 options:
   - label: 文本
     value: input-text

@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: steps
 is_enable: true
-label: Fields
+label: 字段
 locked: false
 version: 2

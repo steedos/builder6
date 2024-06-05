@@ -1,5 +1,5 @@
 name: required
 hidden: false
-label: Required
+label: 必填
 sort_no: 380
 type: boolean

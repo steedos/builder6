@@ -1,7 +1,7 @@
 name: object_b6_tables
 desktop: true
 icon: contact_list
-label: AI Tables
+label: 数据表
 mobile: true
 object: b6_tables
 permissions: []

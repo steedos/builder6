@@ -20,6 +20,6 @@ field_groups:
   - group_name: 界面
 icon: orders
 is_enable: true
-label: Interfaces
+label: 界面
 locked: false
 version: 2

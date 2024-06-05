@@ -1,8 +1,0 @@
-name: object_b6_records
-desktop: true
-icon: record
-label: Records
-mobile: true
-object: b6_records
-permissions: []
-type: object
