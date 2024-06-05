@@ -14,7 +14,7 @@ amis_schema: |-
                           {
                               "actionType": "url",
                               "args": {
-                                  "url": "${b6_frontend_url}/interfaces/${_id}"
+                                  "url": "${window:Meteor.settings.public.B6_FRONTEND_URL}/interfaces/${_id}"
                               },
                               "ignoreError": false
                           }
@@ -31,8 +31,7 @@ amis_schema: |-
           "dataComponentId": "",
           "record_id": "",
           "record": {},
-          "permissions": {},
-          "b6_frontend_url": "https://3000-coral-muskox-8i4awntf.ws.vscode.steedos.cn"
+          "permissions": {}
       },
       "bodyClassName": "p-0",
       "id": "u:28aa2d631b84",
