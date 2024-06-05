@@ -16,10 +16,6 @@ export interface ChatPageProps {
 
 export default async function Page({ params }: ChatPageProps) {
 
-  // const session = (await auth()) as Session
-  // if (!session?.user) {
-  //   redirect(`/login`)
-  // }
 
   const chatbots = await getChatBots()
 return (
