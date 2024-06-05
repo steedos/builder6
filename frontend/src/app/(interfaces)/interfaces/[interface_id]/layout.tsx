@@ -52,9 +52,7 @@ export default async function Layout({
   children: React.ReactNode,
   params: { interface_id: string }
 }) {
-  console.log("==Layout====interface_id====params===", params);
   let record = await getInterface(params.interface_id);
-  console.log("==Layout====interface_id====interface===", record);
   const sidebarItemsSection = await getSidebarItemsSection(record);
   const sidebarHomeSection = await getSidebarHomeSection(record);
   return (
