@@ -43,7 +43,8 @@ import {
   TicketIcon,
 } from '@heroicons/react/20/solid'
 import { auth } from '@/auth';
-import { getInterface, getSidebarItemsSection, getSidebarHomeSection } from "../../_lib/tabs";
+import { getInterface } from "../../_lib/index";
+import { getSidebarItemsSection, getSidebarHomeSection } from "../../_lib/tabs";
 
 export default async function Layout({
   children,
