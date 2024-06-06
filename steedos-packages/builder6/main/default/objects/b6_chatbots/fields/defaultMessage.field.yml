@@ -1,6 +1,6 @@
 name: defaultMessage
 create: true
-defaultValue: How can I help you today?
+defaultValue: 我今天能帮您什么？
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false

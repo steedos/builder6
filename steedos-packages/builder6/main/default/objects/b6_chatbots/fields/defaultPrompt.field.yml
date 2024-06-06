@@ -1,6 +1,6 @@
 name: defaultPrompt
 create: true
-defaultValue: Say hello and tell me what you can do.
+defaultValue: 打个招呼，告诉我你能做什么。
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
