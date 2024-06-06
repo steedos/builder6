@@ -48,7 +48,8 @@
                                 },
                                 "debug": false,
                                 "className": "",
-                                "panelClassName": " p-4"
+                                "panelClassName": " p-4",
+                                "mode": "normal"
                             },
                             "height": "100%"
                         }
