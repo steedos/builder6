@@ -16,8 +16,11 @@ module.exports = {
       if(ctx.eventName != `@${objectApiName}.inserted`){
         return
       }
-      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SYNC_OBJECTS, objectApiName)){
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_META_OBJECTS, objectApiName)){
         await this.builder6Update(objectApiName, id)
+      }
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SPACE_OBJECTS, objectApiName)){
+        await this.builder6SpaceUpdate(objectApiName, id)
       }
     },
     "*.updated": async function(payload, sender, eventName, ctx){
@@ -25,8 +28,11 @@ module.exports = {
       if(ctx.eventName != `@${objectApiName}.updated`){
         return
       }
-      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SYNC_OBJECTS, objectApiName)){
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_META_OBJECTS, objectApiName)){
         await this.builder6Update(objectApiName, id)
+      }
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SPACE_OBJECTS, objectApiName)){
+        await this.builder6SpaceUpdate(objectApiName, id)
       }
     },
     "*.deleted": async function(payload, sender, eventName, ctx){
@@ -34,8 +40,11 @@ module.exports = {
       if(ctx.eventName != `@${objectApiName}.deleted`){
         return
       }
-      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SYNC_OBJECTS, objectApiName)){
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_META_OBJECTS, objectApiName)){
         await this.builder6Delete(objectApiName, id)
+      }
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SPACE_OBJECTS, objectApiName)){
+        await this.builder6SpaceDelete(objectApiName, id)
       }
     }
   }
