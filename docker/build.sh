@@ -1,5 +1,4 @@
-#!/bin/bash
-export BUILDER6_VERSION=0.0.4
+export BUILDER6_VERSION=0.0.5
 echo "#########################################################################"
 echo "builder6 version: ${BUILDER6_VERSION}"
 echo "#########################################################################"
