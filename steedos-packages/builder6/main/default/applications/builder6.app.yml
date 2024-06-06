@@ -14,12 +14,15 @@ sort: 200
 tab_items:
   object_b6_chatbots:
     index: 1
-  object_b6_projects:
-    index: 3
   object_b6_tables:
     index: 2
+  object_b6_projects:
+    index: 3
+  object_b6_pages:
+    index: 4
 tabs:
   - object_b6_chatbots
   - object_b6_tables
   - object_b6_projects
+  - object_b6_pages
 visible: true
