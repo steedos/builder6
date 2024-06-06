@@ -1,4 +1,11 @@
-export BUILDER6_VERSION=0.0.6
+export BUILDER6_VERSION=0.0.7
+###
+ # @Author: baozhoutao@steedos.com
+ # @Date: 2024-06-06 18:10:41
+ # @LastEditors: baozhoutao@steedos.com
+ # @LastEditTime: 2024-06-06 19:37:31
+ # @Description: 
+### 
 echo "#########################################################################"
 echo "builder6 version: ${BUILDER6_VERSION}"
 echo "#########################################################################"
