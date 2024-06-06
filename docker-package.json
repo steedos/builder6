@@ -1,0 +1,38 @@
+{
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "steedos-packages/*"
+  ],
+  "repository": "git://github.com/steedos-labs/contract.git",
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "build:watch": "yarn workspaces run build:watch",
+    "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js"
+  },
+  "dependencies": {
+    "@steedos/service-package-loader": "2.7.1-beta.26",
+    "bcryptjs": "^2.4.3",
+    "dotenv-flow": "^3.2.0",
+    "moleculer-repl": "^0.7.3",
+    "ioredis": "^5.3.1"
+  },
+  "devDependencies": {
+    "@steedos/schemas": "^2.7",
+    "lerna": "^5.4.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "resolutions": {
+    "@azure/core-auth": "1.5.0",
+    "@azure/core-client": "1.7.3",
+    "@azure/core-lro": "2.5.4",
+    "@azure/core-rest-pipeline": "1.12.1",
+    "@azure/core-util": "1.5.0",
+    "@azure/keyvault-keys": "4.7.2",
+    "@azure/logger": "1.0.4",
+    "@azure/core-tracing": "1.0.1",
+    "@azure/core-paging": "1.5.0"
+  }
+}
