@@ -1,6 +1,6 @@
 name: placeholder
 create: true
-defaultValue: Ask me anything
+defaultValue: 问我任何事情
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
