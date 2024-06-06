@@ -1,0 +1,9 @@
+name: url
+filterable: true
+hidden: false
+index: true
+label: URL
+required: false
+searchable: true
+sort_no: 800
+type: text

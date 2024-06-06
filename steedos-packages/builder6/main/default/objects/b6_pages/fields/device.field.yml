@@ -1,0 +1,15 @@
+name: device
+filterable: true
+hidden: false
+index: true
+label: 设备
+required: false
+searchable: true
+sort_no: 810
+type: select
+multiple: true
+options:
+  - label: Desktop
+    value: desktop
+  - label: Mobile
+    value: mobile
