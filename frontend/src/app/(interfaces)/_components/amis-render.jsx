@@ -2,7 +2,7 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2022-07-13 16:55:58
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-05 06:11:44
+ * @LastEditTime: 2024-06-06 07:07:23
  * @Description: 
  */
 'use client'
@@ -13,7 +13,7 @@ import { amisRender, getDefaultRenderData } from '../_lib/amis';
 import { defaultsDeep, concat, compact, filter, map, isEmpty } from 'lodash';
 import { usePathname, useRouter } from 'next/navigation'
 
-export const AmisRender = ({ id, schema, data, className, getModalContainer, updateProps, session }) => {
+export const AmisRender = ({ id, schema, data = {}, className = "", getModalContainer = null, updateProps = null, session = null }) => {
     const router = useRouter()
     const [amisInstance, setAmisInstance] = useState(null)
 
