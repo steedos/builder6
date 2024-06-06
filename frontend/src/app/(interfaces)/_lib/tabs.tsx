@@ -63,12 +63,12 @@ export async function getSidebarItemsSection(project: any) {
 }
 
 export async function getSidebarHomeSection(project: any) {
-    const url = `/interfaces/${project._id}`;
+    const url = `/interfaces/${project?._id}`;
     return (
         <SidebarSection className="max-lg:hidden">
             <SidebarItem href={url}>
                 <HomeIcon />
-                <SidebarLabel>{project.name}</SidebarLabel>
+                <SidebarLabel>{project?.name}</SidebarLabel>
             </SidebarItem>
         </SidebarSection>
     );

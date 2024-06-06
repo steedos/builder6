@@ -54,12 +54,19 @@ export default async function Layout({
   params: { interface_id: string }
 }) {
   let record = await getInterface(params.interface_id);
+  if(!record){
+   return (
+    <>
+      没有找到界面
+    </>
+   ); 
+  }
   const sidebarItemsSection = await getSidebarItemsSection(record);
   const sidebarHomeSection = await getSidebarHomeSection(record);
   return (
     <>
       {
-        record.enable_tabs ?
+        record?.enable_tabs ?
           (
             <SidebarLayout
               navbar={
