@@ -2,7 +2,7 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
  * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-06-05 11:50:30
+ * @LastEditTime: 2024-06-06 19:35:11
  * @Description: 
  */
 const path = require('path');
@@ -23,7 +23,7 @@ module.exports = {
     name: packageName,
     namespace: "steedos",
     mixins: [packageLoader],
-    dependencies: [],
+    dependencies: ['steedos-server'],
     settings: {
         // Base path
         rest: "/app-builder",
