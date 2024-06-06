@@ -6,11 +6,12 @@ import { ChatPanel } from '../_components/chat-panel'
 import { EmptyScreen } from '../_components/empty-screen'
 import { useLocalStorage } from '../_lib/hooks/use-local-storage'
 import { useEffect, useState } from 'react'
-import { useUIState, useAIState } from 'ai/rsc'
+import { useUIState, useAIState, useActions } from 'ai/rsc'
 import { Message, Session } from '../_lib/types'
 import { usePathname, useRouter } from 'next/navigation'
 import { useScrollAnchor } from '../_lib/hooks/use-scroll-anchor'
 import { toast } from 'sonner'
+import { AI } from '../_lib/chat/actions'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -23,17 +24,31 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
   // const router = useRouter()
   // const path = usePathname()
   const [input, setInput] = useState('')
-  const [messages] = useUIState()
-  // const [aiState] = useAIState()
+  const [hasGetGreeting, setHasGetGreeting] = useState(false)
+  const [messages, setMessages] = useUIState<typeof AI>()
+  const [aiState] = useAIState()
+  const { submitUserMessage } = useActions()
 
-  console.log(`Chat messages===>`, messages)
-
-  // useEffect(() => {
-  //   const messagesLength = aiState.messages?.length
-  //   if (messagesLength === 2) {
-  //     router.refresh()
-  //   }
-  // }, [aiState.messages, router])
+  useEffect(() => {
+    const messagesLength = aiState.messages?.length
+    setHasGetGreeting(true)
+    if (messagesLength === 0 && aiState.chatbot.defaultMessageMode != 'static' && hasGetGreeting == false ) {
+      submitUserMessage().then((responseMessage: any)=>{
+        setMessages((currentMessages: any) => {
+          if(!currentMessages || currentMessages.length == 0){
+            return [
+              ...currentMessages,
+              responseMessage
+            ]
+          }else{
+            return [
+              ...currentMessages
+            ]
+          }
+        })
+      })
+    }
+  }, [aiState.messages])
 
   const { messagesRef, scrollRef, visibilityRef, isAtBottom, scrollToBottom } =
     useScrollAnchor()

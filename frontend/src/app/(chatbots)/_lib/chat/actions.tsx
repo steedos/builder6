@@ -120,32 +120,43 @@ async function submitUserMessage(content: string) {
   const aiState = getMutableAIState<any>()
 
   const chatbot = aiState.get().chatbot
-  aiState.update({
-    ...aiState.get(),
-    messages: [
-      ...aiState.get().messages,
-      {
-        id: nanoid(),
-        role: 'user',
-        content
-      }
-    ]
-  })
+  if(content){
+    aiState.update({
+      ...aiState.get(),
+      messages: [
+        ...aiState.get().messages,
+        {
+          id: nanoid(),
+          role: 'user',
+          content
+        }
+      ]
+    })
+  }
 
   let textStream: undefined | ReturnType<any>
   let textNode: undefined | React.ReactNode
 
-  const result = await streamUI({
-    model: createOpenAI({baseURL: process.env.OPENAI_BASE_URL, apiKey: process.env.OPENAI_API_KEY})(chatbot.model),
-    initial: <SpinnerMessage />,
-    system: chatbot.directive,
-    messages: [
+  const uiProps: any = {}
+
+  if(chatbot.defaultMessageMode === 'generated' && aiState.get().messages.length == 0){
+    uiProps.prompt = chatbot.defaultPrompt
+  }else{
+    uiProps.messages = [
       ...aiState.get().messages.map((message: any) => ({
         role: message.role,
         content: message.content,
         name: message.name
       }))
-    ],
+    ]
+  }
+  // console.log(`uiProps====>`, uiProps)
+  const result = await streamUI({
+    model: createOpenAI({baseURL: process.env.OPENAI_BASE_URL, apiKey: process.env.OPENAI_API_KEY})(chatbot.model),
+    temperature: chatbot.temperature,
+    ...uiProps,
+    initial: <SpinnerMessage />,
+    system: chatbot.directive,
     text: ({ content, done, delta }) => {
       if (!textStream) {
         textStream = createStreamableValue('')
@@ -171,307 +182,308 @@ async function submitUserMessage(content: string) {
 
       return textNode
     },
-    tools: {
-      listStocks: {
-        description: 'List three imaginary stocks that are trending.',
-        parameters: z.object({
-          stocks: z.array(
-            z.object({
-              symbol: z.string().describe('The symbol of the stock'),
-              price: z.number().describe('The price of the stock'),
-              delta: z.number().describe('The change in price of the stock')
-            })
-          )
-        }),
-        generate: async function* ({ stocks }) {
-          yield (
-            <BotCard>
-              <StocksSkeleton />
-            </BotCard>
-          )
+    // tools: {
+    //   listStocks: {
+    //     description: 'List three imaginary stocks that are trending.',
+    //     parameters: z.object({
+    //       stocks: z.array(
+    //         z.object({
+    //           symbol: z.string().describe('The symbol of the stock'),
+    //           price: z.number().describe('The price of the stock'),
+    //           delta: z.number().describe('The change in price of the stock')
+    //         })
+    //       )
+    //     }),
+    //     generate: async function* ({ stocks }) {
+    //       yield (
+    //         <BotCard>
+    //           <StocksSkeleton />
+    //         </BotCard>
+    //       )
 
-          await sleep(1000)
+    //       await sleep(1000)
 
-          const toolCallId = nanoid()
+    //       const toolCallId = nanoid()
 
-          aiState.done({
-            ...aiState.get(),
-            messages: [
-              ...aiState.get().messages,
-              {
-                id: nanoid(),
-                role: 'assistant',
-                content: [
-                  {
-                    type: 'tool-call',
-                    toolName: 'listStocks',
-                    toolCallId,
-                    args: { stocks }
-                  }
-                ]
-              },
-              {
-                id: nanoid(),
-                role: 'tool',
-                content: [
-                  {
-                    type: 'tool-result',
-                    toolName: 'listStocks',
-                    toolCallId,
-                    result: stocks
-                  }
-                ]
-              }
-            ]
-          })
+    //       aiState.done({
+    //         ...aiState.get(),
+    //         messages: [
+    //           ...aiState.get().messages,
+    //           {
+    //             id: nanoid(),
+    //             role: 'assistant',
+    //             content: [
+    //               {
+    //                 type: 'tool-call',
+    //                 toolName: 'listStocks',
+    //                 toolCallId,
+    //                 args: { stocks }
+    //               }
+    //             ]
+    //           },
+    //           {
+    //             id: nanoid(),
+    //             role: 'tool',
+    //             content: [
+    //               {
+    //                 type: 'tool-result',
+    //                 toolName: 'listStocks',
+    //                 toolCallId,
+    //                 result: stocks
+    //               }
+    //             ]
+    //           }
+    //         ]
+    //       })
 
-          return (
-            <BotCard>
-              <Stocks props={stocks} />
-            </BotCard>
-          )
-        }
-      },
-      showStockPrice: {
-        description:
-          'Get the current stock price of a given stock or currency. Use this to show the price to the user.',
-        parameters: z.object({
-          symbol: z
-            .string()
-            .describe(
-              'The name or symbol of the stock or currency. e.g. DOGE/AAPL/USD.'
-            ),
-          price: z.number().describe('The price of the stock.'),
-          delta: z.number().describe('The change in price of the stock')
-        }),
-        generate: async function* ({ symbol, price, delta }) {
-          yield (
-            <BotCard>
-              <StockSkeleton />
-            </BotCard>
-          )
+    //       return (
+    //         <BotCard>
+    //           <Stocks props={stocks} />
+    //         </BotCard>
+    //       )
+    //     }
+    //   },
+    //   showStockPrice: {
+    //     description:
+    //       'Get the current stock price of a given stock or currency. Use this to show the price to the user.',
+    //     parameters: z.object({
+    //       symbol: z
+    //         .string()
+    //         .describe(
+    //           'The name or symbol of the stock or currency. e.g. DOGE/AAPL/USD.'
+    //         ),
+    //       price: z.number().describe('The price of the stock.'),
+    //       delta: z.number().describe('The change in price of the stock')
+    //     }),
+    //     generate: async function* ({ symbol, price, delta }) {
+    //       yield (
+    //         <BotCard>
+    //           <StockSkeleton />
+    //         </BotCard>
+    //       )
 
-          await sleep(1000)
+    //       await sleep(1000)
 
-          const toolCallId = nanoid()
+    //       const toolCallId = nanoid()
 
-          aiState.done({
-            ...aiState.get(),
-            messages: [
-              ...aiState.get().messages,
-              {
-                id: nanoid(),
-                role: 'assistant',
-                content: [
-                  {
-                    type: 'tool-call',
-                    toolName: 'showStockPrice',
-                    toolCallId,
-                    args: { symbol, price, delta }
-                  }
-                ]
-              },
-              {
-                id: nanoid(),
-                role: 'tool',
-                content: [
-                  {
-                    type: 'tool-result',
-                    toolName: 'showStockPrice',
-                    toolCallId,
-                    result: { symbol, price, delta }
-                  }
-                ]
-              }
-            ]
-          })
+    //       aiState.done({
+    //         ...aiState.get(),
+    //         messages: [
+    //           ...aiState.get().messages,
+    //           {
+    //             id: nanoid(),
+    //             role: 'assistant',
+    //             content: [
+    //               {
+    //                 type: 'tool-call',
+    //                 toolName: 'showStockPrice',
+    //                 toolCallId,
+    //                 args: { symbol, price, delta }
+    //               }
+    //             ]
+    //           },
+    //           {
+    //             id: nanoid(),
+    //             role: 'tool',
+    //             content: [
+    //               {
+    //                 type: 'tool-result',
+    //                 toolName: 'showStockPrice',
+    //                 toolCallId,
+    //                 result: { symbol, price, delta }
+    //               }
+    //             ]
+    //           }
+    //         ]
+    //       })
 
-          return (
-            <BotCard>
-              <Stock props={{ symbol, price, delta }} />
-            </BotCard>
-          )
-        }
-      },
-      showStockPurchase: {
-        description:
-          'Show price and the UI to purchase a stock or currency. Use this if the user wants to purchase a stock or currency.',
-        parameters: z.object({
-          symbol: z
-            .string()
-            .describe(
-              'The name or symbol of the stock or currency. e.g. DOGE/AAPL/USD.'
-            ),
-          price: z.number().describe('The price of the stock.'),
-          numberOfShares: z
-            .number()
-            .describe(
-              'The **number of shares** for a stock or currency to purchase. Can be optional if the user did not specify it.'
-            )
-        }),
-        generate: async function* ({ symbol, price, numberOfShares = 100 }) {
-          const toolCallId = nanoid()
+    //       return (
+    //         <BotCard>
+    //           <Stock props={{ symbol, price, delta }} />
+    //         </BotCard>
+    //       )
+    //     }
+    //   },
+    //   showStockPurchase: {
+    //     description:
+    //       'Show price and the UI to purchase a stock or currency. Use this if the user wants to purchase a stock or currency.',
+    //     parameters: z.object({
+    //       symbol: z
+    //         .string()
+    //         .describe(
+    //           'The name or symbol of the stock or currency. e.g. DOGE/AAPL/USD.'
+    //         ),
+    //       price: z.number().describe('The price of the stock.'),
+    //       numberOfShares: z
+    //         .number()
+    //         .describe(
+    //           'The **number of shares** for a stock or currency to purchase. Can be optional if the user did not specify it.'
+    //         )
+    //     }),
+    //     generate: async function* ({ symbol, price, numberOfShares = 100 }) {
+    //       const toolCallId = nanoid()
 
-          if (numberOfShares <= 0 || numberOfShares > 1000) {
-            aiState.done({
-              ...aiState.get(),
-              messages: [
-                ...aiState.get().messages,
-                {
-                  id: nanoid(),
-                  role: 'assistant',
-                  content: [
-                    {
-                      type: 'tool-call',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      args: { symbol, price, numberOfShares }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'tool',
-                  content: [
-                    {
-                      type: 'tool-result',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      result: {
-                        symbol,
-                        price,
-                        numberOfShares,
-                        status: 'expired'
-                      }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'system',
-                  content: `[User has selected an invalid amount]`
-                }
-              ]
-            })
+    //       if (numberOfShares <= 0 || numberOfShares > 1000) {
+    //         aiState.done({
+    //           ...aiState.get(),
+    //           messages: [
+    //             ...aiState.get().messages,
+    //             {
+    //               id: nanoid(),
+    //               role: 'assistant',
+    //               content: [
+    //                 {
+    //                   type: 'tool-call',
+    //                   toolName: 'showStockPurchase',
+    //                   toolCallId,
+    //                   args: { symbol, price, numberOfShares }
+    //                 }
+    //               ]
+    //             },
+    //             {
+    //               id: nanoid(),
+    //               role: 'tool',
+    //               content: [
+    //                 {
+    //                   type: 'tool-result',
+    //                   toolName: 'showStockPurchase',
+    //                   toolCallId,
+    //                   result: {
+    //                     symbol,
+    //                     price,
+    //                     numberOfShares,
+    //                     status: 'expired'
+    //                   }
+    //                 }
+    //               ]
+    //             },
+    //             {
+    //               id: nanoid(),
+    //               role: 'system',
+    //               content: `[User has selected an invalid amount]`
+    //             }
+    //           ]
+    //         })
 
-            return <BotMessage content={'Invalid amount'} />
-          } else {
-            aiState.done({
-              ...aiState.get(),
-              messages: [
-                ...aiState.get().messages,
-                {
-                  id: nanoid(),
-                  role: 'assistant',
-                  content: [
-                    {
-                      type: 'tool-call',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      args: { symbol, price, numberOfShares }
-                    }
-                  ]
-                },
-                {
-                  id: nanoid(),
-                  role: 'tool',
-                  content: [
-                    {
-                      type: 'tool-result',
-                      toolName: 'showStockPurchase',
-                      toolCallId,
-                      result: {
-                        symbol,
-                        price,
-                        numberOfShares
-                      }
-                    }
-                  ]
-                }
-              ]
-            })
+    //         return <BotMessage content={'Invalid amount'} />
+    //       } else {
+    //         aiState.done({
+    //           ...aiState.get(),
+    //           messages: [
+    //             ...aiState.get().messages,
+    //             {
+    //               id: nanoid(),
+    //               role: 'assistant',
+    //               content: [
+    //                 {
+    //                   type: 'tool-call',
+    //                   toolName: 'showStockPurchase',
+    //                   toolCallId,
+    //                   args: { symbol, price, numberOfShares }
+    //                 }
+    //               ]
+    //             },
+    //             {
+    //               id: nanoid(),
+    //               role: 'tool',
+    //               content: [
+    //                 {
+    //                   type: 'tool-result',
+    //                   toolName: 'showStockPurchase',
+    //                   toolCallId,
+    //                   result: {
+    //                     symbol,
+    //                     price,
+    //                     numberOfShares
+    //                   }
+    //                 }
+    //               ]
+    //             }
+    //           ]
+    //         })
 
-            return (
-              <BotCard>
-                <Purchase
-                  props={{
-                    numberOfShares,
-                    symbol,
-                    price: +price,
-                    status: 'requires_action'
-                  }}
-                />
-              </BotCard>
-            )
-          }
-        }
-      },
-      getEvents: {
-        description:
-          'List funny imaginary events between user highlighted dates that describe stock activity.',
-        parameters: z.object({
-          events: z.array(
-            z.object({
-              date: z
-                .string()
-                .describe('The date of the event, in ISO-8601 format'),
-              headline: z.string().describe('The headline of the event'),
-              description: z.string().describe('The description of the event')
-            })
-          )
-        }),
-        generate: async function* ({ events }) {
-          yield (
-            <BotCard>
-              <EventsSkeleton />
-            </BotCard>
-          )
+    //         return (
+    //           <BotCard>
+    //             <Purchase
+    //               props={{
+    //                 numberOfShares,
+    //                 symbol,
+    //                 price: +price,
+    //                 status: 'requires_action'
+    //               }}
+    //             />
+    //           </BotCard>
+    //         )
+    //       }
+    //     }
+    //   },
+    //   getEvents: {
+    //     description:
+    //       'List funny imaginary events between user highlighted dates that describe stock activity.',
+    //     parameters: z.object({
+    //       events: z.array(
+    //         z.object({
+    //           date: z
+    //             .string()
+    //             .describe('The date of the event, in ISO-8601 format'),
+    //           headline: z.string().describe('The headline of the event'),
+    //           description: z.string().describe('The description of the event')
+    //         })
+    //       )
+    //     }),
+    //     generate: async function* ({ events }) {
+    //       yield (
+    //         <BotCard>
+    //           <EventsSkeleton />
+    //         </BotCard>
+    //       )
 
-          await sleep(1000)
+    //       await sleep(1000)
 
-          const toolCallId = nanoid()
+    //       const toolCallId = nanoid()
 
-          aiState.done({
-            ...aiState.get(),
-            messages: [
-              ...aiState.get().messages,
-              {
-                id: nanoid(),
-                role: 'assistant',
-                content: [
-                  {
-                    type: 'tool-call',
-                    toolName: 'getEvents',
-                    toolCallId,
-                    args: { events }
-                  }
-                ]
-              },
-              {
-                id: nanoid(),
-                role: 'tool',
-                content: [
-                  {
-                    type: 'tool-result',
-                    toolName: 'getEvents',
-                    toolCallId,
-                    result: events
-                  }
-                ]
-              }
-            ]
-          })
+    //       aiState.done({
+    //         ...aiState.get(),
+    //         messages: [
+    //           ...aiState.get().messages,
+    //           {
+    //             id: nanoid(),
+    //             role: 'assistant',
+    //             content: [
+    //               {
+    //                 type: 'tool-call',
+    //                 toolName: 'getEvents',
+    //                 toolCallId,
+    //                 args: { events }
+    //               }
+    //             ]
+    //           },
+    //           {
+    //             id: nanoid(),
+    //             role: 'tool',
+    //             content: [
+    //               {
+    //                 type: 'tool-result',
+    //                 toolName: 'getEvents',
+    //                 toolCallId,
+    //                 result: events
+    //               }
+    //             ]
+    //           }
+    //         ]
+    //       })
 
-          return (
-            <BotCard>
-              <Events props={events} />
-            </BotCard>
-          )
-        }
-      }
-    }
+    //       return (
+    //         <BotCard>
+    //           <Events props={events} />
+    //         </BotCard>
+    //       )
+    //     }
+    //   }
+    // },
+    toolChoice: "none"
   })
-
+  // console.log(`result.value====>`, result.value)
   return {
     id: nanoid(),
     display: result.value
@@ -485,6 +497,7 @@ export type Chatbot = {
   avatarUrl: string
   defaultMessageMode: string
   defaultPrompt: string
+  defaultMessage: string
   directive: string
   disclosureText: string
   displayDisclosure: string
@@ -533,18 +546,15 @@ export const AI = createAI<AIState, UIState>({
   },
   onSetAIState: async ({ state }) => {
     'use server'
-    console.log(`onSetAIState====>`)
     const session = await auth()
-
     // if (session && session.user) {
       const { chatbot, chatId, messages } = state
       const chatbotId = chatbot.id || chatbot._id;
       const createdAt = new Date()
       const userId = session?.user?.id as string
-      const path = `/chat/${chatbotId}/${chatId}`
-
+      const path = `/chatbots/${chatbotId}/${chatId}`
       const firstMessageContent = messages[0].content as string
-      const title = firstMessageContent.substring(0, 100)
+      const title = firstMessageContent?.substring(0, 100) || ''
 
       const chat: Chat = {
         chatbotId: chatbotId,
@@ -568,35 +578,38 @@ export const AI = createAI<AIState, UIState>({
 export const getUIStateFromAIState = (aiState: Chat) => {
   return aiState.messages
     .filter(message => message.role !== 'system')
-    .map((message, index) => ({
-      id: `${aiState.chatId}-${index}`,
-      display:
-        message.role === 'tool' ? (
-          (message.content as any).map((tool: any) => {
-            return tool.toolName === 'listStocks' ? (
-              <BotCard>
-                {/* TODO: Infer types based on the tool result*/}
-                <Stocks props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'showStockPrice' ? (
-              <BotCard>
-                <Stock props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'showStockPurchase' ? (
-              <BotCard>
-                <Purchase props={tool.result} />
-              </BotCard>
-            ) : tool.toolName === 'getEvents' ? (
-              <BotCard>
-                <Events props={tool.result} />
-              </BotCard>
-            ) : null
-          })
-        ) : message.role === 'user' ? (
-          <UserMessage>{message.content as string}</UserMessage>
-        ) : message.role === 'assistant' &&
-          typeof message.content === 'string' ? (
-          <BotMessage content={message.content} />
-        ) : null
-    }))
+    .map((message, index) => {
+      console.log(`message`, message.content)
+      return {
+        id: `${aiState.chatId}-${index}`,
+        display:
+          message.role === 'tool' ? (
+            (message.content as any).map((tool: any) => {
+              return tool.toolName === 'listStocks' ? (
+                <BotCard>
+                  {/* TODO: Infer types based on the tool result*/}
+                  <Stocks props={tool.result} />
+                </BotCard>
+              ) : tool.toolName === 'showStockPrice' ? (
+                <BotCard>
+                  <Stock props={tool.result} />
+                </BotCard>
+              ) : tool.toolName === 'showStockPurchase' ? (
+                <BotCard>
+                  <Purchase props={tool.result} />
+                </BotCard>
+              ) : tool.toolName === 'getEvents' ? (
+                <BotCard>
+                  <Events props={tool.result} />
+                </BotCard>
+              ) : null
+            })
+          ) : message.role === 'user' ? (
+            <UserMessage>{message.content as string}</UserMessage>
+          ) : message.role === 'assistant' &&
+            typeof message.content === 'string' ? (
+            <BotMessage content={message.content} />
+          ) : null
+      }
+    })
 }
