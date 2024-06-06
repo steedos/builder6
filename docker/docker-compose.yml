@@ -1,10 +1,10 @@
 version: "3.9"
 
 services:
-  steedos-enterprise:
-    image: ecr.aws.steedos.cn/dockerhub/steedos/steedos-enterprise:2.7.1-beta.16
+  steedos-community:
+    image: ecr.aws.steedos.cn/dockerhub/steedos/steedos-community:2.7.1-beta.16
     ports:
-      - "5000:5000"    # Steedos
+      - "5000:3000"    # Steedos
       - "27017:27017"  # MongoDB
       - "9001:9001"    # Supervisor
       - "6379:6379"    # Redis
@@ -12,6 +12,7 @@ services:
       - ../.env
       - ../.env.local
     environment:
+      - ROOT_URL=https://5000-rose-rhinoceros-u566xbt3.ws.vscode.steedos.cn/
       - TRANSPORTER=redis://redis:6379
       - CACHER=redis://redis:6379/1
     volumes:
@@ -25,6 +26,9 @@ services:
       dockerfile: ./docker/Dockerfile
     image: steedos/builder6:latest
     container_name: builder6
+    env_file:
+      - ../.env
+      - ../.env.local
     environment:
       - TRANSPORTER=redis://redis:6379
       - CACHER=redis://redis:6379/1

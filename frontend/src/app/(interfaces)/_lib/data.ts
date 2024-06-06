@@ -2,37 +2,30 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-06-03 10:03:32
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-05 07:07:52
+ * @LastEditTime: 2024-06-05 10:02:22
  * @FilePath: /builder6/frontend/src/app/(interfaces)/interfaces/lib/data.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-const axios = require('axios');
+import { getRecord, updateRecord, getRecords } from '@/lib/b6CloudDB'
+
+const PROJECT_OBJECT = "b6_projects";
+const PAGE_OBJECT = "b6_pages";
 
 export async function getInterface(projectId: string) {
     try {
-        const result = await getRecord("b6_projects", projectId);
-        if (result?.data?.data) {
-            return result.data.data
-        }
-        else {
-            return {}
-        }
+        const result = await getRecord(PROJECT_OBJECT, projectId);
+        return result;
     } catch (error) {
-        return {}
+        return null
     }
 }
 
 export async function getPage(pageId: string) {
     try {
-        const result = await getRecord("b6_pages", pageId);
-        if (result?.data?.data) {
-            return result.data.data
-        }
-        else {
-            return {}
-        }
+        const result = await getRecord(PAGE_OBJECT, pageId);
+        return result;
     } catch (error) {
-        return {}
+        return null;
     }
 }
 
@@ -46,22 +39,6 @@ export function getPageSchema(page: any) {
         }
     } catch (error) {
         console.log("===getPageSchema====error=====", error);
-        return {}
-    }
-}
-
-export async function getRecord(objectName: string, id: string) {
-    try {
-        const url = `${process.env.STEEDOS_ROOT_URL}/api/v1/${objectName}/${id}`;
-        // TODO:换成aws请求
-        const result = await axios.get(url, {
-            "headers": {
-                "Authorization": `Bearer 66593dfaf7b089064654f128,6b009696cc7b2b6c02f7f262f3de2d0028c4ccefa95fc19be880b06dd91f36511903886ffc52511eba7bfb`
-            }
-        });
-        return result;
-    } catch (error) {
-        console.log("===getRecord====error=====", error);
         return {}
     }
 }

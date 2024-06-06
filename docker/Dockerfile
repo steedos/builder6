@@ -9,10 +9,10 @@ RUN apt-get update || : && apt-get install -y \
 
 WORKDIR /app
 
-COPY ../package.json .
-COPY ../steedos.config.js .
-COPY ../yarn.lock .
-COPY ../steedos-packages ./steedos-packages
+COPY ./docker-package.json ./package.json
+COPY ./docker-steedos.config.js ./steedos.config.js
+# COPY ../yarn.lock .
+COPY ./steedos-packages ./steedos-packages
 
 RUN yarn && yarn build 
 
