@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-06 09:55:55
+ * @LastEditTime: 2024-06-06 23:04:19
  * @FilePath: /builder6/steedos-packages/builder6/src/interfaces.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -75,7 +75,7 @@ module.exports = {
 
     return Buffer.from(`
       <!DOCTYPE html>
-      <html lang="${language}" translate="no">
+      <html translate="no">
         <head>
           <meta charset="UTF-8" />
         </head>

@@ -1,8 +1,8 @@
 /*
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
- * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-06-06 19:35:11
+ * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
+ * @LastEditTime: 2024-06-06 22:57:01
  * @Description: 
  */
 const path = require('path');
@@ -12,6 +12,7 @@ const pagesSchema = require("./interfaces/schema/pages");
 const appSettings = require("./interfaces/interfaces-settings");
 const appSettingsSchema = require("./interfaces/schema/settings/app");
 const pagesSettingsSchema = require("./interfaces/schema/settings/pages");
+const designer = require("./interfaces/designer/index");
 const events = require('./events')
 const methods = require('./methods')
 
@@ -43,13 +44,16 @@ module.exports = {
             isPackage: true
         }
     },
+    // actions: {
+    //     app,
+    //     appSchema,
+    //     pagesSchema,
+    //     appSettings,
+    //     appSettingsSchema,
+    //     pagesSettingsSchema,
+    // },
     actions: {
-        app,
-        appSchema,
-        pagesSchema,
-        appSettings,
-        appSettingsSchema,
-        pagesSettingsSchema
+        designer
     },
     hooks: {
     },
