@@ -13,9 +13,7 @@ const PAGE_OBJECT = "b6_pages";
 
 export async function getInterface(projectId: string) {
     try {
-        console.log("===getInterface====projectId===", projectId);
         const result = await getRecord(PROJECT_OBJECT, projectId);
-        console.log("===getInterface====result===", result);
         return result;
     } catch (error) {
         return null
@@ -24,9 +22,7 @@ export async function getInterface(projectId: string) {
 
 export async function getPage(pageId: string) {
     try {
-        console.log("===getPage====pageId===", pageId);
         const result = await getRecord(PAGE_OBJECT, pageId);
-        console.log("===getPage====result===", result);
         return result;
     } catch (error) {
         return null;
