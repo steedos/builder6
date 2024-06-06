@@ -37,10 +37,10 @@ amis:
   "options": [
     {
       "value": "static",
-      "body": "<div class=\"m-l-sm m-r-sm m-b-sm m-t-xs\"><svg class=\"mb-2 mr-2 slds-icon slds-icon--small slds-icon-text-default test-class inline\" aria-hidden=\"true\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#edit\"></use></svg>\n                                <div class=\"font-medium text-lg inline\">Static</div>\n                                <div class=\"text-sm\">Show the same message at he start of every conversation</div>\n</div>"
+      "body": "<div class=\"m-l-sm m-r-sm m-b-sm m-t-xs\"><svg class=\"mb-2 mr-2 slds-icon slds-icon--small slds-icon-text-default test-class inline\" aria-hidden=\"true\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#edit\"></use></svg>\n                                <div class=\"font-medium text-lg inline\">静态</div>\n                                <div class=\"text-sm\">在每次对话开始时显示相同的信息。</div>\n</div>"
     },
     {
       "value": "generated",
-      "body": "<div class=\"m-l-sm m-r-sm  m-b-sm m-t-xs\"><svg class=\"mb-2 mr-2 slds-icon slds-icon--small slds-icon-text-default test-class inline\" aria-hidden=\"true\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#magicwand\"></use></svg>\n                                <div class=\"font-medium text-lg inline\">Generated</div>\n                            <div class=\"text-sm\">Use AI to generate a unique greeting for every conversation</div>\n</div>"
+      "body": "<div class=\"m-l-sm m-r-sm  m-b-sm m-t-xs\"><svg class=\"mb-2 mr-2 slds-icon slds-icon--small slds-icon-text-default test-class inline\" aria-hidden=\"true\"><use xlink:href=\"/assets/icons/utility-sprite/svg/symbols.svg#magicwand\"></use></svg>\n                                <div class=\"font-medium text-lg inline\">生成</div>\n                            <div class=\"text-sm\">使用 AI 为每次对话生成独特的问候语。</div>\n</div>"
     }
   ]

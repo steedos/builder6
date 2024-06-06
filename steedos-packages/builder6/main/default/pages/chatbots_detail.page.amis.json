@@ -1,20 +1,21 @@
 {
     "type": "page",
+    "title": "Welcome to Steedos",
     "body": [
         {
             "type": "flex",
-            "id": "u:74719a911e29",
+            "id": "u:1ba760c11831",
             "items": [
                 {
                     "type": "container",
                     "body": [
                         {
+                            "id": "u:3638656e8e37",
                             "type": "steedos-object-form",
                             "label": "对象表单",
-                            "objectApiName": "${objectName}",
+                            "objectApiName": "b6_chatbots",
                             "recordId": "${recordId}",
                             "appId": "${appId}",
-                            "id": "u:3638656e8e37",
                             "mode": "edit",
                             "className": "mb-4",
                             "enableInitApi": false,
@@ -45,32 +46,36 @@
                                         ]
                                     }
                                 },
-                                "debug": false
-                            }
+                                "debug": false,
+                                "className": "",
+                                "panelClassName": " p-4"
+                            },
+                            "height": "100%"
                         }
                     ],
                     "size": "none",
                     "style": {
                         "position": "static",
                         "display": "block",
-                        "flex": "1 1 auto",
-                        "flexGrow": 1,
-                        "flexBasis": 0
+                        "flex": "0 0 150px",
+                        "flexBasis": "650px",
+                        "overflowX": "scroll"
                     },
                     "wrapperBody": false,
                     "isFixedHeight": false,
                     "isFixedWidth": false,
-                    "id": "u:ea2c8ffc3f55"
+                    "id": "u:05614dd5e285",
+                    "editorState": "default"
                 },
                 {
                     "type": "container",
                     "body": [
                         {
+                            "id": "u:d0cb32b561f2",
                             "type": "iframe",
                             "src": "${window:Meteor.settings.public.B6_FRONTEND_URL}/chatbots/${recordId}",
-                            "id": "u:d0cb32b561f2",
-                            "className": "antd-Panel m-0 sm:rounded-lg shadow-none border-none antd-Panel--form",
-                            "editorState": "default"
+                            "className": "antd-Panel m-0 sm:rounded-lg shadow-none border-none antd-Panel--form  p-4",
+                            "height": "100%"
                         }
                     ],
                     "size": "none",
@@ -79,26 +84,24 @@
                         "display": "block",
                         "flex": "1 1 auto",
                         "flexGrow": 2,
-                        "flexBasis": 0
+                        "flexBasis": "0px"
                     },
                     "wrapperBody": false,
                     "isFixedHeight": false,
                     "isFixedWidth": false,
-                    "id": "u:06ec39d3ee54"
+                    "id": "u:582091f4824e",
+                    "editorState": "default"
                 }
             ],
             "style": {
                 "position": "relative",
                 "rowGap": "10px",
-                "columnGap": "10px",
-                "flexWrap": "nowrap",
-                "inset": "auto"
+                "columnGap": "10px"
             },
             "isFixedHeight": false,
             "isFixedWidth": false,
-            "className": "h-full",
-            "wrapperCustomStyle": {},
-            "editorState": "default"
+            "editorState": "default",
+            "className": "h-full"
         }
     ],
     "regions": [
