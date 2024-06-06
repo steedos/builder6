@@ -57,7 +57,7 @@ export default async function Layout({
   if(!record){
    return (
     <>
-      没有找到界面
+      没有找到界面：{params.interface_id}
     </>
    ); 
   }
