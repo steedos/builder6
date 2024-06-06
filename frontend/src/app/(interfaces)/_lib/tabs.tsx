@@ -24,8 +24,7 @@ const convertTabItemForSidebarItem = async function (tab: any) {
     } else if (tab.type === "page") {
         // 显示为对应的page的name，链接到page的url
         try {
-            const result = await getPage(tab.page);
-            const page = result?.data?.data;
+            const page = await getPage(tab.page);
             if (page) {
                 return {
                     ...tab,
