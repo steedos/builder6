@@ -1,6 +1,6 @@
 name: amis_schema
 filters: []
-hidden: false
+hidden: true
 is_wide: true
 label: Amis
 language: json
