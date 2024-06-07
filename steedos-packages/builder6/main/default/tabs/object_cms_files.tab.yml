@@ -1,0 +1,8 @@
+name: object_cms_files
+desktop: true
+icon: visualforce_page
+label: 页面
+mobile: true
+object: cms_files
+permissions: []
+type: object
