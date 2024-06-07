@@ -1,0 +1,10 @@
+name: builder
+filters: []
+hidden: false
+is_wide: true
+label: Builder Schema
+language: json
+required: false
+sort_no: 60
+type: code
+visible_on: '${type==="builder"}'

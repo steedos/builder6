@@ -16,6 +16,10 @@ options:
     value: html
   - label: Amis
     value: amis
+  - label: JSX
+    value: jsx
+  - label: Builder
+    value: builder
   - label: Markdown
     value: markdown
 primary: false

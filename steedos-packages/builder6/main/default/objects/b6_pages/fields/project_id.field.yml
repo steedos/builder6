@@ -17,7 +17,7 @@ reference_to: b6_projects
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 70
+sort_no: 910
 sortable: false
 static: false
 type: master_detail
