@@ -40,3 +40,6 @@ static: false
 type: markdown
 unique: false
 write_requires_master_read: false
+amis:
+  editorOptions: 
+    wordWrap: on
