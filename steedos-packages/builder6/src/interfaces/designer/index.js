@@ -9,6 +9,7 @@
 const _ = require("lodash");
 const ejs = require('ejs');
 const pageDesignerLatest = require('./latest');
+const pageDesignerSave = require('./save');
 
 const pageDesigner = {
   rest: [{
@@ -77,5 +78,6 @@ const pageDesigner = {
 
 module.exports = {
   pageDesigner,
-  pageDesignerLatest
+  pageDesignerLatest,
+  pageDesignerSave
 }
