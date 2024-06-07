@@ -9,7 +9,7 @@
   <builder-fiddle host="<%=builderHost%>"></builder-fiddle>
   <script>
     const settings = {
-      rootUrl: __meteor_runtime_config__ && __meteor_runtime_config__.ROOT_URL,
+      rootUrl: "<%=rootUrl%>",
       userId: "<%=userId%>",
       tenantId: "<%=tenantId%>",
       authToken: "<%=authToken%>",
