@@ -1,0 +1,46 @@
+name: design
+amis_schema: |-
+  {
+      "type": "service",
+      "body": [
+          {
+              "type": "button",
+              "label": "设计",
+              "id": "u:design",
+              "editorState": "default",
+              "onEvent": {
+                  "click": {
+                      "weight": 0,
+                      "actions": [
+                          {
+                              "ignoreError": false,
+                              "actionType": "url",
+                              "args": {
+                                  "url": "/api/builder6/interface/page-designer/${_id}"
+                              }
+                          }
+                      ]
+                  }
+              }
+          }
+      ],
+      "regions": [
+          "body"
+      ],
+      "data": {
+          "context": {},
+          "dataComponentId": "",
+          "record_id": "",
+          "record": {},
+          "permissions": {}
+      },
+      "bodyClassName": "p-0",
+      "id": "u:7e83352faf6e",
+      "dsType": "api"
+  }
+is_enable: true
+label: 设计
+locked: false
+'on': record_only
+type: amis_button
+visible: true
