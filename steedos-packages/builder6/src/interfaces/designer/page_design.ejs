@@ -96,27 +96,20 @@
         delete schema.data.context
       }
 
-      try {
-        delete schema.data.recordId;
-        delete schema.data.objectName;
-      } catch (error) {
-
-      }
-
-      // return await axios.put(
-      //   `${rootUrl}/service/api/page/pageVersion/${pageId}`,
-      //   {
-      //     withCredentials: true,
-      //     schema: JSON.stringify(schema, null, 4), //直接存储json格式会导致react form异常。
-      //   },
-      //   {
-      //     headers: { Authorization: `Bearer ${tenantId},${authToken}` },
-      //   }
-      // )
-      //   .catch(function (error) {
-      //     // handle error
-      //     console.log(error);
-      //   });
+      return await axios.put(
+        `/api/builder6/interface/page-designer/${pageId}/save`,
+        {
+          withCredentials: true,
+          schema: JSON.stringify(schema, null, 4), //直接存储json格式会导致react form异常。
+        },
+        {
+          headers: { Authorization: `Bearer ${tenantId},${authToken}` },
+        }
+      )
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
     };
 
     const deployPageVersion = async () => {
