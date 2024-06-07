@@ -2,7 +2,7 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-06 22:57:01
+ * @LastEditTime: 2024-06-07 08:44:06
  * @Description: 
  */
 const path = require('path');
@@ -53,7 +53,7 @@ module.exports = {
     //     pagesSettingsSchema,
     // },
     actions: {
-        designer
+        ...designer
     },
     hooks: {
     },

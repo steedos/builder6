@@ -44,19 +44,15 @@
       };
 
       if (pageId) {
-        // const result = await axios.get(
-        //   `${rootUrl}/service/api/page/pageVersion/${pageId}/latest/`,
-        //   {
-        //     withCredentials: true,
-        //     headers: { Authorization: `Bearer ${tenantId},${authToken}` },
-        //   }
-        // );
-        const result = {
-          data: {
+        const result = await axios.get(
+          `/api/builder6/interface/page-designer/${pageId}/latest`,
+          {
+            withCredentials: true,
+            headers: { Authorization: `Bearer ${tenantId},${authToken}` },
           }
-        };
+        );
         if (result?.data) {
-          let schema = result.data.schema || initialContent;
+          let schema = result.data.amis_schema || initialContent;
 
           let pageType = result.data.type;
           if (typeof schema === "string") {
@@ -163,6 +159,10 @@
       if (data) {
         if (data.type === 'builder.loadContent') {
           loadPage().then((content) => {
+            if (!content.regions) {
+              //不设置regions的话，会显示工具栏和边栏
+              Object.assign(content, { regions: ["body"] });
+            }
             comp.messageFrame('builder.contentChanged', { AmisSchema: content })
           })
         }

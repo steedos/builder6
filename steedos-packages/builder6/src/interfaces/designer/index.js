@@ -2,17 +2,18 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-05-06 02:26:31
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-07 02:59:18
+ * @LastEditTime: 2024-06-07 08:03:58
  * @FilePath: /builder6/steedos-packages/builder6/src/interfaces.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 const _ = require("lodash");
 const ejs = require('ejs');
+const pageDesignerLatest = require('./latest');
 
-module.exports = {
+const pageDesigner = {
   rest: [{
     method: "GET",
-    fullPath: "/api/interface/pageDesign/:pageId"
+    fullPath: "/api/builder6/interface/page-designer/:pageId"
   }],
   handler: async function (ctx) {
     const {
@@ -44,7 +45,7 @@ module.exports = {
       const filename = __dirname + '/page_design.ejs';
       const data = {
         builderHost,
-        rootUrl: "",
+        rootUrl: process.env.ROOT_URL,
         tenantId: userSession.spaceId,
         userId: userSession.userId,
         authToken: userSession.authToken,
@@ -52,7 +53,6 @@ module.exports = {
         userSession: userSession
       };
       const options = {};
-      console.log("==html==before==renderFile=====", filename, data, options);
       html = await ejs.renderFile(filename, data, options);
     } catch (error) {
       html = `
@@ -73,4 +73,9 @@ module.exports = {
 
     return Buffer.from(html);
   }
+}
+
+module.exports = {
+  pageDesigner,
+  pageDesignerLatest
 }
