@@ -25,6 +25,6 @@ unique: false
 write_requires_master_read: false
 visible_on: '{{displayDisclosure === true}}'
 description: This input accepts markdown links.
-defaultValue: This is an automated chatbot response. [Learn more](https://builder6.com)
+defaultValue: 这是一个自动化的聊天机器人回复。[了解更多](https://builder6.com)
 amis:
   clearValueOnHidden: false
