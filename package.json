@@ -6,10 +6,11 @@
   ],
   "repository": "git://github.com/steedos-labs/contract.git",
   "scripts": {
-    "build": "yarn workspaces run build",
-    "build:watch": "yarn workspaces run build:watch",
+    "build": "nx run-many --target=build --all",
+    "build:watch": "nx run-many --target=build:watch --all",
     "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js",
-    "dev": "moleculer-runner steedos-packages/*/src/index.js --config steedos.config.js --hot --repl",
+    "start:watch": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js --hot",
+    "dev": "cross-env-shell FORCE_COLOR=true concurrently -n \"BUILD,RUN\" -c \"bgBlue.bold,bgGreen.bold\" \"yarn:build:watch\" \"yarn:start:watch\"",
     "platform": "cd steedos-platform && yarn && yarn start",
     "platform:docker": "docker-compose -f steedos-platform/docker-compose.yml up"
   },
@@ -21,7 +22,10 @@
     "moleculer-repl": "^0.7.3"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "lerna": "^5.4.0",
+    "nx": "19.2.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-node-externals": "^3.0.0"

@@ -16,3 +16,8 @@ logs
 
 yarn.lock
 package-lock.json
+
+
+
+.nx/cache
+.nx/workspace-data

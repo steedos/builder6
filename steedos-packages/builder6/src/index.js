@@ -61,7 +61,7 @@ module.exports = {
     events: events,
     async started() {
         this.broker.call(`steedos-server.setSettings`, {PUBLIC_SETTINGS: {B6_FRONTEND_URL: process.env.B6_FRONTEND_URL}}).catch(()=>{
-            
+              
         })
     }
 
