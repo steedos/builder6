@@ -10,7 +10,7 @@
     "release": "yarn build && npm publish --registry https://registry.npmjs.org"
   },
   "dependencies": {
-    "ejs": "3.1.8",
+    "ejs": "^3.1.10",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
