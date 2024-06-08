@@ -14,6 +14,7 @@ const appSettingsSchema = require("./interfaces/schema/settings/app");
 const pagesSettingsSchema = require("./interfaces/schema/settings/pages");
 const designer = require("./interfaces/designer/index");
 const events = require('./events')
+const triggers = require('./triggers')
 const methods = require('./methods')
 
 const package = require('../package.json');
@@ -53,7 +54,8 @@ module.exports = {
     //     pagesSettingsSchema,
     // },
     actions: {
-        ...designer
+        ...designer,
+        ...triggers
     },
     hooks: {
     },

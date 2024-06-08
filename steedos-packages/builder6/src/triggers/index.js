@@ -1,0 +1,1 @@
+export * from './b6_pages'
