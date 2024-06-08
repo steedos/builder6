@@ -33,6 +33,7 @@ tasks:
     command: |
       git config pull.rebase false
       echo "METADATA_SERVER=$(gp url 5000)" >> .env.local
+      nvm use 18
       yarn
       yarn build
       gp await-port 5000
