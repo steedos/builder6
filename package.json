@@ -9,10 +9,9 @@
     "build": "yarn workspaces run build",
     "build:watch": "yarn workspaces run build:watch",
     "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js",
-    "dev": "moleculer-runner steedos-packages/*/src/index.{js} --config steedos.config.js --hot --repl",
+    "dev": "moleculer-runner steedos-packages/*/src/index.js --config steedos.config.js --hot --repl",
     "platform": "cd steedos-platform && yarn && yarn start",
-    "platform:docker": "docker-compose -f steedos-platform/docker-compose.yml up",
-    "platform:docker:ee": "docker-compose -f steedos-platform/docker-compose-ee.yml up"
+    "platform:docker": "docker-compose -f steedos-platform/docker-compose.yml up"
   },
   "dependencies": {
     "@steedos/service-package-loader": "2.7.1-beta.26",
@@ -24,7 +23,6 @@
   "devDependencies": {
     "@steedos/schemas": "^2.7",
     "lerna": "^5.4.0",
-    "ts-node": "^10.9.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-node-externals": "^3.0.0"
