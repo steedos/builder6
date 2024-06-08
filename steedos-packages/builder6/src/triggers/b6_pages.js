@@ -42,3 +42,14 @@ export const pagesBeforeUpdate = {
         }
     }   
 }
+
+export const pagesAfterUpdate = {
+    trigger: { 
+        listenTo: 'b6_pages', 
+        when: ['afterInsert', 'afterpdate']
+    },
+    async handler(ctx) {
+        const {doc} = ctx.params;
+        this.broker.logger.info('b6_pages', ctx)
+    }
+}

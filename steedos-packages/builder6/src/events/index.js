@@ -19,8 +19,8 @@ module.exports = {
       if(objectApiName && id && _.includes(this.settings.B6_CLOUD_META_OBJECTS, objectApiName)){
         await this.builder6Update(objectApiName, id)
       }
-      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SPACE_OBJECTS, objectApiName)){
-        await this.builder6SpaceUpdate(objectApiName, id)
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_PROJECT_OBJECTS, objectApiName)){
+        await this.builder6ProjectUpdate(objectApiName, id)
       }
     },
     "*.updated": async function(payload, sender, eventName, ctx){
@@ -31,8 +31,8 @@ module.exports = {
       if(objectApiName && id && _.includes(this.settings.B6_CLOUD_META_OBJECTS, objectApiName)){
         await this.builder6Update(objectApiName, id)
       }
-      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SPACE_OBJECTS, objectApiName)){
-        await this.builder6SpaceUpdate(objectApiName, id)
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_PROJECT_OBJECTS, objectApiName)){
+        await this.builder6ProjectUpdate(objectApiName, id)
       }
     },
     "*.deleted": async function(payload, sender, eventName, ctx){
@@ -43,8 +43,8 @@ module.exports = {
       if(objectApiName && id && _.includes(this.settings.B6_CLOUD_META_OBJECTS, objectApiName)){
         await this.builder6Delete(objectApiName, id)
       }
-      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_SPACE_OBJECTS, objectApiName)){
-        await this.builder6SpaceDelete(objectApiName, id)
+      if(objectApiName && id && _.includes(this.settings.B6_CLOUD_PROJECT_OBJECTS, objectApiName)){
+        await this.builder6ProjectDelete(objectApiName, id)
       }
     }
   }

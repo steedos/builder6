@@ -14,7 +14,7 @@ multiple: false
 primary: false
 readonly: false
 reference_to: b6_projects
-required: false
+required: true
 searchable: false
 show_as_qr: false
 sort_no: 910
