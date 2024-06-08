@@ -13,8 +13,9 @@ function extractClasses(data, classes = []) {
   } else if (typeof data === 'object') {
     // 如果 data 是对象，遍历其属性
     for (const key in data) {
-      if ((key === 'className' || key === 'class') && typeof data[key] === 'string') {
-        classes.push(data[key]);
+      //if ((key === 'className' || key === 'class') && typeof data[key] === 'string') {
+      if (typeof data[key] === 'string') {
+          classes.push(data[key]);
       } else if (Array.isArray(data[key])) {
         // 如果属性值是数组，递归处理数组中的每个元素
         extractClasses(data[key], classes);
