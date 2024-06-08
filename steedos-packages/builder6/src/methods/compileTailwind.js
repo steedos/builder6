@@ -35,7 +35,7 @@ exports.compileTailwind = async (content) => {
   config = {}
 
   const classNames = extractClasses(content)
-  
+
   const raw = [...new Set(classNames.join(' ').split(' '))].join(' ');
 
   // 设置 Tailwind CSS 的内容配置
@@ -57,7 +57,6 @@ exports.compileTailwind = async (content) => {
       autoprefixer
     ]).process(cssInput, { from: undefined });
 
-    console.log('compileTailwind', result.css)
 
     return result.css
   } catch (error) {

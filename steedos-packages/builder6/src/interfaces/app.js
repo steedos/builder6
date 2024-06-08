@@ -26,10 +26,8 @@ module.exports = {
           filters: ['name', '=', "mab_app"], 
       });
       const page = pages && pages[0]
-      console.log(page)
       const pageVersion = await ctx.call(`page.getLatestPageVersion`, {pageId: page._id});
       const pageSchema = pageVersion?.schema || {};
-      console.log(page, pageVersion, pageSchema)
 
       ctx.meta.$responseType = "text/html; charset=UTF-8";
   
