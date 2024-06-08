@@ -14,3 +14,9 @@ services:
       - .env.local
     volumes:
       - "./steedos-storage:/steedos-storage"
+    networks:
+      - steedos_network
+
+networks:
+  steedos_network:
+    driver: bridge

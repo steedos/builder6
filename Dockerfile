@@ -1,7 +1,7 @@
 FROM node:18-slim
 
 RUN apt-get update || : && apt-get install -y \
-    python \
+    python-is-python3 \
     curl \
     build-essential
     
