@@ -1,0 +1,12 @@
+name: css
+filters: []
+hidden: false
+is_wide: true
+label: CSS
+language: css
+required: false
+sort_no: 69
+type: code
+description: 自动生成的css
+readonly: true
+
