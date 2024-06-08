@@ -23,7 +23,7 @@ services:
   builder6:
     build: 
       context: ../
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./Dockerfile
     image: steedos/builder6:latest
     container_name: builder6
     env_file:
