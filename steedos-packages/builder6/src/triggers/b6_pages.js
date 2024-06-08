@@ -17,11 +17,26 @@ export const pagesBeforeUpdate = {
 
         if (doc.type === 'jsx' && doc.jsx) {
             try {
-                const builder = await this.compileJsx(doc.jsx);
+                const builder = await this.compileJsx(doc);
                 doc.builder = JSON.stringify(builder);
             } catch (e) { this.broker.logger.error(e)}
         }
-        console.log(doc)
+
+        if (doc.type === 'html' && doc.html) {
+            try {
+                const builder = await this.compileHtml(doc);
+                doc.builder = JSON.stringify(builder);
+            } catch (e) { this.broker.logger.error(e)}
+        }
+
+        if (doc.type === 'amis' && doc.amis_schema) {
+            try {
+                const builder = await this.compileAmis(doc);
+                doc.builder = JSON.stringify(builder);
+            } catch (e) { this.broker.logger.error(e)}
+        }
+
+
         return  {
             doc
         }

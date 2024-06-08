@@ -1,7 +1,7 @@
 const { parseJsx, componentToBuilder } = require("@builder.io/mitosis");
 
-export const compileJsx = {
-  async handler(jsx) {
+export const compileJsx = async (page) => {
+    const {jsx, tailwind, _id} = page
     try {
 
       if (!jsx) {
@@ -15,6 +15,7 @@ export const compileJsx = {
       });
 
       console.log('compileJsx', output)
+      output.data.cssCode = tailwind;
 
       return output
     } catch (error) {
@@ -23,5 +24,4 @@ export const compileJsx = {
           details: error.message
       }
     }
-  }
 }
