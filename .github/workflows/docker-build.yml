@@ -13,6 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Extract version from tag
+        id: extract_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -41,17 +45,15 @@ jobs:
           images: |
             steedos/builder6
             252208178451.dkr.ecr.cn-northwest-1.amazonaws.com.cn/dockerhub/steedos/builder6
-          tags: |
-            type=ref,event=tag
-            type=sha
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            steedos/builder6:${{ env.VERSION }}
+            252208178451.dkr.ecr.cn-northwest-1.amazonaws.com.cn/dockerhub/steedos/builder6:${{ env.VERSION }}
 
       - name: Log out from Docker Hub
         run: docker logout
