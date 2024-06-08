@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   steedos-community:
-    image: ecr.aws.steedos.cn/dockerhub/steedos/steedos-community:2.7.1-beta.16
+    image: ecr.aws.steedos.cn/dockerhub/steedos/steedos-community:2.7
     ports:
       - "5000:3000"    # Steedos
       - "27017:27017"  # MongoDB
