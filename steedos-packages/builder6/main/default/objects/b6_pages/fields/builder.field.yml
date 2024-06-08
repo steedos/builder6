@@ -7,5 +7,4 @@ language: json
 required: false
 sort_no: 68
 type: code
-visible_on: '${type==="jsx"}'
 readonly: true

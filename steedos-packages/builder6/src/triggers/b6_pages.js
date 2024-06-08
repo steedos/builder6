@@ -15,7 +15,11 @@ export const pagesBeforeUpdate = {
         }
             
         try {
-            doc.css = await this.compileTailwind(doc.jsx);
+            let content = "";
+            if (doc.type === 'jsx') content = doc.jsx
+            if (doc.type === 'html') content = doc.html
+            if (doc.type === 'amis') content = JSON.parse(doc.amis_schema)
+            doc.css = await this.compileTailwind(content);
         } catch (e) { this.broker.logger.error(e)}
 
         return  {
