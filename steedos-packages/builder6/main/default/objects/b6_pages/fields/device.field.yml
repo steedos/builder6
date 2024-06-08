@@ -9,7 +9,9 @@ sort_no: 810
 type: select
 multiple: true
 options:
-  - label: Desktop
+  - label: 桌面
     value: desktop
-  - label: Mobile
+  - label: 平板
+    value: tablet
+  - label: 手机
     value: mobile

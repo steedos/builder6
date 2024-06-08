@@ -4,7 +4,7 @@ enable_api: true
 enable_dataloader: true
 enable_enhanced_lookup: false
 enable_events: false
-enable_files: false
+enable_files: true
 enable_form_tabs: false
 enable_inline_edit: true
 enable_instances: false
