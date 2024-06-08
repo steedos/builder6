@@ -39,7 +39,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            steedos/steedos-builder6
+            steedos/builder6
             252208178451.dkr.ecr.cn-northwest-1.amazonaws.com.cn/dockerhub/steedos/builder6
           tags: |
             type=ref,event=tag
