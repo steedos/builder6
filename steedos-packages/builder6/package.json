@@ -16,6 +16,5 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@steedos/objectql": "^2.6.16"
   }
 }
