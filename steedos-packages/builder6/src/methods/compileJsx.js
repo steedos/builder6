@@ -14,7 +14,6 @@ export const compileJsx = async (page) => {
         component
       });
 
-      console.log('compileJsx', output)
       output.data.cssCode = tailwind;
 
       return output

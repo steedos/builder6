@@ -35,7 +35,7 @@ exports.compileTailwind = async (content) => {
   config = {}
 
   const classNames = extractClasses(content)
-  console.log('compileTailwind', classNames)
+  
   const raw = [...new Set(classNames.join(' ').split(' '))].join(' ');
 
   // 设置 Tailwind CSS 的内容配置

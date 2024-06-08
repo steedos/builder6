@@ -20,7 +20,7 @@ export const compileAmis = async (page) => {
                 component: {
                     name: "Core:Amis",
                     options: {
-                        schema: amis_schema,
+                        schema: JSON.parse(amis_schema),
                         data: {}
                     }
                 },
@@ -37,7 +37,6 @@ export const compileAmis = async (page) => {
         }
     }
 
-    console.log('compileAmis', builder)
     return builder;
         
 }

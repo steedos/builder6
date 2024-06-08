@@ -35,7 +35,6 @@ export const compileHtml = async (page) => {
         }
     }
 
-    console.log('compileHtml', builder)
     return builder;
         
 }
