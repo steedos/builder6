@@ -10,8 +10,11 @@
     "release": "yarn build && npm publish --registry https://registry.npmjs.org"
   },
   "dependencies": {
+    "@builder.io/mitosis": "^0.3.3",
     "ejs": "3.1.8",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4"
   },
   "devDependencies": {
     "@steedos/objectql": "^2.6.16"

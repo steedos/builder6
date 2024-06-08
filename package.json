@@ -8,25 +8,23 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "build:watch": "yarn workspaces run build:watch",
-    "start": "moleculer-runner steedos-packages/*/package.service.js --config docker-steedos.config.js --hot --repl",
-    "repl": "moleculer-runner --repl",
-    "st:start": "steedos start",
-    "st:platform": "docker-compose -f steedos-platform/docker-compose.yml up",
-    "st:platform-ee": "docker-compose -f steedos-platform/docker-compose-ee.yml up",
-    "st:packages": "./node_modules/moleculer/bin/moleculer-runner.js steedos-packages/*/package.service.js --config steedos.dev.config.js",
-    "dev": "ts-node ./node_modules/moleculer/bin/moleculer-runner.js steedos-packages/*/src/index.{js,ts} --config steedos.dev.config.js --hot --repl"
+    "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js",
+    "dev": "moleculer-runner steedos-packages/*/src/index.{js} --config steedos.config.js --hot --repl",
+    "platform": "cd steedos-platform && yarn && yarn start",
+    "platform:docker": "docker-compose -f steedos-platform/docker-compose.yml up",
+    "platform:docker:ee": "docker-compose -f steedos-platform/docker-compose-ee.yml up"
   },
   "dependencies": {
-    "@steedos/service-community": "2.7.1-beta.26",
     "@steedos/service-package-loader": "2.7.1-beta.26",
     "bcryptjs": "^2.4.3",
     "dotenv-flow": "^3.2.0",
-    "moleculer-repl": "^0.7.3",
-    "ioredis": "^5.3.1"
+    "ioredis": "^5.3.1",
+    "moleculer-repl": "^0.7.3"
   },
   "devDependencies": {
     "@steedos/schemas": "^2.7",
     "lerna": "^5.4.0",
+    "ts-node": "^10.9.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-node-externals": "^3.0.0"

@@ -1,10 +1,3 @@
-/*
- * @Author: baozhoutao@steedos.com
- * @Date: 2024-06-05 17:01:47
- * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-06-05 17:02:35
- * @Description: 
- */
 require('dotenv-flow').config({});
 
 // Moleculer Configuration
@@ -20,6 +13,7 @@ module.exports = {
 
 	// Called after broker started.
 	started(broker) {
+		broker.createService(require("@steedos/service-community"));
 	},
 
 };
