@@ -25,10 +25,12 @@ module.exports = {
     },
     "*.updated": async function(payload, sender, eventName, ctx){
       const { objectApiName, id, spaceId, userId, previousDoc } = ctx.params;
+      console.log(objectApiName, id)
       if(ctx.eventName != `@${objectApiName}.updated`){
         return
       }
       if(objectApiName && id && _.includes(this.settings.B6_CLOUD_META_OBJECTS, objectApiName)){
+        console.log(objectApiName, id)
         await this.builder6Update(objectApiName, id)
       }
       if(objectApiName && id && _.includes(this.settings.B6_CLOUD_PROJECT_OBJECTS, objectApiName)){

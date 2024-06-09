@@ -1,4 +1,5 @@
 const { parseJsx, componentToBuilder } = require("@builder.io/mitosis");
+const uuid = require("uuid");
 
 export const compileJsx = async (page) => {
     const {jsx, tailwind, _id} = page
@@ -15,6 +16,7 @@ export const compileJsx = async (page) => {
       });
 
       output.data.cssCode = tailwind;
+      output.id = _id || uuid.v4()
 
       return output
     } catch (error) {

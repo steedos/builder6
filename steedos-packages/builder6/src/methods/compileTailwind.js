@@ -31,7 +31,8 @@ function extractClasses(data, classes = []) {
   return classes;
 }
 
-exports.compileTailwind = async (content) => {
+exports.compileTailwind = async (content, id) => {
+  console.log(id)
   config = {}
 
   const classNames = extractClasses(content)
@@ -40,6 +41,7 @@ exports.compileTailwind = async (content) => {
 
   // 设置 Tailwind CSS 的内容配置
   const tailwindConfig = {
+    important: `.builder-component-${id}`,
     content: [{ raw }],
     theme: { extend: {} },
     plugins: [],

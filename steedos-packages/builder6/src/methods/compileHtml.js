@@ -7,14 +7,15 @@ export const compileHtml = async (page) => {
         return { error: "html is required" }
     }
 
-    const blockId = _id || uuid.v4()
+    const id = _id || uuid.v4()
     const builder = {
+        id,
         data: {
             cssCode: tailwind,
             blocks: [{
                 "@type": "@builder.io/sdk:Element",
                 "@version": 2,
-                id: `builder-${blockId}`,
+                id: `builder-${uuid.v4()}`,
                 component: {
                     name: "Custom Code",
                     options: {

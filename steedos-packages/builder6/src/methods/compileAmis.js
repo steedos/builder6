@@ -7,16 +7,17 @@ export const compileAmis = async (page) => {
         return { error: "amis is required" }
     }
 
-    const blockId = _id || uuid.v4()
+    const id = _id || uuid.v4()
 
     const builder = {
+        id,
         data: {
             cssCode: tailwind,
             blocks: [{
                 "@type": "@builder.io/sdk:Element",
                 "@version": 2,
                 layerName: "Page",
-                id: `builder-${blockId}`,
+                id: `builder-${uuid.v4()}`,
                 component: {
                     name: "Core:Amis",
                     options: {
