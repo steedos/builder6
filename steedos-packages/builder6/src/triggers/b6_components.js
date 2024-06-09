@@ -1,11 +1,11 @@
-export const pagesBeforeUpdate = {
+export const componentBeforeUpdate = {
     trigger: { 
-        listenTo: 'b6_pages', 
+        listenTo: 'b6_components', 
         when: ['beforeInsert', 'beforeUpdate']
     },
     async handler(ctx) {
         const {doc} = ctx.params;
-        this.broker.logger.info('b6_pages', ctx)
+        this.broker.logger.info('b6_components', ctx)
 
         try {
             let content = "";
