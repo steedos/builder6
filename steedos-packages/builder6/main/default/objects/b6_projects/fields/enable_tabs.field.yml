@@ -1,6 +1,4 @@
 name: enable_tabs
-amis:
-  mode: normal
 filterable: true
 group: 菜单
 hidden: false
