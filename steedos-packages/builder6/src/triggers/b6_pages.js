@@ -7,7 +7,6 @@ export const pagesBeforeUpdate = {
     },
     async handler(ctx) {
         const {doc, id = uuid.v4(), isInsert} = ctx.params;
-        this.broker.logger.info('b6_pages', ctx)
 
         if (isInsert) doc._id = id;
 

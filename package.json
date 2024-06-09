@@ -10,7 +10,7 @@
     "build:watch": "nx run-many --target=build:watch --all",
     "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js",
     "start:watch": "STEEDOS_LOG_LEVEL=info moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js --hot",
-    "dev": "nvm use 18 && cross-env-shell FORCE_COLOR=true concurrently -n \"BUILD,RUN\" -c \"bgBlue.bold,bgGreen.bold\" \"yarn:build:watch\" \"yarn:start:watch\"",
+    "dev": "cross-env-shell FORCE_COLOR=true concurrently -n \"BUILD,RUN\" -c \"bgBlue.bold,bgGreen.bold\" \"yarn:build:watch\" \"yarn:start:watch\"",
     "platform": "cd steedos-platform && yarn && yarn start",
     "platform:docker": "docker-compose -f steedos-platform/docker-compose.yml up"
   },

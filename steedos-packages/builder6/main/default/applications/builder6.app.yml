@@ -17,7 +17,7 @@ tab_items:
   object_b6_projects:
     index: 2
   object_b6_tables:
-    index: 5
+    index: 3
 tabs:
   - object_b6_chatbots
   - object_b6_projects

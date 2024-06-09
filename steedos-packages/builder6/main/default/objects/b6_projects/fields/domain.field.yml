@@ -1,5 +1,6 @@
 name: domain
 create: true
+description: 企业版可自定义域名
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -10,14 +11,14 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 域名
+label: 域名前缀
 multiple: false
 primary: false
-readonly: true
+readonly: false
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 40
+sort_no: 30
 sortable: true
 static: false
 type: text
