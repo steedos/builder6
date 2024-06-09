@@ -1,11 +1,11 @@
 name: tabs.$.page
 amis:
   requiredOn: '${type == "page"}'
-group: 界面
+group: 菜单
 hidden: false
 label: 页面
 reference_to: b6_pages
 required: false
-sort_no: 130
+sort_no: 170
 type: lookup
 visible_on: '${type == "page"}'

@@ -3,10 +3,6 @@ filterable: true
 hidden: false
 index: true
 label: 设备
-required: false
-searchable: true
-sort_no: 810
-type: select
 multiple: true
 options:
   - label: 桌面
@@ -15,3 +11,7 @@ options:
     value: tablet
   - label: 手机
     value: mobile
+required: false
+searchable: true
+sort_no: 810
+type: select

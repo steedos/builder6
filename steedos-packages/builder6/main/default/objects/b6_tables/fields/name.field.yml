@@ -1,8 +1,8 @@
 name: name
 filterable: true
 index: true
-label: 名称
 is_wide: false
+label: 名称
 required: true
 searchable: true
 sort_no: 10

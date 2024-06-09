@@ -62,5 +62,5 @@ options:
   - label: 静态展示
     value: static
 required: true
-sort_no: 50
+sort_no: 400
 type: select

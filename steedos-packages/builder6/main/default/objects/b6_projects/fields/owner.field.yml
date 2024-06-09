@@ -1,8 +1,9 @@
 name: owner
-hidden: true
+group: 应用
+hidden: false
 index: true
 label: 所有者
 omit: true
-sort_no: 200
+sort_no: 50
 sortable: true
-visible_on: '{{false}}'
+visible_on: '{{true}}'

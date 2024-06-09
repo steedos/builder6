@@ -1,10 +1,11 @@
 name: tabs.$.icon
-group: 界面
+group: 菜单
 hidden: false
 label: 图标
 optionsFunction: !<tag:yaml.org,2002:js/function> |-
   function(
   ) {
+
 
 
 
@@ -28,7 +29,8 @@ optionsFunction: !<tag:yaml.org,2002:js/function> |-
 
 
 
+
   }
 required: false
-sort_no: 180
+sort_no: 200
 type: lookup

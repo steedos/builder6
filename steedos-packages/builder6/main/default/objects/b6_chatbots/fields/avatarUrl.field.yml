@@ -21,5 +21,5 @@ sortable: false
 static: false
 type: image
 unique: false
-write_requires_master_read: false
 visible_on: '{{false}}'
+write_requires_master_read: false

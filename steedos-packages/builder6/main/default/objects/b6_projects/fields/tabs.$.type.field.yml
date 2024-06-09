@@ -1,6 +1,6 @@
 name: tabs.$.type
 defaultValue: page
-group: 界面
+group: 菜单
 hidden: false
 label: 类型
 multiple: false

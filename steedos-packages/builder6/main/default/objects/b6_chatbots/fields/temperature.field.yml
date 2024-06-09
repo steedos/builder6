@@ -1,4 +1,11 @@
 name: temperature
+amis:
+  type: input-range
+  tooltipVisible: true
+  tooltipPlacement: right
+  min: 0
+  max: 1
+  step: 0.1
 create: true
 defaultValue: 0.7
 enable_enhanced_lookup: true
@@ -24,10 +31,3 @@ static: false
 type: number
 unique: false
 write_requires_master_read: false
-amis:
-  type: input-range
-  tooltipVisible: true
-  tooltipPlacement: right
-  min: 0
-  max: 1
-  step: 0.1

@@ -1,4 +1,6 @@
 name: defaultPrompt
+amis:
+  clearValueOnHidden: false
 create: true
 defaultValue: 打个招呼，告诉我你能做什么。
 enable_enhanced_lookup: true
@@ -19,12 +21,10 @@ required: false
 rows: 4
 searchable: false
 show_as_qr: false
-sort_no: 40
+sort_no: 230
 sortable: false
 static: false
 type: textarea
 unique: false
+visible_on: '{{defaultMessageMode != ''static'' ? true : false}}'
 write_requires_master_read: false
-visible_on: "{{defaultMessageMode != 'static' ? true : false}}"
-amis:
-  clearValueOnHidden: false

@@ -1,10 +1,10 @@
 name: tabs.$.url
 amis:
   requiredOn: '${type == "url"}'
-group: 界面
+group: 菜单
 hidden: false
 label: 外部链接
 required: false
-sort_no: 160
+sort_no: 180
 type: url
 visible_on: '${type == "url"}'

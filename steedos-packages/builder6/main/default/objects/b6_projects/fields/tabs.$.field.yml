@@ -1,7 +1,7 @@
 name: tabs.$
 blackbox: true
-group: 界面
+group: 菜单
 hidden: false
 label: Tabs
-sort_no: 120
+sort_no: 140
 type: object

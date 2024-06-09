@@ -29,61 +29,40 @@
                     "className": "px-0"
                 },
                 {
-                    "title": "菜单",
+                    "title": "组件",
                     "body": [
                         {
-                            "type": "steedos-object-form",
-                            "label": "对象表单",
+                            "type": "steedos-object-related-listview",
+                            "label": "相关表",
                             "objectApiName": "${objectName}",
                             "recordId": "${recordId}",
-                            "mode": "edit",
-                            "enableInitApi": false,
-                            "className": "",
-                            "id": "u:b13a38342279",
-                            "fields": [
-                                "enable_tabs",
-                                "tabs",
-                                "tabs.$.page",
-                                "tabs.$.name",
-                                "tabs.$.type",
-                                "tabs.$.url",
-                                "tabs.$.is_new_window",
-                                "tabs.$.icon"
-                            ],
-                            "enableTabs": false,
-                            "tabsMode": "line"
+                            "id": "u:3a81472fe04d",
+                            "relatedObjectApiName": "b6_components"
                         }
                     ],
-                    "id": "u:27dc7be7cd01"
+                    "id": "u:26d8c7581f4e",
+                    "className": "px-0"
                 },
                 {
-                    "title": "设置",
+                    "title": "应用",
                     "body": [
                         {
                             "type": "steedos-object-form",
                             "label": "对象表单",
                             "objectApiName": "${objectName}",
                             "recordId": "${recordId}",
-                            "appId": "${appId}",
                             "id": "u:38aa1b421c33",
                             "mode": "read",
                             "className": "mb-4",
-                            "fields": [
-                                "name",
-                                "description",
-                                "icon",
-                                "created_by",
-                                "created",
-                                "modified_by",
-                                "modified"
-                            ],
-                            "enableTabs": false,
+                            "fields": [],
+                            "enableTabs": true,
                             "tabsMode": "vertical",
-                            "enableInitApi": false
+                            "enableInitApi": false,
+                            "appId": "${appId}"
                         }
                     ],
-                    "className": "px-0 py-4",
-                    "id": "u:5d4e7e3f6ecc"
+                    "id": "u:5d4e7e3f6ecc",
+                    "className": "px-0 py-4"
                 }
             ],
             "id": "u:f1bf09ff6742"

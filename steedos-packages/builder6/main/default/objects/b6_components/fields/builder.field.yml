@@ -4,7 +4,7 @@ hidden: false
 is_wide: true
 label: Builder Schema
 language: json
+readonly: true
 required: false
 sort_no: 68
 type: code
-readonly: true

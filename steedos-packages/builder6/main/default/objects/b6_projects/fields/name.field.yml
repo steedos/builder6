@@ -1,8 +1,9 @@
 name: name
 filterable: true
+group: 应用
 hidden: false
 index: true
-is_wide: false
+is_wide: true
 label: 名称
 required: true
 searchable: true

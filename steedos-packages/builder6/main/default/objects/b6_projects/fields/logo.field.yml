@@ -1,7 +1,10 @@
 name: logo
-hidden: true
-label: Logo Image
+description: 如果上传，则Logo显示为图片
+filters: []
+group: 布局
+hidden: false
+label: Logo 图片
 required: false
-sort_no: 190
+sort_no: 80
 type: image
-visible_on: '{{false}}'
+visible_on: '{{true}}'

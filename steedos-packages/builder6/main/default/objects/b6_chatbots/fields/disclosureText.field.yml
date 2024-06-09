@@ -1,5 +1,9 @@
 name: disclosureText
+amis:
+  clearValueOnHidden: false
 create: true
+defaultValue: '这是一个自动化的聊天机器人回复。[了解更多](https://builder6.com)'
+description: This input accepts markdown links.
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -22,9 +26,5 @@ sortable: false
 static: false
 type: textarea
 unique: false
-write_requires_master_read: false
 visible_on: '{{displayDisclosure === true}}'
-description: This input accepts markdown links.
-defaultValue: 这是一个自动化的聊天机器人回复。[了解更多](https://builder6.com)
-amis:
-  clearValueOnHidden: false
+write_requires_master_read: false
