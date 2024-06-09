@@ -1,13 +1,11 @@
 const uuid = require("uuid");
 
-export const compileAmis = async (page) => {
+export const compileAmis = async (page, id) => {
     const {amis_schema, tailwind, _id} = page
 
     if (!amis_schema) {
         return { error: "amis is required" }
     }
-
-    const id = _id || uuid.v4()
 
     const builder = {
         id,
