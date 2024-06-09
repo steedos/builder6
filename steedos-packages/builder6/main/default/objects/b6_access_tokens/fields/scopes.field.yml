@@ -7,26 +7,24 @@ filters: []
 generated: false
 hidden: false
 index: false
-is_wide: false
+is_wide: trye
 label: Scopes
 multiple: true
 options:
-  - label: See the data in records
+  - label: 查看记录中的数据
     value: 'records:read'
   - value: 'records:write'
-    label: 'Create, edit, and delete records'
+    label: 创建、编辑和删除记录
   - value: 'comments:read'
-    label: 'Create, edit, and delete record comments'
-  - label: 'Create, edit, and delete record comments'
+    label: 查看记录评论
+  - label: 创建、编辑和删除记录评论
     value: 'comments:write'
-  - label: 'See the structure of a base, like table names or field types'
+  - label: 查看数据库结构，如表名或字段类型
     value: 'projects:read'
   - value: 'projects:write'
-    label: 'Edit the structure of a base, like adding new fields or tables'
+    label: 编辑数据库结构，如添加新字段或表
   - value: 'webhook:write'
-    label: >-
-      View, create, delete webhooks for a base, as well as fetch webhook
-      payloads.
+    label: 查看、创建、删除数据库的 Webhook，以及获取 Webhook 负载
 primary: false
 readonly: false
 required: false
