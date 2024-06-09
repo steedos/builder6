@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: contact_list
 is_enable: true
-label: 数据表
+label: 智能数据
 locked: false
 version: 2

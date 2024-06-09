@@ -1,8 +1,8 @@
-name: 灵犀 控制台
-code: builder6
+name: 灵犀 开发者
+code: builder6-developer
 description: 无代码构建面向客户的专属智能应用。
 enable_nav_schema: false
-icon_slds: agent_session
+icon_slds: recipe
 is_creator: true
 is_new_window: false
 is_use_ie: false
@@ -12,14 +12,8 @@ mobile: true
 showSidebar: false
 sort: 200
 tab_items:
-  object_b6_chatbots:
+  object_b6_access_tokens:
     index: 1
-  object_b6_projects:
-    index: 2
-  object_b6_tables:
-    index: 3
 tabs:
-  - object_b6_chatbots
-  - object_b6_projects
-  - object_b6_tables
+  - object_b6_access_tokens
 visible: true

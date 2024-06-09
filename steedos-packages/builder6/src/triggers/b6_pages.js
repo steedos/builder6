@@ -7,7 +7,6 @@ export const pagesBeforeUpdate = {
     },
     async handler(ctx) {
         const {doc, id = uuid.v4(), isInsert} = ctx.params;
-        this.broker.logger.info('b6_pages', ctx)
 
         if (isInsert) doc._id = id;
 
@@ -21,21 +20,21 @@ export const pagesBeforeUpdate = {
 
         if (doc.type === 'jsx' && doc.jsx) {
             try {
-                const builder = await this.compileJsx(doc);
+                const builder = await this.compileJsx(doc, id);
                 doc.builder = JSON.stringify(builder);
             } catch (e) { this.broker.logger.error(e)}
         }
 
         if (doc.type === 'html' && doc.html) {
             try {
-                const builder = await this.compileHtml(doc);
+                const builder = await this.compileHtml(doc, id);
                 doc.builder = JSON.stringify(builder);
             } catch (e) { this.broker.logger.error(e)}
         }
 
         if (doc.type === 'amis' && doc.amis_schema) {
             try {
-                const builder = await this.compileAmis(doc);
+                const builder = await this.compileAmis(doc, id);
                 doc.builder = JSON.stringify(builder);
             } catch (e) { this.broker.logger.error(e)}
         }

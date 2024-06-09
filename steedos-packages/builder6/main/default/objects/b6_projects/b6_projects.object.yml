@@ -20,8 +20,8 @@ field_groups:
   - group_name: 菜单
   - group_name: 系统信息
     collapsed: true
-icon: orders
+icon: apps
 is_enable: true
-label: 智能界面
+label: 智能应用
 locked: false
 version: 2

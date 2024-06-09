@@ -1,13 +1,12 @@
 const uuid = require("uuid");
 
-export const compileHtml = async (page) => {
-    const {html, tailwind, _id} = page
+export const compileHtml = async (page, id) => {
+    const {html, tailwind} = page
 
     if (!html) {
         return { error: "html is required" }
     }
 
-    const id = _id || uuid.v4()
     const builder = {
         id,
         data: {
