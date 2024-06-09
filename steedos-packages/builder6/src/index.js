@@ -37,7 +37,7 @@ module.exports = {
         B6_CLOUD_PROJECT_PREFIX: process.env.B6_CLOUD_PROJECT_PREFIX,
         B6_CLOUD_META_OBJECTS: ['b6_access_tokens', 'b6_chatbots', 'b6_projects', 'b6_tables', 'b6_fields', 'b6_pages', 'spaces', 'spaces_users'],
         B6_CLOUD_SPACE_OBJECTS: [],
-        B6_CLOUD_PROJECT_OBJECTS: ['b6_pages']
+        B6_CLOUD_PROJECT_OBJECTS: ['b6_pages', 'b6_components']
     },
     metadata: {
         $package: {
