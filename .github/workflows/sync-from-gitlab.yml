@@ -38,6 +38,8 @@ jobs:
           git commit -m "Update version to ${{ env.VERSION }}"
       
       - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
+        uses: actions/github-script@v6
         with:
-          github_token: ${{ secrets.ADMIN_PASSWORD_GITHUB }}
+          script: |
+            const { execSync } = require('child_process');
+            execSync('git push origin HEAD:refs/heads/main', { stdio: 'inherit' });
