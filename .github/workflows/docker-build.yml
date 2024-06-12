@@ -6,20 +6,19 @@ on:
       - 'v*'  # 仅在创建标签时触发，例如 v1.0, v2.1.0 等
 
 jobs:
-  update-from-gitlab:
+      
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: sync-branch-docker-fssh
+      - name: sync-branch-builder6
         uses: wei/git-sync@v3
         with:
           source_repo: https://${{secrets.ADMIN_ACCOUNT_GITLAB}}:${{secrets.ADMIN_PASSWORD_GITLAB}}@gitlab.steedos.cn/steedos/builder6
           source_branch: "refs/remotes/source/*"
           destination_repo: https://${{secrets.ADMIN_ACCOUNT_GITHUB}}:${{secrets.ADMIN_PASSWORD_GITHUB}}@github.com/steedos/builder6
           destination_branch: "refs/heads/*"
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
+      
       - name: Checkout code
         uses: actions/checkout@v3
 
