@@ -2,13 +2,15 @@ name: all
 columns:
   - field: name
   - field: type
-  - field: project_id
+  - field: sort
+  - field: page_id
 crud_mode: table
 filter_scope: space
 filters: []
+is_enable: true
 label: 所有
 mobile_columns: []
-shared: true
+searchable_fields: []
 shared_to: space
 sort:
   - field_name: created

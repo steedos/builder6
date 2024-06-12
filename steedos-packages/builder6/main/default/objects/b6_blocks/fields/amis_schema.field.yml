@@ -1,9 +1,10 @@
 name: amis_schema
 filters: []
+hidden: false
 is_wide: true
 label: Amis
 language: json
 required: false
-sort_no: 60
+sort_no: 40
 type: code
 visible_on: '${type==="amis"}'

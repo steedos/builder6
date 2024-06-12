@@ -17,7 +17,7 @@ reference_to: b6_pages
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 910
+sort_no: 130
 sortable: false
 static: false
 type: master_detail

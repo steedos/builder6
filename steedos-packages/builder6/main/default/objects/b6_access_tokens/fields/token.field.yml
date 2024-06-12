@@ -1,0 +1,9 @@
+name: token
+filterable: true
+index: true
+label: 访问令牌
+required: false
+searchable: true
+sort_no: 10
+type: text
+readonly: true

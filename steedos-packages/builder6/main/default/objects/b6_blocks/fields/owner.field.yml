@@ -3,6 +3,6 @@ hidden: true
 index: true
 label: 所有者
 omit: true
-sort_no: 120
+sort_no: 180
 sortable: true
 visible_on: '{{false}}'

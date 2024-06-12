@@ -1,5 +1,6 @@
-name: markdown
+name: width
 create: true
+data_type: text
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -7,18 +8,25 @@ generated: false
 hidden: false
 index: false
 is_name: false
-is_wide: true
-label: Markdown
+is_wide: false
+label: 宽度
 multiple: false
+options:
+  - label: 窄
+    value: narrow
+  - label: 中等
+    value: medium
+  - label: 宽
+    value: wide
+  - value: full
+    label: 最宽
 primary: false
 readonly: false
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 30
-sortable: false
+sort_no: 100
 static: false
-type: markdown
+type: select
 unique: false
-visible_on: '${type==="markdown"}'
 write_requires_master_read: false

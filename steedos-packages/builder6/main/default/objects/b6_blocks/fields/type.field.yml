@@ -1,6 +1,6 @@
 name: type
 create: true
-defaultValue: amis
+defaultValue: rich
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -12,14 +12,16 @@ is_name: false
 is_wide: false
 label: 类型
 options:
-  - label: Markdown
-    value: markdown
+  - label: 富文本
+    value: rich
   - label: Form
     value: form
   - label: Table
     value: table
   - label: Chatbots
     value: chatbot
+  - label: Markdown
+    value: markdown
   - label: Html
     value: html
   - label: Amis

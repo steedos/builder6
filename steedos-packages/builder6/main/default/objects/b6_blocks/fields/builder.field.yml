@@ -6,5 +6,5 @@ label: Builder Schema
 language: json
 readonly: true
 required: false
-sort_no: 68
+sort_no: 60
 type: code
