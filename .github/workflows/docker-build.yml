@@ -14,7 +14,7 @@ jobs:
         with:
           source_repo: https://${{secrets.ADMIN_ACCOUNT_GITLAB}}:${{secrets.ADMIN_PASSWORD_GITLAB}}@gitlab.steedos.cn/steedos/builder6
           source_branch: "refs/remotes/source/*"
-          destination_repo: https://${{secrets.ADMIN_ACCOUNT_GITHUB}}:${{secrets.ADMIN_PASSWORD_GITHUB}}@github.com/hotlong/builder6
+          destination_repo: https://${{secrets.ADMIN_ACCOUNT_GITHUB}}:${{secrets.ADMIN_PASSWORD_GITHUB}}@github.com/steedos/builder6
           destination_branch: "refs/heads/*"
   
   build:
