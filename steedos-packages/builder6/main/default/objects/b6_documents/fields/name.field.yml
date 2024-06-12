@@ -3,7 +3,7 @@ filterable: true
 filters: []
 hidden: false
 index: true
-is_wide: true
+is_wide: false
 label: 标题
 required: true
 searchable: true

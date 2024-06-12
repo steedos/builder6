@@ -7,27 +7,12 @@
             "objectApiName": "${objectName}",
             "recordId": "${recordId}",
             "showBackButton": "${!_inDrawer}",
-            "id": "u:307428d9635c"
+            "id": "u:449628853d68"
         },
         {
             "type": "tabs",
             "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
             "tabs": [
-                {
-                    "title": "文章",
-                    "className": "px-0 pt-4",
-                    "body": [
-                        {
-                            "type": "steedos-object-related-lists",
-                            "label": "相关列表",
-                            "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "appId": "${appId}",
-                            "id": "u:cc808229dda0"
-                        }
-                    ],
-                    "id": "u:f096f62b106e"
-                },
                 {
                     "title": "详细",
                     "className": "px-0 py-4",
@@ -38,26 +23,38 @@
                             "objectApiName": "${objectName}",
                             "recordId": "${recordId}",
                             "appId": "${appId}",
-                            "id": "u:1a48a48fb496",
-                            "mode": "read",
+                            "id": "u:b784497e8842",
+                            "mode": "edit",
                             "className": "mb-4",
                             "enableTabs": true,
-                            "tabsMode": "vertical",
-                            "enableInitApi": false
+                            "tabsMode": "vertical"
                         }
                     ],
                     "id": "u:5d4e7e3f6ecc"
+                },
+                {
+                    "title": "相关",
+                    "className": "px-0 pt-4",
+                    "body": [
+                        {
+                            "type": "steedos-object-related-lists",
+                            "label": "相关列表",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}"
+                        }
+                    ]
                 }
             ],
-            "id": "u:294bbaf9c25b"
+            "id": "u:5ba49c2ad98c"
         }
     ],
     "regions": [
         "body"
     ],
     "data": {},
-    "id": "page_b6_blogs_record_detail",
-    "name": "page_b6_blogs_record_detail",
+    "id": "page_b6_documents_record_detail",
+    "name": "page_b6_documents_record_detail",
     "objectApiName": "${objectName}",
     "bodyClassName": "",
     "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"

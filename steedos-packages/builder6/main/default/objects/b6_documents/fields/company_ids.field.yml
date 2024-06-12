@@ -1,5 +1,5 @@
 name: company_ids
 label: 所属分部
-sort_no: 130
+sort_no: 150
 type: lookup
 visible_on: '{{false}}'

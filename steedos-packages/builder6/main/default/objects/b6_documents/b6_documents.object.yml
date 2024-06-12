@@ -5,7 +5,7 @@ enable_dataloader: true
 enable_enhanced_lookup: true
 enable_events: false
 enable_files: true
-enable_form_tabs: false
+enable_form_tabs: true
 enable_inline_edit: true
 enable_instances: false
 enable_lock_detail: true
@@ -16,6 +16,10 @@ enable_tree: false
 enable_workflow: true
 field_groups:
   - group_name: 系统信息
+    collapsed: true
+  - group_name: 摘要
+    collapsed: true
+  - group_name: 封面图片
     collapsed: true
 icon: knowledge
 is_enable: true
