@@ -11,10 +11,10 @@ is_wide: trye
 label: 权限范围
 multiple: true
 options:
-  - label: 查看记录中的数据
+  - label: 查看记录
     value: 'records:read'
   - value: 'records:write'
-    label: 管理记录中的数据
+    label: 管理记录
   - label: 查看数据库结构
     value: 'base:read'
   - value: 'base:write'

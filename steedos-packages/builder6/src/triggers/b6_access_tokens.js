@@ -6,9 +6,13 @@ export const tokensBeforeUpdate = {
         when: ['beforeInsert']
     },
     async handler(ctx) {
-        const {doc, id  = 'ak-' + uuid.v4(), isInsert} = ctx.params;
+        const {doc, isInsert} = ctx.params;
 
-        if (isInsert) doc.token = id;
+        if (isInsert) {
+            const token  = 'ak-' + uuid.v4();
+            doc.token = token;
+            doc._id = token;
+        }
 
         return  {
             doc
