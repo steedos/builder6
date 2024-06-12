@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: knowledge
 is_enable: true
-label: Document Versions
+label: 文章版本
 locked: false
 version: 2

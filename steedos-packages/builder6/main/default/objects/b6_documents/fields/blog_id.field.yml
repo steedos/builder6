@@ -1,4 +1,4 @@
-name: parent_document_id
+name: blog_id
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -8,11 +8,11 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: Parent Document
+label: 知识库
 multiple: false
 primary: false
 readonly: false
-reference_to: b6_documents
+reference_to: b6_blogs
 required: false
 searchable: false
 show_as_qr: false
