@@ -1,5 +1,6 @@
-name: markdown
+name: alignment
 create: true
+data_type: text
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -7,18 +8,23 @@ generated: false
 hidden: false
 index: false
 is_name: false
-is_wide: true
-label: Markdown
+is_wide: false
+label: 位置
 multiple: false
+options:
+  - label: 左对齐
+    value: left
+  - label: 居中
+    value: center
+  - label: 右对齐
+    value: right
 primary: false
 readonly: false
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 30
-sortable: false
+sort_no: 110
 static: false
-type: markdown
+type: select
 unique: false
-visible_on: '${type==="markdown"}'
 write_requires_master_read: false
