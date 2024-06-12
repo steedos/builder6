@@ -40,5 +40,5 @@ jobs:
       - name: Pull latest changes and push the new commit
         run: |
           git fetch origin
-          git rebase origin/main
-          git push origin HEAD:refs/heads/main
+          git rebase origin/main || git rebase --abort
+          git push origin HEAD:refs/heads/main --force
