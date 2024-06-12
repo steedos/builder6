@@ -37,9 +37,8 @@ jobs:
           git add version.json
           git commit -m "Update version to ${{ env.VERSION }}"
       
-      - name: Push changes
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { execSync } = require('child_process');
-            execSync('git push origin HEAD:refs/heads/main', { stdio: 'inherit' });
+      - name: Pull latest changes and push the new commit
+        run: |
+          git fetch origin
+          git rebase origin/main
+          git push origin HEAD:refs/heads/main
