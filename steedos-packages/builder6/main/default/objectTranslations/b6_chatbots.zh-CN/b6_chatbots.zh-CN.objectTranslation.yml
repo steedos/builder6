@@ -72,6 +72,8 @@ fields:
     options:
       - label: OpenAI GPT-3.5 Turbo
         value: gpt-3.5-turbo
+      - label: OpenAI GPT-4o
+        value: gpt-4o
     description: 
   modified:
     label: 修改时间
