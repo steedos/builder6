@@ -19,6 +19,6 @@ field_groups:
     collapsed: true
 icon: flow
 is_enable: true
-label: Automations
+label: 智能流程
 locked: false
 version: 2

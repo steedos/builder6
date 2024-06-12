@@ -19,5 +19,5 @@ show_as_qr: false
 sort_no: 40
 sortable: false
 static: false
-type: lookup
+type: master_detail
 unique: false

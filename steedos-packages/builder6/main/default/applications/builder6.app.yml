@@ -16,13 +16,16 @@ tab_items:
     index: 1
   object_b6_projects:
     index: 2
-  object_b6_pages:
-    index: 3
   object_b6_tables:
+    index: 3
+  object_b6_blogs:
+    index: 4
+  object_b6_pages:
     index: 5
 tabs:
   - object_b6_chatbots
   - object_b6_projects
-  - object_b6_pages
   - object_b6_tables
+  - object_b6_blogs
+  - object_b6_pages
 visible: true
