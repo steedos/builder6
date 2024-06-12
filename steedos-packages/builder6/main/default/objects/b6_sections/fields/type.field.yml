@@ -1,5 +1,6 @@
-name: project_id
+name: type
 create: true
+defaultValue: amis
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -9,17 +10,24 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 项目
-multiple: false
+label: 类型
+options:
+  - label: Html
+    value: html
+  - label: Amis
+    value: amis
+  - label: JSX
+    value: jsx
+  - label: Markdown
+    value: markdown
 primary: false
 readonly: false
-reference_to: b6_projects
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 910
-sortable: false
+sort_no: 20
+sortable: true
 static: false
-type: lookup
+type: select
 unique: false
 write_requires_master_read: false
