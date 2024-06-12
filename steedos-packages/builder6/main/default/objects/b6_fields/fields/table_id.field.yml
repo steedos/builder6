@@ -19,3 +19,4 @@ static: false
 type: master_detail
 unique: false
 write_requires_master_read: false
+reference_to: b6_tables

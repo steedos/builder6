@@ -1,5 +1,5 @@
 name: instance_state
 label: 申请单审批状态
-sort_no: 150
+sort_no: 160
 type: select
 visible_on: '{{false}}'

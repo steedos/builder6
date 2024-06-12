@@ -1,4 +1,4 @@
-name: blog_id
+name: url
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -8,16 +8,16 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 知识库
+label: URL
 multiple: false
 primary: false
 readonly: false
-reference_to: b6_blogs
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 50
-sortable: false
+sort_no: 20
+sortable: true
 static: false
-type: master_detail
+type: text
 unique: false
+write_requires_master_read: false
