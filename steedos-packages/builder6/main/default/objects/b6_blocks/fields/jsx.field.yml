@@ -1,0 +1,43 @@
+name: jsx
+create: true
+defaultValue: |
+  export default function MyComponent(props) {
+    const [name, setName] = useState("Steve");
+
+    return (
+      <div>
+        <input
+          css={{
+            color: "red",
+          }}
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+        Hello! I can run natively in React, Vue, Angular, and many more frameworks!
+      </div>
+    );
+  }
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+filters: []
+generated: false
+hidden: false
+index: false
+is_name: false
+is_wide: true
+label: JSX
+language: javascript
+multiple: false
+primary: false
+readonly: false
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 65
+sortable: false
+static: false
+type: code
+unique: false
+visible_on: '${type==="jsx"}'
+write_requires_master_read: false

@@ -1,11 +1,14 @@
 name: all
 columns:
   - field: name
+  - field: description
 crud_mode: table
 filter_scope: space
 filters: []
+is_enable: true
 label: 所有
-shared: true
+mobile_columns: []
+searchable_fields: []
 shared_to: space
 sort:
   - field_name: created

@@ -10,11 +10,10 @@ is_wide: false
 label: 数据表
 primary: false
 readonly: false
-reference_to: b6_tables
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 40
+sort_no: 60
 sortable: false
 static: false
 type: master_detail

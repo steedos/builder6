@@ -1,0 +1,59 @@
+{
+    "type": "steedos-record-service",
+    "body": [
+        {
+            "type": "steedos-record-detail-header",
+            "label": "标题面板",
+            "objectApiName": "${objectName}",
+            "recordId": "${recordId}",
+            "showBackButton": "${!_inDrawer}",
+            "id": "u:307428d9635c"
+        },
+        {
+            "type": "tabs",
+            "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
+            "tabs": [
+                {
+                    "title": "文章",
+                    "className": "px-0 pt-4",
+                    "body": [
+                        {
+                            "type": "steedos-object-related-lists",
+                            "label": "相关列表",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}",
+                            "id": "u:cc808229dda0"
+                        }
+                    ],
+                    "id": "u:f096f62b106e"
+                },
+                {
+                    "title": "详细",
+                    "className": "px-0 py-4",
+                    "body": [
+                        {
+                            "type": "steedos-object-form",
+                            "label": "对象表单",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}",
+                            "id": "u:1a48a48fb496"
+                        }
+                    ],
+                    "id": "u:5d4e7e3f6ecc"
+                }
+            ],
+            "id": "u:294bbaf9c25b"
+        }
+    ],
+    "regions": [
+        "body"
+    ],
+    "data": {},
+    "id": "page_b6_blogs_record_detail",
+    "name": "page_b6_blogs_record_detail",
+    "objectApiName": "${objectName}",
+    "bodyClassName": "",
+    "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"
+}

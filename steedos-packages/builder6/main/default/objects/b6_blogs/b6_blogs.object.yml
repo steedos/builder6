@@ -1,4 +1,4 @@
-name: b6_automations
+name: b6_blogs
 custom: true
 enable_api: true
 enable_dataloader: true
@@ -17,8 +17,8 @@ enable_workflow: true
 field_groups:
   - group_name: 系统信息
     collapsed: true
-icon: flow
+icon: contact_list
 is_enable: true
-label: Automations
+label: 知识库
 locked: false
 version: 2

@@ -1,0 +1,94 @@
+{
+    "type": "steedos-record-service",
+    "body": [
+        {
+            "type": "steedos-record-detail-header",
+            "label": "标题面板",
+            "objectApiName": "${objectName}",
+            "recordId": "${recordId}",
+            "showBackButton": "${!_inDrawer}",
+            "id": "u:0ebcc633cc99"
+        },
+        {
+            "type": "tabs",
+            "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
+            "tabs": [
+                {
+                    "title": "区块",
+                    "body": [
+                        {
+                            "type": "steedos-object-related-listview",
+                            "label": "相关表",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "id": "u:d5332fcca94b",
+                            "relatedObjectApiName": "b6_blocks"
+                        }
+                    ],
+                    "id": "u:9bebc21fda8e",
+                    "className": "px-0"
+                },
+                {
+                    "title": "附件",
+                    "body": [
+                        {
+                            "type": "steedos-object-related-listview",
+                            "label": "相关表",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "id": "u:e33dc1d652f7",
+                            "relatedObjectApiName": "cms_files"
+                        }
+                    ],
+                    "id": "u:40150985fb6e",
+                    "className": "px-0"
+                },
+                {
+                    "title": "版本",
+                    "body": [
+                        {
+                            "type": "steedos-object-related-listview",
+                            "label": "相关表",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "id": "u:c3772a9cd447",
+                            "relatedObjectApiName": "b6_page_versions"
+                        }
+                    ],
+                    "id": "u:9b5b7d201630",
+                    "className": "px-0"
+                },
+                {
+                    "title": "设置",
+                    "body": [
+                        {
+                            "type": "steedos-object-form",
+                            "label": "对象表单",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}",
+                            "id": "u:123e45d5a47d",
+                            "mode": "read",
+                            "className": "mb-4",
+                            "enableTabs": true,
+                            "tabsMode": "sidebar",
+                            "enableInitApi": false
+                        }
+                    ],
+                    "id": "u:5d4e7e3f6ecc",
+                    "className": "px-0 py-4"
+                }
+            ],
+            "id": "u:365be6de16dd"
+        }
+    ],
+    "regions": [
+        "body"
+    ],
+    "data": {},
+    "id": "page_b6_pages_record_detail",
+    "name": "page_b6_pages_record_detail",
+    "objectApiName": "${objectName}",
+    "bodyClassName": "",
+    "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"
+}

@@ -1,0 +1,10 @@
+name: tailwind
+filters: []
+hidden: false
+is_wide: true
+label: Tailwind CSS
+language: css
+readonly: true
+required: false
+sort_no: 69
+type: code

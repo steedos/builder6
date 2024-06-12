@@ -1,66 +1,40 @@
 name: type
+filters: []
+hidden: false
 label: 字段类型
 options:
   - label: 文本
-    value: input-text
+    value: text
   - label: 多行文本
     value: textarea
   - label: 数字
-    value: input-number
+    value: number
   - label: 下拉框
     value: select
-  - label: 复选框
-    value: checkboxes
-  - label: 单选
-    value: radios
   - label: 勾选
-    value: checkbox
+    value: boolean
   - label: 日期
-    value: input-date
+    value: date
   - label: 日期时间
-    value: input-time
+    value: datetime
   - label: 时间
-    value: currency
+    value: time
   - label: 文件
     value: file
   - label: 图片
     value: image
-  - label: 树
-    value: tree
-  - label: 开关
-    value: switch
-  - label: 滑块
-    value: input-range
-  - label: 评分
-    value: input-rating
-  - label: 城市选择
-    value: input-city
-  - label: 穿梭器
-    value: transfer
   - label: 颜色
-    value: input-color
+    value: color
   - label: 字段集
     value: fieldset
   - label: 表格
-    value: input-table
-  - label: 矩阵开关
-    value: matrix-checkboxes
+    value: table
   - label: 富文本
-    value: input-rich-text
-  - label: 代码编辑器
-    value: editor
-  - label: diff编辑器
-    value: diff-editor
+    value: html
   - label: 地理位置
-    value: location-picker
-  - label: 子表单
-    value: input-sub-form
-  - label: 隐藏域
-    value: hidden
+    value: location
   - label: 签名面板
-    value: input-signature
-  - label: 静态展示
-    value: static
+    value: signature
 required: true
-sort_no: 400
+sort_no: 30
 type: select

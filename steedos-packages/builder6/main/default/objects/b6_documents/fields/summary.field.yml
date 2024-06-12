@@ -19,6 +19,6 @@ show_as_qr: false
 sort_no: 30
 sortable: false
 static: false
-type: textarea
+type: html
 unique: false
 write_requires_master_read: false

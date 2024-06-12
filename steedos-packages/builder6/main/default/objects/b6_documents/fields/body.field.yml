@@ -1,14 +1,13 @@
-name: markdown
+name: body
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
-filters: []
 generated: false
 hidden: false
 index: false
 is_name: false
-is_wide: true
+is_wide: false
 label: 正文
 multiple: false
 primary: false
@@ -19,6 +18,6 @@ show_as_qr: false
 sort_no: 20
 sortable: false
 static: false
-type: markdown
+type: html
 unique: false
 write_requires_master_read: false
