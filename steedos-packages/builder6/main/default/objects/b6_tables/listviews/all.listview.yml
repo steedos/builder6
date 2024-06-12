@@ -1,6 +1,7 @@
 name: all
 columns:
   - field: name
+  - field: label
   - field: description
 crud_mode: table
 filter_scope: space

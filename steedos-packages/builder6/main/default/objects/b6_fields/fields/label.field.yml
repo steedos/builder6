@@ -1,7 +1,7 @@
 name: label
 filters: []
 hidden: false
-is_name: true
+is_name: false
 label: 显示名
 required: true
 sort_no: 20
