@@ -18,7 +18,7 @@ jobs:
       - name: Read docker-version from version.json
         id: read_version
         run: |
-          DOCKER_VERSION=$(jq -r .["docker-version"] version.json)
+          DOCKER_VERSION=$(jq -r '."docker-version"' version.json)
           echo "DOCKER_VERSION=$DOCKER_VERSION" >> $GITHUB_ENV
         
       - name: Set up Docker Buildx
