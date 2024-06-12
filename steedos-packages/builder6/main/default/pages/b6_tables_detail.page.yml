@@ -10,3 +10,4 @@ pageAssignments:
 render_engine: amis
 type: record
 widgets: []
+object_name: b6_tables
