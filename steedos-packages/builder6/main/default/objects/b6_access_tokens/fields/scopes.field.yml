@@ -8,23 +8,19 @@ generated: false
 hidden: false
 index: false
 is_wide: trye
-label: Scopes
+label: 权限范围
 multiple: true
 options:
   - label: 查看记录中的数据
     value: 'records:read'
   - value: 'records:write'
-    label: 创建、编辑和删除记录
-  - value: 'comments:read'
-    label: 查看记录评论
-  - label: 创建、编辑和删除记录评论
-    value: 'comments:write'
-  - label: 查看数据库结构，如表名或字段类型
-    value: 'projects:read'
-  - value: 'projects:write'
-    label: 编辑数据库结构，如添加新字段或表
+    label: 管理记录中的数据
+  - label: 查看数据库结构
+    value: 'base:read'
+  - value: 'base:write'
+    label: 管理数据库结构
   - value: 'webhook:write'
-    label: 查看、创建、删除数据库的 Webhook，以及获取 Webhook 负载
+    label: 管理 Webhook
 primary: false
 readonly: false
 required: false
