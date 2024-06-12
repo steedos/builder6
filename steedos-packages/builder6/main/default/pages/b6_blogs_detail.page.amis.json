@@ -7,58 +7,52 @@
             "objectApiName": "${objectName}",
             "recordId": "${recordId}",
             "showBackButton": "${!_inDrawer}",
-            "id": "u:ac9fce914461"
+            "id": "u:307428d9635c"
         },
         {
             "type": "tabs",
             "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
             "tabs": [
                 {
-                    "title": "页面",
+                    "title": "文章",
+                    "className": "px-0 pt-4",
                     "body": [
                         {
-                            "type": "steedos-object-related-listview",
-                            "label": "相关表",
+                            "type": "steedos-object-related-lists",
+                            "label": "相关列表",
                             "objectApiName": "${objectName}",
                             "recordId": "${recordId}",
-                            "id": "u:c99b929fda7d",
-                            "relatedObjectApiName": "b6_pages"
+                            "appId": "${appId}",
+                            "id": "u:cc808229dda0"
                         }
                     ],
-                    "id": "u:5a4da21bad0a",
-                    "className": "px-0"
+                    "id": "u:f096f62b106e"
                 },
                 {
-                    "title": "设置",
+                    "title": "详细",
+                    "className": "px-0 py-4",
                     "body": [
                         {
                             "type": "steedos-object-form",
                             "label": "对象表单",
                             "objectApiName": "${objectName}",
                             "recordId": "${recordId}",
-                            "id": "u:38aa1b421c33",
-                            "mode": "read",
-                            "className": "mb-4",
-                            "fields": [],
-                            "enableTabs": true,
-                            "tabsMode": "vertical",
-                            "enableInitApi": false,
-                            "appId": "${appId}"
+                            "appId": "${appId}",
+                            "id": "u:1a48a48fb496"
                         }
                     ],
-                    "id": "u:5d4e7e3f6ecc",
-                    "className": "px-0 py-4"
+                    "id": "u:5d4e7e3f6ecc"
                 }
             ],
-            "id": "u:f1bf09ff6742"
+            "id": "u:294bbaf9c25b"
         }
     ],
     "regions": [
         "body"
     ],
     "data": {},
-    "id": "page_b6_projects_record_detail",
-    "name": "page_b6_projects_record_detail",
+    "id": "page_b6_blogs_record_detail",
+    "name": "page_b6_blogs_record_detail",
     "objectApiName": "${objectName}",
     "bodyClassName": "",
     "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"

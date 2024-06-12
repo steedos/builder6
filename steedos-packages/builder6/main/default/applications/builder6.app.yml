@@ -10,7 +10,7 @@ is_use_iframe: false
 locked: false
 mobile: true
 showSidebar: false
-sort: 200
+sort: 10
 tab_items:
   object_b6_chatbots:
     index: 1

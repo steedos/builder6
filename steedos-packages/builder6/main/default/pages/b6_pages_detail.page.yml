@@ -1,0 +1,13 @@
+name: b6_pages_detail
+is_active: true
+label: 页面详情页
+locked: false
+object_name: b6_pages
+pageAssignments:
+  - type: orgDefault
+    page: b6_pages_detail
+    desktop: true
+    mobile: true
+render_engine: amis
+type: record
+widgets: []
