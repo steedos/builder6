@@ -1,0 +1,5 @@
+name: company_ids
+label: 所属分部
+sort_no: 110
+type: lookup
+visible_on: '{{false}}'
