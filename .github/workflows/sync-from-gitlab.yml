@@ -1,64 +1,43 @@
-name: Build and Push Docker Image on Version Change
+name: Update from Gitlab
 
 on:
   push:
-    paths:
-      - 'version.json'
+    tags:
+      - 'v*'  # 仅在创建标签时触发，例如 v1.0, v2.1.0 等
 
 jobs:
-
-  build:
+  update-version:
     runs-on: ubuntu-latest
-
+    
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Read docker-version from version.json
-        id: read_version
-        run: |
-          DOCKER_VERSION=$(jq -r .["docker-version"] version.json)
-          echo "DOCKER_VERSION=$DOCKER_VERSION" >> $GITHUB_ENV
+      - name: sync-branch-builder6
+        uses: wei/git-sync@v3
+        with:
+          source_repo: https://${{secrets.ADMIN_ACCOUNT_GITLAB}}:${{secrets.ADMIN_PASSWORD_GITLAB}}@gitlab.steedos.cn/steedos/builder6
+          source_branch: 'main'
+          destination_repo: https://${{secrets.ADMIN_ACCOUNT_GITHUB}}:${{secrets.ADMIN_PASSWORD_GITHUB}}@github.com/steedos/builder6
+          destination_branch: 'main'
+              
+      - name: Extract version from tag
+        id: extract_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
         
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+      - name: Update docker-version in version.json
+        run: |
+          VERSION=$(echo "${{ env.VERSION }}" | sed 's/^v//')
+          jq --arg version "$VERSION" '.["docker-version"] = $version' version.json > tmp.$$.json && mv tmp.$$.json version.json
+      
+      - name: Commit changes
+        run: |
+          git config --global user.name ${{ secrets.ADMIN_ACCOUNT_GITHUB }}
+          git config --global user.email ${{ secrets.ADMIN_ACCOUNT_GITHUB_EMAIL }}
+          git add version.json
+          git commit -m "Update version to ${{ env.VERSION }}"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_NINGXIA }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_NINGXIA }}
-          aws-region: cn-northwest-1
-      -
-        name: Login to ECR
-        uses: docker/login-action@v2
-        with:
-          registry: 252208178451.dkr.ecr.cn-northwest-1.amazonaws.com.cn
-
-      - name: Extract metadata (tags, labels)
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            steedos/builder6
-            252208178451.dkr.ecr.cn-northwest-1.amazonaws.com.cn/dockerhub/steedos/builder6
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: |
-            steedos/builder6:${{ env.DOCKER_VERSION }}
-            252208178451.dkr.ecr.cn-northwest-1.amazonaws.com.cn/dockerhub/steedos/builder6:${{ env.DOCKER_VERSION }}
-          no-cache: true
-
-      - name: Log out from Docker Hub
-        run: docker logout
+          github_token: ${{ secrets.ADMIN_PASSWORD_GITHUB }}
