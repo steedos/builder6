@@ -20,6 +20,7 @@ jobs:
           source_branch: 'main'
           destination_repo: https://${{secrets.ADMIN_ACCOUNT_GITHUB}}:${{secrets.ADMIN_PASSWORD_GITHUB}}@github.com/steedos/builder6
           destination_branch: 'main'
+          exclude: version.json
               
       - name: Extract version from tag
         id: extract_version
@@ -40,5 +41,13 @@ jobs:
       - name: Pull latest changes and push the new commit
         run: |
           git fetch origin
-          git rebase origin/main || git rebase --abort
+          git rebase origin/main || (git rebase --abort && exit 1)
+          
+          # Handle merge conflicts by keeping their changes
+          if [ -n "$(git ls-files -u)" ]; then
+            git ls-files -u | cut -f 2 | sort -u | xargs git checkout --theirs --
+            git add $(git ls-files -u | cut -f 2 | sort -u)
+            git rebase --continue
+          fi
+          
           git push origin HEAD:refs/heads/main --force
