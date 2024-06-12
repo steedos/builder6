@@ -22,7 +22,7 @@
                             "objectApiName": "${objectName}",
                             "recordId": "${recordId}",
                             "id": "u:d5332fcca94b",
-                            "relatedObjectApiName": "b6_sections"
+                            "relatedObjectApiName": "b6_blocks"
                         }
                     ],
                     "id": "u:9bebc21fda8e",

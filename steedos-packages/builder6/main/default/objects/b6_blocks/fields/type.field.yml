@@ -12,14 +12,20 @@ is_name: false
 is_wide: false
 label: 类型
 options:
+  - label: Markdown
+    value: markdown
+  - label: Form
+    value: form
+  - label: Table
+    value: table
+  - label: Chatbots
+    value: chatbot
   - label: Html
     value: html
   - label: Amis
     value: amis
   - label: JSX
     value: jsx
-  - label: Markdown
-    value: markdown
 primary: false
 readonly: false
 required: false
