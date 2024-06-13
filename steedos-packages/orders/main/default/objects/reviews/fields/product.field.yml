@@ -1,7 +1,0 @@
-name: product
-hidden: false
-label: 产品
-reference_to: products
-required: true
-sort_no: 120
-type: master_detail
