@@ -1,32 +1,26 @@
-name: status
+name: markdown
 create: true
-data_type: text
-defaultValue: hidden
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
-filters: []
 generated: false
 hidden: false
 index: false
 is_name: false
-is_wide: false
-label: 状态
+is_wide: true
+label: Markdown
 multiple: false
-options:
-  - label: 显示
-    value: visible
-  - label: 隐藏
-    value: hidden
-    color: '#346fb5'
 primary: false
 readonly: false
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 200
-sortable: true
+sort_no: 50
+sortable: false
 static: false
-type: select
+type: code
+language: markdown
+size: xl
 unique: false
+visible_on: '${type==="markdown"}'
 write_requires_master_read: false

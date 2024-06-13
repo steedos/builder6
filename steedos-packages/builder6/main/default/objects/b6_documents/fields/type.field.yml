@@ -1,7 +1,6 @@
-name: status
+name: type
 create: true
-data_type: text
-defaultValue: hidden
+defaultValue: markdown
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -11,20 +10,18 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 状态
-multiple: false
+label: 类型
 options:
-  - label: 显示
-    value: visible
-  - label: 隐藏
-    value: hidden
-    color: '#346fb5'
+  - label: Markdown
+    value: markdown
+  - label: Html
+    value: html
 primary: false
 readonly: false
-required: false
+required: true
 searchable: false
 show_as_qr: false
-sort_no: 200
+sort_no: 20
 sortable: true
 static: false
 type: select

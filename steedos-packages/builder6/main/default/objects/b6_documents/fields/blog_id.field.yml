@@ -13,10 +13,10 @@ multiple: false
 primary: false
 readonly: false
 reference_to: b6_blogs
-required: false
+required: true
 searchable: false
 show_as_qr: false
-sort_no: 50
+sort_no: 25
 sortable: false
 static: false
 type: master_detail
