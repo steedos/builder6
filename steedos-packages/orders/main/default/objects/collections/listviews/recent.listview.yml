@@ -1,7 +1,6 @@
 name: recent
 columns:
   - field: name
-  - field: slug
 filter_scope: space
 filters: []
 label: 最近查看

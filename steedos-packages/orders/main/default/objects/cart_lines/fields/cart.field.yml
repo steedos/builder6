@@ -1,6 +1,6 @@
 name: cart
 label: 购物车
 type: master_detail
-reference_to: shop_carts
+reference_to: carts
 sort_no: 120
 is_wide: true

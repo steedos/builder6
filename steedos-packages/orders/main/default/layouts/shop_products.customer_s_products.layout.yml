@@ -8,7 +8,7 @@ fields:
   - field_name: vender
     is_required: false
 label: 顾客产品权限
-object_name: shop_products
+object_name: products
 profiles:
   - user
   - customer

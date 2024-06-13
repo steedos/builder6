@@ -1,4 +1,0 @@
-name: initProductVariants
-is_enable: true
-label: 初始化产品变量
-'on': record_only

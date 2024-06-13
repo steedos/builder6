@@ -1,7 +1,7 @@
 name: product_type
 is_wide: false
 label: 类别
-reference_to: shop_product_types
+reference_to: product_types
 required: false
 sort_no: 80
 type: lookup

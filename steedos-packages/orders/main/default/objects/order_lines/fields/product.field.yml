@@ -1,5 +1,5 @@
 name: product
 label: 产品
-reference_to: shop_products
+reference_to: products
 sort_no: 120
 type: lookup

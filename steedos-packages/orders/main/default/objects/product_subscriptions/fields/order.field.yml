@@ -2,6 +2,6 @@ name: order
 hidden: true
 label: 订单
 omit: true
-reference_to: shop_orders
+reference_to: orders
 sort_no: 180
 type: master_detail

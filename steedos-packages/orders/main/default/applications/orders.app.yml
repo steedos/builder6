@@ -12,10 +12,9 @@ oauth2_logout_enabled: false
 objects:
   - collections
   - products
-  - product_variants
-  - carts
   - orders
   - product_types
+  - product_subscriptions
 saml_enabled: false
 saml_logout_enabled: false
 sort: 10
