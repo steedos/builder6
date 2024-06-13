@@ -1,5 +1,5 @@
 name: url
-description: 文章的URL, 必须以 / 开头
+description: 必须以 / 开头, 文章会显示在 /blog/ 子路径下.
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -9,7 +9,7 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: URL
+label: URL路径
 multiple: false
 primary: false
 readonly: false
