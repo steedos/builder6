@@ -26,7 +26,6 @@ tasks:
       echo "STEEDOS_INITIAL_API_KEY=$RANDOM_API_KEY" >> steedos-platform/.env.local
       echo "METADATA_APIKEY=$RANDOM_API_KEY" >> .env.local
       corepack enable
-      printf 'y' | yarn set version stable
     command: |
       echo "ROOT_URL=$(gp url 5000)" >> steedos-platform/.env.local
 
