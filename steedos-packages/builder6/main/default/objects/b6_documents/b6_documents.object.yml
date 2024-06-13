@@ -23,6 +23,6 @@ field_groups:
     collapsed: true
 icon: knowledge
 is_enable: true
-label: 文章
+label: 知识
 locked: false
 version: 2

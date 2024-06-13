@@ -1,5 +1,4 @@
-name: url
-description: 必须以 / 开头, 文章会显示在 /blog/ 子路径下.
+name: description
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -8,17 +7,18 @@ generated: false
 hidden: false
 index: false
 is_name: false
-is_wide: false
-label: URL路径
+is_wide: true
+label: 摘要
 multiple: false
 primary: false
 readonly: false
 required: false
+rows: 3
 searchable: false
 show_as_qr: false
-sort_no: 200
-sortable: true
+sort_no: 100
+sortable: false
 static: false
-type: text
+type: textarea
 unique: false
 write_requires_master_read: false

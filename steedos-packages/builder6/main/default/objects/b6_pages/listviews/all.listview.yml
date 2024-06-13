@@ -4,6 +4,7 @@ columns:
   - field: type
   - field: url
   - field: project_id
+  - field: owner
   - field: modified
 crud_mode: table
 filter_scope: space

@@ -1,14 +1,16 @@
-name: body
+name: html
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
+filters: []
 generated: false
 hidden: false
 index: false
 is_name: false
 is_wide: true
-label: 正文
+label: Html
+language: html
 multiple: false
 primary: false
 readonly: false
@@ -20,4 +22,5 @@ sortable: false
 static: false
 type: html
 unique: false
+visible_on: '${type==="html"}'
 write_requires_master_read: false
