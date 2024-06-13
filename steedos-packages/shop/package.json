@@ -1,0 +1,15 @@
+{
+  "name": "@steedos-labs/shop",
+  "version": "2.1.21",
+  "description": "A Steedos App",
+  "main": "index.js",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "pug": "^3.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "7e93d21f8a77d2636e9ed147ec070ff173fe7c49"
+}

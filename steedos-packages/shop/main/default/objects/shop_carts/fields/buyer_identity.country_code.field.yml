@@ -1,0 +1,4 @@
+name: buyer_identity.country_code
+type: text
+label: Country Code 
+inlineHelpText: The country where the buyer is located.

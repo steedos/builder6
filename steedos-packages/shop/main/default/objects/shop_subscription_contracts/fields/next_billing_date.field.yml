@@ -1,0 +1,4 @@
+name: next_billing_date
+label: 下次扣款日期
+sort_no: 170
+type: datetime

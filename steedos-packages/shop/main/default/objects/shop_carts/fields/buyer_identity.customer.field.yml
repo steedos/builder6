@@ -1,0 +1,4 @@
+name: buyer_identity.customer
+type: text
+label: Customer
+inlineHelpText: The customer account associated with the cart.

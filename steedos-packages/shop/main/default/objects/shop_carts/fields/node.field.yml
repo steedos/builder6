@@ -1,0 +1,8 @@
+name: node
+type: textarea
+label: 消息
+is_wide: true
+sort_no: 2000
+inlineHelpText: A note that is associated with the cart. For example, the note can be a personalized message to the buyer.
+hidden: true
+omit: true

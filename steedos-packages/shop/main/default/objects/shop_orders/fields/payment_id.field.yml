@@ -1,0 +1,6 @@
+name: payment_id
+group: 支付信息
+label: 支付订单号
+omit: true
+sort_no: 220
+type: text

@@ -1,0 +1,9 @@
+name: current_total_tax
+description: >-
+  The current total taxes charged on the order in the shop currency. The value
+  of this field reflects order edits, returns, or refunds.
+label: 当前税金合计
+precision: 18
+scale: 2
+sort_no: 290
+type: currency

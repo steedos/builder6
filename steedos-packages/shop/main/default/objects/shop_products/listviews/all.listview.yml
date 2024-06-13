@@ -1,0 +1,16 @@
+name: all
+columns:
+  - field: name
+  - field: slug
+  - field: rating
+  - field: product_type
+  - field: is_subscription
+  - field: status
+filter_scope: space
+filters: []
+label: 所有
+scrolling_mode: standard
+shared: true
+show_count: false
+sort_no: 100
+type: grid

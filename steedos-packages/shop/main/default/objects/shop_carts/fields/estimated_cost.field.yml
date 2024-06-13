@@ -1,0 +1,6 @@
+name: estimated_cost
+type: object
+label: 估计费用
+sort_no: 480
+is_wide: true
+inlineHelpText: 买方在结账时将支付的估计费用。

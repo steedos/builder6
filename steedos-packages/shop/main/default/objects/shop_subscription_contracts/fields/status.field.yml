@@ -1,0 +1,15 @@
+name: status
+label: 状态
+options:
+  - label: 有效
+    value: active
+  - label: 取消
+    value: cancelled
+  - label: 过期
+    value: expired
+  - label: 失败
+    value: failed
+  - label: 暂停
+    value: paused
+sort_no: 230
+type: select

@@ -1,0 +1,5 @@
+name: discount_allocations.$.discounted_amount
+type: currency
+label: Discounted Amount
+required: true
+inlineHelpText: The discounted amount that has been applied to the cart line.

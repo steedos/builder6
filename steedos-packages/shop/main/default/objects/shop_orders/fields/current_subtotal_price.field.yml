@@ -1,0 +1,9 @@
+name: current_subtotal_price
+description: >-
+  The current subtotal price of the order in the shop currency. The value of
+  this field reflects order edits, returns, and refunds.
+label: 当前小计金额
+precision: 18
+scale: 2
+sort_no: 280
+type: currency

@@ -1,0 +1,5 @@
+name: estimated_cost.subtotal_amount
+type: currency
+label: 小计金额
+required: true
+inlineHelpText: 客户在结账时支付的税款和折扣前的估计金额。

@@ -1,0 +1,8 @@
+name: payment_method
+group: 支付信息
+label: 支付方式
+omit: true
+options:
+  - '微信支付:pay-weixin'
+sort_no: 210
+type: select

@@ -1,0 +1,6 @@
+name: product
+label: 产品
+reference_to: shop_products
+required: true
+sort_no: 20
+type: master_detail

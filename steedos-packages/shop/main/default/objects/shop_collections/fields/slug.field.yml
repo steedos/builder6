@@ -1,0 +1,5 @@
+name: slug
+label: Slug
+required: true
+sort_no: 120
+type: text

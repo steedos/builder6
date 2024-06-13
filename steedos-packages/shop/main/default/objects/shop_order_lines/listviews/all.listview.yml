@@ -1,0 +1,16 @@
+name: all
+columns:
+  - field: order
+  - field: product
+  - field: product_variant
+  - field: price
+  - field: quantity
+  - field: requires_shipping
+  - field: total_discount
+filter_scope: space
+filters: []
+label: 所有
+scrolling_mode: standard
+shared: true
+sort_no: 100
+type: grid

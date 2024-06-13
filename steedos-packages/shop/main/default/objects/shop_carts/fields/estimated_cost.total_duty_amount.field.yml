@@ -1,0 +1,5 @@
+name: estimated_cost.total_duty_amount
+type: currency
+label: Total Duty Amount 
+inlineHelpText: The estimated duty amount for the customer to pay at checkout.
+hidden: true

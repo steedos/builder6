@@ -1,0 +1,12 @@
+name: recent
+columns:
+  - field: cart
+  - field: merchandise
+  - field: quantity
+filter_scope: space
+filters: []
+label: 最近查看
+scrolling_mode: standard
+shared: true
+sort_no: 100
+type: grid

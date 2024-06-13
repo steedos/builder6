@@ -1,0 +1,16 @@
+name: customer_s_products
+buttons: []
+fields:
+  - field_name: name
+    is_required: true
+  - field_name: description
+  - field_name: image
+  - field_name: vender
+    is_required: false
+label: 顾客产品权限
+object_name: shop_products
+profiles:
+  - user
+  - customer
+related_lists: []
+type: record

@@ -1,0 +1,13 @@
+name: 顾客
+allowCreate: false
+allowCreateFiles: false
+allowDelete: false
+allowDeleteFiles: false
+allowEdit: false
+allowEditFiles: false
+allowRead: true
+allowReadFiles: false
+modifyAllRecords: false
+permission_set_id: customer
+viewAllFiles: false
+viewAllRecords: true

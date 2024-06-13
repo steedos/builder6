@@ -1,0 +1,5 @@
+name: discount_codes.$.code
+type: text
+label: code
+required: true
+inlineHelpText: The code for the discount.

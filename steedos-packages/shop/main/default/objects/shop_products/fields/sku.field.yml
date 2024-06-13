@@ -1,0 +1,6 @@
+name: sku
+index: true
+label: 货号(SKU)
+required: false
+sort_no: 105
+type: text

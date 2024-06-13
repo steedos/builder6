@@ -1,0 +1,9 @@
+name: discount_allocations
+type: grid
+label: Discount Allocations
+required: true
+is_wide: true
+sort_no: 190
+inlineHelpText: The discounts that have been applied to the cart line.
+hidden: true
+omit: true

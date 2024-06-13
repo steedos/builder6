@@ -1,0 +1,8 @@
+name: attributes
+label: 属性
+type: grid
+sort_no: 180
+is_wide: true
+inlineHelpText: The attributes associated with the cart. Attributes are represented as key-value pairs.
+hidden: true
+omit: true

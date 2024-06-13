@@ -1,0 +1,4 @@
+name: expired_at
+label: 订阅到期日期
+sort_no: 160
+type: datetime

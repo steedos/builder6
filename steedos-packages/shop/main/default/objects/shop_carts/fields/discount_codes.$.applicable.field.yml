@@ -1,0 +1,5 @@
+name: discount_codes.$.applicable
+type: boolean
+label: applicable
+required: true
+inlineHelpText: Whether the discount code is applicable to the cart's current contents.

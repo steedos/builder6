@@ -1,0 +1,5 @@
+name: keywords
+label: 关键词
+omit: false
+sort_no: 400
+type: text

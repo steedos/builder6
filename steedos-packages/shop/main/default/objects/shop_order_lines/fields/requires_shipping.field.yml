@@ -1,0 +1,4 @@
+name: requires_shipping
+label: 需要配送
+sort_no: 170
+type: boolean

@@ -1,0 +1,4 @@
+name: barcode
+label: 条形码
+sort_no: 160
+type: text

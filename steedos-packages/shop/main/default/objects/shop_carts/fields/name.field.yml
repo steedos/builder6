@@ -1,0 +1,8 @@
+name: name
+index: true
+label: 名称
+required: true
+searchable: true
+sort_no: 160
+type: autonumber
+formula: "{YYYY}{MM}{DD}{000000}" 

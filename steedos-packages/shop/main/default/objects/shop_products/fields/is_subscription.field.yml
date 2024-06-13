@@ -1,0 +1,4 @@
+name: is_subscription
+group: 多属性
+label: 可订阅
+type: boolean

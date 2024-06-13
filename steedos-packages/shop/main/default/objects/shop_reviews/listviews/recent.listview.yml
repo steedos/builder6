@@ -1,0 +1,14 @@
+name: recent
+columns:
+  - field: name
+  - field: product
+  - field: rating
+  - field: status
+  - field: owner
+filter_scope: space
+filters: []
+label: 最近查看
+scrolling_mode: standard
+shared: true
+sort_no: 100
+type: grid

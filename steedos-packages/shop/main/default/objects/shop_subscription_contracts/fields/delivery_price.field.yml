@@ -1,0 +1,6 @@
+name: delivery_price
+label: 订阅金额
+precision: 18
+scale: 2
+sort_no: 200
+type: currency

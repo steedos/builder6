@@ -1,0 +1,6 @@
+name: tags
+label: 标签
+multiple: true
+reference_to: shop_tags
+sort_no: 450
+type: lookup

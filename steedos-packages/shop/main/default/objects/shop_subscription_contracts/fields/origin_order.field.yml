@@ -1,0 +1,5 @@
+name: origin_order
+label: 原始订单
+reference_to: shop_orders
+sort_no: 190
+type: lookup

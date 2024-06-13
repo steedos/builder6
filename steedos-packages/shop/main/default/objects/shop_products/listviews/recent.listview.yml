@@ -1,0 +1,17 @@
+name: recent
+columns:
+  - field: name
+  - field: slug
+  - field: rating
+  - field: description
+  - field: vender
+  - field: product_type
+  - field: is_subscription
+  - field: status
+filter_scope: space
+filters: []
+label: 最近查看
+scrolling_mode: standard
+shared: true
+sort_no: 100
+type: grid

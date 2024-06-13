@@ -1,0 +1,4 @@
+name: buyer_identity.email
+type: text
+label: Email
+inlineHelpText: The email address of the buyer that is interacting with the cart.

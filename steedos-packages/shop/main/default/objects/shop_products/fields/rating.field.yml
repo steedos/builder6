@@ -1,0 +1,7 @@
+name: rating
+label: 评分
+max: 5
+min: 0
+scale: 2
+sort_no: 410
+type: number

@@ -1,0 +1,8 @@
+name: checkout_url
+type: url
+label: Checkout Url
+required: true
+sort_no: 170
+inlineHelpText: The URL of the checkout for the cart.
+hidden: true
+omit: true
