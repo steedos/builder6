@@ -1,0 +1,10 @@
+name: knowledge_source_files
+type: table
+label: 将知识源与聊天机器人结合使用
+group: Instrctions
+visible_on: "${ARRAYINCLUDES(context.user.roles, 'chatbots')}"
+sort_no: 115
+amis:
+  input-table:
+    description: >-
+      局限性: 文件总大小不能超过1MB; 接受的文件格式：.txt、.csv、.json、.pdf、.doc、.docx;

@@ -298,7 +298,24 @@
     "regions": [
         "body"
     ],
-    "data": {},
+    "data": {
+        "modelFreeOptions": [
+            {
+                "label": "OpenAI GPT-3.5 Turbo",
+                "value": "gpt-3.5-turbo"
+            }
+        ],
+        "modelPremiumOptions": [
+            {
+                "label": "OpenAI GPT-3.5 Turbo",
+                "value": "gpt-3.5-turbo"
+            },
+            {
+                "label": "OpenAI GPT-4o",
+                "value": "gpt-4o"
+            }
+        ]
+    },
     "id": "page_b6_chatbots_record_detail",
     "name": "page_b6_chatbots_record_detail",
     "objectApiName": "${objectName}",

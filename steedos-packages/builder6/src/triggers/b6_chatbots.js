@@ -21,6 +21,27 @@ export const chatbotsBeforeUpdate = {
             throw new Error('403')
         }
 
+        if(!_.includes(userSession.roles, 'chatbots') && !_.isEmpty(doc.knowledge_source_files)){
+            throw new Error('403')
+        }
+
+        // 计算附件大小总计不能超过1MB
+        if(!_.isEmpty(doc.knowledge_source_files)){
+            let countSize = 0
+            for (const item of doc.knowledge_source_files) {
+                if(item.file){
+                    const fileInfo = await this.getObject('cfs_files_filerecord').findOne(item.file)
+                    if(fileInfo){
+                        countSize = countSize + fileInfo.original.size;
+                    }
+                }
+            }
+
+            if(countSize > 1 * 1024 * 1024){
+                throw new Error('403')
+            }
+        }
+
         return  {
             doc
         }
