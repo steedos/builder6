@@ -1,23 +1,29 @@
-name: blog_id
+name: type
 create: true
+defaultValue: markdown
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
+filters: []
 generated: false
 hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 知识库
-multiple: false
+label: 类型
+options:
+  - label: Markdown
+    value: markdown
+  - label: Html
+    value: html
 primary: false
 readonly: false
-reference_to: b6_blogs
-required: false
+required: true
 searchable: false
 show_as_qr: false
-sort_no: 25
-sortable: false
+sort_no: 20
+sortable: true
 static: false
-type: master_detail
+type: select
 unique: false
+write_requires_master_read: false

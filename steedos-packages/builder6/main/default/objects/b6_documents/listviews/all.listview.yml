@@ -3,6 +3,8 @@ columns:
   - field: name
   - field: blog_id
   - field: status
+  - field: url
+  - field: owner
   - field: modified
 crud_mode: table
 filter_scope: space

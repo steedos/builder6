@@ -2,6 +2,7 @@ name: all
 columns:
   - field: name
   - field: description
+  - field: owner
 crud_mode: table
 filter_scope: space
 filters: []

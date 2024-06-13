@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@builder.io/mitosis": "^0.3.3",
+    "@builder6/builder6.js": "^0.12.2",
     "autoprefixer": "^10.4.19",
     "ejs": "^3.1.10",
     "lodash": "^4.17.21",
+    "nodemailer": "^6.9.13",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4"
   }

@@ -1,8 +1,7 @@
 name: owner
-hidden: true
+hidden: false
 index: true
-label: 所有者
-omit: true
+label: 作者
+omit: false
 sort_no: 120
 sortable: true
-visible_on: '{{false}}'
