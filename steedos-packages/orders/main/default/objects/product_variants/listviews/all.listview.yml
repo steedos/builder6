@@ -6,7 +6,6 @@ columns:
   - field: option3
   - field: price
   - field: compare_at_price
-  - field: sku
   - field: inventory_quantity
   - field: subscription_user_number
   - field: subscription_duration

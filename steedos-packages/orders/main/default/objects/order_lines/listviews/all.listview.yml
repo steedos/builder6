@@ -7,6 +7,7 @@ columns:
   - field: quantity
   - field: requires_shipping
   - field: total_discount
+  - field: subtotal
 filter_scope: space
 filters: []
 label: 所有
