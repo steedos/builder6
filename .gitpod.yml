@@ -25,6 +25,8 @@ tasks:
       RANDOM_API_KEY=$(openssl rand -hex 32)
       echo "STEEDOS_INITIAL_API_KEY=$RANDOM_API_KEY" >> steedos-platform/.env.local
       echo "METADATA_APIKEY=$RANDOM_API_KEY" >> .env.local
+      corepack enable
+      yes | yarn set version stable
     command: |
       echo "ROOT_URL=$(gp url 5000)" >> steedos-platform/.env.local
 
@@ -33,8 +35,7 @@ tasks:
     command: |
       git config pull.rebase false
       echo "METADATA_SERVER=$(gp url 5000)" >> .env.local
-      nvm i 18
-      nvm use 18
+      yarn config set npmRegistryServer https://registry.npmmirror.com
       yarn
       yarn build
       gp await-port 5000
