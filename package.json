@@ -15,7 +15,7 @@
     "platform:docker": "docker-compose -f steedos-platform/docker-compose.yml up"
   },
   "dependencies": {
-    "@steedos/service-package-loader": "2.7.1-beta.26",
+    "@steedos/service-package-loader": "2.7.1-beta.28",
     "bcryptjs": "^2.4.3",
     "dotenv-flow": "^3.2.0",
     "ioredis": "^5.3.1",
