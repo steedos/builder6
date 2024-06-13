@@ -1,0 +1,6 @@
+name: current_total_discounts
+label: 当前折扣合计
+precision: 18
+scale: 2
+sort_no: 260
+type: currency

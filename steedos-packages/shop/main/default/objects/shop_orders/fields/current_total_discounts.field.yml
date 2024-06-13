@@ -1,9 +1,0 @@
-name: current_total_discounts
-description: >-
-  The current total discounts on the order in the shop currency. The value of
-  this field reflects order edits, returns, and refunds.
-label: 当前折扣合计
-precision: 18
-scale: 2
-sort_no: 260
-type: currency

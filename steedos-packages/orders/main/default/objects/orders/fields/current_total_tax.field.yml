@@ -1,0 +1,6 @@
+name: current_total_tax
+label: 当前税金合计
+precision: 18
+scale: 2
+sort_no: 290
+type: currency

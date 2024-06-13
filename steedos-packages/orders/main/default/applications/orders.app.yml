@@ -1,0 +1,22 @@
+name: 订单管理
+code: orders
+description: 对订单的创建、处理、跟踪和分析的全面管理和监控过程。
+icon_slds: groups
+is_creator: true
+is_new_window: false
+is_use_ie: false
+is_use_iframe: false
+mobile: true
+oauth2_enabled: false
+oauth2_logout_enabled: false
+objects:
+  - collections
+  - products
+  - product_variants
+  - carts
+  - orders
+  - product_types
+saml_enabled: false
+saml_logout_enabled: false
+sort: 10
+visible: true
