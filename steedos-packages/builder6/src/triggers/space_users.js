@@ -63,26 +63,25 @@ export const spaceUsersAfterInsert = {
         })
         const spaceDoc = await spaceObj.findOne(spaceId)
 
-        // Keycloak服务器的URL
-        const keycloakUrl = process.env.STEEDOS_KEYCLOAK_URL;
+        const {
+            STEEDOS_KEYCLOAK_URL,            // Keycloak服务器的URL
+            STEEDOS_KEYCLOAK_ADMIN_USERNAME, // Keycloak管理员凭证
+            STEEDOS_KEYCLOAK_ADMIN_PASSWORD, // Keycloak管理员凭证
+            STEEDOS_EMAIL_URL,               // 发件人的电子邮件配置
+            ROOT_URL,                        // ROOT_URL
+        } = this.settings;
+
         // Keycloak realm的名称
         const realmName = 'master';
         // 要检查的用户名
         const username = email;
-        // Keycloak管理员凭证
-        const adminUsername = process.env.STEEDOS_KEYCLOAK_ADMIN_USERNAME;
-        const adminPassword = process.env.STEEDOS_KEYCLOAK_ADMIN_PASSWORD;
         const clientId = 'steedos-oidc-public'; // 通常用于管理API的客户端ID
         // 收件人的电子邮件地址
         const recipientEmail = email;
-        // 发件人的电子邮件配置
-        const emailConfig = process.env.STEEDOS_EMAIL_URL;
-        // ROOT_URL
-        const rootUrl = process.env.ROOT_URL;
 
         // 发送邀请邮件的函数
         const sendInvitationEmail = async (email) => {
-            const transporter = nodemailer.createTransport(emailConfig);
+            const transporter = nodemailer.createTransport(STEEDOS_EMAIL_URL);
 
             const mailOptions = {
                 from: `"${suDoc.name}" <noreply@steedos.com>`, // 发件人地址
@@ -90,7 +89,7 @@ export const spaceUsersAfterInsert = {
                 subject: '邀请加入', // 主题
                 text: `你好，管理员${suDoc.name}邀请您加入工作区${spaceDoc.name}。请点击以下链接注册。`, // 文本内容
                 html: `<p>你好，管理员${suDoc.name}邀请您加入工作区${spaceDoc.name}。请点击以下链接注册：</p>
-                        <p><a href="${rootUrl}">${rootUrl}</a></p>` // HTML内容
+                        <p><a href="${ROOT_URL}">${ROOT_URL}</a></p>` // HTML内容
             };
 
             try {
@@ -103,11 +102,11 @@ export const spaceUsersAfterInsert = {
 
         // 获取Keycloak访问令牌的函数
         const getAccessToken = async () => {
-            const url = `${keycloakUrl}/realms/${realmName}/protocol/openid-connect/token`;
+            const url = `${STEEDOS_KEYCLOAK_URL}/realms/${realmName}/protocol/openid-connect/token`;
             const params = new URLSearchParams();
             params.append('client_id', clientId);
-            params.append('username', adminUsername);
-            params.append('password', adminPassword);
+            params.append('username', STEEDOS_KEYCLOAK_ADMIN_USERNAME);
+            params.append('password', STEEDOS_KEYCLOAK_ADMIN_PASSWORD);
             params.append('grant_type', 'password');
 
             try {
@@ -124,7 +123,7 @@ export const spaceUsersAfterInsert = {
             try {
                 const token = await getAccessToken();
 
-                const url = `${keycloakUrl}/admin/realms/${realmName}/users?username=${username}`;
+                const url = `${STEEDOS_KEYCLOAK_URL}/admin/realms/${realmName}/users?username=${username}`;
                 const headers = {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
