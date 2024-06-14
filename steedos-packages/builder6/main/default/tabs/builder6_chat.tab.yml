@@ -1,8 +1,8 @@
 name: builder6_chat
 desktop: true
 icon: live_chat
-is_new_window: false
-is_use_iframe: true
+is_new_window: true
+is_use_iframe: false
 label: ChatGPT
 locked: false
 mobile: true
