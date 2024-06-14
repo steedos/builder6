@@ -13,7 +13,7 @@ multiple: false
 primary: false
 readonly: false
 reference_to: b6_blogs
-required: true
+required: false
 searchable: false
 show_as_qr: false
 sort_no: 25

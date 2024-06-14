@@ -27,6 +27,6 @@ field_groups:
     collapsed: true
 icon: live_chat
 is_enable: true
-label: 智能助手
+label: 聊天机器人
 locked: false
 version: 2

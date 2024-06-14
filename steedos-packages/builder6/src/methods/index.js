@@ -5,3 +5,4 @@ export * from './compileHtml';
 export * from './compileAmis';
 
 
+export * from './b6com';

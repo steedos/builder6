@@ -1,0 +1,10 @@
+name: knowledge_source_files.$.file
+type: file
+label: 文件
+sort_no: 110
+is_wide: true
+# description: >-
+#   支持的文件类型: .txt, .csv, .json, .pdf, .doc, .docx
+amis:
+  maxSize: 1048576
+  accept: .txt, .csv, .json, .pdf, .doc, .docx

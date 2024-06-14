@@ -1,8 +1,8 @@
 /*
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
- * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-07 08:44:06
+ * @LastEditors: baozhoutao@steedos.com
+ * @LastEditTime: 2024-06-13 20:22:55
  * @Description: 
  */
 const path = require('path');
@@ -35,9 +35,14 @@ module.exports = {
         B6_CLOUD_PROJECT_SECRET: process.env.B6_CLOUD_PROJECT_SECRET,
         B6_CLOUD_SPACE_PREFIX: process.env.B6_CLOUD_SPACE_PREFIX,
         B6_CLOUD_PROJECT_PREFIX: process.env.B6_CLOUD_PROJECT_PREFIX,
-        B6_CLOUD_META_OBJECTS: ['b6_access_tokens', 'b6_chatbots', 'b6_projects', 'b6_tables', 'b6_fields', 'b6_pages', 'b6_components', 'b6_blocks', 'b6_blogs', 'b6_documents', 'spaces', 'spaces_users'],
-        B6_CLOUD_SPACE_OBJECTS: ['b6_access_tokens', 'b6_chatbots', 'b6_projects', 'b6_tables', 'b6_fields', 'b6_pages', 'b6_components', 'b6_blocks', 'b6_blogs', 'b6_documents', 'spaces_users' ],
-        B6_CLOUD_PROJECT_OBJECTS: ['b6_pages', 'b6_components']
+        B6_CLOUD_META_OBJECTS: ['b6_access_tokens', 'b6_projects', 'b6_tables', 'b6_fields', 'b6_pages', 'b6_components', 'b6_blocks', 'b6_blogs', 'b6_documents', 'spaces', 'spaces_users'], //'b6_chatbots', 
+        B6_CLOUD_SPACE_OBJECTS: ['b6_access_tokens', 'b6_projects', 'b6_tables', 'b6_fields', 'b6_pages', 'b6_components', 'b6_blocks', 'b6_blogs', 'b6_documents', 'spaces_users' ], //'b6_chatbots', 
+        B6_CLOUD_PROJECT_OBJECTS: ['b6_pages', 'b6_components'],
+        STEEDOS_IDENTITY_OIDC_ENABLED: process.env.STEEDOS_IDENTITY_OIDC_ENABLED,
+        STEEDOS_IDENTITY_OIDC_CONFIG_URL: process.env.STEEDOS_IDENTITY_OIDC_CONFIG_URL,
+        STEEDOS_IDENTITY_OIDC_CLIENT_ID: process.env.STEEDOS_IDENTITY_OIDC_CLIENT_ID,
+        STEEDOS_EMAIL_URL: process.env.STEEDOS_EMAIL_URL,
+        ROOT_URL: process.env.ROOT_URL
     },
     metadata: {
         $package: {

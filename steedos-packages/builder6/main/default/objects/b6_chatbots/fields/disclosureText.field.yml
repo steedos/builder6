@@ -26,5 +26,5 @@ sortable: false
 static: false
 type: textarea
 unique: false
-visible_on: '{{displayDisclosure === true}}'
+visible_on: '${displayDisclosure === true}'
 write_requires_master_read: false

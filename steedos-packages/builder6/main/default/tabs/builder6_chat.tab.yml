@@ -1,0 +1,11 @@
+name: builder6_chat
+desktop: true
+icon: live_chat
+is_new_window: false
+is_use_iframe: true
+label: ChatGPT
+locked: false
+mobile: true
+permissions: []
+type: url
+url: 'https://chat.builder6.com'

@@ -1,7 +1,7 @@
 name: object_b6_flows
 desktop: true
 icon: flow
-label: 智能流程
+label: 流程
 mobile: true
 object: b6_flows
 permissions: []

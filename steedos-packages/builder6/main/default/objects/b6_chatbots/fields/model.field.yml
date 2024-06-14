@@ -29,3 +29,6 @@ static: false
 type: select
 unique: false
 write_requires_master_read: false
+amis:
+  options: null
+  source: "${ARRAYINCLUDES(context.user.roles, 'chatbots') ? modelPremiumOptions : modelFreeOptions}"
