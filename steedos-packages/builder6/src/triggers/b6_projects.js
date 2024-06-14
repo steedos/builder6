@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-06-13 00:56:23
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-14 06:41:53
+ * @LastEditTime: 2024-06-14 08:16:24
  * @FilePath: /builder6/steedos-packages/builder6/src/triggers/b6_projects.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -41,14 +41,12 @@ const checkAndRegisterProjectDomain = async (domain, projectId, spaceId, ctx, _t
         }
     }
 
-    // waitForCheckDomain = domain;
-
     let isDomainRepeated = false;
     let cloudDomain, isCloudDomainExist;
     if (waitForCheckDomain) {
-        console.log("waitForCheckDomain===sss====", waitForCheckDomain);
+        // console.log("waitForCheckDomain===sss====", waitForCheckDomain);
         cloudDomain = await base('b6_domains').find(waitForCheckDomain);
-        console.log("cloudDomain===sss====", cloudDomain);
+        // console.log("cloudDomain===sss====", cloudDomain);
         //记录不存在时cloudDomain还是有返回值，且返回的cloudDomain?.fields值为空对象，这是db层bug，所以用cloudDomain?.fields来判断是否查到record
         isDomainRepeated = !_.isEmpty(cloudDomain?.fields);
         isCloudDomainExist === cloudDomain?.fields?.project_id !== projectId;
@@ -66,17 +64,31 @@ const checkAndRegisterProjectDomain = async (domain, projectId, spaceId, ctx, _t
     else {
         if (previousDomain && previousDomain !== domain) {
             // 只要domain有变更，包括把domain值清空，即domain值为空时也要删除previousDomain
-            // TODO:删除previousDoc.domain，且删除失败要报错中断数据更新操作，但是要注意如果previousDoc.domain本身不存在时执行删除操作的报错不要中断数据更新操作
+            // 删除previousDoc.domain，且删除失败要报错中断数据更新操作，但是要注意如果previousDoc.domain本身不存在时执行删除操作的报错不要中断数据更新操作
+            // TODO:db destroy执行会报错进catch，可能是db层bug，待修正后再放开
+            // try {
+            //     console.log("deletedRecords===waitForCheckDomain====", waitForCheckDomain);
+            //     console.log("deletedRecords===previousDomain====", previousDomain);
+
+            //     let xxx = await base('b6_domains').find(previousDomain);
+            //     console.log("deletedRecords===previousDomain==xxx==", xxx);
+
+            //     const deletedRecords = await base('b6_domains').destroy([previousDomain]);
+            //     console.log("deletedRecords===result====", deletedRecords);
+            // } catch (e) {
+            //     _this.broker.logger.error(e);
+            //     throw new Error(`移除旧域名 ${previousDomain} 失败！`, e);
+            // }
         }
     }
 
-    if (domain && !isCloudDomainExist) {
-        // TODO:base create创建记录无法指定id，先放放
-        // 填写了域名、域名不重复(!isDomainRepeated)，且要创建的域名并不是在云端已经存在时才向云端插入新域名(!isCloudDomainExist)
+    if (waitForCheckDomain && !isCloudDomainExist) {
+        // 填写了域名、域名有变更、域名不重复(!isDomainRepeated)，且要创建的域名并不是在云端已经存在时才向云端插入新域名(!isCloudDomainExist)
+        // TODO:上面移除旧域名，db destroy执行会报错进catch，可能是db层bug，待修正后再放开
         // try {
-        //     console.log("insertedDomain===domain====", domain);
-        //     const insertedDomain = await base('b6_domains').create([{
-        //         "id": domain,
+        //     console.log("insertedDomain===waitForCheckDomain====", waitForCheckDomain);
+        //     const insertedDomain = await base('b6_domains').update([{
+        //         "id": waitForCheckDomain,
         //         "fields": {
         //             "type": "project",
         //             "project_id": projectId,
@@ -85,7 +97,8 @@ const checkAndRegisterProjectDomain = async (domain, projectId, spaceId, ctx, _t
         //     }]);
         //     console.log("insertedDomain===result====", insertedDomain);
         // } catch (e) {
-        //     throw new Error("域名注册失败！", e);
+        //     _this.broker.logger.error(e);
+        //     throw new Error(`注册新域名 ${waitForCheckDomain} 失败！`, e);
         // }
     }
 }
