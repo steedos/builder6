@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-06-13 00:56:23
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-14 06:32:11
+ * @LastEditTime: 2024-06-14 06:41:53
  * @FilePath: /builder6/steedos-packages/builder6/src/triggers/b6_projects.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -102,7 +102,9 @@ export const projectBeforeUpdate = {
 
         if (isInsert) doc._id = id;
 
-        doc.url = `https://${id}.builder6.app`;
+        const urlDomain = process.env.B6_FRONTEND_Domain || 'builder6.app';
+
+        doc.url = `https://${id}.${urlDomain}`;
 
         return {
             doc
