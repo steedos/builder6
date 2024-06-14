@@ -12,9 +12,9 @@ mobile: true
 showSidebar: false
 sort: 10
 tab_items:
-  builder6_chat:
-    index: 1
   object_b6_chatbots:
+    index: 1
+  builder6_chat:
     index: 2
   object_b6_tables:
     index: 3
@@ -25,8 +25,8 @@ tab_items:
   object_b6_access_tokens:
     index: 8
 tabs:
-  - builder6_chat
   - object_b6_chatbots
+  - builder6_chat
   - object_b6_tables
   - object_b6_documents
   - object_b6_projects
