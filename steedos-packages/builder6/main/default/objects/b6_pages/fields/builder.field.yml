@@ -1,6 +1,6 @@
 name: builder
 filters: []
-hidden: false
+hidden: true
 is_wide: true
 label: Builder Schema
 language: json
