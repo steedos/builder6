@@ -7,7 +7,6 @@ amis_schema: |-
               "type": "button",
               "label": "预览",
               "id": "u:preview",
-              "editorState": "default",
               "onEvent": {
                   "click": {
                       "weight": 0,
@@ -15,7 +14,7 @@ amis_schema: |-
                           {
                               "actionType": "url",
                               "args": {
-                                  "url": "${window:Meteor.settings.public.B6_FRONTEND_URL}/interfaces/${project_id}/${_id}"
+                                  "url": "${window:Meteor.settings.public.B6_FRONTEND_URL}/interfaces/${space}/${project_id}/${_id}"
                               },
                               "ignoreError": false
                           }
@@ -35,7 +34,7 @@ amis_schema: |-
           "permissions": {}
       },
       "bodyClassName": "p-0",
-      "id": "u:b770226a9371",
+      "id": "u:28aa2d631b84",
       "dsType": "api"
   }
 is_enable: true

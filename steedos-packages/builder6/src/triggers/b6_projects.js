@@ -115,7 +115,7 @@ export const projectBeforeUpdate = {
 
         if (isInsert) doc._id = id;
 
-        const urlDomain = process.env.B6_FRONTEND_Domain || 'builder6.app';
+        const urlDomain = process.env.B6_FRONTEND_APP_DOMAIN || 'builder6.app';
 
         doc.url = `https://${id}.${urlDomain}`;
 
