@@ -110,14 +110,19 @@ export const projectBeforeUpdate = {
     },
     async handler(ctx) {
         const { doc, id = uuid.v4(), spaceId, isInsert } = ctx.params;
+        const { domain } = doc;
 
-        await checkAndRegisterProjectDomain(doc.domain, id, spaceId, ctx, this);
+        await checkAndRegisterProjectDomain(domain, id, spaceId, ctx, this);
 
         if (isInsert) doc._id = id;
 
         const urlDomain = process.env.B6_FRONTEND_APP_DOMAIN || 'builder6.app';
-
-        doc.url = `https://${id}.${urlDomain}`;
+        if (domain) {
+            doc.url = `https://${domain}.${urlDomain}`;
+        }
+        else{
+            doc.url = `https://app-${id}.${urlDomain}`;
+        }
 
         return {
             doc
