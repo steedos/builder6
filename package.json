@@ -6,8 +6,8 @@
   ],
   "repository": "git://github.com/steedos-labs/contract.git",
   "scripts": {
-    "build": "nx run-many --target=build --all",
-    "build:watch": "nx run-many --target=build:watch --all",
+    "build": "npm run build --workspaces",
+    "build:watch": "npm run build:watch --workspaces",
     "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js",
     "start:watch": "STEEDOS_LOG_LEVEL=info moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js --hot",
     "dev": "cross-env-shell FORCE_COLOR=true concurrently -n \"BUILD,RUN\" -c \"bgBlue.bold,bgGreen.bold\" \"yarn:build:watch\" \"yarn:start:watch\"",
@@ -40,6 +40,5 @@
     "@azure/logger": "1.0.4",
     "@azure/core-tracing": "1.0.1",
     "@azure/core-paging": "1.5.0"
-  },
-  "packageManager": "yarn@4.3.0"
+  }
 }
