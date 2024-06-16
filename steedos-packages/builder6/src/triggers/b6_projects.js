@@ -36,7 +36,7 @@ export const projectBeforeUpdate = {
             doc.domain = domain
             doc.url = `https://${domain}.${urlDomain}`;
 
-            let oldDomain = ""
+            let oldDomain = doc.domain
             if (!isInsert) {
                 const previousDoc = await this.getObject('b6_projects').findOne(
                     id,
@@ -49,19 +49,21 @@ export const projectBeforeUpdate = {
 
             if (oldDomain != doc.domain) {
 
-                const cloudDomain = await base("b6_domains").find(doc.domain);
-                if (cloudDomain && cloudDomain._rawJson)   
-                    throw new Error(`域名已存在: ${doc.domain}`)
-    
-                await base("b6_domains").destroy(oldDomain)
-                await base("b6_domains").replace(doc.domain, {
-                    type:"project",
-                    space: spaceId,
-                    project_id: id,
-                    domain: doc.domain,
+                base("b6_domains").find(doc.domain, async (err, record) => {
+                    if (record)   
+                        throw new Error(`域名已存在: ${doc.domain}`)
+
+                    await base("b6_domains").destroy(oldDomain)
                 });
+    
             }
 
+            await base("b6_domains").replace(doc.domain, {
+                type:"project",
+                space: spaceId,
+                project_id: id,
+                domain: doc.domain,
+            });
         }
         
         return {
