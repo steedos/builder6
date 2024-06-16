@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-06-13 00:56:23
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-16 12:04:35
+ * @LastEditTime: 2024-06-16 12:37:02
  * @FilePath: /builder6/steedos-packages/builder6/src/triggers/b6_projects.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -23,8 +23,12 @@ export const projectBeforeUpdate = {
     },
     async handler(ctx) {
         const { doc, id = uuid.v4(), spaceId, isInsert } = ctx.params;
-        const { domain = `app-${id}` } = doc;
+        let { domain = `app-${id}` } = doc;
 
+        if(!domain){
+            // 把domain文本框中内容清空时 domian传入的是null
+            domain = `app-${id}`;
+        }
 
         const urlDomain = process.env.B6_FRONTEND_APP_DOMAIN || 'builder6.app';
 
@@ -81,6 +85,27 @@ export const projectBeforeUpdate = {
 
         return {
             doc
+        }
+    }
+}
+
+export const projectBeforeDelete = {
+    trigger: {
+        listenTo: 'b6_projects',
+        when: ['beforeDelete']
+    },
+    async handler(ctx) {
+        const { id } = ctx.params;
+        const previousDoc = await this.getObject('b6_projects').findOne(
+            id,
+            {
+                fields: ['domain'],
+            }
+        );
+        const { domain } = previousDoc;
+
+        if (domain) {
+            await base("b6_domains").destroy(domain)
         }
     }
 }
