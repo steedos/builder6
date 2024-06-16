@@ -14,7 +14,7 @@ amis_schema: |-
                           {
                               "actionType": "url",
                               "args": {
-                                  "url": "${window:Meteor.settings.public.B6_FRONTEND_URL}/interfaces/${space}/${_id}"
+                                  "url": "${url}"
                               },
                               "ignoreError": false
                           }
