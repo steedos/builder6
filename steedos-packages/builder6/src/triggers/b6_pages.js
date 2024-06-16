@@ -62,7 +62,7 @@ export const pagesBeforeUpdate = {
     width: 100%;
 }
 </style>
-<iframe src="https://builder6.com/chatbots/${doc.chatbot_id}"
+<iframe src="${process.env.B6_FRONTEND_URL}/chatbots/${doc.chatbot_id}"
         class="chatbot-iframe"></iframe>
                 `
                 const builder = await this.compileHtml(doc, id);
