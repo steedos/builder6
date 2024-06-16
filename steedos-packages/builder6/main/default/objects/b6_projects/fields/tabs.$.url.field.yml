@@ -7,4 +7,4 @@ hidden: false
 label: URL
 required: true
 sort_no: 180
-type: url
+type: text
