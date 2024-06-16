@@ -54,16 +54,22 @@ export const projectBeforeUpdate = {
                         throw new Error(`域名已存在: ${doc.domain}`)
 
                     await base("b6_domains").destroy(oldDomain)
+                    await base("b6_domains").replace(doc.domain, {
+                        type:"project",
+                        space: spaceId,
+                        project_id: id,
+                        domain: doc.domain,
+                    });
                 });
     
+            } else {
+                await base("b6_domains").replace(doc.domain, {
+                    type:"project",
+                    space: spaceId,
+                    project_id: id,
+                    domain: doc.domain,
+                });
             }
-
-            await base("b6_domains").replace(doc.domain, {
-                type:"project",
-                space: spaceId,
-                project_id: id,
-                domain: doc.domain,
-            });
         }
         
         return {
