@@ -50,7 +50,6 @@ export const projectBeforeUpdate = {
             if (oldDomain != doc.domain) {
 
                 const cloudDomain = await base("b6_domains").find(doc.domain);
-                console.log(cloudDomain)
                 if (cloudDomain && cloudDomain._rawJson)   
                     throw new Error(`域名已存在: ${doc.domain}`)
     
