@@ -1,7 +1,7 @@
 name: object_b6_projects
 desktop: true
 icon: orders
-label: 站点
+label: 应用
 mobile: true
 object: b6_projects
 permissions: []

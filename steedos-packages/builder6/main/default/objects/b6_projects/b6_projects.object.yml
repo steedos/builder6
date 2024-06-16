@@ -22,6 +22,6 @@ field_groups:
     collapsed: true
 icon: apps
 is_enable: true
-label: 站点
+label: 应用
 locked: false
 version: 2
