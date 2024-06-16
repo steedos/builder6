@@ -2,10 +2,12 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2024-06-03 18:28:30
  * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-06-12 18:24:38
+ * @LastEditTime: 2024-06-16 14:14:19
  * @Description: 
  */
 const _ = require('lodash');
+
+const knowledge_source = require('./b6_chatbots_knowledge_source');
 
 module.exports = {
     "steedos-server.started": function(payload, sender, eventName, ctx){
@@ -70,4 +72,5 @@ module.exports = {
       const { objectApiName, id, spaceId, userId, previousDoc } = ctx.params;
       this.b6comChatbotDelete(objectApiName, id)
     },
+    ...knowledge_source
   }

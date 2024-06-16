@@ -1,0 +1,5 @@
+name: knowledge_sources.$.syncTime
+type: datetime
+label: Uploaded
+sort_no: 110
+is_wide: true

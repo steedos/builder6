@@ -1,0 +1,9 @@
+name: knowledge_sources.$.type
+type: select
+label: Type
+sort_no: 110
+options: 
+  - label: File
+    value: file
+  - label: Table
+    value: table
