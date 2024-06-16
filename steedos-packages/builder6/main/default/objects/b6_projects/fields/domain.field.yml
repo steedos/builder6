@@ -24,3 +24,8 @@ static: false
 type: text
 unique: false
 write_requires_master_read: false
+amis:
+  "validations": 
+    "matchRegexp": "^.{6,}$"
+  "validationErrors": 
+    "matchRegexp": "请输入至少 6 个以上字符。"
