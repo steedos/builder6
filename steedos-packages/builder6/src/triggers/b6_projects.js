@@ -2,7 +2,7 @@
  * @Author: 殷亮辉 yinlianghui@hotoa.com
  * @Date: 2024-06-13 00:56:23
  * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-14 08:16:24
+ * @LastEditTime: 2024-06-16 12:04:35
  * @FilePath: /builder6/steedos-packages/builder6/src/triggers/b6_projects.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -36,7 +36,7 @@ export const projectBeforeUpdate = {
             doc.domain = domain
             doc.url = `https://${domain}.${urlDomain}`;
 
-            let oldDomain = doc.domain
+            let oldDomain;
             if (!isInsert) {
                 const previousDoc = await this.getObject('b6_projects').findOne(
                     id,
@@ -49,29 +49,36 @@ export const projectBeforeUpdate = {
 
             if (oldDomain != doc.domain) {
 
-                base("b6_domains").find(doc.domain, async (err, record) => {
-                    if (record)   
-                        throw new Error(`域名已存在: ${doc.domain}`)
+                let clounDomian;
+                try {
+                    clounDomian = await base("b6_domains").find(doc.domain);
+                }
+                catch (e) {
+                }
 
+                if (clounDomian)
+                    throw new Error(`域名已存在： ${doc.domain}`)
+
+                if (oldDomain)
                     await base("b6_domains").destroy(oldDomain)
-                    await base("b6_domains").replace(doc.domain, {
-                        type:"project",
-                        space: spaceId,
-                        project_id: id,
-                        domain: doc.domain,
-                    });
+
+                await base("b6_domains").replace(doc.domain, {
+                    type: "project",
+                    space: spaceId,
+                    project_id: id,
+                    domain: doc.domain,
                 });
-    
+
             } else {
                 await base("b6_domains").replace(doc.domain, {
-                    type:"project",
+                    type: "project",
                     space: spaceId,
                     project_id: id,
                     domain: doc.domain,
                 });
             }
         }
-        
+
         return {
             doc
         }
