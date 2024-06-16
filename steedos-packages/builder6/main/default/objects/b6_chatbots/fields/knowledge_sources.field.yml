@@ -7,6 +7,7 @@ sort_no: 115
 amis:
   id: knowledge_sources
   addable: false
+  label: '将知识源与聊天机器人结合使用 (\${_display.knowledge_sources ? _display.knowledge_sources.length : 0}/5)'
   input-table:
     hidden: true
     description: >-
@@ -97,6 +98,7 @@ amis:
         "type": "button",
         "label": "添加知识源",
         "icon": "fa fa-plus",
+        "disabledOn": "${_display.knowledge_sources.length >= 5}",
         "onEvent": {
           "click": {
             "actions": [
