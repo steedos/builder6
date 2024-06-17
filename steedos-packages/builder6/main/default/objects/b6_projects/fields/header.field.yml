@@ -14,7 +14,7 @@ is_wide: false
 label: 顶部组件
 multiple: false
 primary: false
-readonly: ${!ARRAYINCLUDES(context.user.roles, 'interfaces')
+readonly: false # ${!ARRAYINCLUDES(context.user.roles, 'interfaces')
 reference_to: b6_components
 required: false
 searchable: false
