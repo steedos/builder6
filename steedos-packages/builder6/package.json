@@ -4,9 +4,10 @@
   "description": "",
   "main": "package.service.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js && npm run build:page-designer",
+    "build": "webpack --config webpack.config.js && npm run build:page-designer && npm run build:designers",
     "build:watch": "webpack --config webpack.config.js --watch",
     "build:page-designer": "cp src/interfaces/designer/page_design.ejs dist",
+    "build:designers": "cp src/designers/**/*.ejs dist",
     "release": "npm run build && npm publish --registry https://registry.npmjs.org"
   },
   "dependencies": {
