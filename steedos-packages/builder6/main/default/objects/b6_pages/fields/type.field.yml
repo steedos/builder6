@@ -1,6 +1,6 @@
 name: type
 create: true
-defaultValue: html
+defaultValue: richtext
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -12,18 +12,20 @@ is_name: false
 is_wide: false
 label: 类型
 options:
-  - label: Html
-    value: html
+  - label: 富文本
+    value: richtext
   - label: 数据表
     value: table
   - label: 聊天机器人
     value: chatbot
+  - label: Markdown
+    value: markdown
+  - label: Html
+    value: html
   - label: Amis
     value: amis
   - label: JSX
     value: jsx
-  - label: Markdown
-    value: markdown
   - label: Blocks
     value: blocks
 primary: false

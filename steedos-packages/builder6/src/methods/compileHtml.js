@@ -1,7 +1,6 @@
 const uuid = require("uuid");
 
-export const compileHtml = async (page, id) => {
-    const {html, tailwind} = page
+export const compileHtml = async (html, tailwind, id) => {
 
     if (!html) {
         return { error: "html is required" }

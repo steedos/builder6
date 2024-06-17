@@ -14,6 +14,7 @@ export const pagesBeforeUpdate = {
             let content = "";
             if (doc.type === 'jsx') {content = doc.jsx;}
             if (doc.type === 'html') {content = doc.html;}
+            if (doc.type === 'richtext') {content = `<div class="prose prose-lg max-w-7xl mx-auto py-10">${doc.richtext}</div>`;}
             if (doc.type === 'amis') {content = JSON.parse(doc.amis_schema);}
             doc.tailwind = await this.compileTailwind(content, id);
         } catch (e) { this.broker.logger.error(e)}
@@ -27,7 +28,14 @@ export const pagesBeforeUpdate = {
 
         if (doc.type === 'html' && doc.html) {
             try {
-                const builder = await this.compileHtml(doc, id);
+                const builder = await this.compileHtml(doc.html, doc.tailwind, id);
+                doc.builder = JSON.stringify(builder);
+            } catch (e) { this.broker.logger.error(e)}
+        }
+
+        if (doc.type === 'richtext' && doc.richtext) {
+            try {
+                const builder = await this.compileHtml(`<div class="prose prose-lg max-w-7xl mx-auto py-10">${doc.richtext}</div>`, doc.tailwind, id);
                 doc.builder = JSON.stringify(builder);
             } catch (e) { this.broker.logger.error(e)}
         }
@@ -65,7 +73,8 @@ export const pagesBeforeUpdate = {
 <iframe src="${process.env.B6_FRONTEND_URL}/chatbots/${doc.chatbot_id}"
         class="chatbot-iframe"></iframe>
                 `
-                const builder = await this.compileHtml(doc, id);
+                doc.tailwind = "";
+                const builder = await this.compileHtml(doc.html, doc.tailwind, id);
                 doc.builder = JSON.stringify(builder);
             } catch (e) { this.broker.logger.error(e)}
         }
