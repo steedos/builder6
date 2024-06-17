@@ -11,7 +11,7 @@ amis:
   input-table:
     hidden: true
     description: >-
-      局限性: 文件总大小不能超过1MB; 接受的文件格式：.txt、.csv、.json、.pdf、.doc、.docx;
+      局限性: 文件总大小不能超过1MB; 接受的文件格式：.txt、.json、.pdf、.doc、.docx;
   headerToolbar:
     - {
       "type": "each",
@@ -186,7 +186,7 @@ amis:
                             "visible_on": "{{type != 'table' ? true : false}}",
                             "amis": {
                                 "maxSize": 1048576,
-                                "accept": ".txt, .csv, .json, .pdf, .doc, .docx",
+                                "accept": ".txt, .json, .pdf, .doc, .docx",
                                 "className": "mb-4"
                             }
                           }
