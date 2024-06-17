@@ -51,7 +51,7 @@ export const pagesBeforeUpdate = {
             try {
                 doc.html = `
 <style>
-.builder-custom-code {
+.builder-component.builder-component-${id} .builder-custom-code {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -60,7 +60,7 @@ export const pagesBeforeUpdate = {
     height: 100%;
     width: 100%;
 }
-.chatbot-iframe {
+.builder-component.builder-component-${id} .chatbot-iframe {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -70,8 +70,7 @@ export const pagesBeforeUpdate = {
     width: 100%;
 }
 </style>
-<iframe src="${process.env.B6_FRONTEND_URL}/chatbots/${doc.chatbot_id}"
-        class="chatbot-iframe"></iframe>
+<iframe src="${process.env.B6_FRONTEND_URL}/chatbots/${doc.chatbot_id}" class="chatbot-iframe"></iframe>
                 `
                 doc.tailwind = "";
                 const builder = await this.compileHtml(doc.html, doc.tailwind, id);
