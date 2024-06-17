@@ -7,3 +7,5 @@ options:
     value: file
   - label: Table
     value: table
+  - label: Document
+    value: document

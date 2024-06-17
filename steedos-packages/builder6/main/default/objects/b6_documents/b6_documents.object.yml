@@ -1,7 +1,7 @@
 name: b6_documents
 custom: true
 enable_api: true
-enable_dataloader: true
+enable_dataloader: false
 enable_enhanced_lookup: true
 enable_events: false
 enable_files: true
