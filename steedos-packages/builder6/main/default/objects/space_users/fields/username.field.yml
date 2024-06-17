@@ -1,0 +1,4 @@
+name: username
+label: 用户名
+hidden: true
+type: text

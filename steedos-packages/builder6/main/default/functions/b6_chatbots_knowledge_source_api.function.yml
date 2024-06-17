@@ -1,0 +1,60 @@
+name: b6_chatbots_knowledge_source_api
+objectApiName: b6_chatbots
+isEnabled: true
+is_rest: true
+script: >-
+  // global: {_:lodash, moment, validator, filters}
+
+  // objects
+
+  // ctx: {input, params, broker, getObject, getUser}
+
+  const { _ } = global;
+
+  const userSession = await ctx.getUser(ctx.params.userId, ctx.params.spaceId)
+
+
+  const { input, getObject } = ctx;
+
+  const { action, item, id, itemId } = input;
+
+  const chatbotObj = await getObject('b6_chatbots')
+
+  const chatbot = await chatbotObj.findOne(id);
+
+  let knowledge_sources = chatbot.knowledge_sources || [];
+
+  if (action === 'addItem') {
+      if (!item.type) {
+          item.type = 'file';
+      }
+      item._id = await chatbotObj._makeNewID();
+      await ctx.broker.emit('b6_chatbots_knowledge_source.update', { objectApiName: 'b6_chatbots', id: id, knowledgeSource: item })
+      item.syncTime = new Date();
+      knowledge_sources.push(item);
+  } else if (action === 'deleteItem') {
+      await ctx.broker.emit('b6_chatbots_knowledge_source.delete', {
+          objectApiName: 'b6_chatbots', id: id, knowledgeSource: _.find(knowledge_sources, (_item) => {
+              return _item._id == itemId;
+          })
+      })
+      knowledge_sources = _.filter(knowledge_sources, (_item) => {
+          return _item._id != itemId;
+      })
+  } else if (action === 'syncItem') {
+      await ctx.broker.emit('b6_chatbots_knowledge_source.update', {
+          objectApiName: 'b6_chatbots', id: id, knowledgeSource: _.find(knowledge_sources, (_item) => {
+              return _item._id == itemId;
+          })
+      })
+      knowledge_sources = _.map(knowledge_sources, (_item) => {
+          if (_item._id === itemId) {
+              _item.syncTime = new Date();
+          }
+          return _item;
+      })
+  }
+
+  await chatbotObj.update(id, { knowledge_sources: knowledge_sources },
+  userSession)
+locked: false

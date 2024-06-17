@@ -7,9 +7,9 @@ required: true
 searchable: true
 sort_no: 800
 type: text
-description: 相对路径，必须以 / 开头，例如 /about
+description: 需以 / 开头，如 /about，/ 表示首页。
 amis:
   "validations": 
-    "matchRegexp": "^(([^\\s\\/\\.]+(\\.[^\\s\\/\\.]+)+))*(\\/[^\\s\\.\\/]+)*$"
+    "matchRegexp": "^\\/(?:[^\\/\\s\\.]+(?:\\/[^\\/\\s\\.]+)*)?$"
   "validationErrors": 
     "matchRegexp": "必须是以 / 开头的相对路径地址"

@@ -1,7 +1,7 @@
 name: object_b6_chatbots
 desktop: true
 icon: live_chat
-label: 智能助手
+label: 聊天机器人
 mobile: true
 object: b6_chatbots
 permissions: []

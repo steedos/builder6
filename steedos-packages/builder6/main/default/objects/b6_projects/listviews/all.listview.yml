@@ -1,7 +1,7 @@
 name: all
 columns:
   - field: name
-  - field: url
+  - field: description
   - field: owner
   - field: modified
 crud_mode: table
@@ -11,7 +11,7 @@ is_enable: true
 label: 所有
 mobile_columns:
   - field: name
-  - field: url
+  - field: description
 searchable_fields: []
 shared: true
 shared_to: space

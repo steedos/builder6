@@ -1,31 +1,26 @@
-name: domain
+name: chatbot_id
 create: true
-description: 企业版可自定义域名
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
 filters: []
 generated: false
-group: 应用
 hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 域名前缀
+label: 聊天机器人
 multiple: false
 primary: false
 readonly: false
-required: false
+reference_to: b6_chatbots
+required: true
 searchable: false
 show_as_qr: false
-sort_no: 30
-sortable: true
+sort_no: 50
+sortable: false
 static: false
-type: text
+type: lookup
 unique: false
 write_requires_master_read: false
-amis:
-  "validations": 
-    "matchRegexp": "^.{6,}$"
-  "validationErrors": 
-    "matchRegexp": "请输入至少 6 个以上字符。"
+visible_on: '${type==="chatbot"}'

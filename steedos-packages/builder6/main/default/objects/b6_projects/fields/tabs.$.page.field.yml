@@ -9,3 +9,9 @@ required: false
 sort_no: 170
 type: lookup
 visible_on: '${type == "page"}'
+filters: ["project_id", "=", "${_master.recordId}"]
+auto_fill_mapping:
+  - from: url
+    to: url
+  - from: name
+    to: name

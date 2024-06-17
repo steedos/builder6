@@ -1,12 +1,12 @@
 name: b6_chatbots
 custom: true
 enable_api: true
-enable_dataloader: true
+enable_dataloader: false
 enable_enhanced_lookup: true
 enable_events: false
 enable_files: false
 enable_form_tabs: true
-enable_inline_edit: true
+enable_inline_edit: false
 enable_instances: false
 enable_lock_detail: true
 enable_notes: false
@@ -27,6 +27,6 @@ field_groups:
     collapsed: true
 icon: live_chat
 is_enable: true
-label: 智能助手
+label: 聊天机器人
 locked: false
 version: 2

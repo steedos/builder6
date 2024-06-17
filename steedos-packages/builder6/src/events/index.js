@@ -2,10 +2,12 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2024-06-03 18:28:30
  * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-06-05 10:20:55
+ * @LastEditTime: 2024-06-16 14:14:19
  * @Description: 
  */
 const _ = require('lodash');
+
+const knowledge_source = require('./b6_chatbots_knowledge_source');
 
 module.exports = {
     "steedos-server.started": function(payload, sender, eventName, ctx){
@@ -57,5 +59,18 @@ module.exports = {
       if(objectApiName && id && _.includes(this.settings.B6_CLOUD_PROJECT_OBJECTS, objectApiName)){
         await this.builder6ProjectDelete(objectApiName, id)
       }
-    }
+    },
+    "@b6_chatbots.inserted": async function(payload, sender, eventName, ctx){
+      const { objectApiName, id, spaceId, userId, previousDoc } = ctx.params;
+      this.b6comChatbotUpdate(objectApiName, id)
+    },
+    "@b6_chatbots.updated": async function(payload, sender, eventName, ctx){
+      const { objectApiName, id, spaceId, userId, previousDoc } = ctx.params;
+      this.b6comChatbotUpdate(objectApiName, id)
+    },
+    "@b6_chatbots.deleted": async function(payload, sender, eventName, ctx){
+      const { objectApiName, id, spaceId, userId, previousDoc } = ctx.params;
+      this.b6comChatbotDelete(objectApiName, id)
+    },
+    ...knowledge_source
   }

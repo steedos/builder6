@@ -1,0 +1,128 @@
+name: standard_new
+amis_schema: |-
+  {
+      "type": "service",
+      "body": [
+          {
+              "type": "button",
+              "label": "新建",
+              "id": "u:standard_new",
+              "editorState": "default",
+              "onEvent": {
+                  "click": {
+                      "weight": 0,
+                      "actions": [
+                          {
+                              "ignoreError": false,
+                              "actionType": "dialog",
+                              "dialog": {
+                                  "type": "dialog",
+                                  "title": "新建",
+                                  "body": [
+                                      {
+                                          "id": "u:05d28153a20a",
+                                          "type": "form",
+                                          "title": "表单",
+                                          "mode": "horizontal",
+                                          "dsType": "api",
+                                          "feat": "Insert",
+                                          "body": [
+                                              {
+                                                  "name": "name",
+                                                  "label": "名称",
+                                                  "type": "input-text",
+                                                  "id": "u:bc7ab2804e2d"
+                                              }
+                                          ],
+                                          "actions": [
+                                              {
+                                                  "type": "button",
+                                                  "label": "提交",
+                                                  "onEvent": {
+                                                      "click": {
+                                                          "actions": [
+                                                              {
+                                                                  "actionType": "submit",
+                                                                  "componentId": "u:05d28153a20a"
+                                                              }
+                                                          ]
+                                                      }
+                                                  },
+                                                  "level": "primary"
+                                              }
+                                          ],
+                                          "resetAfterSubmit": true,
+                                          "api": {
+                                              "url": "/api/v1/b6_chatbots",
+                                              "method": "post",
+                                              "requestAdaptor": "api.data = {\n    doc: {\n        name: context.name\n    }\n}\nreturn api;",
+                                              "adaptor": "",
+                                              "messages": {}
+                                          },
+                                          "onEvent": {
+                                              "submitSucc": {
+                                                  "weight": 0,
+                                                  "actions": [
+                                                      {
+                                                          "ignoreError": false,
+                                                          "actionType": "custom",
+                                                          "script": "/* 自定义JS使用说明：\n  * 1.动作执行函数doAction，可以执行所有类型的动作\n  * 2.通过上下文对象context可以获取当前组件实例，例如context.props可以获取该组件相关属性\n  * 3.事件对象event，在doAction之后执行event.stopPropagation();可以阻止后续动作执行\n*/\nconsole.log('context', context)\nFlowRouter.go(`/app/${event.data.appId}/b6_chatbots/view/${event.context.data.result.data._id}`)\n",
+                                                          "args": {}
+                                                      }
+                                                  ]
+                                              }
+                                          }
+                                      }
+                                  ],
+                                  "id": "u:930af2791113",
+                                  "actions": [
+                                      {
+                                          "type": "button",
+                                          "actionType": "cancel",
+                                          "label": "取消",
+                                          "id": "u:0b997de992e2"
+                                      },
+                                      {
+                                          "type": "button",
+                                          "actionType": "confirm",
+                                          "label": "确定",
+                                          "primary": true,
+                                          "id": "u:6f1e5e0330dd"
+                                      }
+                                  ],
+                                  "showCloseButton": true,
+                                  "closeOnOutside": false,
+                                  "closeOnEsc": false,
+                                  "showErrorMsg": true,
+                                  "showLoading": true,
+                                  "draggable": false,
+                                  "size": "md",
+                                  "actionType": "dialog"
+                              }
+                          }
+                      ]
+                  }
+              }
+          }
+      ],
+      "regions": [
+          "body"
+      ],
+      "data": {
+          "context": {},
+          "dataComponentId": "",
+          "record_id": "",
+          "record": {},
+          "permissions": {}
+      },
+      "bodyClassName": "p-0",
+      "id": "u:b88c010ab3ef",
+      "dsType": "api",
+      "definitions": {}
+  }
+is_enable: true
+label: 新建
+locked: false
+'on': list
+type: amis_button
+visible: true

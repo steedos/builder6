@@ -15,13 +15,13 @@ enable_tasks: false
 enable_tree: false
 enable_workflow: true
 field_groups:
-  - group_name: 应用
+  - group_name: 界面
   - group_name: 布局
   - group_name: 菜单
   - group_name: 系统信息
     collapsed: true
 icon: apps
 is_enable: true
-label: 智能应用
+label: 应用
 locked: false
 version: 2

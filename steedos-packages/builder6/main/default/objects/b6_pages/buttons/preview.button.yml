@@ -7,21 +7,43 @@ amis_schema: |-
               "type": "button",
               "label": "预览",
               "id": "u:preview",
-              "editorState": "default",
               "onEvent": {
                   "click": {
                       "weight": 0,
                       "actions": [
                           {
+                              "actionType": "custom",
+                              "script": "// 使用本地跑的build app项目localhost:3000地址预览\nvar regLocalhost = /^http:\\/\\/localhost/;\nif (regLocalhost.test(Meteor.settings.public.B6_FRONTEND_URL)) {\n  event.data.__projectUrl = Meteor.settings.public.B6_FRONTEND_URL;\n}",
+                              "args": {}
+                          },
+                          {
+                              "actionType": "ajax",
+                              "ignoreError": false,
+                              "outputVar": "responseResult",
+                              "options": {},
+                              "api": {
+                                  "url": "${context.rootUrl}/api/v1/b6_projects/${project_id}?fields=[\"url\"]",
+                                  "method": "get"
+                              },
+                              "expression": "${!!!__projectUrl}"
+                          },
+                          {
+                              "ignoreError": false,
+                              "actionType": "custom",
+                              "script": "var responseResult = event.data.responseResult;\nif (responseResult) { \n  responseResult\n  event.data.__projectId = responseResult._id;\n  event.data.__projectUrl = responseResult.url;\n  // page的_id和url还原为page本身的属性，不可以用请求到的project数据\n  event.data._id = event.data.__super._id;\n  event.data.url = event.data.__super.url;\n}",
+                              "args": {}
+                          },
+                          {
+                              "ignoreError": false,
                               "actionType": "url",
                               "args": {
-                                  "url": "${window:Meteor.settings.public.B6_FRONTEND_URL}/interfaces/${project_id}/${_id}"
-                              },
-                              "ignoreError": false
+                                  "url": "${__projectUrl}${url}"
+                              }
                           }
                       ]
                   }
-              }
+              },
+              "editorState": "default"
           }
       ],
       "regions": [
@@ -34,8 +56,8 @@ amis_schema: |-
           "record": {},
           "permissions": {}
       },
+      "id": "u:28aa2d631b84",
       "bodyClassName": "p-0",
-      "id": "u:b770226a9371",
       "dsType": "api"
   }
 is_enable: true

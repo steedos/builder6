@@ -298,7 +298,24 @@
     "regions": [
         "body"
     ],
-    "data": {},
+    "data": {
+        "modelFreeOptions": [
+            {
+                "label": "OpenAI GPT-3.5 Turbo",
+                "value": "gpt-3.5-turbo"
+            }
+        ],
+        "modelPremiumOptions": [
+            {
+                "label": "OpenAI GPT-3.5 Turbo",
+                "value": "gpt-3.5-turbo"
+            },
+            {
+                "label": "OpenAI GPT-4o",
+                "value": "gpt-4o"
+            }
+        ]
+    },
     "id": "page_b6_chatbots_record_detail",
     "name": "page_b6_chatbots_record_detail",
     "objectApiName": "${objectName}",
@@ -312,6 +329,29 @@
     "css": {
         ".chatbots-chat": {
             "height": "calc(100 - 45px) !important"
+        },
+        ".antd-Card-avtar": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "border-radius": "unset",
+            "height": "64px",
+            "border-width": "2px"
+        },
+        ".antd-Card-img": {
+            "height": "auto !important",
+            "border-radius": "unset !important",
+            "width": "30px !important"
+        },
+        ".antd-Card-subTitle": {
+            "color": "rgba(0, 0, 0, 0.85)"
+        },
+        ".add-knowledge-source-form .antd-ListControl-item":{
+            "display": "inline-flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "width": "120px",
+            "height": "120px"
         }
     }
 }
