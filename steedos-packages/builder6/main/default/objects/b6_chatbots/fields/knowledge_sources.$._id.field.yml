@@ -1,0 +1,4 @@
+name: knowledge_sources.$._id
+type: text
+label: ID
+sort_no: 110

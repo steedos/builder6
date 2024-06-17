@@ -1,4 +1,4 @@
-name: knowledge_source_files.$.description
+name: knowledge_sources.$.description
 type: textarea
 label: 描述
 sort_no: 150

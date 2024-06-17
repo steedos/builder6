@@ -1,4 +1,4 @@
-name: knowledge_source_files.$.file
+name: knowledge_sources.$.file
 type: file
 label: 文件
 sort_no: 110

@@ -10,7 +10,7 @@
     "build:watch": "nx run-many --target=build:watch --all",
     "start": "moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js",
     "start:watch": "STEEDOS_LOG_LEVEL=info moleculer-runner steedos-packages/*/package.service.js --config steedos.config.js --hot",
-    "dev": "cross-env-shell FORCE_COLOR=true concurrently -n \"BUILD,RUN\" -c \"bgBlue.bold,bgGreen.bold\" \"yarn:build:watch\" \"yarn:start:watch\"",
+    "dev": "cross-env-shell FORCE_COLOR=true concurrently -n \"BUILD,RUN\" -c \"bgBlue.bold,bgGreen.bold\" \"npm:build:watch\" \"npm:start:watch\"",
     "platform": "cd steedos-platform && yarn && yarn start",
     "platform:docker": "docker-compose -f steedos-platform/docker-compose.yml up"
   },
@@ -23,7 +23,7 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
-    "lerna": "^5.4.0",
+    "lerna": "^5.6.2",
     "moleculer-repl": "^0.7.3",
     "nx": "^19.2.3",
     "webpack": "^5.88.2",
@@ -41,5 +41,5 @@
     "@azure/core-tracing": "1.0.1",
     "@azure/core-paging": "1.5.0"
   },
-  "packageManager": "yarn@4.3.0"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

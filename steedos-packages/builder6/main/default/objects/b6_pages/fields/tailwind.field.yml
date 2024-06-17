@@ -1,6 +1,6 @@
 name: tailwind
 filters: []
-hidden: false
+hidden: true
 is_wide: true
 label: Tailwind CSS
 language: css

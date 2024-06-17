@@ -29,6 +29,21 @@
                     "className": "px-0"
                 },
                 {
+                    "title": "组件",
+                    "body": [
+                        {
+                            "type": "steedos-object-related-listview",
+                            "label": "相关表",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "id": "u:1ec1b5eeb12e",
+                            "relatedObjectApiName": "b6_components"
+                        }
+                    ],
+                    "id": "u:1e878882314e",
+                    "className": "px-0"
+                },
+                {
                     "title": "设置",
                     "body": [
                         {

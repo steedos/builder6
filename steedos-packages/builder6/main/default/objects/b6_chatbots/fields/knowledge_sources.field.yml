@@ -1,0 +1,261 @@
+name: knowledge_sources
+type: table
+label: 将知识源与聊天机器人结合使用
+group: Instrctions
+visible_on: "${ARRAYINCLUDES(context.user.roles, 'chatbots')}"
+sort_no: 115
+amis:
+  id: knowledge_sources
+  addable: false
+  label: '将知识源与聊天机器人结合使用 (\${_display.knowledge_sources ? _display.knowledge_sources.length : 0}/5)'
+  input-table:
+    hidden: true
+    description: >-
+      局限性: 文件总大小不能超过1MB; 接受的文件格式：.txt、.json、.pdf、.doc、.docx;
+  headerToolbar:
+    - {
+      "type": "each",
+      "name": "_display.knowledge_sources",
+      "items": {
+          "type": "card",
+          "header": {
+            "title": "${knowledge_sources[index].type == 'table' ? item.table.label : item.file.name}",
+            "subTitle": "${knowledge_sources[index].type == 'table' ? `上次同步日期 ${item.syncTime}` : `上传日期 ${item.syncTime}`}",
+            "description": "${item.description}",
+            "avatarClassName": "pull-left thumb-md avatar b-3x m-r",
+            "avatar": "${knowledge_sources[index].type == 'table' ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVR4nO2XQQ6EMAwD8wl/tV/naO57QaiEdemM1GuKXMcJVQAAAAAAj6Dho/NUOkIA4wDRAn6sZ5fPgAqr144QwDhAhKBZhMQmaFZhMQbNHlBhe0U7+soeoOa/urcPAtxFAa+GA0ZQC9QkV/XiwlMIYBwgWsB/T++YENTiBwHuooBXi3JATXJV7+37+gv8gAADBxxLt4CaQyk+BIUAxgHauQVqEqbAWHwKVPMHIcAId4CYAt57CggBvJcDAAAAAKC+zQlP5TWVH8ytNAAAAABJRU5ErkJggg==' : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg=='}",
+          },
+          "toolbar": [
+            {
+              "type": "button",
+              "label": "同步",
+              "level": "default",
+              "visibleOn": "${knowledge_sources[index].type == 'table'}",
+              "className": "text-lg text-gray-800 mr-1 border-solid border-slate-300 border",
+              "onEvent": {
+                  "click": {
+                    "actions": [
+                      {
+                        "ignoreError": false,
+                        "actionType": "ajax",
+                        "outputVar": "responseResult",
+                        "options": {},
+                        "api": {
+                         "url": "/api/v1/b6_chatbots/functions/knowledge_source_api",
+                          "method": "post",
+                          "requestAdaptor": "api.data = {id: context.recordId, action: 'syncItem', itemId: context.knowledge_sources[context.index]._id };\n\n\nreturn api;",
+                          "adaptor": "",
+                          "messages": {}
+                        }
+                      },
+                      {
+                        "componentId": "u:2efee5835bf6",
+                        "groupType": "component",
+                        "actionType": "reload"
+                      }
+                    ]
+                  }
+                },
+                "confirmText": "重新同步表数据?"
+            },
+            {
+              "type": "button",
+              "label": "",
+              "icon": "fa fa-trash-o",
+              "level": "default",
+              "className": "text-gray-800 border-solid border-slate-300 border",
+              "onEvent": {
+                  "click": {
+                    "actions": [
+                      {
+                        "ignoreError": false,
+                        "actionType": "ajax",
+                        "outputVar": "responseResult",
+                        "options": {},
+                        "api": {
+                         "url": "/api/v1/b6_chatbots/functions/knowledge_source_api",
+                          "method": "post",
+                          "requestAdaptor": "api.data = {id: context.recordId, action: 'deleteItem', itemId: context.knowledge_sources[context.index]._id };\n\n\nreturn api;",
+                          "adaptor": "",
+                          "messages": {}
+                        }
+                      },
+                      {
+                        "componentId": "u:2efee5835bf6",
+                        "groupType": "component",
+                        "actionType": "reload"
+                      }
+                    ]
+                  }
+                },
+                "id": "u:e5dcc48547b3",
+                "confirmText": "您确定要删除吗?"
+            }
+          ]
+        }
+    }
+    - {
+        "type": "button",
+        "label": "添加知识源",
+        "icon": "fa fa-plus",
+        "disabledOn": "${_display.knowledge_sources.length >= 5}",
+        "onEvent": {
+          "click": {
+            "actions": [
+              {
+                "ignoreError": false,
+                "actionType": "dialog",
+                "dialog": {
+                  "type": "dialog",
+                  "title": "添加知识源",
+                  "body": [
+                    {
+                      "id": "u:3822799c5786",
+                      "type": "form",
+                      "title": "表单",
+                      "mode": "normal",
+                      "className": "add-knowledge-source-form",
+                      "body": [
+                        {
+                          "type": "steedos-field",
+                          "config": {
+                            "name": "type",
+                            "type": "select",
+                            "label": "类型",
+                            "sort_no": 10,
+                            "is_wide": true,
+                            "options": [
+                              {
+                                "label": "File",
+                                "value": "file"
+                              },
+                              {
+                                "label": "Table",
+                                "value": "table"
+                              }
+                            ],
+                            "amis": {
+                              "value": "file",
+                              "className": "mb-4",
+                              "type": "list-select",
+                              "options": [
+                                {
+                                  "value": "file",
+                                  "body": '
+                                    <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg==">
+                                                                      <div class="font-medium text-lg inline">文件</div>
+                                    </div>
+                                  '
+                                },{
+                                  "value": "table",
+                                  "body": '
+                                    <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVR4nO2XQQ6EMAwD8wl/tV/naO57QaiEdemM1GuKXMcJVQAAAAAAj6Dho/NUOkIA4wDRAn6sZ5fPgAqr144QwDhAhKBZhMQmaFZhMQbNHlBhe0U7+soeoOa/urcPAtxFAa+GA0ZQC9QkV/XiwlMIYBwgWsB/T++YENTiBwHuooBXi3JATXJV7+37+gv8gAADBxxLt4CaQyk+BIUAxgHauQVqEqbAWHwKVPMHIcAId4CYAt57CggBvJcDAAAAAKC+zQlP5TWVH8ytNAAAAABJRU5ErkJggg==">
+                                                                      <div class="font-medium text-lg inline">数据表</div>
+                                    </div>
+                                  '
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "steedos-field",
+                          "config": {
+                            "name": "table",
+                            "type": "lookup",
+                            "label": "数据表",
+                            "required": true,
+                            "reference_to": "b6_tables",
+                            "sort_no": 20,
+                            "is_wide": true,
+                            "visible_on": "{{type == 'table' ? true : false}}",
+                            "amis": {
+                              "className": "mb-4"
+                            }
+                          }
+                        },
+                        {
+                          "type": "steedos-field",
+                          "config": {
+                            "name": "file",
+                            "type": "file",
+                            "label": "文件",
+                            "sort_no": 110,
+                            "is_wide": true,
+                            "required": true,
+                            "visible_on": "{{type != 'table' ? true : false}}",
+                            "amis": {
+                                "maxSize": 1048576,
+                                "accept": ".txt, .json, .pdf, .doc, .docx",
+                                "className": "mb-4"
+                            }
+                          }
+                        },
+                        {
+                          "type": "steedos-field",
+                          "config": {
+                            "name": "description",
+                            "required": true,
+                            "type": "textarea",
+                            "label": "描述",
+                            "sort_no": 120,
+                            "is_wide": true,
+                            "description": "提供额外的上下文信息，以帮助您的聊天机器人了解如何使用这些信息。"
+                          }
+                        }
+                      ],
+                      "api": {
+                        "url": "/api/v1/b6_chatbots/functions/knowledge_source_api",
+                        "method": "post",
+                        "requestAdaptor": "api.data = {id: context.recordId, action: 'addItem', item: {type: context.type, file: context.file, table: context.table, description: context.description} };\n\n\nreturn api;",
+                        "adaptor": "",
+                        "messages": {
+                        }
+                      },
+                      "actions": [],
+                      "resetAfterSubmit": true,
+                      "onEvent": {
+                        "submitSucc": {
+                          "weight": 0,
+                          "actions": [
+                            {
+                              "componentId": "u:2efee5835bf6",
+                              "groupType": "component",
+                              "actionType": "reload"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "id": "u:c4738363857a",
+                  "actions": [
+                    {
+                      "type": "button",
+                      "actionType": "cancel",
+                      "label": "取消",
+                      "id": "u:4dff4fc00b8a"
+                    },
+                    {
+                      "type": "button",
+                      "actionType": "confirm",
+                      "label": "确定",
+                      "primary": true,
+                      "id": "u:aa9ea287adb6",
+                    }
+                  ],
+                  "showCloseButton": true,
+                  "closeOnOutside": false,
+                  "closeOnEsc": false,
+                  "showErrorMsg": true,
+                  "showLoading": true,
+                  "draggable": false,
+                  "size": "md"
+                }
+              }
+            ]
+          }
+        },
+        "id": "u:a9d09608519e",
+        "level": "primary"
+      }

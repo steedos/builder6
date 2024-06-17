@@ -1,6 +1,6 @@
 name: type
 create: true
-defaultValue: amis
+defaultValue: html
 enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
@@ -14,12 +14,18 @@ label: 类型
 options:
   - label: Html
     value: html
+  - label: 数据表
+    value: table
+  - label: 聊天机器人
+    value: chatbot
   - label: Amis
     value: amis
   - label: JSX
     value: jsx
   - label: Markdown
     value: markdown
+  - label: Blocks
+    value: blocks
 primary: false
 readonly: false
 required: false

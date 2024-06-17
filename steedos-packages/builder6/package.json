@@ -4,10 +4,10 @@
   "description": "",
   "main": "package.service.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js && yarn build:page-designer",
+    "build": "webpack --config webpack.config.js && npm run build:page-designer",
     "build:watch": "webpack --config webpack.config.js --watch",
     "build:page-designer": "cp src/interfaces/designer/page_design.ejs dist",
-    "release": "yarn build && npm publish --registry https://registry.npmjs.org"
+    "release": "npm run build && npm publish --registry https://registry.npmjs.org"
   },
   "dependencies": {
     "@builder.io/mitosis": "^0.3.3",
@@ -15,7 +15,6 @@
     "autoprefixer": "^10.4.19",
     "ejs": "^3.1.10",
     "lodash": "^4.17.21",
-    "nodemailer": "^6.9.13",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4"
   }

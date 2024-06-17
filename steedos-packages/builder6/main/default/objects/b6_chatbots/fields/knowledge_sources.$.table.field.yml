@@ -1,0 +1,5 @@
+name: knowledge_sources.$.table
+type: lookup
+label: Table
+sort_no: 110
+reference_to: b6_tables

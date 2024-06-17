@@ -14,6 +14,26 @@
             "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
             "tabs": [
                 {
+                    "title": "页面",
+                    "body": [
+                        {
+                            "type": "steedos-object-form",
+                            "label": "对象表单",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "id": "u:123e45d5a47d",
+                            "appId": "${appId}",
+                            "mode": "read",
+                            "className": "mb-4",
+                            "enableTabs": false,
+                            "tabsMode": "vertical",
+                            "enableInitApi": false
+                        }
+                    ],
+                    "id": "u:5d4e7e3f6ecc",
+                    "className": "px-0 py-4"
+                },
+                {
                     "title": "区块",
                     "body": [
                         {
@@ -44,7 +64,7 @@
                     "className": "px-0"
                 },
                 {
-                    "title": "版本",
+                    "title": "历史版本",
                     "body": [
                         {
                             "type": "steedos-object-related-listview",
@@ -57,26 +77,6 @@
                     ],
                     "id": "u:9b5b7d201630",
                     "className": "px-0"
-                },
-                {
-                    "title": "设置",
-                    "body": [
-                        {
-                            "type": "steedos-object-form",
-                            "label": "对象表单",
-                            "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "appId": "${appId}",
-                            "id": "u:123e45d5a47d",
-                            "mode": "read",
-                            "className": "mb-4",
-                            "enableTabs": true,
-                            "tabsMode": "sidebar",
-                            "enableInitApi": false
-                        }
-                    ],
-                    "id": "u:5d4e7e3f6ecc",
-                    "className": "px-0 py-4"
                 }
             ],
             "id": "u:365be6de16dd"

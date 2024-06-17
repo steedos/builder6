@@ -1,10 +1,10 @@
 name: tabs.$.name
 amis:
-  requiredOn: '${type == "url"}'
+  disabledOn: '${type == "page"}'
+  visibleOn: '${(type == "page" && page) || type == "url"}'
 group: 菜单
 hidden: false
 label: 名称
-required: false
+required: true
 sort_no: 160
 type: text
-visible_on: '${type == "url"}'

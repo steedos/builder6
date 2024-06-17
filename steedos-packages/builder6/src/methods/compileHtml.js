@@ -18,17 +18,17 @@ export const compileHtml = async (page, id) => {
                 component: {
                     name: "Custom Code",
                     options: {
-                    code: html || "",
-                    scriptsClientOnly: true
-                    }
+                        code: html || "",
+                        scriptsClientOnly: true,
+                    },
                 },
                 responsiveStyles: {
                     large: {
-                    display: "flex",
-                    flexDirection: "column",
-                    position: "relative",
-                    flexShrink: "0",
-                    boxSizing: "border-box"
+                        display: "flex",
+                        flexDirection: "column",
+                        position: "relative",
+                        flexShrink: "0",
+                        boxSizing: "border-box"
                     }
                 }
             }]
