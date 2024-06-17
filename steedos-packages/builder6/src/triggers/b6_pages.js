@@ -9,7 +9,6 @@ export const pagesBeforeUpdate = {
     },
     async handler(ctx) {
         const {doc, id = uuid.v4(), isInsert} = ctx.params;
-        console.log(doc)
 
         if (isInsert) doc._id = id;
 
