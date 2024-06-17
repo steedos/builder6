@@ -26,6 +26,7 @@
                                         "type": "submit",
                                         "label": "保存",
                                         "primary": true,
+                                        "disabled": true,
                                         "id": "u:66a9cecdc4bb"
                                     }
                                 ],
@@ -42,6 +43,20 @@
                                             {
                                                 "actionType": "reload",
                                                 "componentId": "u:d0cb32b561f2"
+                                            },
+                                            {
+                                                "componentId": "u:66a9cecdc4bb",
+                                                "ignoreError": false,
+                                                "actionType": "disabled"
+                                            }
+                                        ]
+                                    },
+                                    "change": {
+                                        "actions": [
+                                            {
+                                                "componentId": "u:66a9cecdc4bb",
+                                                "ignoreError": false,
+                                                "actionType": "enabled"
                                             }
                                         ]
                                     }
@@ -59,8 +74,7 @@
                         "position": "static",
                         "display": "block",
                         "flex": "0 0 150px",
-                        "flexBasis": "650px",
-                        "overflowX": "scroll"
+                        "flexBasis": "650px"
                     },
                     "wrapperBody": false,
                     "isFixedHeight": false,
@@ -286,13 +300,14 @@
                 }
             ],
             "style": {
-                "position": "relative",
+                "position": "fixed",
                 "rowGap": "10px",
-                "columnGap": "10px"
+                "columnGap": "10px",
+                "width": "calc(100% - 25px)"
             },
             "isFixedHeight": false,
             "isFixedWidth": false,
-            "className": "h-full"
+            "className": "steedos-chatbot-page"
         }
     ],
     "regions": [
@@ -352,6 +367,34 @@
             "align-items": "center",
             "width": "120px",
             "height": "120px"
+        },
+        ".steedos-object-form":{
+            "margin-bottom": "0px !important",
+            "height": "100%"
+        },
+        ".steedos-object-form>.antd-Panel":{
+            "margin-bottom": "0px !important",
+            "padding-bottom": "0px !important",
+            "height": "100%"
+        },
+        ".steedos-object-form>.antd-Panel>div":{
+            "height": "calc(100% - 50px)"
+        },
+        ".steedos-amis-form":{
+            "height": "100%"
+        },
+        ".steedos-amis-form>.antd-Wrapper":{
+            "height": "100%"
+        },
+        ".steedos-amis-form>.antd-Wrapper>.antd-Tabs":{
+            "height": "100%"
+        },
+        ".antd-Tabs-content":{
+            "overflow": "auto",
+            "height": "calc(100% - 50px)"
+        },
+        ".steedos-chatbot-page": {
+            "height": "calc(100% - 100px) !important"
         }
     }
 }
