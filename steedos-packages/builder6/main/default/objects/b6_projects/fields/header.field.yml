@@ -1,4 +1,5 @@
 name: header
+description: 企业版可自定义顶部导航
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -13,7 +14,7 @@ is_wide: false
 label: 顶部组件
 multiple: false
 primary: false
-readonly: false
+readonly: ${!ARRAYINCLUDES(context.user.roles, 'interfaces')
 reference_to: b6_components
 required: false
 searchable: false
