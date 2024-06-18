@@ -18,6 +18,9 @@ module.exports = {
     const tables = await this.getObject('b6_tables').find({
       filters: [['space', '=', spaceId],['_id', '=', tableId]],
     });
+    const fields = await this.getObject('b6_fields').find({
+      filters: [['space', '=', spaceId],['table_id', '=', tableId]],
+    });
 
     if (!tables || !tables.length) {
       return {
@@ -25,6 +28,10 @@ module.exports = {
       }
     }
 
-    return tables[0];
+    const amisSchema = this.convertTableFieldsToAmisSchema(tables[0], fields);
+
+    return {
+      "amis_schema": amisSchema
+    };
   }
 }
