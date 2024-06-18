@@ -1,4 +1,4 @@
-name: featured_image
+name: cover
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true

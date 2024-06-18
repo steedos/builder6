@@ -2,7 +2,7 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2024-06-12 16:06:10
  * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-06-16 15:30:50
+ * @LastEditTime: 2024-06-17 16:02:58
  * @Description: 
  */
 
@@ -16,6 +16,7 @@ module.exports = {
             const fileInfo = await this.getObject('cfs_files_filerecord').findOne(knowledge_source.file)
             if(fileInfo){
                 knowledge_source.file_info = {
+                    _id: fileInfo._id,
                     url: absoluteUrl(`/api/files/files/${knowledge_source.file}?download=1`),
                     name: fileInfo.original.name
                 }
@@ -24,10 +25,21 @@ module.exports = {
             const tableInfo = await this.getObject('b6_tables').findOne(knowledge_source.table)
             const tableFields = await this.getObject('b6_fields').find({filters: ['table_id', '=', knowledge_source.table], fields: ['name', 'label', 'type', 'description']})
             knowledge_source.table_info = {
+                _id: tableInfo._id,
                 name: tableInfo.name,
                 label: tableInfo.label,
                 fields: tableFields,
                 space: tableInfo.space
+            }
+        }else if(knowledge_source.type === 'document' && knowledge_source.document){
+            const documentInfo = await this.getObject('b6_documents').findOne(knowledge_source.document)
+            knowledge_source.document_info = {
+                _id: documentInfo._id,
+                name: documentInfo.name,
+                type: documentInfo.type,
+                markdown: documentInfo.markdown,
+                html: documentInfo.html,
+                space: documentInfo.space
             }
         }else{
             throw new Error('无效类型的知识源')

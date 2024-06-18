@@ -19,7 +19,7 @@ module.exports = {
     }),
   ],
   optimization: {
-    minimize: true,
+    minimize: false,
     nodeEnv: false // 避免业务代码中的process.env.NODE_ENV在编译时就被替换
   },
 };

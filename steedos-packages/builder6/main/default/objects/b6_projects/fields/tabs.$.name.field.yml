@@ -4,7 +4,7 @@ amis:
   visibleOn: '${(type == "page" && page) || type == "url"}'
 group: 菜单
 hidden: false
-label: 名称
+label: 标题
 required: true
 sort_no: 160
 type: text

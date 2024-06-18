@@ -1,5 +1,5 @@
 name: logo
-description: 如果上传，则Logo显示为图片
+description: 企业版可自定义Logo
 filters: []
 group: 布局
 hidden: false
@@ -7,4 +7,4 @@ label: Logo 图片
 required: false
 sort_no: 80
 type: image
-visible_on: '{{true}}'
+readonly: ${!ARRAYINCLUDES(context.user.roles, 'interfaces')
