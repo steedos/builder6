@@ -52,7 +52,7 @@ jobs:
           context: .
           push: true
           tags: |
-            steedos/builder6:${{ env.DOCKER_VERSION }}
+            steedos/builder6:${{ env.VERSION }}
           no-cache: true
 
       - name: Log out from Docker Hub
