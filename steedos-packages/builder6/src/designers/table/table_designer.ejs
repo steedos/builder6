@@ -13,14 +13,15 @@
       userId: "<%=userId%>",
       tenantId: "<%=tenantId%>",
       authToken: "<%=authToken%>",
-      tableId: "<%=tableId%>",
+      pageId: "<%=pageId%>",
       messageOnly: true
     };
 
+    debugger;
     let comp = document.querySelector("builder-fiddle");
 
-    const loadSchema = async () => {
-      const { assetUrls, rootUrl, userId, tenantId, authToken, tableId } = settings;
+    const loadPage = async () => {
+      const { assetUrls, rootUrl, userId, tenantId, authToken, pageId } = settings;
 
       // 如果传入 steedos rooturl
       if (rootUrl && !authToken) return;
@@ -43,9 +44,9 @@
         },
       };
 
-      if (tableId) {
+      if (pageId) {
         const result = await axios.get(
-          `/api/builder6/table/designer/${tableId}/latest`,
+          `/api/builder6/table/designer/${pageId}/latest`,
           {
             withCredentials: true,
             headers: { Authorization: `Bearer ${tenantId},${authToken}` },
@@ -54,6 +55,7 @@
         if (result?.data) {
           let schema = result.data.amis_schema || initialContent;
 
+          let pageType = result.data.type;
           if (typeof schema === "string") {
             schema = JSON.parse(schema);
           }
@@ -80,10 +82,10 @@
       }
     };
 
-    const saveSchema = async (data) => {
-      const { rootUrl, userId, tenantId, authToken, tableId } = settings;
+    const savePage = async (data) => {
+      const { rootUrl, userId, tenantId, authToken, pageId } = settings;
 
-      if (!tableId) {
+      if (!pageId) {
         return;
       }
 
@@ -96,7 +98,7 @@
       }
 
       return await axios.put(
-        `/api/builder6/table/designer/${tableId}/save`,
+        `/api/builder6/table/designer/${pageId}/save`,
         {
           withCredentials: true,
           schema: JSON.stringify(schema, null, 4), //直接存储json格式会导致react form异常。
@@ -111,10 +113,10 @@
         });
     };
 
-    const deploySchemaVersion = async () => {
-      const { rootUrl, tenantId, authToken, tableId } = settings;
+    const deployPageVersion = async () => {
+      const { rootUrl, tenantId, authToken, pageId } = settings;
 
-      if (!tableId) {
+      if (!pageId) {
         return;
       }
       // return axios
@@ -122,7 +124,7 @@
       //     `${rootUrl}/service/api/page/deploy`,
       //     {
       //       withCredentials: true,
-      //       tableId: tableId,
+      //       pageId: pageId,
       //     },
       //     {
       //       headers: { Authorization: `Bearer ${tenantId},${authToken}` },
@@ -150,7 +152,7 @@
       const { data } = event;
       if (data) {
         if (data.type === 'builder.loadContent') {
-          loadSchema().then((content) => {
+          loadPage().then((content) => {
             if (!content.regions) {
               //不设置regions的话，会显示工具栏和边栏
               Object.assign(content, { regions: ["body"] });
@@ -159,12 +161,12 @@
           })
         }
         if (data.type === 'builder.saveContent') {
-          saveSchema(data.data).then(() => {
+          savePage(data.data).then(() => {
             comp.messageFrame('builder.contentSaved')
           })
         }
         if (data.type === "builder.deployContent") {
-          deploySchemaVersion().then(() => {
+          deployPageVersion().then(() => {
             comp.messageFrame('builder.contentDeployed')
           })
         }

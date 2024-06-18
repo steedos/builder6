@@ -26,7 +26,7 @@ module.exports = {
             // } else if (req.query.locale == "zh-cn") {
             //   locale = "zh-CN";
             // }
-            // const page = await objectql.broker.call(`page.getLatestPageVersion`, { tableId: req.query.tableId });
+            // const page = await objectql.broker.call(`page.getLatestPageVersion`, { pageId: req.query.tableId });
             const page = {};
             // const retUrl = __meteor_runtime_config__.ROOT_URL + '/app/admin/pages/view/' + req.query.tableId
             const steedosBuilderUrl = process.env.STEEDOS_BUILDER_URL || 'https://builder.steedos.cn';
@@ -40,7 +40,7 @@ module.exports = {
                 tenantId: userSession.spaceId,
                 userId: userSession.userId,
                 authToken: userSession.authToken,
-                tableId: tableId,
+                pageId: tableId,
                 userSession: userSession
             };
             const options = {};
