@@ -6,7 +6,7 @@ hidden: false
 label: 页面
 reference_to: b6_pages
 required: false
-sort_no: 170
+sort_no: 155
 type: lookup
 visible_on: '${type == "page"}'
 filters: ["project_id", "=", "${_master.recordId}"]

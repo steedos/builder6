@@ -1,6 +1,6 @@
 name: icon
 group: 布局
-hidden: false
+hidden: true
 label: Logo 图标
 optionsFunction: !<tag:yaml.org,2002:js/function> |-
   function(
@@ -38,3 +38,4 @@ optionsFunction: !<tag:yaml.org,2002:js/function> |-
 required: false
 sort_no: 70
 type: lookup
+is_visible: false

@@ -6,7 +6,7 @@ enable_enhanced_lookup: false
 enable_events: false
 enable_files: true
 enable_form_tabs: false
-enable_inline_edit: true
+enable_inline_edit: false
 enable_instances: false
 enable_lock_detail: true
 enable_notes: false

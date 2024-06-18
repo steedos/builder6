@@ -19,18 +19,18 @@ amis:
       "items": {
           "type": "card",
           "header": {
-            "title": "${knowledge_sources[index].type == 'table' ? item.table.label : item.file.name}",
-            "subTitle": "${knowledge_sources[index].type == 'table' ? `上次同步日期 ${item.syncTime}` : `上传日期 ${item.syncTime}`}",
+            "title": "${IFS(knowledge_sources[index].type == 'table', item.table.label, knowledge_sources[index].type == 'file', item.file.name, knowledge_sources[index].type == 'document', item.document.label)}",
+            "subTitle": "${knowledge_sources[index].type != 'file' ? `上次同步日期 ${item.syncTime}` : `上传日期 ${item.syncTime}`}",
             "description": "${item.description}",
             "avatarClassName": "pull-left thumb-md avatar b-3x m-r",
-            "avatar": "${knowledge_sources[index].type == 'table' ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVR4nO2XQQ6EMAwD8wl/tV/naO57QaiEdemM1GuKXMcJVQAAAAAAj6Dho/NUOkIA4wDRAn6sZ5fPgAqr144QwDhAhKBZhMQmaFZhMQbNHlBhe0U7+soeoOa/urcPAtxFAa+GA0ZQC9QkV/XiwlMIYBwgWsB/T++YENTiBwHuooBXi3JATXJV7+37+gv8gAADBxxLt4CaQyk+BIUAxgHauQVqEqbAWHwKVPMHIcAId4CYAt57CggBvJcDAAAAAKC+zQlP5TWVH8ytNAAAAABJRU5ErkJggg==' : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg=='}",
+            "avatar": "${IFS(knowledge_sources[index].type == 'table','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVR4nO2XQQ6EMAwD8wl/tV/naO57QaiEdemM1GuKXMcJVQAAAAAAj6Dho/NUOkIA4wDRAn6sZ5fPgAqr144QwDhAhKBZhMQmaFZhMQbNHlBhe0U7+soeoOa/urcPAtxFAa+GA0ZQC9QkV/XiwlMIYBwgWsB/T++YENTiBwHuooBXi3JATXJV7+37+gv8gAADBxxLt4CaQyk+BIUAxgHauQVqEqbAWHwKVPMHIcAId4CYAt57CggBvJcDAAAAAKC+zQlP5TWVH8ytNAAAAABJRU5ErkJggg==',knowledge_sources[index].type == 'file','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg==',knowledge_sources[index].type == 'document', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVR4nO2Wv2sUQRTHR5RgQAjJ7Zu9i8FoZSX4FygKVtZpLOxsbCTGe+9yCleIjagg/gG2RtDKXnuDWBjEX6CVij8jasqPzLInernI7uzCSciDYYad/b73eY83s+vclv2vJspa2eGVx3KO5sgApE4IyR3GANcCIfEAy/25uYjUBiAblHxwv3WWRIyHlSshkQBhXQuEVOiBIWN51ABrlQEk0vHmAYi1zQswaUyIclGUFW9888pLb9yY6rK7ToDXw/ZSY68oTzfoi0+Jcfy3H+N9FIBXVqXLwbAOWXnlphhvRHnlled5sFveODAzz3ijzX5RrojxU5SP6QL7Mj/GCVHexQBczuZFUq+8WJdpmyXn2DaoE+VS/s61/rOZHlOlAVzuPMsqXKnGnUab6aRLS4yrLWPPMFXIPAMwvopxzyvHIoI753rsEOOkV94GhyF4UWloyoFqWdngY6Lc/uP7vjqs3P+yiQ6TYnRE+RH6IjEOFRYnxpk8+LPUOOrm2O4iLT+qwdfdwiKvPAqipM1hV9GaC8zmAMVPgihfMtFpdlUFmO7Q6N8PZQBWgihtc6QqgFdO5QAPiouMC3/1QI+xsoHD2c+CGx8yXx3miovnGRflfuyv+bphXC+bgJvtsTNRzovxRIzvEYE/h7KXynzL3AjsF3rzmsOIQXxJAAAAAElFTkSuQmCC')}"
           },
           "toolbar": [
             {
               "type": "button",
               "label": "同步",
               "level": "default",
-              "visibleOn": "${knowledge_sources[index].type == 'table'}",
+              "visibleOn": "${knowledge_sources[index].type == 'table' || knowledge_sources[index].type == 'document'}",
               "className": "text-lg text-gray-800 mr-1 border-solid border-slate-300 border",
               "onEvent": {
                   "click": {
@@ -56,7 +56,7 @@ amis:
                     ]
                   }
                 },
-                "confirmText": "重新同步表数据?"
+                "confirmText": "重新同步数据?"
             },
             {
               "type": "button",
@@ -132,6 +132,10 @@ amis:
                               {
                                 "label": "Table",
                                 "value": "table"
+                              },
+                              {
+                                "label": "Document",
+                                "value": "document"
                               }
                             ],
                             "amis": {
@@ -151,6 +155,13 @@ amis:
                                   "body": '
                                     <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVR4nO2XQQ6EMAwD8wl/tV/naO57QaiEdemM1GuKXMcJVQAAAAAAj6Dho/NUOkIA4wDRAn6sZ5fPgAqr144QwDhAhKBZhMQmaFZhMQbNHlBhe0U7+soeoOa/urcPAtxFAa+GA0ZQC9QkV/XiwlMIYBwgWsB/T++YENTiBwHuooBXi3JATXJV7+37+gv8gAADBxxLt4CaQyk+BIUAxgHauQVqEqbAWHwKVPMHIcAId4CYAt57CggBvJcDAAAAAKC+zQlP5TWVH8ytNAAAAABJRU5ErkJggg==">
                                                                       <div class="font-medium text-lg inline">数据表</div>
+                                    </div>
+                                  '
+                                },{
+                                  "value": "document",
+                                  "body": '
+                                    <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVR4nO2Wv2sUQRTHR5RgQAjJ7Zu9i8FoZSX4FygKVtZpLOxsbCTGe+9yCleIjagg/gG2RtDKXnuDWBjEX6CVij8jasqPzLInernI7uzCSciDYYad/b73eY83s+vclv2vJspa2eGVx3KO5sgApE4IyR3GANcCIfEAy/25uYjUBiAblHxwv3WWRIyHlSshkQBhXQuEVOiBIWN51ABrlQEk0vHmAYi1zQswaUyIclGUFW9888pLb9yY6rK7ToDXw/ZSY68oTzfoi0+Jcfy3H+N9FIBXVqXLwbAOWXnlphhvRHnlled5sFveODAzz3ijzX5RrojxU5SP6QL7Mj/GCVHexQBczuZFUq+8WJdpmyXn2DaoE+VS/s61/rOZHlOlAVzuPMsqXKnGnUab6aRLS4yrLWPPMFXIPAMwvopxzyvHIoI753rsEOOkV94GhyF4UWloyoFqWdngY6Lc/uP7vjqs3P+yiQ6TYnRE+RH6IjEOFRYnxpk8+LPUOOrm2O4iLT+qwdfdwiKvPAqipM1hV9GaC8zmAMVPgihfMtFpdlUFmO7Q6N8PZQBWgihtc6QqgFdO5QAPiouMC3/1QI+xsoHD2c+CGx8yXx3miovnGRflfuyv+bphXC+bgJvtsTNRzovxRIzvEYE/h7KXynzL3AjsF3rzmsOIQXxJAAAAAElFTkSuQmCC">
+                                                                      <div class="font-medium text-lg inline">知识</div>
                                     </div>
                                   '
                                 }
@@ -177,13 +188,29 @@ amis:
                         {
                           "type": "steedos-field",
                           "config": {
+                            "name": "document",
+                            "type": "lookup",
+                            "label": "知识",
+                            "required": true,
+                            "reference_to": "b6_documents",
+                            "sort_no": 20,
+                            "is_wide": true,
+                            "visible_on": "{{type == 'document' ? true : false}}",
+                            "amis": {
+                              "className": "mb-4"
+                            }
+                          }
+                        },
+                        {
+                          "type": "steedos-field",
+                          "config": {
                             "name": "file",
                             "type": "file",
                             "label": "文件",
                             "sort_no": 110,
                             "is_wide": true,
                             "required": true,
-                            "visible_on": "{{type != 'table' ? true : false}}",
+                            "visible_on": "{{type != 'table' && type != 'document' ? true : false}}",
                             "amis": {
                                 "maxSize": 1048576,
                                 "accept": ".txt, .json, .pdf, .doc, .docx",
@@ -207,7 +234,7 @@ amis:
                       "api": {
                         "url": "/api/v1/b6_chatbots/functions/knowledge_source_api",
                         "method": "post",
-                        "requestAdaptor": "api.data = {id: context.recordId, action: 'addItem', item: {type: context.type, file: context.file, table: context.table, description: context.description} };\n\n\nreturn api;",
+                        "requestAdaptor": "api.data = {id: context.recordId, action: 'addItem', item: {type: context.type, file: context.file, table: context.table, document: context.document, description: context.description} };\n\n\nreturn api;",
                         "adaptor": "",
                         "messages": {
                         }

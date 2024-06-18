@@ -28,7 +28,7 @@ export const blockBeforeUpdate = {
 
         if (doc.type === 'html' && doc.html) {
             try {
-                const builder = await this.compileHtml(doc, id);
+                const builder = await this.compileHtml(doc.html, doc.tailwind, id);
                 doc.builder = JSON.stringify(builder);
             } catch (e) { this.broker.logger.error(e)}
         }
