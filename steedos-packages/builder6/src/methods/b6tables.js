@@ -41,20 +41,33 @@ const getAmisType = (type) => {
   return amisType;
 }
 
+const getFieldAmis = (field) => {
+  let fieldAmis = field.amis || {};
+  if (typeof fieldAmis === "string") {
+    fieldAmis = JSON.parse(fieldAmis);
+  }
+  switch (field.type) {
+    case 'select':
+      fieldAmis = Object.assign({}, {
+        options: field.options
+      }, fieldAmis);
+      break;
+  }
+  return fieldAmis;
+}
+
 export const convertTableFieldsToAmisSchema = (table, fields) => {
   console.log("====convertTableFieldsToAmisSchema===", table, fields);
   let fieldsBody = (fields || []).map(function (field) {
-    let fieldAmis = field.amis || {};
-    if (typeof fieldAmis === "string") {
-      fieldAmis = JSON.parse(fieldAmis);
-    }
-    return {
+    let fieldAmis = getFieldAmis(field);
+    const fieldItem = {
       "type": getAmisType(field.type),
       "label": field.label,
       "name": field.name,
       "description": field.description,
       ...fieldAmis
     };
+    return fieldItem;
   });
   return {
     "type": "page",

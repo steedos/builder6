@@ -1,0 +1,6 @@
+name: options.$.value
+hidden: false
+label: 选项值
+required: true
+sort_no: 240
+type: text
