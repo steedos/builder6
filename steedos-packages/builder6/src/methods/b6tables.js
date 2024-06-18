@@ -47,7 +47,8 @@ export const convertTableFieldsToAmisSchema = (table, fields) => {
     return {
       "type": getAmisType(field.type),
       "label": field.label,
-      "name": field.name
+      "name": field.name,
+      "description": field.description
     };
   });
   return {
