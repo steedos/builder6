@@ -3,7 +3,7 @@ name: Update from Gitlab
 on:
   push:
     tags:
-      - 'v*'  # 仅在创建标签时触发，例如 v1.0, v2.1.0 等
+      - 'xxxxv*'  # 仅在创建标签时触发，例如 v1.0, v2.1.0 等
 
 jobs:
   update-version:
