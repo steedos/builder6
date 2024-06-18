@@ -53,6 +53,11 @@ const getFieldAmis = (field) => {
       }, fieldAmis);
       break;
   }
+  if (['select', 'lookup', 'image', 'file'].indexOf(field.type) > -1) {
+      fieldAmis = Object.assign({}, {
+        multiple: field.multiple
+      }, fieldAmis);
+  }
   return fieldAmis;
 }
 

@@ -13,6 +13,6 @@ description: >-
 is_wide: true
 label: 选择项
 required: '{{formData.type === ''select'' ? true: false}}'
-sort_no: 40
+sort_no: 50
 type: table
 visible_on: '{{formData.type === ''select'' ? true: false}}'
