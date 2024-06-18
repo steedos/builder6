@@ -44,11 +44,16 @@ const getAmisType = (type) => {
 export const convertTableFieldsToAmisSchema = (table, fields) => {
   console.log("====convertTableFieldsToAmisSchema===", table, fields);
   let fieldsBody = (fields || []).map(function (field) {
+    let fieldAmis = field.amis || {};
+    if (typeof fieldAmis === "string") {
+      fieldAmis = JSON.parse(fieldAmis);
+    }
     return {
       "type": getAmisType(field.type),
       "label": field.label,
       "name": field.name,
-      "description": field.description
+      "description": field.description,
+      ...fieldAmis
     };
   });
   return {
