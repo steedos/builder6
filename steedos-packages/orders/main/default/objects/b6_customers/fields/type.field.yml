@@ -1,0 +1,31 @@
+name: type
+create: true
+data_type: text
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+generated: false
+hidden: false
+index: false
+is_name: false
+is_wide: false
+label: 类型
+multiple: false
+options:
+  - label: 客户账户
+    value: customer
+    color: '#4a90e2'
+  - label: 访客
+    value: visitor
+    color: '#9b9b9b'
+primary: false
+readonly: false
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 100
+sortable: true
+static: false
+type: select
+unique: false
+write_requires_master_read: false

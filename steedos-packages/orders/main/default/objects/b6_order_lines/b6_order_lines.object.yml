@@ -15,5 +15,6 @@ enable_tasks: false
 enable_workflow: false
 icon: record
 is_enable: true
+is_system: true
 label: 订单明细
 version: 2

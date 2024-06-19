@@ -1,0 +1,8 @@
+name: name
+filterable: true
+index: true
+label: 标签名称
+required: true
+searchable: true
+sort_no: 10
+type: text

@@ -12,6 +12,8 @@ oauth2_logout_enabled: false
 objects:
   - b6_products
   - b6_orders
+  - b6_customers
+  - b6_payment_links
 saml_enabled: false
 saml_logout_enabled: false
 sort: 10

@@ -1,0 +1,35 @@
+name: status
+create: true
+data_type: text
+defaultValue: draft
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+generated: false
+hidden: false
+index: false
+is_name: false
+is_wide: false
+label: 状态
+multiple: false
+options:
+  - label: 草稿
+    value: draft
+    color: '#9b9b9b'
+  - label: 激活
+    value: activation
+    color: '#417505'
+  - value: archived
+    label: 已归档
+    color: '#7ed321'
+primary: false
+readonly: false
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 100
+sortable: true
+static: false
+type: select
+unique: false
+write_requires_master_read: false
