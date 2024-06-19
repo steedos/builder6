@@ -1,8 +1,8 @@
 /*
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
- * @LastEditors: 殷亮辉 yinlianghui@hotoa.com
- * @LastEditTime: 2024-06-17 13:13:08
+ * @LastEditors: baozhoutao@steedos.com
+ * @LastEditTime: 2024-06-19 13:23:04
  * @Description: 
  */
 const path = require('path');
@@ -21,13 +21,23 @@ const methods = require('./methods')
 const package = require('../package.json');
 const packageName = package.name;
 const packageLoader = require('@steedos/service-package-loader');
+const BullMqMixin = require('moleculer-bullmq');
+const Cron = require("moleculer-cron");
+
+const crons = require('./crons')
+
+const actions = require('./actions')
 
 module.exports = {
     name: packageName,
     namespace: "steedos",
-    mixins: [packageLoader],
+    mixins: [packageLoader, BullMqMixin, Cron],
     dependencies: ['steedos-server'],
     settings: {
+        bullmq: {
+            client: process.env.QUEUE_BACKEND,
+            worker: { concurrency: 50 }
+        },
         // Base path
         rest: "/app-builder",
         isProduction: process.env.NODE_ENV === "production",
@@ -35,10 +45,7 @@ module.exports = {
         B6_CLOUD_PROJECT_ID: process.env.B6_CLOUD_PROJECT_ID,
         B6_CLOUD_PROJECT_SECRET: process.env.B6_CLOUD_PROJECT_SECRET,
         B6_CLOUD_SPACE_PREFIX: process.env.B6_CLOUD_SPACE_PREFIX,
-        B6_CLOUD_PROJECT_PREFIX: process.env.B6_CLOUD_PROJECT_PREFIX,
-        B6_CLOUD_META_OBJECTS: ['b6_access_tokens', 'b6_projects', 'b6_tables', 'b6_fields', 'b6_pages', 'b6_components', 'b6_blocks', 'b6_blogs', 'b6_documents', 'spaces', 'spaces_users'], //'b6_chatbots', 
-        B6_CLOUD_SPACE_OBJECTS: ['b6_access_tokens', 'b6_projects', 'b6_tables', 'b6_fields', 'b6_pages', 'b6_components', 'b6_blocks', 'b6_blogs', 'b6_documents', 'spaces', 'spaces_users' ], //'b6_chatbots', 
-        B6_CLOUD_PROJECT_OBJECTS: ['b6_pages', 'b6_components'],
+        B6_CLOUD_PROJECT_PREFIX: process.env.B6_CLOUD_PROJECT_PREFIX
     },
     metadata: {
         $package: {
@@ -56,10 +63,12 @@ module.exports = {
     //     appSettingsSchema,
     //     pagesSettingsSchema,
     // },
+    crons,
     actions: {
         ...designer,
         ...designers,
-        ...triggers
+        ...triggers,
+        ...actions
     },
     hooks: {
     },

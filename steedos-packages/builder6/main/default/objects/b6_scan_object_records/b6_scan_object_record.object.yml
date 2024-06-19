@@ -1,0 +1,8 @@
+name: b6_scan_object_record
+custom: true
+enable_dataloader: false
+icon: contact_list
+is_enable: true
+label: 数据扫描
+locked: false
+version: 2
