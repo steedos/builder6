@@ -19,7 +19,8 @@ module.exports = {
 
     const userSession = user || {};
 
-    return true;
+    const tableFields = this.convertAmisSchemaToTableFields(schema);
+    return await this.putTableFields(tableFields);
     // return await this.getObject('b6_tables').update(tableId, {
     //   type: "amis",//触发器中判断了type类型，这里必须传过去
     //   amis_schema: schema
