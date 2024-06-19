@@ -300,10 +300,9 @@
                 }
             ],
             "style": {
-                "position": "fixed",
+                "position": "relative",
                 "rowGap": "10px",
-                "columnGap": "10px",
-                "width": "calc(100% - 25px)"
+                "columnGap": "10px"
             },
             "isFixedHeight": false,
             "isFixedWidth": false,
@@ -379,6 +378,9 @@
         },
         ".steedos-object-form>.antd-Panel>div":{
             "height": "calc(100% - 50px)"
+        },
+        "antd-Panel-footerWrap": {
+            "height": "unset !important"
         },
         ".steedos-amis-form":{
             "height": "100%"
