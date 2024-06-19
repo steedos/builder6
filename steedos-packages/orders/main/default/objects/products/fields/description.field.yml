@@ -1,6 +1,0 @@
-name: description
-is_wide: true
-label: 摘要
-rows: 3
-sort_no: 500
-type: textarea

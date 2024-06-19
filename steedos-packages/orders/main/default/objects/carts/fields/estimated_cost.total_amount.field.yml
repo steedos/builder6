@@ -1,5 +1,0 @@
-name: estimated_cost.total_amount
-type: currency
-label: 总金额
-required: true
-inlineHelpText: 客户在结账时支付的估计总金额。

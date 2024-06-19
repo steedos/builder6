@@ -1,9 +1,0 @@
-name: discount_codes
-type: grid
-label: Discount Codes
-required: true
-sort_no: 190
-is_wide: true
-inlineHelpText: The discount codes applied to the cart.
-hidden: true
-omit: true

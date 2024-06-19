@@ -1,4 +1,0 @@
-name: buyer_identity.phone
-type: text
-label: Phone
-inlineHelpText: The phone number of the buyer that is interacting with the cart.

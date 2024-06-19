@@ -1,6 +1,0 @@
-name: rating
-label: 评分
-precision: 18
-scale: 0
-sort_no: 125
-type: number

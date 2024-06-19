@@ -1,7 +1,0 @@
-name: merchandise
-label: 产品变量
-type: lookup
-reference_to: product_variants
-inlineHelpText: 结账时要购买的商品。
-required: true
-sort_no: 160

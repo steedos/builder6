@@ -1,6 +1,6 @@
-name: 订单管理
+name: 云支付
 code: orders
-description: 对订单的创建、处理、跟踪和分析的全面管理和监控过程。
+description: 云支付应用是一种基于云技术的在线支付解决方案，支持多种支付方式，提供安全、便捷的支付体验。
 icon_slds: groups
 is_creator: true
 is_new_window: false
@@ -10,11 +10,8 @@ mobile: true
 oauth2_enabled: false
 oauth2_logout_enabled: false
 objects:
-  - collections
-  - products
-  - orders
-  - product_types
-  - product_subscriptions
+  - b6_products
+  - b6_orders
 saml_enabled: false
 saml_logout_enabled: false
 sort: 10

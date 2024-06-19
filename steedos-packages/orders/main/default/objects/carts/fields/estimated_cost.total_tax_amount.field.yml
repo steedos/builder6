@@ -1,6 +1,0 @@
-name: estimated_cost.total_tax_amount
-type: currency
-label: Total Tax Amount 
-inlineHelpText: The estimated tax amount for the customer to pay at checkout.
-hidden: true
-omit: true

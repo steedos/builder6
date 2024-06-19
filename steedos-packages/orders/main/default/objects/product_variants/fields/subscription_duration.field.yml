@@ -1,6 +1,0 @@
-name: subscription_duration
-group: 可订阅
-label: 订阅时长(天)
-scale: 0
-sort_no: 220
-type: number

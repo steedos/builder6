@@ -1,6 +1,0 @@
-name: delivery_interval_count
-label: 订阅间隔数量
-precision: 18
-scale: 2
-sort_no: 220
-type: number

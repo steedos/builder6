@@ -1,9 +1,0 @@
-name: last_payment_status
-label: 上次付款状态
-options:
-  - label: 失败
-    value: failed
-  - label: 成功
-    value: succeeded
-sort_no: 180
-type: select

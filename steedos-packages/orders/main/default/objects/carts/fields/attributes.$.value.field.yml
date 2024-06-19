@@ -1,5 +1,0 @@
-name: attributes.$.value
-label: value
-type: text
-sort_no: 182
-inlineHelpText: Value of the attribute.

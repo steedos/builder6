@@ -1,9 +1,0 @@
-name: buyer_identity
-type: object
-label: Buyer Identity
-required: true
-sort_no: 380
-is_wide: true
-inlineHelpText: Information about the buyer that is interacting with the cart.
-hidden: true
-omit: true

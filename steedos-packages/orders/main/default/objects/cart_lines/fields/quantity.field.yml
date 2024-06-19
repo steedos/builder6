@@ -1,8 +1,0 @@
-name: quantity
-label: 数量
-type: number
-scale: 0
-inlineHelpText: 客户打算购买的商品数量。
-min: 1
-required: true
-sort_no: 170

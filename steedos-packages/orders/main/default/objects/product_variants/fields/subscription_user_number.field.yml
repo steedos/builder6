@@ -1,6 +1,0 @@
-name: subscription_user_number
-group: 可订阅
-label: 订阅用户数
-scale: 0
-sort_no: 230
-type: number

@@ -1,6 +1,0 @@
-name: name
-is_wide: true
-label: 评论
-rows: 3
-sort_no: 130
-type: textarea

@@ -1,6 +1,0 @@
-name: selling_plan_allocation
-label: Selling Plan Allocation
-type: text
-hidden: true
-omit: true
-inlineHelpText: The selling plan associated with the cart line and the effect that each selling plan has on variants when they're purchased.

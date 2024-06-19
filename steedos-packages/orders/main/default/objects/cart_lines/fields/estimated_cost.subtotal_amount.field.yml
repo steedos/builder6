@@ -1,5 +1,0 @@
-name: estimated_cost.subtotal_amount
-type: currency
-label: 小计金额
-required: true
-inlineHelpText: 折扣前商品线的估计成本。

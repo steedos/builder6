@@ -1,7 +1,0 @@
-name: estimated_cost
-type: object
-label: 估计费用
-required: true
-is_wide: true
-sort_no: 200
-inlineHelpText: 买方将在结账时支付的产品变量的估计成本。

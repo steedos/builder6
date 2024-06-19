@@ -1,6 +1,0 @@
-name: body
-inlineHelpText: 显示在产品系列首页的内容。
-is_wide: true
-label: 正文
-sort_no: 130
-type: html

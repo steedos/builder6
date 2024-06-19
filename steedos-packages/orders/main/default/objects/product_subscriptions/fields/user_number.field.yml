@@ -1,5 +1,0 @@
-name: user_number
-label: 订阅用户数
-scale: 0
-sort_no: 200
-type: number

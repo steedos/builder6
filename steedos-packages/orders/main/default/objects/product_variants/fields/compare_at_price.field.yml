@@ -1,6 +1,0 @@
-name: compare_at_price
-label: 原价
-precision: 18
-scale: 2
-sort_no: 200
-type: currency

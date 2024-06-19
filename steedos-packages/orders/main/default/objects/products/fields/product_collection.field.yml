@@ -1,6 +1,0 @@
-name: product_collection
-label: 产品系列
-multiple: true
-reference_to: collections
-sort_no: 460
-type: lookup
