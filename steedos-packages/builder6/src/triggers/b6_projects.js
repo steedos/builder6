@@ -9,12 +9,30 @@
 const uuid = require("uuid");
 const BuilderJS = require("@builder6/builder6.js");
 const _ = require("lodash");
+const crypto = require('crypto');
 
 const endpointUrl = process.env.B6_CLOUD_API;//NEXT_PUBLIC_B6_API_URL
 const apiKey = process.env.B6_CLOUD_PROJECT_SECRET;//NEXT_PUBLIC_B6_API_KEY
 
 const bjs = new BuilderJS({ endpointUrl, apiKey })
 const base = bjs.base("meta-builder6-com");
+
+function generateShortUrl(uuid, length = 6) {
+    // 使用 SHA-256 哈希函数对 UUID 进行哈希处理
+    const hash = crypto.createHash('sha256').update(uuid).digest('hex');
+    
+    // 定义字符集，包括小写字母和数字
+    const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    
+    // 将哈希值转换为指定字符集的短域名
+    let shortUrl = '';
+    for (let i = 0; i < length; i++) {
+        const index = parseInt(hash.substr(i * 2, 2), 16) % characters.length;
+        shortUrl += characters[index];
+    }
+    
+    return shortUrl;
+}
 
 export const projectBeforeUpdate = {
     trigger: {
@@ -23,11 +41,13 @@ export const projectBeforeUpdate = {
     },
     async handler(ctx) {
         const { doc, id = uuid.v4(), spaceId, isInsert } = ctx.params;
-        let { domain = `app-${id}` } = doc;
+        let { slug, domain } = doc;
 
-        if(!domain){
+        if(slug){
+             // 自动生成6个字母的结尾，根据id生成，不会变。
+            const domainTail = generateShortUrl(id, 6);
             // 把domain文本框中内容清空时 domian传入的是null
-            domain = `app-${id}`;
+            domain = `${slug}-${domainTail}`;
         }
 
         const urlDomain = process.env.B6_FRONTEND_APP_DOMAIN || 'builder6.app';
@@ -58,28 +78,45 @@ export const projectBeforeUpdate = {
                     clounDomian = await base("b6_domains").find(doc.domain);
                 }
                 catch (e) {
+                    console.log(e)
                 }
 
                 if (clounDomian)
                     throw new Error(`域名已存在： ${doc.domain}`)
 
-                if (oldDomain)
-                    await base("b6_domains").destroy(oldDomain)
+                if (oldDomain) {
+                    try {
+                        await base("b6_domains").destroy(oldDomain)
+                    }
+                    catch (e) {
+                        console.log(e)
+                    }
+                }
 
-                await base("b6_domains").replace(doc.domain, {
-                    type: "project",
-                    space: spaceId,
-                    project_id: id,
-                    domain: doc.domain,
-                });
+                try {
+                    await base("b6_domains").replace(doc.domain, {
+                        type: "project",
+                        space: spaceId,
+                        project_id: id,
+                        domain: doc.domain,
+                    });                
+                }
+                catch (e) {
+                    console.log(e)
+                }
+                
 
             } else {
-                await base("b6_domains").replace(doc.domain, {
-                    type: "project",
-                    space: spaceId,
-                    project_id: id,
-                    domain: doc.domain,
-                });
+                try {
+                    await base("b6_domains").replace(doc.domain, {
+                        type: "project",
+                        space: spaceId,
+                        project_id: id,
+                        domain: doc.domain,
+                    });                }
+                catch (e) {
+                    console.log(e)
+                }
             }
         }
 

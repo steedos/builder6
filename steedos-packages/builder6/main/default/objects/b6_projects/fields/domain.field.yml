@@ -7,14 +7,14 @@ filterable: false
 filters: []
 generated: false
 group: 应用
-hidden: false
+hidden: true
 index: false
 is_name: false
 is_wide: false
 label: 域名前缀
 multiple: false
 primary: false
-readonly: false
+readonly: ${ARRAYINCLUDES(context.user.roles, 'interfaces')
 required: false
 searchable: false
 show_as_qr: false

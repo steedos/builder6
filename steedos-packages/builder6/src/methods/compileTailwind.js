@@ -1,7 +1,7 @@
 const postcss = require("postcss");
 const tailwindcss = require("tailwindcss");
 const autoprefixer = require("autoprefixer");
-
+const typography = require("@tailwindcss/typography");
 
 // 递归提取 JSON 对象或数组中的所有类名
 function extractClasses(data, classes = []) {
@@ -43,8 +43,16 @@ exports.compileTailwind = async (content, id) => {
   const tailwindConfig = {
     important: `.builder-component-${id}`,
     content: [{ raw }],
-    theme: { extend: {} },
-    plugins: [],
+    theme: {
+      extend: {
+        colors: {
+          primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+        }
+      },
+    },
+    plugins: [
+      typography,
+    ],
     ...config
   };
 
@@ -56,7 +64,7 @@ exports.compileTailwind = async (content, id) => {
   try {
     const result = await postcss([
       tailwindcss(tailwindConfig),
-      autoprefixer
+      autoprefixer,
     ]).process(cssInput, { from: undefined });
 
 
