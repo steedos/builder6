@@ -24,3 +24,4 @@ type: lookup
 unique: false
 write_requires_master_read: false
 visible_on: '${type==="table"}'
+group: 显示

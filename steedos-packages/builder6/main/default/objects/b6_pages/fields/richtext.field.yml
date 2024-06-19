@@ -23,3 +23,4 @@ type: html
 unique: false
 visible_on: '${type==="richtext"}'
 write_requires_master_read: false
+group: 显示

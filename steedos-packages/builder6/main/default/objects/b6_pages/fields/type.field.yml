@@ -39,3 +39,4 @@ static: false
 type: select
 unique: false
 write_requires_master_read: false
+group: 显示

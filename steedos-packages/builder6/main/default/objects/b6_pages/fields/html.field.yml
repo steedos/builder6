@@ -24,3 +24,4 @@ type: code
 unique: false
 visible_on: '${type==="html"}'
 write_requires_master_read: false
+group: 显示
