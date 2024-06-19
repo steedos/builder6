@@ -51,7 +51,27 @@
             withCredentials: true,
             headers: { Authorization: `Bearer ${tenantId},${authToken}` },
           }
-        );
+        ).catch(function (error) {
+          // handle error
+          var errorMsg;
+          if (error.response) {
+            // 服务器响应了一个状态码，表示请求失败
+            const errorData = error.response.data;
+            console.log('Error message:', errorData.error);
+            console.log('Error details:', errorData.detail);
+            errorMsg = errorData.error;
+          } else if (error.request) {
+            // 请求已发出，但没有收到响应
+            console.log('Error request:', error.request);
+            errorMsg = error.request;
+          } else {
+            // 其他错误
+            console.log('Error message:', error.message);
+            errorMsg = error.message;
+          }
+          console.log('Error config:', error.config);
+          alert(errorMsg);
+        });
         if (result?.data) {
           let schema = result.data.amis_schema || initialContent;
 
@@ -106,11 +126,27 @@
         {
           headers: { Authorization: `Bearer ${tenantId},${authToken}` },
         }
-      )
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
+      ).catch(function (error) {
+        // handle error
+        var errorMsg;
+        if (error.response) {
+          // 服务器响应了一个状态码，表示请求失败
+          const errorData = error.response.data;
+          console.log('Error message:', errorData.error);
+          console.log('Error details:', errorData.detail);
+          errorMsg = errorData.error;
+        } else if (error.request) {
+          // 请求已发出，但没有收到响应
+          console.log('Error request:', error.request);
+          errorMsg = error.request;
+        } else {
+          // 其他错误
+          console.log('Error message:', error.message);
+          errorMsg = error.message;
+        }
+        console.log('Error config:', error.config);
+        alert(errorMsg);
+      });
     };
 
     const deployPageVersion = async () => {
