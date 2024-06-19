@@ -1,6 +1,0 @@
-name: vender
-label: 厂商
-reference_to: venders
-required: false
-sort_no: 370
-type: lookup

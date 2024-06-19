@@ -15,5 +15,5 @@ enable_tasks: false
 enable_workflow: false
 icon: product
 is_enable: true
-label: 产品
+label: 产品目录
 version: 2
