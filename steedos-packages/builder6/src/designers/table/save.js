@@ -37,8 +37,8 @@ module.exports = {
       // 将 parsedSchema 转换为 tableFields
       const tableFields = this.convertAmisSchemaToTableFields(parsedSchema);
 
-      // 调用 putTableFields 函数
-      await this.putTableFields(tableId, tableFields, userSession);
+      // 调用 putTableFields 函数保存到数据库
+      await this.saveTableFields(tableId, tableFields, userSession);
 
       // 返回成功响应
       return {

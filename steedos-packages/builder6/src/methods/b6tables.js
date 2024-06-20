@@ -230,14 +230,47 @@ export const convertAmisSchemaToTableFields = (amisSchema) => {
   return tableFields;
 }
 
+export async function validateTableFieldsBeforeSave(fieldsArray) {
+  // Step 1: 查询 object_fields 对象，获取 options 字段
+  const filterConditions = [
+    ["object", "=", "b6_fields"],
+    ["name", "=", "type"]
+  ];
+
+  const result = await this.getObject('object_fields').find({
+    filters: filterConditions,
+    fields: ['options']
+  });
+
+  if (!result || result.length === 0 || !result[0].options) {
+    throw new Error('Failed to retrieve valid types for b6_fields from object_fields.');
+  }
+
+  // Step 2: 提取 options 字段中的 type 属性集合
+  const validTypes = result[0].options.map(option => option.value);
+
+  // Step 3: 校验 fieldsArray
+  fieldsArray.forEach((field, index) => {
+    if (!field.type || !field.label || !field.name) {
+      throw new Error(`Field at index ${index} is missing required properties (type, label, name).`);
+    }
+
+    if (!validTypes.includes(field.type)) {
+      throw new Error(`Field at index ${index} has an invalid type '${field.type}'. Valid types are: ${validTypes.join(', ')}.`);
+    }
+  });
+}
+
 /**
- * 把字段清单保存到数据表各个字段中，包括增加、删除和修改字段
+ * 把字段清单保存到数据表各个字段中，包括增加、删除和修改字段，保存前先进行合法性校验
  * tableFields: 经过convertAmisSchemaToTableFields函数把的amis schema转为要同步保存的字段清单
- * 分两步：
+ * 保存分两步：
  * - 删除所有旧字段
  * - 循环传入的tableFields集合，依次把每个字段添加到数据表中
  */
-export async function putTableFields(tableId, tableFields, userSession) {
+export async function saveTableFields(tableId, tableFields, userSession) {
+  await this.validateTableFieldsBeforeSave(tableFields);
+
   let b6FieldsObject;
 
   try {
@@ -278,6 +311,6 @@ export async function putTableFields(tableId, tableFields, userSession) {
     }
   } catch (insertError) {
     console.error('An error occurred while inserting records:', insertError);
-    throw new Error('An error occurred while inserting records:', insertError); 
+    throw new Error('An error occurred while inserting records:', insertError);
   }
 }
