@@ -23,6 +23,7 @@
                             "objectApiName": "${objectName}",
                             "recordId": "${recordId}",
                             "appId": "${appId}",
+                            "perPage": 20,
                             "id": "u:710a389904f6"
                         }
                     ],

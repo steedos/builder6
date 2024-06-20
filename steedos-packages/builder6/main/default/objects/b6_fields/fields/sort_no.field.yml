@@ -1,0 +1,10 @@
+name: sort_no
+defaultValue: 100
+hidden: false
+label: Sort Number
+readonly: true
+scale: 0
+sort_no: 490
+sortable: true
+type: number
+visible_on: "false"

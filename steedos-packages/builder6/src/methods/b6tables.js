@@ -193,7 +193,8 @@ const getTableFieldExtraProps = (fieldSchema) => {
 
 export const convertTableFieldsToAmisSchema = (table, fields) => {
   console.log("====convertTableFieldsToAmisSchema===", table, fields);
-  let fieldsBody = (fields || []).map(function (field) {
+  let sortedFields = _.sortBy((fields || []), 'sort_no');
+  let fieldsBody = sortedFields.map(function (field) {
     const baseFieldProps = getAmisFieldBaseProps(field);
     let extraProps = getAmisFieldExtraProps(field);
     const fieldItem = {
@@ -218,12 +219,13 @@ export const convertAmisSchemaToTableFields = (amisSchema) => {
   if (!fieldsBody?.length) {
     return [];
   }
-  let tableFields = (fieldsBody || []).map(function (fieldSchema) {
+  let tableFields = (fieldsBody || []).map(function (fieldSchema, index) {
     const baseFieldProps = getTableFieldBaseProps(fieldSchema);
     let extraProps = getTableFieldExtraProps(fieldSchema);
     const fieldItem = {
       ...baseFieldProps,
-      ...extraProps
+      ...extraProps,
+      sort_no: (index + 1) * 10
     };
     return fieldItem;
   });
@@ -269,6 +271,7 @@ export async function validateTableFieldsBeforeSave(fieldsArray) {
  * - 循环传入的tableFields集合，依次把每个字段添加到数据表中
  */
 export async function saveTableFields(tableId, tableFields, userSession) {
+  // 先校验传入的字段集合是否符合规范
   await this.validateTableFieldsBeforeSave(tableFields);
 
   let b6FieldsObject;
