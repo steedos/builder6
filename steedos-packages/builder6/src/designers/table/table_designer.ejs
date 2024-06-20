@@ -121,24 +121,35 @@
         `/api/builder6/table/designer/${pageId}/save`,
         {
           withCredentials: true,
-          schema: JSON.stringify(schema, null, 4), //直接存储json格式会导致react form异常。
+          schema: JSON.stringify(schema, null, 4), // 直接存储 JSON 格式会导致 React form 异常。
         },
         {
           headers: { Authorization: `Bearer ${tenantId},${authToken}` },
         }
-      ).catch(function (error) {
-        // handle error
+      ).then(function (response) {
+        // 处理成功响应
+        if (response.data.success) {
+          // alert('Table fields saved successfully.');
+        } else {
+          // 处理服务器返回的错误信息
+          const errorData = response.data;
+          console.log('Error message:', errorData.message);
+          console.log('Error details:', errorData.detail);
+          alert(errorData.message);
+        }
+      }).catch(function (error) {
+        // 处理请求失败的错误
         var errorMsg;
         if (error.response) {
           // 服务器响应了一个状态码，表示请求失败
           const errorData = error.response.data;
-          console.log('Error message:', errorData.error);
+          console.log('Error message:', errorData.message);
           console.log('Error details:', errorData.detail);
-          errorMsg = errorData.error;
+          errorMsg = errorData.message;
         } else if (error.request) {
           // 请求已发出，但没有收到响应
           console.log('Error request:', error.request);
-          errorMsg = error.request;
+          errorMsg = 'No response received from server.';
         } else {
           // 其他错误
           console.log('Error message:', error.message);
@@ -147,6 +158,7 @@
         console.log('Error config:', error.config);
         alert(errorMsg);
       });
+
     };
 
     const deployPageVersion = async () => {

@@ -233,8 +233,51 @@ export const convertAmisSchemaToTableFields = (amisSchema) => {
 /**
  * 把字段清单保存到数据表各个字段中，包括增加、删除和修改字段
  * tableFields: 经过convertAmisSchemaToTableFields函数把的amis schema转为要同步保存的字段清单
+ * 分两步：
+ * - 删除所有旧字段
+ * - 循环传入的tableFields集合，依次把每个字段添加到数据表中
  */
-export const putTableFields = async (tableFields) => {
-  console.log("====putTableFields===", tableFields);
-  // TODO: 循环tableFields集合，增加、删除和修改数据表字段
+export async function putTableFields(tableId, tableFields, userSession) {
+  let b6FieldsObject;
+
+  try {
+    b6FieldsObject = this.getObject('b6_fields');
+  } catch (getObjectError) {
+    console.error('An error occurred while getting b6_fields object:', getObjectError);
+    throw new Error('An error occurred while getting b6_fields object:', getObjectError);
+  }
+
+  try {
+    const records = await b6FieldsObject.find({ filters: [['table_id', '=', tableId]] });
+
+    // 分批删除所有记录
+    const batchSize = 10; // 每批处理的记录数
+    for (let i = 0; i < records.length; i += batchSize) {
+      const batch = records.slice(i, i + batchSize);
+      await Promise.all(batch.map(async (record) => {
+        await b6FieldsObject.delete(record._id);
+      }));
+    }
+
+  } catch (deleteError) {
+    console.error('An error occurred while deleting records:', deleteError);
+    throw new Error('An error occurred while deleting records:', deleteError);
+  }
+
+  try {
+    // 分批插入新记录
+    const batchSize = 10; // 每批处理的记录数
+    for (let i = 0; i < tableFields.length; i += batchSize) {
+      const batch = tableFields.slice(i, i + batchSize);
+      await Promise.all(batch.map(async (field) => {
+        // 设置新记录的 table_id 属性值为原始 tableId
+        field.table_id = tableId;
+        // 插入新记录到 b6_fields 表
+        await b6FieldsObject.insert(field, userSession);
+      }));
+    }
+  } catch (insertError) {
+    console.error('An error occurred while inserting records:', insertError);
+    throw new Error('An error occurred while inserting records:', insertError); 
+  }
 }
