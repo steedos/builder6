@@ -1,6 +1,10 @@
 name: all
 columns:
-  - field: name
+  - field: products
+  - field: price
+  - field: quantity
+  - field: total
+  - field: adjust_quantity_status
 crud_mode: table
 filter_scope: space
 filters: []

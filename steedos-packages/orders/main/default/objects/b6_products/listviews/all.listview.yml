@@ -1,10 +1,7 @@
 name: all
 columns:
   - field: name
-  - field: slug
-  - field: rating
-  - field: product_type
-  - field: is_subscription
+  - field: price
   - field: status
 filter_scope: space
 filters: []

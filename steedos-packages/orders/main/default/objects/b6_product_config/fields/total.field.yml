@@ -1,27 +1,26 @@
-name: products
-auto_fill_mapping:
-  - from: price
-    to: price
+name: total
 create: true
-enable_enhanced_lookup: true
+data_type: currency
 enable_thousands: true
 filterable: false
+formula: price*quantity
+formula_blank_value: zeroes
 generated: false
 hidden: false
 index: false
 is_name: false
 is_wide: false
-label: 产品
+label: 小计
 multiple: false
+precision: 18
 primary: false
 readonly: false
-reference_to: b6_products
-required: false
+scale: 2
 searchable: false
 show_as_qr: false
-sort_no: 100
+sort_no: 430
 sortable: false
 static: false
-type: lookup
+type: formula
 unique: false
 write_requires_master_read: false
