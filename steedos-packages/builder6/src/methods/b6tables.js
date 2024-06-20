@@ -251,6 +251,12 @@ export async function validateTableFieldsBeforeSave(fieldsArray) {
   // Step 2: 提取 options 字段中的 type 属性集合
   const validTypes = result[0].options.map(option => option.value);
 
+  // const validTypes = [
+  //   'text', 'textarea', 'number', 'select', 'boolean', 'date',
+  //   'datetime', 'time', 'file', 'image', 'color', 'fieldset',
+  //   'table', 'html', 'location', 'signature'
+  // ];
+
   // Step 3: 校验 fieldsArray
   fieldsArray.forEach((field, index) => {
     if (!field.type || !field.label || !field.name) {
@@ -271,6 +277,10 @@ export async function validateTableFieldsBeforeSave(fieldsArray) {
  * - 循环传入的tableFields集合，依次把每个字段添加到数据表中
  */
 export async function saveTableFields(tableId, tableFields, userSession) {
+  if (!userSession || !userSession.spaceId) {
+    throw new Error('An error occurred while save table fields: userSession not found.');
+  }
+  const { spaceId } = userSession;
   // 先校验传入的字段集合是否符合规范
   await this.validateTableFieldsBeforeSave(tableFields);
 
@@ -284,7 +294,7 @@ export async function saveTableFields(tableId, tableFields, userSession) {
   }
 
   try {
-    const records = await b6FieldsObject.find({ filters: [['table_id', '=', tableId]] });
+    const records = await b6FieldsObject.find({ filters: [['space', '=', spaceId], ['table_id', '=', tableId]] });
 
     // 分批删除所有记录
     const batchSize = 10; // 每批处理的记录数
@@ -296,8 +306,8 @@ export async function saveTableFields(tableId, tableFields, userSession) {
     }
 
   } catch (deleteError) {
-    console.error('An error occurred while deleting records:', deleteError);
-    throw new Error('An error occurred while deleting records:', deleteError);
+    console.error('An error occurred while deleting table fields:', deleteError);
+    throw new Error('An error occurred while deleting table fields:', deleteError);
   }
 
   try {
@@ -313,7 +323,7 @@ export async function saveTableFields(tableId, tableFields, userSession) {
       }));
     }
   } catch (insertError) {
-    console.error('An error occurred while inserting records:', insertError);
-    throw new Error('An error occurred while inserting records:', insertError);
+    console.error('An error occurred while inserting table fields:', insertError);
+    throw new Error('An error occurred while inserting table fields:', insertError);
   }
 }
