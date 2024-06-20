@@ -71,7 +71,7 @@ const getTableFieldType = (type) => {
         tableType = 'location';
         break;
       case 'input-rich-text':
-        amisType = 'html';
+        tableType = 'html';
         break;
       default:
         tableType = type;
