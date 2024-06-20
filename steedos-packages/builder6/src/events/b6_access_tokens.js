@@ -19,6 +19,6 @@ module.exports = {
     "@b6_access_tokens.deleted": async function (payload, sender, eventName, ctx) {
         const { objectApiName, id, spaceId, userId, previousDoc } = ctx.params;
         await this.builder6Delete(objectApiName, id)
-        await this.builder6SpaceDelete(objectApiName, id)
+        await this.builder6SpaceDelete(objectApiName, id, spaceId)
     }
 }

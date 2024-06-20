@@ -16,6 +16,6 @@ module.exports = {
     },
     "@b6_documents.deleted": async function (payload, sender, eventName, ctx) {
         const { objectApiName, id, spaceId, userId, previousDoc } = ctx.params;
-        await this.builder6SpaceDelete(objectApiName, id)
+        await this.builder6SpaceDelete(objectApiName, id, spaceId)
     }
 }

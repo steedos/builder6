@@ -30,8 +30,8 @@ module.exports = {
             }
         })
     },
-    builder6SpaceDelete: async function(objectName, id) {
-        return await axios.delete(`${this.settings.B6_CLOUD_API}/v0/${this.settings.B6_CLOUD_SPACE_PREFIX}${record.space}/${objectName}/${id}`, {
+    builder6SpaceDelete: async function(objectName, id, spaceId) {
+        return await axios.delete(`${this.settings.B6_CLOUD_API}/v0/${this.settings.B6_CLOUD_SPACE_PREFIX}${spaceId}/${objectName}/${id}`, {
             "headers": {
                 "Authorization": `Bearer ${this.settings.B6_CLOUD_PROJECT_SECRET}`
             }
@@ -47,8 +47,8 @@ module.exports = {
             }
         })
     },
-    builder6ProjectDelete: async function(objectName, id) {
-        return await axios.delete(`${this.settings.B6_CLOUD_API}/v0/${this.settings.B6_CLOUD_PROJECT_PREFIX}${record.project_id}/${objectName}/${id}`, {
+    builder6ProjectDelete: async function(objectName, id, projectId) {
+        return await axios.delete(`${this.settings.B6_CLOUD_API}/v0/${this.settings.B6_CLOUD_PROJECT_PREFIX}${projectId}/${objectName}/${id}`, {
             "headers": {
                 "Authorization": `Bearer ${this.settings.B6_CLOUD_PROJECT_SECRET}`
             }
