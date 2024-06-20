@@ -39,6 +39,9 @@ const getAmisFieldType = (type) => {
       case 'location':
         amisType = 'location-picker';
         break;
+      case 'html':
+        amisType = 'input-rich-text';
+        break;
       default:
         amisType = type;
     }
@@ -66,6 +69,9 @@ const getTableFieldType = (type) => {
         break;
       case 'location-picker':
         tableType = 'location';
+        break;
+      case 'input-rich-text':
+        amisType = 'html';
         break;
       default:
         tableType = type;
