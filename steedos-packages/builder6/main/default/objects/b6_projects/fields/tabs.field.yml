@@ -3,6 +3,7 @@ amis:
   mode: normal
   showIndex: true
   enableDialog: true
+  draggable: true
   columns:
     - type
     - page
