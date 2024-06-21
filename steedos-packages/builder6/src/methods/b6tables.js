@@ -276,16 +276,30 @@ export async function validateTableFieldsBeforeSave(fieldsArray) {
   //   'table', 'html', 'location', 'signature'
   // ];
 
-  // Step 3: 校验 fieldsArray
-  fieldsArray.forEach((field, index) => {
-    if (!field.type || !field.label || !field.name) {
-      throw new Error(`Field at index ${index} is missing required properties (type, label, name).`);
-    }
+  const baseRequiredFieldProps = ['type', 'label', 'name'];
 
-    if (!validTypes.includes(field.type)) {
-      throw new Error(`Field at index ${index} has an invalid type '${field.type}'. Valid types are: ${validTypes.join(', ')}.`);
+  // Step 3: 校验 fieldsArray
+  const errors = [];
+
+  fieldsArray.forEach((field, index) => {
+    // Check for missing required properties
+    baseRequiredFieldProps.forEach(prop => {
+      if (!field.hasOwnProperty(prop)) {
+        errors.push(`Field at index ${index} (${JSON.stringify(_.pick(field, baseRequiredFieldProps))}) is missing required property '${prop}'.`);
+      }
+    });
+
+    // Check for valid type
+    if (field.hasOwnProperty('type') && !validTypes.includes(field.type)) {
+      errors.push(`Field at index ${index} (${JSON.stringify(_.pick(field, baseRequiredFieldProps))}) has invalid type '${field.type}'. Valid types are: ${validTypes.join(', ')}.`);
     }
   });
+
+  if (errors.length > 0) {
+    throw new Error(errors.join('\n-----------------------\n'));
+  } else {
+    // console.log('All fields have the required properties and valid types.');
+  }
 }
 
 /**
