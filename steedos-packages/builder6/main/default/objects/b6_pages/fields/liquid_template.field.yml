@@ -1,0 +1,10 @@
+name: liquid_template
+filters: []
+is_wide: true
+label: Template
+language: html
+required: false
+sort_no: 60
+type: code
+visible_on: '${type==="liquid"}'
+group: 显示

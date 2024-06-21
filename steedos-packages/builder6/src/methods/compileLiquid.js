@@ -1,10 +1,10 @@
 const uuid = require("uuid");
 
-export const compileAmis = async (page, id) => {
-    const {amis_schema, tailwind, _id} = page
+export const compileLiquid = async (page, id) => {
+    const {liquid_template, tailwind, _id} = page
 
-    if (!amis_schema) {
-        return { error: "amis is required" }
+    if (!liquid_template) {
+        return { error: "template is required" }
     }
 
     const builder = {
@@ -17,9 +17,9 @@ export const compileAmis = async (page, id) => {
                 layerName: "Page",
                 id: `builder-${uuid.v4()}`,
                 component: {
-                    name: "Builder6:Amis",
+                    name: "Builder6:Liquid",
                     options: {
-                        schema: JSON.parse(amis_schema),
+                        template: liquid_template,
                         data: {}
                     }
                 },

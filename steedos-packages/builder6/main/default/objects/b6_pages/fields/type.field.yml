@@ -28,6 +28,8 @@ options:
     value: jsx
   - label: Blocks
     value: blocks
+  - label: Liquid
+    value: liquid
 primary: false
 readonly: false
 required: false
