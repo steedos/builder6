@@ -42,6 +42,9 @@ const getAmisFieldType = (type) => {
       case 'html':
         amisType = 'input-rich-text';
         break;
+      case 'table':
+        amisType = 'input-table';
+        break;
       default:
         amisType = type;
     }
@@ -72,6 +75,9 @@ const getTableFieldType = (type) => {
         break;
       case 'input-rich-text':
         tableType = 'html';
+        break;
+      case 'input-table':
+        tableType = 'table';
         break;
       default:
         tableType = type;
