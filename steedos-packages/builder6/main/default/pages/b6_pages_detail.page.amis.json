@@ -306,13 +306,19 @@
                                                                         "componentId": "b6_page_detail"
                                                                     },
                                                                     {
-                                                                        "actionType": "reload",
-                                                                        "componentId": "u:d0cb32b561ff"
-                                                                    },
-                                                                    {
                                                                         "componentId": "u:66a9cecdc4bb",
                                                                         "ignoreError": false,
                                                                         "actionType": "disabled"
+                                                                    },
+                                                                    {
+                                                                        "actionType": "wait",
+                                                                        "args": {
+                                                                          "time": 2000
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "actionType": "reload",
+                                                                        "componentId": "u:d0cb32b561ff"
                                                                     }
                                                                 ]
                                                             },
