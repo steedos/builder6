@@ -52,6 +52,7 @@
                                     "label": "新建",
                                     "id": "u:standard_new_pages",
                                     "editorState": "default",
+                                    "level": "primary",
                                     "onEvent": {
                                         "click": {
                                             "weight": 0,
@@ -61,7 +62,7 @@
                                                     "actionType": "dialog",
                                                     "dialog": {
                                                         "type": "dialog",
-                                                        "title": "新建",
+                                                        "title": "新建 页面",
                                                         "body": [
                                                             {
                                                                 "id": "u:05d28153a20a",
@@ -86,6 +87,7 @@
                                                                         "required": true,
                                                                         "description": "需以 / 开头，如 /about，/ 表示首页。",
                                                                         "id": "u:bc7ab2804e3d",
+                                                                        "value": "/",
                                                                         "validations": {
                                                                             "matchRegexp": "^\\/(?:[^\\/\\s\\.]+(?:\\/[^\\/\\s\\.]+)*)?$"
                                                                         },  
