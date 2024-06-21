@@ -145,6 +145,7 @@
                     "type": "nav",
                     "stacked": false,
                     "source": "${pages_nav}",
+                    "className": "w-10/12",
                     "onEvent": {
                         "click": {
                             "actions": [
