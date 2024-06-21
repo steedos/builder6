@@ -10,6 +10,9 @@ const package = require('../package.json');
 const packageName = package.name;
 const packageLoader = require('@steedos/service-package-loader');
 
+const rests = require('./rests');
+const methods = require('./methods');
+
 module.exports = {
     name: packageName,
     namespace: "steedos",
@@ -24,11 +27,11 @@ module.exports = {
         }
     },
     actions: {
+        ...rests,
     },
     hooks: {
     },
-    methods: {
-    },
+    methods: methods,
 
     async started() {
     }
