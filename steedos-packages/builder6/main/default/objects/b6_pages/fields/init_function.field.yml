@@ -5,4 +5,5 @@ group: 初始化
 sort_no: 1200
 visible_on: '${enabled_init==true}'
 description: |
-  默认签名: async (params, searchParams, base)=>{...}
+  函数签名: async (params, searchParams, base)=>{}
+  返回值: return {data: {}}
