@@ -4,3 +4,5 @@ label: 初始化函数
 group: 初始化
 sort_no: 1200
 visible_on: '${enabled_init==true}'
+description: |
+  默认签名: async (params, searchParams, base)=>{...}
