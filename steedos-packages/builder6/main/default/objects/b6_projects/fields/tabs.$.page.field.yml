@@ -1,6 +1,4 @@
 name: tabs.$.page
-amis:
-  requiredOn: '${type == "page"}'
 group: 菜单
 hidden: false
 label: 页面
@@ -10,8 +8,22 @@ sort_no: 155
 type: lookup
 visible_on: '${type == "page"}'
 filters: ["project_id", "=", "${_master.recordId}"]
-auto_fill_mapping:
-  - from: url
-    to: url
-  - from: name
-    to: name
+amis:
+  requiredOn: '${type == "page"}'
+  # auto_fill_mapping:
+  #   - from: url
+  #     to: url
+  #   - from: name
+  #     to: name
+  autoFill:
+    showSuggestion: false
+    fillMapping:
+      name: "${name}"
+      url: "${url}"
+    api:
+      url: '${context.rootUrl}/api/v1/b6_pages/${page}?fields=["name","url"]'
+      # cache: 6000
+      responseData:
+        name: "${name}"
+        url: "${url}"
+      silent: false
