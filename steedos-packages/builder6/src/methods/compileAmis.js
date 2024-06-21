@@ -17,7 +17,7 @@ export const compileAmis = async (page, id) => {
                 layerName: "Page",
                 id: `builder-${uuid.v4()}`,
                 component: {
-                    name: "Core:Amis",
+                    name: "Builder6:Amis",
                     options: {
                         schema: JSON.parse(amis_schema),
                         data: {}

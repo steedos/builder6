@@ -1,0 +1,18 @@
+name: options
+amis:
+  showIndex: true
+  enableDialog: false
+  columns:
+    - label
+    - value
+    - name: description
+      width: 300
+hidden: false
+description: >-
+  选择项的每个选项显示名及选项值不能为空
+is_wide: true
+label: 选择项
+required: '{{formData.type === ''select'' ? true: false}}'
+sort_no: 50
+type: table
+visible_on: '{{formData.type === ''select'' ? true: false}}'

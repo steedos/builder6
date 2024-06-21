@@ -1,0 +1,9 @@
+name: multiple
+hidden: false
+description: >-
+  切换单多选，需重设已有记录字段值。
+label: 多选
+sort_no: 40
+type: boolean
+visible_on: >-
+  ['select', 'lookup', 'image','file'].indexOf(data.type) > -1

@@ -7,3 +7,4 @@ required: false
 sort_no: 60
 type: code
 visible_on: '${type==="amis"}'
+group: 显示

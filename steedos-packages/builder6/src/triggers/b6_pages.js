@@ -79,6 +79,7 @@ export const pagesBeforeUpdate = {
             if (doc.type === 'richtext') {content = doc.html;}
             if (doc.type === 'chatbot') {content = doc.html;}
             if (doc.type === 'amis') {content = JSON.parse(doc.amis_schema);}
+            if (doc.type === 'liquid') {content = doc.liquid_template}
             doc.tailwind = await this.compileTailwind(content, id);
         } catch (e) { this.broker.logger.error(e)}
 
@@ -105,6 +106,13 @@ export const pagesBeforeUpdate = {
         if (doc.type === 'amis' && doc.amis_schema) {
             try {
                 const builder = await this.compileAmis(doc, id);
+                doc.builder = JSON.stringify(builder);
+            } catch (e) { this.broker.logger.error(e)}
+        }
+        
+        if (doc.type === 'liquid' && doc.liquid_template){
+            try {
+                const builder = await this.compileLiquid(doc, id);
                 doc.builder = JSON.stringify(builder);
             } catch (e) { this.broker.logger.error(e)}
         }

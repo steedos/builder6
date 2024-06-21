@@ -12,3 +12,6 @@ options:
 required: true
 sort_no: 150
 type: select
+amis:
+  autoFill:
+    is_new_window: "${value === 'url' ? true : false}"

@@ -22,6 +22,8 @@ tab_items:
     index: 4
   object_b6_projects:
     index: 5
+  object_b6_pages:
+    index: 6
   object_b6_access_tokens:
     index: 8
 tabs:

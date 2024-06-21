@@ -1,94 +1,474 @@
 {
-    "type": "steedos-record-service",
+    "type": "page",
+    "id": "b6_page_detail",
     "body": [
         {
-            "type": "steedos-record-detail-header",
-            "label": "标题面板",
-            "objectApiName": "${objectName}",
-            "recordId": "${recordId}",
-            "showBackButton": "${!_inDrawer}",
-            "id": "u:0ebcc633cc99"
-        },
-        {
-            "type": "tabs",
-            "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
-            "tabs": [
+            "type": "flex",
+            "id": "u:1ba760c11831",
+            "items": [
                 {
-                    "title": "页面",
+                    "type": "container",
                     "body": [
                         {
-                            "type": "steedos-object-form",
-                            "label": "对象表单",
+                            "type": "steedos-record-service",
+                            "body": [
+                                {
+                                    "type": "tabs",
+                                    "className": "steedos-record-tabs bg-white p-4 border rounded",
+                                    "tabs": [
+                                        {
+                                            "title": "页面",
+                                            "body": [
+                                                {
+                                                    "type": "steedos-object-form",
+                                                    "label": "对象表单",
+                                                    "objectApiName": "${objectName}",
+                                                    "recordId": "${recordId}",
+                                                    "id": "u:123e45d5a47d",
+                                                    "appId": "${appId}",
+                                                    "mode": "edit",
+                                                    "className": "mb-4 detail-edit-object-form",
+                                                    "enableTabs": true,
+                                                    "tabsMode": "sidebar",
+                                                    "enableInitApi": false,
+                                                    "excludedFields": [
+                                                        "project_id"
+                                                    ],
+                                                    "form": {
+                                                        "id": "u:123e45d5a47d",
+                                                        "actions": [
+                                                            {
+                                                                "type": "submit",
+                                                                "label": "保存",
+                                                                "primary": true,
+                                                                "disabled": true,
+                                                                "id": "u:66a9cecdc4bb"
+                                                            }
+                                                        ],
+                                                        "feat": "Insert",
+                                                        "dsType": "api",
+                                                        "submitOnChange": false,
+                                                        "onEvent": {
+                                                            "submitSucc": {
+                                                                "weight": 0,
+                                                                "actions": [
+                                                                    {
+                                                                        "actionType": "reload"
+                                                                    },
+                                                                    {
+                                                                        "actionType": "reload",
+                                                                        "componentId": "b6_page_detail"
+                                                                    },
+                                                                    {
+                                                                        "actionType": "reload",
+                                                                        "componentId": "u:d0cb32b561ff"
+                                                                    },
+                                                                    {
+                                                                        "componentId": "u:66a9cecdc4bb",
+                                                                        "ignoreError": false,
+                                                                        "actionType": "disabled"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "change": {
+                                                                "actions": [
+                                                                    {
+                                                                        "componentId": "u:66a9cecdc4bb",
+                                                                        "ignoreError": false,
+                                                                        "actionType": "enabled"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        "debug": false,
+                                                        "className": "",
+                                                        "panelClassName": " p-4",
+                                                        "mode": "normal"
+                                                    },
+                                                    "height": "100%"
+                                                }
+                                            ],
+                                            "id": "u:5d4e7e3f6ecc",
+                                            "className": "px-0 py-4"
+                                        },
+                                        {
+                                            "title": "区块",
+                                            "body": [
+                                                {
+                                                    "type": "steedos-object-related-listview",
+                                                    "label": "相关表",
+                                                    "objectApiName": "${objectName}",
+                                                    "recordId": "${recordId}",
+                                                    "id": "u:d5332fcca94b",
+                                                    "relatedObjectApiName": "b6_blocks"
+                                                }
+                                            ],
+                                            "id": "u:9bebc21fda8e",
+                                            "className": "px-0"
+                                        },
+                                        {
+                                            "title": "附件",
+                                            "body": [
+                                                {
+                                                    "type": "steedos-object-related-listview",
+                                                    "label": "相关表",
+                                                    "objectApiName": "${objectName}",
+                                                    "recordId": "${recordId}",
+                                                    "id": "u:e33dc1d652f7",
+                                                    "relatedObjectApiName": "cms_files"
+                                                }
+                                            ],
+                                            "id": "u:40150985fb6e",
+                                            "className": "px-0"
+                                        },
+                                        {
+                                            "title": "历史版本",
+                                            "body": [
+                                                {
+                                                    "type": "steedos-object-related-listview",
+                                                    "label": "相关表",
+                                                    "objectApiName": "${objectName}",
+                                                    "recordId": "${recordId}",
+                                                    "id": "u:c3772a9cd447",
+                                                    "relatedObjectApiName": "b6_page_versions"
+                                                }
+                                            ],
+                                            "id": "u:9b5b7d201630",
+                                            "className": "px-0"
+                                        }
+                                    ],
+                                    "id": "u:365be6de16dd"
+                                }
+                            ],
+                            "regions": [
+                                "body"
+                            ],
+                            "data": {},
+                            "id": "page_b6_pages_record_detail",
+                            "name": "page_b6_pages_record_detail",
                             "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "id": "u:123e45d5a47d",
-                            "appId": "${appId}",
-                            "mode": "read",
-                            "className": "mb-4",
-                            "enableTabs": false,
-                            "tabsMode": "vertical",
-                            "enableInitApi": false
+                            "bodyClassName": "",
+                            "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"
                         }
+                        
                     ],
-                    "id": "u:5d4e7e3f6ecc",
-                    "className": "px-0 py-4"
+                    "size": "none",
+                    "style": {
+                        "position": "static",
+                        "display": "block",
+                        "flex": "0 0 150px",
+                        "flexBasis": "650px"
+                    },
+                    "wrapperBody": false,
+                    "isFixedHeight": false,
+                    "isFixedWidth": false,
+                    "id": "u:05614dd5e285"
                 },
                 {
-                    "title": "区块",
+                    "type": "container",
                     "body": [
                         {
-                            "type": "steedos-object-related-listview",
-                            "label": "相关表",
-                            "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "id": "u:d5332fcca94b",
-                            "relatedObjectApiName": "b6_blocks"
-                        }
-                    ],
-                    "id": "u:9bebc21fda8e",
-                    "className": "px-0"
-                },
-                {
-                    "title": "附件",
-                    "body": [
+                            "id": "u:d9c07905e0e5",
+                            "type": "container",
+                            "body": [
+                                {
+                                    "type": "container",
+                                    "body": [
+                                        {
+                                            "type": "button-group",
+                                            "id": "u:77ff1aca25d2",
+                                            "className": "float-end",
+                                            "buttons": [
+                                                {
+                                                    "type": "button",
+                                                    "label": "共享",
+                                                    "onEvent": {
+                                                        "click": {
+                                                          "actions": [
+                                                            {
+                                                              "ignoreError": false,
+                                                              "actionType": "dialog",
+                                                              "dialog": {
+                                                                "type": "dialog",
+                                                                "title": "",
+                                                                "body": [
+                                                                  {
+                                                                    "type": "tpl",
+                                                                    "tpl": "<p>Upgrade Plan</p>",
+                                                                    "id": "u:5b4399733b7e"
+                                                                  }
+                                                                ],
+                                                                "id": "u:edc8fd90ad49",
+                                                                "actions": [
+                                                                  {
+                                                                    "type": "button",
+                                                                    "actionType": "cancel",
+                                                                    "label": "取消",
+                                                                    "id": "u:562235bb4625"
+                                                                  },
+                                                                  {
+                                                                    "type": "button",
+                                                                    "actionType": "confirm",
+                                                                    "label": "确定",
+                                                                    "primary": true,
+                                                                    "id": "u:0458a9c5d81b"
+                                                                  }
+                                                                ],
+                                                                "showCloseButton": true,
+                                                                "closeOnOutside": false,
+                                                                "closeOnEsc": false,
+                                                                "showErrorMsg": true,
+                                                                "showLoading": true,
+                                                                "draggable": false
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                    "id": "u:9b13e1cf1b23"
+                                                },
+                                                {
+                                                    "type": "button",
+                                                    "label": "嵌入",
+                                                    "onEvent": {
+                                                        "click": {
+                                                          "actions": [
+                                                            {
+                                                              "ignoreError": false,
+                                                              "actionType": "dialog",
+                                                              "dialog": {
+                                                                "type": "dialog",
+                                                                "title": "",
+                                                                "body": [
+                                                                  {
+                                                                    "type": "tpl",
+                                                                    "tpl": "<p>Upgrade Plan</p>",
+                                                                    "id": "u:5b4399733b7e"
+                                                                  }
+                                                                ],
+                                                                "id": "u:edc8fd90ad49",
+                                                                "actions": [
+                                                                  {
+                                                                    "type": "button",
+                                                                    "actionType": "cancel",
+                                                                    "label": "取消",
+                                                                    "id": "u:562235bb4625"
+                                                                  },
+                                                                  {
+                                                                    "type": "button",
+                                                                    "actionType": "confirm",
+                                                                    "label": "确定",
+                                                                    "primary": true,
+                                                                    "id": "u:0458a9c5d81b"
+                                                                  }
+                                                                ],
+                                                                "showCloseButton": true,
+                                                                "closeOnOutside": false,
+                                                                "closeOnEsc": false,
+                                                                "showErrorMsg": true,
+                                                                "showLoading": true,
+                                                                "draggable": false
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      },
+                                                    "id": "u:2ac0c15683f3"
+                                                }
+                                            ],
+                                            "vertical": false,
+                                            "tiled": false,
+                                            "visible": false
+                                        },
+                                        {
+                                            "type": "button",
+                                            "label": "预览",
+                                            "onEvent": {
+                                                "click": {
+                                                    "actions": [
+                                                        {
+                                                            "ignoreError": false,
+                                                            "actionType": "url",
+                                                            "args": {
+                                                                "url": "${pageData.project.url}${pageData.url}",
+                                                                "blank": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "id": "u:617338ddfe5b",
+                                            "className": "mr-2",
+                                            "level": "primary"
+                                        }
+                                    ],
+                                    "style": {
+                                        "position": "relative",
+                                        "display": "flex",
+                                        "inset": "auto",
+                                        "flexWrap": "nowrap",
+                                        "flexDirection": "row-reverse",
+                                        "alignItems": "baseline",
+                                        "justifyContent": "space-between",
+                                        "flex": "0 0 auto"
+                                    },
+                                    "size": "none",
+                                    "wrapperBody": false,
+                                    "id": "u:1b82cb69d311",
+                                    "isFixedHeight": false
+                                },
+                                {
+                                    "type": "button",
+                                    "id": "u:284e51032f92",
+                                    "label": "刷新",
+                                    "onEvent": {
+                                        "click": {
+                                            "actions": [
+                                                {
+                                                    "actionType": "reload",
+                                                    "componentId": "u:d0cb32b561ff"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "block": false,
+                                    "size": "md",
+                                    "level": "link",
+                                    "className": "float-start",
+                                    "icon": "fa fa-refresh"
+                                }
+                            ],
+                            "style": {
+                                "position": "static",
+                                "display": "flex",
+                                "flexWrap": "nowrap",
+                                "flexDirection": "row-reverse",
+                                "alignItems": "center",
+                                "justifyContent": "space-between",
+                                "height": "46px",
+                                "overflowY": "visible"
+                            },
+                            "size": "none",
+                            "wrapperBody": false,
+                            "isFixedHeight": true,
+                            "isFixedWidth": false,
+                            "themeCss": {
+                                "baseControlClassName": {
+                                    "background:default": "#ffffff"
+                                }
+                            },
+                            "className": "sm:rounded-t-lg p-2 border-b"
+                        },
                         {
-                            "type": "steedos-object-related-listview",
-                            "label": "相关表",
-                            "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "id": "u:e33dc1d652f7",
-                            "relatedObjectApiName": "cms_files"
+                            "id": "u:d0cb32b561ff",
+                            "type": "iframe",
+                            "src": "${pageData.project.url}${pageData.url}",
+                            "className": "bg-white m-0 sm:rounded-b-lg shadow-none border-none antd-Panel--form p-4 chatbots-chat",
+                            "editorState": "default",
+                            "height": "calc(100% - 45px)"
                         }
                     ],
-                    "id": "u:40150985fb6e",
-                    "className": "px-0"
-                },
-                {
-                    "title": "历史版本",
-                    "body": [
-                        {
-                            "type": "steedos-object-related-listview",
-                            "label": "相关表",
-                            "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "id": "u:c3772a9cd447",
-                            "relatedObjectApiName": "b6_page_versions"
-                        }
-                    ],
-                    "id": "u:9b5b7d201630",
-                    "className": "px-0"
+                    "size": "none",
+                    "style": {
+                        "position": "static",
+                        "display": "block",
+                        "flex": "1 1 auto",
+                        "flexGrow": 2,
+                        "flexBasis": "0px"
+                    },
+                    "wrapperBody": false,
+                    "isFixedHeight": false,
+                    "isFixedWidth": false,
+                    "id": "u:582091f4824e"
                 }
             ],
-            "id": "u:365be6de16dd"
+            "style": {
+                "position": "relative",
+                "rowGap": "10px",
+                "columnGap": "10px"
+            },
+            "isFixedHeight": false,
+            "isFixedWidth": false,
+            "className": "steedos-chatbot-page"
         }
     ],
     "regions": [
         "body"
     ],
     "data": {},
-    "id": "page_b6_pages_record_detail",
-    "name": "page_b6_pages_record_detail",
-    "objectApiName": "${objectName}",
+    "initApi": {
+        "url": "/graphql",
+         "method": "post",
+         "requestAdaptor": "console.log('context====>', context);api.data = {query: `{  pageData:b6_pages__findOne(id: \"${context.recordId}\"){    _id,    name,    url,    project_id,    project:project_id__expand{      name,      url,      slug,      pages:_related_b6_pages_project_id{        _id,name,url      }    }  }}`}; return api;",
+         "adaptor": "console.log('payload===>', payload); return payload",
+         "messages": {}
+    },
+    "css": {
+        ".chatbots-chat": {
+            "height": "calc(100 - 45px) !important"
+        },
+        ".antd-Card-avtar": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "border-radius": "unset",
+            "height": "64px",
+            "border-width": "2px"
+        },
+        ".antd-Card-img": {
+            "height": "auto !important",
+            "border-radius": "unset !important",
+            "width": "30px !important"
+        },
+        ".antd-Card-subTitle": {
+            "color": "rgba(0, 0, 0, 0.85)"
+        },
+        ".add-knowledge-source-form .antd-ListControl-item":{
+            "display": "inline-flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "width": "120px",
+            "height": "120px"
+        },
+        ".steedos-object-form":{
+            "margin-bottom": "0px !important",
+            "height": "100%"
+        },
+        ".steedos-object-form>.antd-Panel--form":{
+            "padding": "0px !important",
+            "border": "none !important"
+        },
+        ".steedos-object-form>.antd-Panel":{
+            "margin-bottom": "0px !important",
+            "padding-bottom": "0px !important",
+            "height": "100%"
+        },
+        ".steedos-object-form>.antd-Panel>div":{
+            "height": "calc(100% - 50px)"
+        },
+        ".steedos-amis-form":{
+            "height": "100%"
+        },
+        ".steedos-amis-form>.antd-Wrapper":{
+            "height": "100%"
+        },
+        ".steedos-amis-form>.antd-Wrapper>.antd-Tabs":{
+            "height": "100%"
+        },
+        ".antd-Tabs-content":{
+            "overflow": "auto",
+            "height": "calc(100% - 50px)"
+        },
+        ".steedos-chatbot-page": {
+            "height": "calc(100% - 100px) !important"
+        },
+        ".detail-edit-object-form .antd-Form-item": {
+            "grid-column": "span 2 / span 2"
+        },
+        "antd-Panel-footerWrap": {
+            "height": "unset !important"
+        }
+    },
     "bodyClassName": "",
     "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"
 }
