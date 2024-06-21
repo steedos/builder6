@@ -147,6 +147,12 @@ const getAmisFieldExtraProps = (field) => {
         }, fieldAmis);
       }
       break;
+    case 'fieldset':
+      // label显示为fieldset控件的标题
+      fieldAmis = Object.assign({}, {
+        title: field.label
+      }, fieldAmis);
+      break;
   }
   if (['select', 'lookup', 'image', 'file'].indexOf(field.type) > -1) {
     // multiple是必填属性
@@ -158,7 +164,7 @@ const getAmisFieldExtraProps = (field) => {
 }
 
 /**
- * 把amis field转为table field时，根据传入的amis field，获取table field的amis属性
+ * 把amis field转为table field时，根据传入的amis field，获取额外的table field的属性，其中包括amis属性
  * 主要包括两方面：
  * - 把传入的amis field schema不在 BASE_FIELD_PROPS 中包含的其它所有属性加到要返回的table field amis属性中
  * - 根据各种字段类型，把传入的field schema中同名属性添加到table field中
@@ -183,6 +189,13 @@ const getTableFieldExtraProps = (fieldSchema) => {
       });
       // options作为字段属性同步合并到table field中了，最终为table field的amis属性输出的内容中不需要再带
       delete fieldAmis.options;
+      break;
+    case 'fieldset':
+      // label显示为fieldset控件的标题
+      Object.assign(tableFieldExtraProps, {
+        label: fieldAmis.title
+      });
+      delete fieldAmis.title;
       break;
   }
   if (['select', 'lookup', 'image', 'file'].indexOf(fieldType) > -1) {
@@ -277,12 +290,13 @@ export async function validateTableFieldsBeforeSave(fieldsArray) {
 
 /**
  * 把字段清单保存到数据表各个字段中，包括增加、删除和修改字段，保存前先进行合法性校验
- * tableFields: 经过convertAmisSchemaToTableFields函数把的amis schema转为要同步保存的字段清单
+ * tableFields: 经过 convertAmisSchemaToTableFields 函数把的amis schema转为要同步保存的字段清单
  * 保存分两步：
  * - 删除所有旧字段
  * - 循环传入的tableFields集合，依次把每个字段添加到数据表中
  */
 export async function saveTableFields(tableId, tableFields, userSession) {
+  console.log("===saveTableFields==tableFields====", tableFields)
   if (!userSession || !userSession.spaceId) {
     throw new Error('An error occurred while save table fields: userSession not found.');
   }
