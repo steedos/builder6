@@ -1,0 +1,16 @@
+name: ChatGPT
+code: chatgpt
+description: 一站式智能助手，支持ChatGPT、Google Gemini大模型。
+enable_nav_schema: false
+icon_slds: live_chat
+is_creator: true
+is_new_window: true
+is_use_ie: false
+is_use_iframe: false
+locked: false
+mobile: true
+showSidebar: false
+sort: 30
+tabs: []
+url: 'https://chat.builder6.com'
+visible: true

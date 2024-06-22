@@ -1,0 +1,16 @@
+name: 自动化
+code: automation
+description: 可视化定义自动化流程，无缝连接不同的应用和服务。
+enable_nav_schema: false
+icon_slds: flow
+is_creator: true
+is_new_window: false
+is_use_ie: false
+is_use_iframe: false
+locked: false
+mobile: true
+showSidebar: false
+sort: 50
+tabs: []
+url: 'https://automation.steedos.cn'
+visible: true
