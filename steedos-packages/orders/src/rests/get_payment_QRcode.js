@@ -17,22 +17,18 @@ module.exports = {
         console.log("======>",ctx.params);
         try {
             const piclient_key_params = {
-                Bucket: 'wechat-pay-certs',
-                Key: 'apiclient_key.pem'
+
             };
             const apiclient_cert_params = {
-                Bucket: 'wechat-pay-certs',
-                Key: 'apiclient_cert.pem'
+
             };
             const wechatpay_params = {
-                Bucket: 'wechat-pay-certs',
-                Key: 'wechatpay.pem'
+
             };
             const piclient_key = await this.get_s3_data(piclient_key_params);
             const apiclient_cert = await this.get_s3_data(apiclient_cert_params);
             const cert = await this.get_s3_data(wechatpay_params);
             const config = {
-            
             };
             const pay = new WxPay({
                 appid: config.appid,
@@ -55,6 +51,7 @@ module.exports = {
                 },
             };
             const result = await pay.transactions_native(params);
+            console.log("========>",result)
             return result
         } catch (error) {
             console.error(error);

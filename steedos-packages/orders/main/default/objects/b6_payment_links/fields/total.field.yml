@@ -21,9 +21,9 @@ show_as_qr: false
 sort_no: 100
 sortable: true
 static: false
-type: currency
+type: summary
 unique: false
 write_requires_master_read: false
-summary_field: amount_actual
+summary_field: total
 summary_object: b6_product_config
 summary_type: sum

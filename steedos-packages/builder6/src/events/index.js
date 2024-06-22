@@ -22,4 +22,7 @@ module.exports = {
     ...require('./b6_pages'),
     ...require('./b6_projects'),
     ...require('./b6_tables'),
+    ...require('./b6_orders'),
+    ...require('./b6_payment_links'),
+    ...require('./b6_products'),
   }
