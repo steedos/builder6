@@ -1,12 +1,12 @@
-name: handle
+name: api_name
 filterable: true
 hidden: false
 index: true
-label: Handle
+label: API 名称
 options:
-  - label: 主菜单
+  - label: main-menu
     value: main-menu
-  - label: 页脚菜单
+  - label: footer
     value: footer
 required: true
 searchable: true
