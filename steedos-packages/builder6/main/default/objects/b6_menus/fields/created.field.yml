@@ -1,0 +1,5 @@
+name: created
+hidden: false
+label: 创建时间
+sort_no: 60
+type: datetime

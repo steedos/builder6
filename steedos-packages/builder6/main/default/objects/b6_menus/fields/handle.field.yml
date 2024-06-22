@@ -1,5 +1,6 @@
 name: handle
 filterable: true
+hidden: false
 index: true
 label: Handle
 options:
@@ -9,5 +10,5 @@ options:
     value: footer
 required: true
 searchable: true
-sort_no: 10
+sort_no: 20
 type: select

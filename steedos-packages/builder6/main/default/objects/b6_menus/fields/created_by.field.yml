@@ -1,0 +1,5 @@
+name: created_by
+hidden: false
+label: 创建人
+sort_no: 50
+type: lookup

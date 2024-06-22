@@ -1,0 +1,5 @@
+name: modified_by
+hidden: false
+label: 修改人
+sort_no: 70
+type: lookup

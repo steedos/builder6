@@ -1,0 +1,5 @@
+name: modified
+hidden: false
+label: 修改时间
+sort_no: 80
+type: datetime

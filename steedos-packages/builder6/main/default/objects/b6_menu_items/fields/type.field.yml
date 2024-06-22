@@ -14,12 +14,14 @@ multiple: false
 options:
   - label: 页面
     value: page
-  - label: 外部链接
-    value: url
   - label: 智能助手
     value: chatbot
+  - label: 知识库
+    value: blog
   - label: 知识
     value: document
+  - label: 外部链接
+    value: url
 primary: false
 readonly: false
 required: false
