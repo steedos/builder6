@@ -1,4 +1,5 @@
 name: modified
+group: 系统信息
 hidden: false
 label: 修改时间
 sort_no: 80
