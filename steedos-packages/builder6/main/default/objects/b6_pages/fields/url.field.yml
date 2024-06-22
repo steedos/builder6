@@ -1,15 +1,16 @@
 name: url
+amis:
+  validations:
+    matchRegexp: '^\/(?:[^\/\s\.]+(?:\/[^\/\s\.]+)*)?$'
+  validationErrors:
+    matchRegexp: 必须是以 / 开头的相对路径地址
+description: 需以 / 开头，如 /about，/ 表示首页。
 filterable: true
+group: 页面
 hidden: false
 index: true
 label: URL
 required: true
 searchable: true
-sort_no: 800
+sort_no: 20
 type: text
-description: 需以 / 开头，如 /about，/ 表示首页。
-amis:
-  "validations": 
-    "matchRegexp": "^\\/(?:[^\\/\\s\\.]+(?:\\/[^\\/\\s\\.]+)*)?$"
-  "validationErrors": 
-    "matchRegexp": "必须是以 / 开头的相对路径地址"

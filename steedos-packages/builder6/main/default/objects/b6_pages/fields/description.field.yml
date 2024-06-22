@@ -4,6 +4,7 @@ enable_enhanced_lookup: true
 enable_thousands: true
 filterable: false
 generated: false
+group: 页面
 hidden: false
 index: false
 is_name: false
@@ -16,7 +17,7 @@ required: false
 rows: 3
 searchable: false
 show_as_qr: false
-sort_no: 900
+sort_no: 70
 sortable: false
 static: false
 type: textarea

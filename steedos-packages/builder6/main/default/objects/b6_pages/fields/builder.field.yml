@@ -6,5 +6,6 @@ label: Builder Schema
 language: json
 readonly: true
 required: false
-sort_no: 68
+sort_no: 230
 type: code
+visible_on: '{{false}}'

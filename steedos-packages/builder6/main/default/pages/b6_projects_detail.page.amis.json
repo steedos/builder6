@@ -1,80 +1,363 @@
 {
-    "type": "steedos-record-service",
-    "body": [
-        {
-            "type": "steedos-record-detail-header",
-            "label": "标题面板",
-            "objectApiName": "${objectName}",
-            "recordId": "${recordId}",
-            "showBackButton": "${!_inDrawer}",
-            "id": "u:ac9fce914461"
-        },
-        {
-            "type": "tabs",
-            "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
-            "tabs": [
-                {
-                    "title": "页面",
-                    "body": [
-                        {
-                            "type": "steedos-object-related-listview",
-                            "label": "相关表",
-                            "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "id": "u:c99b929fda7d",
-                            "relatedObjectApiName": "b6_pages"
-                        }
-                    ],
-                    "id": "u:5a4da21bad0a",
-                    "className": "px-0"
-                },
-                {
-                    "title": "组件",
-                    "body": [
-                        {
-                            "type": "steedos-object-related-listview",
-                            "label": "相关表",
-                            "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "id": "u:1ec1b5eeb12e",
-                            "relatedObjectApiName": "b6_components"
-                        }
-                    ],
-                    "id": "u:1e878882314e",
-                    "className": "px-0"
-                },
-                {
-                    "title": "设置",
-                    "body": [
-                        {
-                            "type": "steedos-object-form",
-                            "label": "对象表单",
-                            "objectApiName": "${objectName}",
-                            "recordId": "${recordId}",
-                            "id": "u:38aa1b421c33",
-                            "mode": "read",
-                            "className": "mb-4",
-                            "fields": [],
-                            "enableTabs": true,
-                            "tabsMode": "vertical",
-                            "enableInitApi": false,
-                            "appId": "${appId}"
-                        }
-                    ],
-                    "id": "u:5d4e7e3f6ecc",
-                    "className": "px-0 py-4"
-                }
-            ],
-            "id": "u:f1bf09ff6742"
-        }
-    ],
+    "type": "page",
+    "id": "b6_project_detail",
     "regions": [
         "body"
     ],
     "data": {},
-    "id": "page_b6_projects_record_detail",
-    "name": "page_b6_projects_record_detail",
-    "objectApiName": "${objectName}",
-    "bodyClassName": "",
-    "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"
+    "bodyClassName": "p-0",
+    "className": "",
+    "initApi": {
+        "url": "/graphql",
+         "method": "post",
+         "requestAdaptor": "api.data = {query: `{  projectData:b6_projects__findOne(id: \"${context.recordId}\"){    _id,    name,    url,     pages:_related_b6_pages_project_id{        _id,name,url      }   }}`}; return api;",
+         "messages": {}
+    },
+    "body": [
+        {
+            "type": "steedos-record-service",
+            "body": [
+                {
+                    "type": "steedos-record-detail-header",
+                    "label": "标题面板",
+                    "objectApiName": "${objectName}",
+                    "recordId": "${recordId}",
+                    "showBackButton": "${!_inDrawer}",
+                    "id": "u:ac9fce914461"
+                },
+                {
+                    "type": "panel",
+                    "title": "页面",
+                    "className": "m-2",
+                    "header": [
+                        {
+                            "type": "container",
+                            "style": {
+                                "position": "relative",
+                                "display": "flex",
+                                "inset": "auto",
+                                "flexWrap": "nowrap",
+                                "flexDirection": "row-reverse",
+                                "alignItems": "baseline",
+                                "justifyContent": "space-between",
+                                "flex": "0 0 auto"
+                            },
+                            "size": "none",
+                            "wrapperBody": false,
+                            "isFixedHeight": false,
+                            "id": "u:582091f482de",
+                            "body": [
+                                {
+                                    "type": "button",
+                                    "label": "新建",
+                                    "id": "u:standard_new_pages",
+                                    "editorState": "default",
+                                    "level": "primary",
+                                    "onEvent": {
+                                        "click": {
+                                            "weight": 0,
+                                            "actions": [
+                                                {
+                                                    "ignoreError": false,
+                                                    "actionType": "dialog",
+                                                    "dialog": {
+                                                        "type": "dialog",
+                                                        "title": "新建 页面",
+                                                        "body": [
+                                                            {
+                                                                "id": "u:05d28153a20a",
+                                                                "type": "form",
+                                                                "title": "表单",
+                                                                "mode": "horizontal",
+                                                                "dsType": "api",
+                                                                "feat": "Insert",
+                                                                "canAccessSuperData": false,
+                                                                "body": [
+                                                                    {
+                                                                        "name": "name",
+                                                                        "label": "名称",
+                                                                        "type": "input-text",
+                                                                        "id": "u:bc7ab2804e2d",
+                                                                        "required": true
+                                                                    },
+                                                                    {
+                                                                        "name": "url",
+                                                                        "label": "URL",
+                                                                        "type": "input-text",
+                                                                        "required": true,
+                                                                        "description": "需以 / 开头，如 /about，/ 表示首页。",
+                                                                        "id": "u:bc7ab2804e3d",
+                                                                        "value": "/",
+                                                                        "validations": {
+                                                                            "matchRegexp": "^\\/(?:[^\\/\\s\\.]+(?:\\/[^\\/\\s\\.]+)*)?$"
+                                                                        },  
+                                                                        "validationErrors": {
+                                                                            "matchRegexp": "必须是以 / 开头的相对路径地址"
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                "actions": [
+                                                                    {
+                                                                        "type": "button",
+                                                                        "label": "提交",
+                                                                        "onEvent": {
+                                                                            "click": {
+                                                                                "actions": [
+                                                                                    {
+                                                                                        "actionType": "submit",
+                                                                                        "componentId": "u:05d28153a20a"
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        },
+                                                                        "level": "primary"
+                                                                    }
+                                                                ],
+                                                                "resetAfterSubmit": true,
+                                                                "api": {
+                                                                    "url": "/api/v1/b6_pages",
+                                                                    "method": "post",
+                                                                    "requestAdaptor": "api.data = {\n    doc: {\n        name: context.name, url: context.url, project_id: context.recordId\n    }\n}\nreturn api;",
+                                                                    "adaptor": "",
+                                                                    "messages": {}
+                                                                },
+                                                                "onEvent": {
+                                                                    "submitSucc": {
+                                                                        "weight": 0,
+                                                                        "actions": [
+                                                                            {
+                                                                                "ignoreError": false,
+                                                                                "actionType": "custom",
+                                                                                "script": "FlowRouter.go(`/app/${event.data.appId}/b6_pages/view/${event.context.data.result.data._id}`)\n",
+                                                                                "args": {}
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            }
+                                                        ],
+                                                        "id": "u:930af2791113",
+                                                        "actions": [
+                                                            {
+                                                                "type": "button",
+                                                                "actionType": "cancel",
+                                                                "label": "取消",
+                                                                "id": "u:0b997de992e2"
+                                                            },
+                                                            {
+                                                                "type": "button",
+                                                                "actionType": "confirm",
+                                                                "label": "确定",
+                                                                "primary": true,
+                                                                "id": "u:6f1e5e0330dd"
+                                                            }
+                                                        ],
+                                                        "showCloseButton": true,
+                                                        "closeOnOutside": false,
+                                                        "closeOnEsc": false,
+                                                        "showErrorMsg": true,
+                                                        "showLoading": true,
+                                                        "draggable": false,
+                                                        "size": "md",
+                                                        "actionType": "dialog"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "tpl",
+                                    "tpl": "页面",
+                                    "wrapperComponent": "h1",
+                                    "inline": false,
+                                    "id": "u:7af632b614ea"
+                                }
+                            ]
+                        }
+                    ],
+                    "body": {
+                        "type": "cards",
+                        "source": "$projectData.pages",
+                        "card": {
+                            "type": "card",
+                            "header": {
+                              "title": "${name}",
+                              "subTitle": "${url}",
+                              "description": "${description}",
+                              "avatarClassName": "pull-left thumb-md avatar b-3x m-r",
+                              "avatar": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzElEQVR4nO2UsQrCMBCG83Y31Sfo1DfQp+hQV8VZ36UELAF1v9HV1SWRdCpi0fbuNJj74CdQaPj474gxihBQt4ErxdoeRQQ5gLoN5db5RWNtsoLn6z2UG+eLxnZJCuLN80tyCyK3pIQgckpKCSKXpKQgckiOCS73l8nvIL4QjDlFyblP0Jjg6jBdED4Im6AEoIJEtMGkGqx2rr8wns/f3mX4zxAdMZW8Gqx0B/99xBKA7iCRvEYsAegOEslrxBKAChLRBn/W4DdjFCPDAzhz6Y4FeoE3AAAAAElFTkSuQmCC"
+                            },
+                            "actions": [
+                              {
+                                "type": "button",
+                                "label": "编辑",
+                                "level": "default",
+                                "onEvent": {
+                                    "click": {
+                                        "actions": [
+                                            {
+                                                "ignoreError": false,
+                                                "actionType": "custom",
+                                                "script": "FlowRouter.go(`/app/${event.data.appId}/b6_pages/view/${event.data._id}`)\n",
+                                                "args": {}
+                                            }
+                                        ]
+                                    }
+                                }
+                              },
+                              {
+                                "type": "button",
+                                "label": "复制",
+                                "level": "default",
+                                "onEvent": {
+                                    "click": {
+                                        "actions": [
+                                            {
+                                                "ignoreError": false,
+                                                "actionType": "ajax",
+                                                "outputVar": "responseResult",
+                                                "options": {},
+                                                "api": {
+                                                "url": "/api/v1/b6_pages/${_id}",
+                                                "method": "get",
+                                                "adaptor": "",
+                                                "messages": {}
+                                                }
+                                            },
+                                            {
+                                                "ignoreError": false,
+                                                "actionType": "ajax",
+                                                "outputVar": "responseResult",
+                                                "options": {},
+                                                "api": {
+                                                "url": "/api/v1/b6_pages",
+                                                "method": "post",
+                                                "requestAdaptor": " const newRecord = context.responseResult; newRecord.name='复制 '+newRecord.name; newRecord.url = newRecord.url + '-copy'; api.body = api.data = {doc: newRecord}; return api;",
+                                                "adaptor": "",
+                                                "messages": {}
+                                                }
+                                            },
+                                            {
+                                                "ignoreError": false,
+                                                "actionType": "custom",
+                                                "script": "FlowRouter.go(`/app/${event.data.appId}/b6_pages/view/${event.data.responseResult._id}`)\n",
+                                                "args": {}
+                                            }
+                                        ]
+                                    }
+                                }
+                              },
+                              {
+                                "type": "button",
+                                "label": "删除",
+                                "level": "default",
+                                "onEvent": {
+                                "click": {
+                                    "actions": [
+                                        {
+                                            "ignoreError": false,
+                                            "actionType": "ajax",
+                                            "outputVar": "responseResult",
+                                            "options": {},
+                                            "api": {
+                                            "url": "/api/v1/b6_pages/${_id}",
+                                            "method": "delete",
+                                            "adaptor": "",
+                                            "messages": {}
+                                            }
+                                        },
+                                        {
+                                            "componentId": "b6_project_detail",
+                                            "actionType": "reload"
+                                        },
+                                        {
+                                            "groupType": "component",
+                                            "actionType": "reload"
+                                        }
+                                    ]
+                                }
+                                },
+                                "id": "u:e5dcc48547b5",
+                                "confirmText": "您确定要删除吗?"
+                              }
+                            ]
+                        }
+                    }
+                }
+                ,
+                {
+                    "type": "tabs",
+                    "className": "steedos-record-tabs bg-white p-4 m-2 border rounded",
+                    "tabs": [
+                        {
+                            "title": "组件",
+                            "body": [
+                                {
+                                    "type": "steedos-object-related-listview",
+                                    "label": "相关表",
+                                    "objectApiName": "${objectName}",
+                                    "recordId": "${recordId}",
+                                    "id": "u:1ec1b5eeb12e",
+                                    "relatedObjectApiName": "b6_components"
+                                }
+                            ],
+                            "id": "u:1e878882314e",
+                            "className": "px-0"
+                        },
+                        {
+                            "title": "设置",
+                            "body": [
+                                {
+                                    "type": "steedos-object-form",
+                                    "label": "对象表单",
+                                    "objectApiName": "${objectName}",
+                                    "recordId": "${recordId}",
+                                    "id": "u:38aa1b421c33",
+                                    "mode": "read",
+                                    "className": "mb-4",
+                                    "fields": [],
+                                    "enableTabs": true,
+                                    "tabsMode": "vertical",
+                                    "enableInitApi": false,
+                                    "appId": "${appId}"
+                                }
+                            ],
+                            "id": "u:5d4e7e3f6ecc",
+                            "className": "px-0 py-4"
+                        }
+                    ],
+                    "id": "u:f1bf09ff6742"
+                }
+            ],
+            "regions": [
+                "body"
+            ],
+            "data": {},
+            "id": "page_b6_projects_record_detail",
+            "name": "page_b6_projects_record_detail",
+            "objectApiName": "${objectName}",
+            "bodyClassName": "",
+            "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100"
+        }
+    ],
+    "css": {
+        ".antd-Card-avtar": {
+            "display": "flex",
+            "justify-content": "center",
+            "align-items": "center",
+            "border-radius": "unset",
+            "height": "64px",
+            "border-width": "2px"
+        },
+        ".antd-Card-img": {
+            "height": "auto !important",
+            "border-radius": "unset !important",
+            "width": "30px !important"
+        },
+        ".antd-Card-subTitle": {
+            "color": "rgba(0, 0, 0, 0.85)"
+        }
+    }
 }
+

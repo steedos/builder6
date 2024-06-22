@@ -12,25 +12,18 @@ mobile: true
 showSidebar: false
 sort: 10
 tab_items:
-  object_b6_chatbots:
-    index: 1
-  builder6_chat:
-    index: 2
-  object_b6_tables:
-    index: 3
-  object_b6_documents:
-    index: 4
   object_b6_projects:
-    index: 5
+    index: 1
+  object_b6_chatbots:
+    index: 2
+  object_b6_documents:
+    index: 3
   object_b6_pages:
+    index: 4
+  object_b6_tables:
+    index: 5
+  object_b6_components:
     index: 6
   object_b6_access_tokens:
     index: 8
-tabs:
-  - object_b6_chatbots
-  - builder6_chat
-  - object_b6_tables
-  - object_b6_documents
-  - object_b6_projects
-  - object_b6_access_tokens
 visible: true

@@ -4,6 +4,7 @@ columns:
   - field: avatarUrl
   - field: model
   - field: placeholder
+  - field: project_id
   - field: owner
   - field: modified
 crud_mode: table

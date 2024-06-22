@@ -1,5 +1,5 @@
 name: header
-description: 企业版可自定义顶部导航
+description: 自定义顶部导航
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true

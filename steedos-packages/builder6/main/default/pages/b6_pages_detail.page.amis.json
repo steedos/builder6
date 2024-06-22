@@ -3,6 +3,253 @@
     "id": "b6_page_detail",
     "body": [
         {
+            "type": "container",
+            "style": {
+                "position": "relative",
+                "display": "flex",
+                "inset": "auto",
+                "flexWrap": "nowrap",
+                "flexDirection": "row-reverse",
+                "alignItems": "baseline",
+                "justifyContent": "space-between",
+                "flex": "0 0 auto"
+            },
+            "size": "none",
+            "wrapperBody": false,
+            "isFixedHeight": false,
+            "id": "u:582091f482de",
+            "className": "bg-white mb-2",
+
+            "body": [
+                {
+                    "type": "button",
+                    "label": "新建",
+                    "id": "u:standard_new_pages",
+                    "editorState": "default",
+                    "level": "primary",
+                    "className": "mr-4",
+                    "onEvent": {
+                        "click": {
+                            "weight": 0,
+                            "actions": [
+                                {
+                                    "ignoreError": false,
+                                    "actionType": "dialog",
+                                    "dialog": {
+                                        "type": "dialog",
+                                        "title": "新建 页面",
+                                        "body": [
+                                            {
+                                                "id": "u:05d28153a20a",
+                                                "type": "form",
+                                                "title": "表单",
+                                                "mode": "horizontal",
+                                                "dsType": "api",
+                                                "feat": "Insert",
+                                                "canAccessSuperData": false,
+                                                "body": [
+                                                    {
+                                                        "name": "name",
+                                                        "label": "名称",
+                                                        "type": "input-text",
+                                                        "id": "u:bc7ab2804e2d",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "url",
+                                                        "label": "URL",
+                                                        "type": "input-text",
+                                                        "required": true,
+                                                        "description": "需以 / 开头，如 /about，/ 表示首页。",
+                                                        "id": "u:bc7ab2804e3d",
+                                                        "value": "/",
+                                                        "validations": {
+                                                            "matchRegexp": "^\\/(?:[^\\/\\s\\.]+(?:\\/[^\\/\\s\\.]+)*)?$"
+                                                        },  
+                                                        "validationErrors": {
+                                                            "matchRegexp": "必须是以 / 开头的相对路径地址"
+                                                        }
+                                                    }
+                                                ],
+                                                "actions": [
+                                                    {
+                                                        "type": "button",
+                                                        "label": "提交",
+                                                        "onEvent": {
+                                                            "click": {
+                                                                "actions": [
+                                                                    {
+                                                                        "actionType": "submit",
+                                                                        "componentId": "u:05d28153a20a"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        "level": "primary"
+                                                    }
+                                                ],
+                                                "resetAfterSubmit": true,
+                                                "api": {
+                                                    "url": "/api/v1/b6_pages",
+                                                    "method": "post",
+                                                    "requestAdaptor": "api.data = {\n    doc: {\n        name: context.name, url: context.url, project_id: context.pageData.project._id\n    }\n}\nreturn api;",
+                                                    "adaptor": "",
+                                                    "messages": {}
+                                                },
+                                                "onEvent": {
+                                                    "submitSucc": {
+                                                        "weight": 0,
+                                                        "actions": [
+                                                            {
+                                                                "ignoreError": false,
+                                                                "actionType": "custom",
+                                                                "script": "FlowRouter.go(`/app/${event.data.appId}/b6_pages/view/${event.context.data.result.data._id}`)\n",
+                                                                "args": {}
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "id": "u:930af2791113",
+                                        "actions": [
+                                            {
+                                                "type": "button",
+                                                "actionType": "cancel",
+                                                "label": "取消",
+                                                "id": "u:0b997de992e2"
+                                            },
+                                            {
+                                                "type": "button",
+                                                "actionType": "confirm",
+                                                "label": "确定",
+                                                "primary": true,
+                                                "id": "u:6f1e5e0330dd"
+                                            }
+                                        ],
+                                        "showCloseButton": true,
+                                        "closeOnOutside": false,
+                                        "closeOnEsc": false,
+                                        "showErrorMsg": true,
+                                        "showLoading": true,
+                                        "draggable": false,
+                                        "size": "md",
+                                        "actionType": "dialog"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "type": "nav",
+                    "stacked": false,
+                    "source": "${pages_nav}",
+                    "className": "w-10/12",
+                    "onEvent": {
+                        "click": {
+                            "actions": [
+                                {
+                                    "actionType": "custom",
+                                    "script": "setTimeout(function(){doAction({'actionType': 'reload','componentId': 'b6_page_detail'})}, 500)"
+                                }
+                            ]
+                        }
+                    },
+                    "itemActions": [
+                      {
+                        "type": "dropdown-button",
+                        "level": "link",
+                        "icon": "fa fa-ellipsis-h",
+                        "className": "ml-2",
+                        "hideCaret": true,
+                        "visibleOn": "${active == true}",
+                        "buttons": [
+                            {
+                                "type": "button",
+                                "label": "复制",
+                                "onEvent": {
+                                    "click": {
+                                        "actions": [
+                                            {
+                                                "ignoreError": false,
+                                                "actionType": "ajax",
+                                                "outputVar": "responseResult",
+                                                "options": {},
+                                                "api": {
+                                                "url": "/api/v1/b6_pages/${_id}",
+                                                "method": "get",
+                                                "adaptor": "",
+                                                "messages": {}
+                                                }
+                                            },
+                                            {
+                                                "ignoreError": false,
+                                                "actionType": "ajax",
+                                                "outputVar": "responseResult",
+                                                "options": {},
+                                                "api": {
+                                                "url": "/api/v1/b6_pages",
+                                                "method": "post",
+                                                "requestAdaptor": " const newRecord = context.responseResult; newRecord.name='复制 '+newRecord.name; newRecord.url = newRecord.url + '-copy'; api.body = api.data = {doc: newRecord}; return api;",
+                                                "adaptor": "",
+                                                "messages": {}
+                                                }
+                                            },
+                                            {
+                                                "ignoreError": false,
+                                                "actionType": "custom",
+                                                "script": "FlowRouter.go(`/app/${event.data.appId}/b6_pages/view/${event.data.responseResult._id}`)\n",
+                                                "args": {}
+                                            },
+                                            {
+                                                "actionType": "custom",
+                                                "script": "setTimeout(function(){doAction({'actionType': 'reload','componentId': 'b6_page_detail'})}, 500)"
+                                            }
+                                        ]
+                                    }
+                                }
+                              },
+                              {
+                                "type": "button",
+                                "label": "删除",
+                                "onEvent": {
+                                "click": {
+                                    "actions": [
+                                        {
+                                            "ignoreError": false,
+                                            "actionType": "ajax",
+                                            "outputVar": "responseResult",
+                                            "options": {},
+                                            "api": {
+                                            "url": "/api/v1/b6_pages/${_id}",
+                                            "method": "delete",
+                                            "adaptor": "",
+                                            "messages": {}
+                                            }
+                                        },
+                                        {
+                                            "componentId": "b6_page_detail",
+                                            "actionType": "reload"
+                                        },
+                                        {
+                                            "groupType": "component",
+                                            "actionType": "reload"
+                                        }
+                                    ]
+                                }
+                                },
+                                "id": "u:e5dcc48547b5",
+                                "confirmText": "您确定要删除吗?"
+                              }
+                        ]
+                      }
+                    ]
+                }
+            ]
+        }
+        ,
+        {
             "type": "flex",
             "id": "u:1ba760c11831",
             "items": [
@@ -60,13 +307,19 @@
                                                                         "componentId": "b6_page_detail"
                                                                     },
                                                                     {
-                                                                        "actionType": "reload",
-                                                                        "componentId": "u:d0cb32b561ff"
-                                                                    },
-                                                                    {
                                                                         "componentId": "u:66a9cecdc4bb",
                                                                         "ignoreError": false,
                                                                         "actionType": "disabled"
+                                                                    },
+                                                                    {
+                                                                        "actionType": "wait",
+                                                                        "args": {
+                                                                          "time": 2000
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "actionType": "reload",
+                                                                        "componentId": "u:d0cb32b561ff"
                                                                     }
                                                                 ]
                                                             },
@@ -399,8 +652,8 @@
     "initApi": {
         "url": "/graphql",
          "method": "post",
-         "requestAdaptor": "console.log('context====>', context);api.data = {query: `{  pageData:b6_pages__findOne(id: \"${context.recordId}\"){    _id,    name,    url,    project_id,    project:project_id__expand{      name,      url,      slug,      pages:_related_b6_pages_project_id{        _id,name,url      }    }  }}`}; return api;",
-         "adaptor": "console.log('payload===>', payload); return payload",
+         "requestAdaptor": "console.log('context====>', context);api.data = {query: `{  pageData:b6_pages__findOne(id: \"${context.recordId}\"){    _id,    name,    url,    project_id,    project:project_id__expand{   _id,   name,      url,      slug,      pages:_related_b6_pages_project_id{        _id,name,url      }    }  }}`}; return api;",
+         "adaptor": "console.log('payload===>', payload); const pages_nav=[{'label': '应用', 'to': `/app/${context.appId}/b6_projects/view/${payload.data.pageData.project._id}`, 'icon': 'fa fa-home'}]; _.each(payload.data.pageData.project.pages, (page)=>{pages_nav.push({_id: page._id, active: context.recordId == page._id ,label: page.name, to: `/app/${context.appId}/b6_pages/view/${page._id}`})}); payload.data.pages_nav=pages_nav; return payload",
          "messages": {}
     },
     "css": {
