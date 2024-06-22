@@ -2,6 +2,7 @@ name: b6_tables_detail
 is_active: true
 label: 数据表详情页
 locked: false
+object_name: b6_tables
 pageAssignments:
   - type: orgDefault
     page: b6_tables_detail
@@ -10,4 +11,3 @@ pageAssignments:
 render_engine: amis
 type: record
 widgets: []
-object_name: b6_tables
