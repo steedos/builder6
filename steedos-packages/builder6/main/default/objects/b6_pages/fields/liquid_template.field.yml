@@ -1,9 +1,10 @@
 name: liquid_template
+description: 文档：https://liquidjs.com/zh-cn/
 filters: []
 group: 代码
 hidden: false
 is_wide: true
-label: Template
+label: Liquid Template
 language: html
 required: false
 sort_no: 140

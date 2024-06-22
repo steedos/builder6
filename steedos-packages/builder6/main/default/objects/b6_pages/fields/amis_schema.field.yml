@@ -1,4 +1,5 @@
 name: amis_schema
+description: 文档：https://aisuda.bce.baidu.com/amis/
 filters: []
 group: 代码
 hidden: false
