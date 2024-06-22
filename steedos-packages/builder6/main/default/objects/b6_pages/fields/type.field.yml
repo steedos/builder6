@@ -13,22 +13,10 @@ is_name: false
 is_wide: false
 label: 类型
 options:
-  - label: 富文本
-    value: richtext
-  - label: 数据表
-    value: table
-  - label: 智能助手
-    value: chatbot
-  - label: Markdown
-    value: markdown
   - label: Html
     value: html
   - label: Amis
     value: amis
-  - label: JSX
-    value: jsx
-  - label: Blocks
-    value: blocks
   - label: Liquid
     value: liquid
 primary: false
