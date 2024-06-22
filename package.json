@@ -15,11 +15,12 @@
     "platform:docker": "docker-compose -f steedos-platform/docker-compose.yml up"
   },
   "dependencies": {
-    "@steedos/service-package-loader": "2.7.1-beta.28",
+    "@steedos/service-package-loader": "2.7.1-beta.33",
     "bcryptjs": "^2.4.3",
     "dotenv-flow": "^3.2.0",
     "flowbite": "^2.3.0",
-    "ioredis": "^5.3.1"
+    "ioredis": "^5.3.1",
+    "steedos-cli": "2.7.1-beta.33"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

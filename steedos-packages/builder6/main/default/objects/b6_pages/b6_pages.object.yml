@@ -5,7 +5,7 @@ enable_dataloader: true
 enable_enhanced_lookup: false
 enable_events: false
 enable_files: true
-enable_form_tabs: false
+enable_form_tabs: true
 enable_inline_edit: false
 enable_instances: false
 enable_lock_detail: true

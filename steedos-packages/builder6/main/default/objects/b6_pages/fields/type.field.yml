@@ -16,7 +16,7 @@ options:
     value: richtext
   - label: 数据表
     value: table
-  - label: 聊天机器人
+  - label: 智能助手
     value: chatbot
   - label: Markdown
     value: markdown
@@ -32,7 +32,7 @@ options:
     value: liquid
 primary: false
 readonly: false
-required: false
+required: true
 searchable: false
 show_as_qr: false
 sort_no: 20
@@ -41,4 +41,4 @@ static: false
 type: select
 unique: false
 write_requires_master_read: false
-group: 显示
+group: 通用
