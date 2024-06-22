@@ -1,0 +1,13 @@
+name: handle
+filterable: true
+index: true
+label: Handle
+options:
+  - label: 主菜单
+    value: main-menu
+  - label: 页脚菜单
+    value: footer
+required: true
+searchable: true
+sort_no: 10
+type: select

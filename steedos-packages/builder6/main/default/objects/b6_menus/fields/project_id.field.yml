@@ -5,7 +5,6 @@ enable_thousands: true
 filterable: false
 filters: []
 generated: false
-group: 页面
 hidden: false
 index: false
 is_name: false

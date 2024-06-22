@@ -22,8 +22,10 @@ tab_items:
     index: 4
   object_b6_tables:
     index: 5
-  object_b6_components:
+  object_b6_menus:
     index: 6
+  object_b6_components:
+    index: 7
   object_b6_access_tokens:
     index: 8
 visible: true

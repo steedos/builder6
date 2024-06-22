@@ -1,0 +1,7 @@
+name: object_b6_menus
+desktop: true
+label: 菜单
+mobile: true
+object: b6_menus
+permissions: []
+type: object
