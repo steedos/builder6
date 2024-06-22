@@ -2,6 +2,7 @@ name: init_function
 description: |
   函数签名: async (params, searchParams, base)=>{}
   返回值: return {data: {}}
+  页面初始化时执行此函数。如果返回data，可在Amis、Liquid 类型页面中使用。
 group: 数据
 hidden: false
 label: 初始化函数
