@@ -3,7 +3,7 @@ desktop: true
 icon: live_chat
 is_new_window: true
 is_use_iframe: false
-label: ChatGPT
+label: AI Chat
 locked: false
 mobile: true
 permissions: []

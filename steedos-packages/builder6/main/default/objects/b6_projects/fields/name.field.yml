@@ -3,8 +3,8 @@ filterable: true
 group: 应用
 hidden: false
 index: true
-is_wide: true
-label: 名称
+is_wide: false
+label: 应用名称
 required: true
 searchable: true
 sort_no: 10

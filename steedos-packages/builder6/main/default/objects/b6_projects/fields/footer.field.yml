@@ -1,5 +1,5 @@
 name: footer
-description: 企业版可自定义底部导航
+description: 自定义底部导航
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -14,7 +14,7 @@ is_wide: false
 label: 底部组件
 multiple: false
 primary: false
-readonly: ${!ARRAYINCLUDES(context.user.roles, 'interfaces')
+readonly: false
 reference_to: b6_components
 required: false
 searchable: false

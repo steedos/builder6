@@ -22,6 +22,6 @@ field_groups:
     collapsed: true
 icon: apps
 is_enable: true
-label: 应用
+label: AI 应用
 locked: false
 version: 2
