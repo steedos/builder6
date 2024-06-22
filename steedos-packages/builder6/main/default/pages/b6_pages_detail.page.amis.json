@@ -552,7 +552,28 @@
                                             },
                                             "id": "u:617338ddfe5b",
                                             "className": "mr-2",
-                                            "level": "primary"
+                                            "level": "default"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "label": "设计",
+                                            "visibleOn": "${pageData.type === 'amis'}",
+                                            "onEvent": {
+                                                "click": {
+                                                    "weight": 0,
+                                                    "actions": [
+                                                        {
+                                                            "ignoreError": false,
+                                                            "actionType": "url",
+                                                            "args": {
+                                                                "url": "/api/builder6/interface/page-designer/${pageData._id}"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "className": "mr-2",
+                                            "level": "default"
                                         }
                                     ],
                                     "style": {
@@ -652,7 +673,7 @@
     "initApi": {
         "url": "/graphql",
          "method": "post",
-         "requestAdaptor": "console.log('context====>', context);api.data = {query: `{  pageData:b6_pages__findOne(id: \"${context.recordId}\"){    _id,    name,    url,    project_id,    project:project_id__expand{   _id,   name,      url,      slug,      pages:_related_b6_pages_project_id{        _id,name,url      }    }  }}`}; return api;",
+         "requestAdaptor": "console.log('context====>', context);api.data = {query: `{  pageData:b6_pages__findOne(id: \"${context.recordId}\"){    _id,    name,    url,    type,    project_id,    project:project_id__expand{   _id,   name,      url,      slug,      pages:_related_b6_pages_project_id{        _id,name,url      }    }  }}`}; return api;",
          "adaptor": "console.log('payload===>', payload); const pages_nav=[{'label': '应用', 'to': `/app/${context.appId}/b6_projects/view/${payload.data.pageData.project._id}`, 'icon': 'fa fa-home'}]; _.each(payload.data.pageData.project.pages, (page)=>{pages_nav.push({_id: page._id, active: context.recordId == page._id ,label: page.name, to: `/app/${context.appId}/b6_pages/view/${page._id}`})}); payload.data.pages_nav=pages_nav; return payload",
          "messages": {}
     },
