@@ -19,4 +19,5 @@ sortable: true
 static: false
 type: text
 unique: false
+visible_on: '${type==="url"}'
 write_requires_master_read: false
