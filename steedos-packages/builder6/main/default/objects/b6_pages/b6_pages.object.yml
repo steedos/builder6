@@ -15,10 +15,12 @@ enable_tasks: false
 enable_tree: false
 enable_workflow: true
 field_groups:
+  - group_name: 页面
+  - group_name: 代码
+  - group_name: 高级
+  - group_name: 数据
   - group_name: 系统信息
     collapsed: true
-  - group_name: 初始化
-  - group_name: 显示
 icon: visualforce_page
 is_enable: true
 label: 页面

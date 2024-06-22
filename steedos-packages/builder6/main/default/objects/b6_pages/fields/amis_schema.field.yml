@@ -1,10 +1,11 @@
 name: amis_schema
 filters: []
+group: 代码
+hidden: false
 is_wide: true
 label: Amis
 language: json
 required: false
-sort_no: 60
+sort_no: 130
 type: code
 visible_on: '${type==="amis"}'
-group: 显示

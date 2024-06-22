@@ -1,5 +1,6 @@
 name: name
 filterable: true
+group: 页面
 hidden: false
 index: true
 label: 名称

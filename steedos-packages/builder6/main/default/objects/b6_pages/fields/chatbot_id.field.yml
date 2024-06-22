@@ -5,6 +5,7 @@ enable_thousands: true
 filterable: false
 filters: []
 generated: false
+group: 页面
 hidden: false
 index: false
 is_name: false
@@ -17,11 +18,10 @@ reference_to: b6_chatbots
 required: true
 searchable: false
 show_as_qr: false
-sort_no: 50
+sort_no: 40
 sortable: false
 static: false
 type: lookup
 unique: false
-write_requires_master_read: false
 visible_on: '${type==="chatbot"}'
-group: 显示
+write_requires_master_read: false

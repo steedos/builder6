@@ -1,7 +1,8 @@
 name: owner
+group: 页面
 hidden: false
 index: true
 label: 作者
 omit: false
-sort_no: 120
+sort_no: 80
 sortable: true

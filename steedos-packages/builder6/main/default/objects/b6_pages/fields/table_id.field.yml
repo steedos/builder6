@@ -5,6 +5,7 @@ enable_thousands: true
 filterable: false
 filters: []
 generated: false
+group: 页面
 hidden: false
 index: false
 is_name: false
@@ -17,11 +18,10 @@ reference_to: b6_tables
 required: true
 searchable: false
 show_as_qr: false
-sort_no: 50
+sort_no: 60
 sortable: false
 static: false
 type: lookup
 unique: false
-write_requires_master_read: false
 visible_on: '${type==="table"}'
-group: 显示
+write_requires_master_read: false

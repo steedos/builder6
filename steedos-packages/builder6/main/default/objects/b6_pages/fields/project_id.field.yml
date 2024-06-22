@@ -5,6 +5,7 @@ enable_thousands: true
 filterable: false
 filters: []
 generated: false
+group: 页面
 hidden: false
 index: false
 is_name: false
@@ -17,7 +18,7 @@ reference_to: b6_projects
 required: true
 searchable: false
 show_as_qr: false
-sort_no: 910
+sort_no: 50
 sortable: false
 static: false
 type: master_detail

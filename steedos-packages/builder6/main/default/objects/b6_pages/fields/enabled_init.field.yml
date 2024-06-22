@@ -1,5 +1,6 @@
 name: enabled_init
-type: toggle
+group: 数据
+hidden: false
 label: 启用初始化函数
-group: 初始化
-sort_no: 1100
+sort_no: 170
+type: toggle

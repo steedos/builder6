@@ -5,6 +5,7 @@ enable_thousands: true
 filterable: false
 filters: []
 generated: false
+group: 代码
 hidden: false
 index: false
 is_name: false
@@ -17,11 +18,10 @@ readonly: false
 required: false
 searchable: false
 show_as_qr: false
-sort_no: 65
+sort_no: 90
 sortable: false
 static: false
 type: code
 unique: false
 visible_on: '${type==="jsx"}'
 write_requires_master_read: false
-group: 显示

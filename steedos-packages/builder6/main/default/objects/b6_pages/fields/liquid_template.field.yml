@@ -1,10 +1,11 @@
 name: liquid_template
 filters: []
+group: 代码
+hidden: false
 is_wide: true
 label: Template
 language: html
 required: false
-sort_no: 60
+sort_no: 140
 type: code
 visible_on: '${type==="liquid"}'
-group: 显示

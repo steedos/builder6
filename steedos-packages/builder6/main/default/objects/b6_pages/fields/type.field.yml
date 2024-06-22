@@ -6,6 +6,7 @@ enable_thousands: true
 filterable: false
 filters: []
 generated: false
+group: 页面
 hidden: false
 index: false
 is_name: false
@@ -35,10 +36,9 @@ readonly: false
 required: true
 searchable: false
 show_as_qr: false
-sort_no: 20
+sort_no: 30
 sortable: true
 static: false
 type: select
 unique: false
 write_requires_master_read: false
-group: 通用

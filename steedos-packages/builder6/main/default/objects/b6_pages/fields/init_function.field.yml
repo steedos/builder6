@@ -1,9 +1,10 @@
 name: init_function
-type: code
-label: 初始化函数
-group: 初始化
-sort_no: 1200
-visible_on: '${enabled_init==true}'
 description: |
   函数签名: async (params, searchParams, base)=>{}
   返回值: return {data: {}}
+group: 数据
+hidden: false
+label: 初始化函数
+sort_no: 180
+type: code
+visible_on: '${enabled_init==true}'

@@ -6,5 +6,6 @@ label: Tailwind CSS
 language: css
 readonly: true
 required: false
-sort_no: 69
+sort_no: 240
 type: code
+visible_on: '{{false}}'
