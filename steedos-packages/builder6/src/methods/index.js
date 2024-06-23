@@ -4,6 +4,7 @@ export * from './compileTailwind';
 export * from './compileHtml';
 export * from './compileAmis';
 export * from './b6tables';
+export * from './b6pages';
 export * from './compileLiquid';
 
 export * from './b6com';

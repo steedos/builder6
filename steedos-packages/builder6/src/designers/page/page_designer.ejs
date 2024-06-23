@@ -44,12 +44,44 @@
       };
       if (pageId) {
         const result = await axios.get(
-          `/api/builder6/page/designer/${pageId}/latest`,
+          `/api/builder6/page/designer/${pageId}/amis/latest`,
           {
             withCredentials: true,
             headers: { Authorization: `Bearer ${tenantId},${authToken}` },
           }
-        );
+        ).then(function (response) {
+          // 处理成功响应
+          if (response.data.success) {
+            console.log('Fetched schema:', response.data.amis_schema);
+          } else {
+            // 处理服务器返回的错误信息
+            const errorData = response.data;
+            console.log('Error message:', errorData.message);
+            console.log('Error details:', errorData.detail);
+            alert(errorData.message);
+          }
+          return response;
+        }).catch(function (error) {
+          // 处理请求失败的错误
+          var errorMsg;
+          if (error.response) {
+            // 服务器响应了一个状态码，表示请求失败
+            const errorData = error.response.data;
+            console.log('Error message:', errorData.message);
+            console.log('Error details:', errorData.detail);
+            errorMsg = errorData.message;
+          } else if (error.request) {
+            // 请求已发出，但没有收到响应
+            console.log('Error request:', error.request);
+            errorMsg = 'No response received from server.';
+          } else {
+            // 其他错误
+            console.log('Error message:', error.message);
+            errorMsg = error.message;
+          }
+          console.log('Error config:', error.config);
+          alert(errorMsg);
+        });
         if (result?.data) {
           let schema = result.data.amis_schema || initialContent;
 
@@ -96,19 +128,48 @@
       }
 
       return await axios.put(
-        `/api/builder6/page/designer/${pageId}/save`,
+        `/api/builder6/page/designer/${pageId}/amis/save`,
         {
           withCredentials: true,
-          schema: JSON.stringify(schema, null, 4), //直接存储json格式会导致react form异常。
+          schema: {
+            amis_schema: JSON.stringify(schema, null, 4), //直接存储json格式会导致react form异常。
+          }
         },
         {
           headers: { Authorization: `Bearer ${tenantId},${authToken}` },
         }
-      )
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
+      ).then(function (response) {
+        // 处理成功响应
+        if (response.data.success) {
+          // alert('Table fields saved successfully.');
+        } else {
+          // 处理服务器返回的错误信息
+          const errorData = response.data;
+          console.log('Error message:', errorData.message);
+          console.log('Error details:', errorData.detail);
+          alert(errorData.message);
+        }
+      }).catch(function (error) {
+        // 处理请求失败的错误
+        var errorMsg;
+        if (error.response) {
+          // 服务器响应了一个状态码，表示请求失败
+          const errorData = error.response.data;
+          console.log('Error message:', errorData.message);
+          console.log('Error details:', errorData.detail);
+          errorMsg = errorData.message;
+        } else if (error.request) {
+          // 请求已发出，但没有收到响应
+          console.log('Error request:', error.request);
+          errorMsg = 'No response received from server.';
+        } else {
+          // 其他错误
+          console.log('Error message:', error.message);
+          errorMsg = error.message;
+        }
+        console.log('Error config:', error.config);
+        alert(errorMsg);
+      });
     };
 
     const deployPageVersion = async () => {
