@@ -557,7 +557,8 @@
                                         {
                                             "type": "button",
                                             "label": "设计",
-                                            "visibleOn": "${pageData.type === 'amis'}",
+                                            "visibleOn__": "${pageData.type === 'amis'}",
+                                            "visibleOn": "false",
                                             "onEvent": {
                                                 "click": {
                                                     "weight": 0,
