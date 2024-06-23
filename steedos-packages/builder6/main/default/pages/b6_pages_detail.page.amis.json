@@ -566,7 +566,7 @@
                                                             "ignoreError": false,
                                                             "actionType": "url",
                                                             "args": {
-                                                                "url": "/api/builder6/interface/page-designer/${pageData._id}"
+                                                                "url": "/api/builder6/pgge/designer/${pageData._id}"
                                                             }
                                                         }
                                                     ]
