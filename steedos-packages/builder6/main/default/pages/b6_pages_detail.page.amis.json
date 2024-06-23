@@ -741,6 +741,9 @@
         },
         "antd-Panel-footerWrap": {
             "height": "unset !important"
+        },
+        ".antd-MonacoEditor-header":{
+            "display": "none"
         }
     },
     "bodyClassName": "",
