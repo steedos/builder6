@@ -38,7 +38,7 @@ amis:
                       "label": false,
                       "name": "liquid_template",
                       "id": "u:db64b2437aaa",
-                      "language": "json",
+                      "language": "html",
                       "className": "h-full"
                     }
                   ],

@@ -52,7 +52,7 @@ amis:
                       "label": false,
                       "name": "html",
                       "id": "u:db64b2437aaa",
-                      "language": "json",
+                      "language": "html",
                       "className": "h-full"
                     }
                   ],
