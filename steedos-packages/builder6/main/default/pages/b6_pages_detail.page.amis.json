@@ -744,6 +744,13 @@
         },
         ".antd-MonacoEditor-header":{
             "display": "none"
+        },
+        ".editor-dialog .antd-Modal-content":{
+            "height": "100% !important"
+        },
+        ".editor-dialog .antd-EditorControl": {
+            "max-height": "unset",
+            "height": "calc(100% - 50px) !important"
         }
     },
     "bodyClassName": "",
