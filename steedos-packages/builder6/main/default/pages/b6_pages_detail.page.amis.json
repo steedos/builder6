@@ -336,7 +336,8 @@
                                                         "debug": false,
                                                         "className": "",
                                                         "panelClassName": " p-4",
-                                                        "mode": "normal"
+                                                        "mode": "normal",
+                                                        "promptPageLeave": true
                                                     },
                                                     "height": "100%"
                                                 }
@@ -735,12 +736,12 @@
             "height": "calc(100% - 50px)"
         },
         ".steedos-chatbot-page": {
-            "height": "calc(100% - 100px) !important"
+            "height": "100% !important"
         },
         ".detail-edit-object-form .antd-Form-item": {
             "grid-column": "span 2 / span 2"
         },
-        "antd-Panel-footerWrap": {
+        ".antd-Panel-footerWrap": {
             "height": "unset !important"
         },
         ".antd-MonacoEditor-header":{
