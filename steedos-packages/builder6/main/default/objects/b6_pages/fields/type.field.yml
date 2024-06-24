@@ -19,6 +19,10 @@ options:
     value: amis
   - label: Liquid
     value: liquid
+  - label: 富文本
+    value: richtext
+  - label: Markdown
+    value: markdown
 primary: false
 readonly: false
 required: true

@@ -1,5 +1,4 @@
 name: url
-description: 必须以 / 开头.
 create: true
 enable_enhanced_lookup: true
 enable_thousands: true
@@ -9,7 +8,7 @@ hidden: false
 index: false
 is_name: false
 is_wide: false
-label: URL路径
+label: 短链接
 multiple: false
 primary: false
 readonly: false

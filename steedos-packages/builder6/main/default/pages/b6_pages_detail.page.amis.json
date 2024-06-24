@@ -336,7 +336,8 @@
                                                         "debug": false,
                                                         "className": "",
                                                         "panelClassName": " p-4",
-                                                        "mode": "normal"
+                                                        "mode": "normal",
+                                                        "promptPageLeave": true
                                                     },
                                                     "height": "100%"
                                                 }
@@ -552,7 +553,29 @@
                                             },
                                             "id": "u:617338ddfe5b",
                                             "className": "mr-2",
-                                            "level": "primary"
+                                            "level": "default"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "label": "设计",
+                                            "visibleOn__": "${pageData.type === 'amis'}",
+                                            "visibleOn": "false",
+                                            "onEvent": {
+                                                "click": {
+                                                    "weight": 0,
+                                                    "actions": [
+                                                        {
+                                                            "ignoreError": false,
+                                                            "actionType": "url",
+                                                            "args": {
+                                                                "url": "/api/builder6/pgge/designer/${pageData._id}"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "className": "mr-2",
+                                            "level": "default"
                                         }
                                     ],
                                     "style": {
@@ -652,7 +675,7 @@
     "initApi": {
         "url": "/graphql",
          "method": "post",
-         "requestAdaptor": "console.log('context====>', context);api.data = {query: `{  pageData:b6_pages__findOne(id: \"${context.recordId}\"){    _id,    name,    url,    project_id,    project:project_id__expand{   _id,   name,      url,      slug,      pages:_related_b6_pages_project_id{        _id,name,url      }    }  }}`}; return api;",
+         "requestAdaptor": "console.log('context====>', context);api.data = {query: `{  pageData:b6_pages__findOne(id: \"${context.recordId}\"){    _id,    name,    url,    type,    project_id,    project:project_id__expand{   _id,   name,      url,      slug,      pages:_related_b6_pages_project_id{        _id,name,url      }    }  }}`}; return api;",
          "adaptor": "console.log('payload===>', payload); const pages_nav=[{'label': '应用', 'to': `/app/${context.appId}/b6_projects/view/${payload.data.pageData.project._id}`, 'icon': 'fa fa-home'}]; _.each(payload.data.pageData.project.pages, (page)=>{pages_nav.push({_id: page._id, active: context.recordId == page._id ,label: page.name, to: `/app/${context.appId}/b6_pages/view/${page._id}`})}); payload.data.pages_nav=pages_nav; return payload",
          "messages": {}
     },
@@ -713,13 +736,23 @@
             "height": "calc(100% - 50px)"
         },
         ".steedos-chatbot-page": {
-            "height": "calc(100% - 100px) !important"
+            "height": "100% !important"
         },
         ".detail-edit-object-form .antd-Form-item": {
             "grid-column": "span 2 / span 2"
         },
-        "antd-Panel-footerWrap": {
+        ".antd-Panel-footerWrap": {
             "height": "unset !important"
+        },
+        ".antd-MonacoEditor-header":{
+            "display": "none"
+        },
+        ".editor-dialog .antd-Modal-content":{
+            "height": "100% !important"
+        },
+        ".editor-dialog .antd-EditorControl": {
+            "max-height": "unset",
+            "height": "calc(100% - 50px) !important"
         }
     },
     "bodyClassName": "",

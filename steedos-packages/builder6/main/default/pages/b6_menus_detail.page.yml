@@ -1,11 +1,11 @@
-name: b6_tables_detail
+name: b6_menus_detail
 is_active: true
-label: 数据表详情页
+label: 菜单详情页
 locked: false
-object_name: b6_tables
+object_name: b6_menus
 pageAssignments:
   - type: orgDefault
-    page: b6_tables_detail
+    page: b6_menus_detail
     desktop: true
     mobile: true
 render_engine: amis

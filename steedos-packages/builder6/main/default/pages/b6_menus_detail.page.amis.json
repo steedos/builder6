@@ -1,0 +1,64 @@
+{
+    "type": "steedos-record-service",
+    "body": [
+        {
+            "type": "steedos-record-detail-header",
+            "label": "标题面板",
+            "objectApiName": "${objectName}",
+            "recordId": "${recordId}",
+            "showBackButton": "${!_inDrawer}",
+            "id": "u:fa02d592f386"
+        },
+        {
+            "type": "tabs",
+            "className": "steedos-record-tabs bg-white p-4 sm:m-2 sm:border sm:rounded",
+            "tabs": [
+                {
+                    "title": "菜单项",
+                    "className": "px-0 pt-4",
+                    "body": [
+                        {
+                            "type": "steedos-object-related-lists",
+                            "label": "相关列表",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}",
+                            "id": "u:2c6ee8f6d2ad"
+                        }
+                    ],
+                    "id": "u:d11b82537a37"
+                },
+                {
+                    "title": "菜单",
+                    "className": "px-0 py-4",
+                    "body": [
+                        {
+                            "type": "steedos-object-form",
+                            "label": "对象表单",
+                            "objectApiName": "${objectName}",
+                            "recordId": "${recordId}",
+                            "appId": "${appId}",
+                            "id": "u:e1812b00d850"
+                        }
+                    ],
+                    "id": "u:5d4e7e3f6ecc"
+                }
+            ],
+            "id": "u:9fa5b163dd88"
+        }
+    ],
+    "regions": [
+        "body"
+    ],
+    "data": {},
+    "id": "page_b6_menus_record_detail",
+    "name": "page_b6_menus_record_detail",
+    "objectApiName": "${objectName}",
+    "bodyClassName": "",
+    "className": "object-detail-page steedos-record-content overflow-y-auto p-0 m-0 flex-1 h-full bg-gray-100",
+    "asideResizor": false,
+    "editorState": "default",
+    "pullRefresh": {
+        "disabled": true
+    }
+}

@@ -1,8 +1,9 @@
-name: name
+name: api_name
 filterable: true
+hidden: false
 index: true
-label: 名称
+label: API 名称
 required: true
 searchable: true
-sort_no: 10
+sort_no: 20
 type: text

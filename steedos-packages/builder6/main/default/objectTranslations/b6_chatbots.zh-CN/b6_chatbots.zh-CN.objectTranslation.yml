@@ -1,0 +1,121 @@
+name: b6_chatbots
+label: 智能助手
+description: 
+fields:
+  avatarUrl:
+    label: 头像
+    help: 
+    description: 
+  company_id:
+    label: 主分部
+    help: 
+    description: 
+  company_ids:
+    label: 所属分部
+    help: 
+    description: 
+  created:
+    label: 创建时间
+    help: 
+    description: 
+  created_by:
+    label: 创建人
+    help: 
+    description: 
+  defaultMessage:
+    label: 问候语
+    help: 
+    description: 
+  defaultMessageMode:
+    label: 问候语类型
+    help: 
+    options:
+      - label: 静态
+        value: static
+        description: 在每次对话开始时显示相同的信息。
+      - label: 生成
+        value: generated
+        description: 使用 AI 为每次对话生成独特的问候语。
+    description: 
+  defaultPrompt:
+    label: 问候提示
+    help: 
+    description: 
+  directive:
+    label: 命令
+    help: 
+    description: >-
+      提供有关聊天机器人应如何响应用户的说明。包括角色、目标和风格等关键信息，以自定义聊天机器人。
+  disclosureText:
+    label: 披露消息
+    help: 
+    description: 此输入接受 Markdown 链接
+  displayDisclosure:
+    label: 在问候语中显示披露消息
+    help: 
+    description: 
+  embedHosts:
+    label: Embed Hosts
+    help: 
+    description: 
+  locked:
+    label: 已锁定
+    help: 
+    description: 
+  maxTokens:
+    label: maxTokens
+    help: 
+    description: 
+  model:
+    label: 模型
+    help: 
+    options:
+      - label: OpenAI GPT-3.5 Turbo
+        value: gpt-3.5-turbo
+      - label: OpenAI GPT-4o
+        value: gpt-4o
+    description: 
+  modified:
+    label: 修改时间
+    help: 
+    description: 
+  modified_by:
+    label: 修改人
+    help: 
+    description: 
+  name:
+    label: 名称
+    help: 
+    description: 
+  owner:
+    label: 所有者
+    help: 
+    description: 
+  placeholder:
+    label: 用户输入占位符
+    help: 
+    description: 
+  temperature:
+    label: 创造力
+    help: 
+    description: 
+  triggers:
+    label: Triggers
+    help: 
+    description: |-
+      值为数组格式.
+      每一行为action details
+groups:
+  style: 风格
+  系统信息: 系统信息
+  setup: 设置
+  instrctions: 指示
+  actions: 行动
+listviews:
+  all:
+    label: 所有
+  recent:
+    label: 最近查看
+actions:
+  preview:
+    label: 预览

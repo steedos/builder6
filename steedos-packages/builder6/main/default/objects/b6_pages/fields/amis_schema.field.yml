@@ -10,3 +10,96 @@ required: false
 sort_no: 130
 type: code
 visible_on: '${type==="amis"}'
+amis:
+    type: control
+    label: Amis
+    description: 文档：https://aisuda.bce.baidu.com/amis/
+    body:
+      "type": "panel"
+      "title": 
+        "label": "弹出"
+        "type": "button"
+        icon: fa fa-expand
+        "onEvent": {
+          "click": {
+            "weight": 0,
+            "actions": [
+              {
+                "ignoreError": false,
+                "actionType": "dialog",
+                "dialog": {
+                  "type": "dialog",
+                  "title": "Amis Schema",
+                  "className": "editor-dialog h-full",
+                  "bodyClassName": "m-0 h-full",
+                  "body": [
+                    {
+                      "type": "editor",
+                      "label": false,
+                      "name": "amis_schema",
+                      "id": "u:db64b2437aaa",
+                      "language": "json",
+                      "className": "h-full"
+                    }
+                  ],
+                  "id": "u:027ddcc4b800",
+                  "actions": [
+                    {
+                      "type": "button",
+                      "actionType": "cancel",
+                      "label": "取消",
+                      "id": "u:f6c1bda9274b"
+                    },
+                    {
+                      "type": "button",
+                      "actionType": "confirm",
+                      "label": "确定",
+                      "primary": true,
+                      "id": "u:4da7ccd84cfa",
+                      "onEvent": {
+                        "click": {
+                          "weight": 0,
+                          "actions": [
+                            {
+                              "componentId": "u:b6_page_amis_schema",
+                              "ignoreError": false,
+                              "actionType": "setValue",
+                              "args": {
+                                "value": "${amis_schema}"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "showCloseButton": true,
+                  "closeOnOutside": false,
+                  "closeOnEsc": false,
+                  "showErrorMsg": true,
+                  "showLoading": true,
+                  "draggable": false,
+                  "size": "xl"
+                }
+              }
+            ]
+          }
+        }
+      "bodyClassName": "p-0 m-0"
+      "body":
+        type: "steedos-field"
+        field: 
+          name: amis_schema
+          description: 
+          filters: []
+          group: 代码
+          hidden: false
+          is_wide: true
+          label: false
+          language: json
+          required: false
+          sort_no: 130
+          type: code
+          visible_on: '${type==="amis"}'
+          amis:
+            id: "u:b6_page_amis_schema"

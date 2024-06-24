@@ -385,7 +385,7 @@
         ".steedos-object-form>.antd-Panel>div":{
             "height": "calc(100% - 50px)"
         },
-        "antd-Panel-footerWrap": {
+        ".antd-Panel-footerWrap": {
             "height": "unset !important"
         },
         ".steedos-amis-form":{
@@ -402,7 +402,7 @@
             "height": "calc(100% - 50px)"
         },
         ".steedos-chatbot-page": {
-            "height": "calc(100% - 100px) !important"
+            "height": "100% !important"
         }
     }
 }

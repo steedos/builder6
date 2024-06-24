@@ -1,0 +1,14 @@
+name: api_name
+filterable: true
+hidden: false
+index: true
+label: API 名称
+options:
+  - label: main-menu
+    value: main-menu
+  - label: footer
+    value: footer
+required: true
+searchable: true
+sort_no: 20
+type: select
