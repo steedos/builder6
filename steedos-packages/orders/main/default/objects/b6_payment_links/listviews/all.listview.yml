@@ -1,8 +1,8 @@
 name: all
 columns:
   - field: name
-  - field: products
   - field: total
+  - field: merchant_name
 crud_mode: table
 filter_scope: space
 filters: []
@@ -10,8 +10,8 @@ is_enable: true
 label: 所有
 mobile_columns:
   - field: name
-  - field: products
   - field: total
+  - field: merchant_name
 searchable_fields: []
 shared_to: space
 sort:

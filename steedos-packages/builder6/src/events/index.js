@@ -25,4 +25,5 @@ module.exports = {
     ...require('./b6_orders'),
     ...require('./b6_payment_links'),
     ...require('./b6_products'),
+    ...require('./b6_product_config'),
   }

@@ -1,0 +1,14 @@
+name: merchant_name
+filterable: true
+index: false
+label: 商户名
+required: true
+searchable: true
+hidden: false
+defaultValue: !!js/function |
+  function () {
+    return Steedos.spaceName()
+  }
+sort_no: 109
+readonly: true
+type: text
