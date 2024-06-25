@@ -1,5 +1,5 @@
 name: knowledge_sources.$.document
 type: lookup
-label: Table
+label: Document
 sort_no: 110
 reference_to: b6_documents

@@ -2,7 +2,7 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2024-06-12 16:06:10
  * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-06-17 16:02:58
+ * @LastEditTime: 2024-06-25 14:44:23
  * @Description: 
  */
 
@@ -40,6 +40,23 @@ module.exports = {
                 markdown: documentInfo.markdown,
                 html: documentInfo.html,
                 space: documentInfo.space
+            }
+        }else if(knowledge_source.type === 'blog' && knowledge_source.blog){
+            const blogInfo = await this.getObject('b6_blogs').findOne(knowledge_source.blog)
+            const docs = await this.getObject('b6_documents').find({filters: [['blog_id', '=', knowledge_source.blog], ['type', '=', "markdown"]], fields: ['name', 'markdown']})
+
+            let result = "";
+
+            _.each(docs, (item)=>{
+                result += `# ${item.name}\n${item.markdown}\n\n`;
+            })
+
+            knowledge_source.blog_info = {
+                _id: blogInfo._id,
+                name: blogInfo.name,
+                description: blogInfo.description,
+                url: blogInfo.url,
+                markdown: result
             }
         }else{
             throw new Error('无效类型的知识源')

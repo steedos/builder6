@@ -19,18 +19,18 @@ amis:
       "items": {
           "type": "card",
           "header": {
-            "title": "${IFS(knowledge_sources[index].type == 'table', item.table.label, knowledge_sources[index].type == 'file', item.file.name, knowledge_sources[index].type == 'document', item.document.label)}",
+            "title": "${IFS(knowledge_sources[index].type == 'table', item.table.label, knowledge_sources[index].type == 'file', item.file.name, knowledge_sources[index].type == 'document', item.document.label, item.file.name, knowledge_sources[index].type == 'blog', item.blog.label)}",
             "subTitle": "${knowledge_sources[index].type != 'file' ? `上次同步日期 ${item.syncTime}` : `上传日期 ${item.syncTime}`}",
             "description": "${item.description}",
             "avatarClassName": "pull-left thumb-md avatar b-3x m-r",
-            "avatar": "${IFS(knowledge_sources[index].type == 'table','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVR4nO2XQQ6EMAwD8wl/tV/naO57QaiEdemM1GuKXMcJVQAAAAAAj6Dho/NUOkIA4wDRAn6sZ5fPgAqr144QwDhAhKBZhMQmaFZhMQbNHlBhe0U7+soeoOa/urcPAtxFAa+GA0ZQC9QkV/XiwlMIYBwgWsB/T++YENTiBwHuooBXi3JATXJV7+37+gv8gAADBxxLt4CaQyk+BIUAxgHauQVqEqbAWHwKVPMHIcAId4CYAt57CggBvJcDAAAAAKC+zQlP5TWVH8ytNAAAAABJRU5ErkJggg==',knowledge_sources[index].type == 'file','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg==',knowledge_sources[index].type == 'document', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVR4nO2Wv2sUQRTHR5RgQAjJ7Zu9i8FoZSX4FygKVtZpLOxsbCTGe+9yCleIjagg/gG2RtDKXnuDWBjEX6CVij8jasqPzLInernI7uzCSciDYYad/b73eY83s+vclv2vJspa2eGVx3KO5sgApE4IyR3GANcCIfEAy/25uYjUBiAblHxwv3WWRIyHlSshkQBhXQuEVOiBIWN51ABrlQEk0vHmAYi1zQswaUyIclGUFW9888pLb9yY6rK7ToDXw/ZSY68oTzfoi0+Jcfy3H+N9FIBXVqXLwbAOWXnlphhvRHnlled5sFveODAzz3ijzX5RrojxU5SP6QL7Mj/GCVHexQBczuZFUq+8WJdpmyXn2DaoE+VS/s61/rOZHlOlAVzuPMsqXKnGnUab6aRLS4yrLWPPMFXIPAMwvopxzyvHIoI753rsEOOkV94GhyF4UWloyoFqWdngY6Lc/uP7vjqs3P+yiQ6TYnRE+RH6IjEOFRYnxpk8+LPUOOrm2O4iLT+qwdfdwiKvPAqipM1hV9GaC8zmAMVPgihfMtFpdlUFmO7Q6N8PZQBWgihtc6QqgFdO5QAPiouMC3/1QI+xsoHD2c+CGx8yXx3miovnGRflfuyv+bphXC+bgJvtsTNRzovxRIzvEYE/h7KXynzL3AjsF3rzmsOIQXxJAAAAAElFTkSuQmCC')}"
+            "avatar": "${IFS(knowledge_sources[index].type == 'table','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAxElEQVR4nO2XQQ6EMAwD8wl/tV/naO57QaiEdemM1GuKXMcJVQAAAAAAj6Dho/NUOkIA4wDRAn6sZ5fPgAqr144QwDhAhKBZhMQmaFZhMQbNHlBhe0U7+soeoOa/urcPAtxFAa+GA0ZQC9QkV/XiwlMIYBwgWsB/T++YENTiBwHuooBXi3JATXJV7+37+gv8gAADBxxLt4CaQyk+BIUAxgHauQVqEqbAWHwKVPMHIcAId4CYAt57CggBvJcDAAAAAKC+zQlP5TWVH8ytNAAAAABJRU5ErkJggg==',knowledge_sources[index].type == 'file','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg==',knowledge_sources[index].type == 'document', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg==', knowledge_sources[index].type == 'blog', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABG0lEQVR4nO2WTQrCMBCF5xC+0h5IvI9Iime0gjfRXZcjXehCsORnMknaeRDopp1+vDePEJk2Ljiek8/I9/7KaB/E8dw5fuDCfXGQ1PdRGkYQZCoaMymQ4cwHjHwr5gxGfkmAEBEtTnydcTypOtM5PsLxU8rRoaQzcHySjGYf4kwt/Y8/O+YNU0v/Y6UsvGIm2f8pziAwAdX2PwITkA1Eq2WQG2R51oCBBogGDLRAcsNAE2QN5nMDiF1qaINIwZA2SHT/R86joiAJc7KD+MpAanckNnrYLQgSr/XePxAo7BZEWgZSuyPiEcXWQSB89WimtahWEGkZyI/MESk1s+wIrE3p79PmQaSVfQ4MJEzmiK8sWrVGC0rHQEzUht59fRk7elfbvgAAAABJRU5ErkJggg==')}"
           },
           "toolbar": [
             {
               "type": "button",
               "label": "同步",
               "level": "default",
-              "visibleOn": "${knowledge_sources[index].type == 'table' || knowledge_sources[index].type == 'document'}",
+              "visibleOn": "${knowledge_sources[index].type == 'table' || knowledge_sources[index].type == 'document'} || knowledge_sources[index].type == 'blog'}",
               "className": "text-lg text-gray-800 mr-1 border-solid border-slate-300 border",
               "onEvent": {
                   "click": {
@@ -136,6 +136,10 @@ amis:
                               {
                                 "label": "Document",
                                 "value": "document"
+                              },
+                              {
+                                "label": "Blog",
+                                "value": "blog"
                               }
                             ],
                             "amis": {
@@ -146,7 +150,7 @@ amis:
                                 {
                                   "value": "file",
                                   "body": '
-                                    <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg==">
+                                    <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzElEQVR4nO2WUQrCMBAF9xC+qBdtqHcUxcv4uVJYDyDdt0nxDSzNV9MhA42ZOBBY/M2a1v3RVj8fXgTbdH+dbn4tEzHSe8tkQBZpiz+/T2pmIItcVge63+knA7LIti6RQYFIiQyKROgyKBShyqBYhCYzQoQiM0okXabkz/7D3cz2bjjLHc72bphqMeI7IJFcoBMJlFYyUFqB0koGSitQWslAaQVKKxkorUBpJQOlFSitZKC0AqWVDJRWoLSSgdIKlNasaWGSsb8XEVbPBx3MdioazrqhAAAAAElFTkSuQmCC">
                                                                       <div class="font-medium text-lg inline">文件</div>
                                     </div>
                                   '
@@ -158,9 +162,16 @@ amis:
                                     </div>
                                   '
                                 },{
+                                  "value": "blog",
+                                  "body": '
+                                    <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABG0lEQVR4nO2WTQrCMBCF5xC+0h5IvI9Iime0gjfRXZcjXehCsORnMknaeRDopp1+vDePEJk2Ljiek8/I9/7KaB/E8dw5fuDCfXGQ1PdRGkYQZCoaMymQ4cwHjHwr5gxGfkmAEBEtTnydcTypOtM5PsLxU8rRoaQzcHySjGYf4kwt/Y8/O+YNU0v/Y6UsvGIm2f8pziAwAdX2PwITkA1Eq2WQG2R51oCBBogGDLRAcsNAE2QN5nMDiF1qaINIwZA2SHT/R86joiAJc7KD+MpAanckNnrYLQgSr/XePxAo7BZEWgZSuyPiEcXWQSB89WimtahWEGkZyI/MESk1s+wIrE3p79PmQaSVfQ4MJEzmiK8sWrVGC0rHQEzUht59fRk7elfbvgAAAABJRU5ErkJggg==">
+                                                                      <div class="font-medium text-lg inline">知识库</div>
+                                    </div>
+                                  '
+                                },{
                                   "value": "document",
                                   "body": '
-                                    <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVR4nO2Wv2sUQRTHR5RgQAjJ7Zu9i8FoZSX4FygKVtZpLOxsbCTGe+9yCleIjagg/gG2RtDKXnuDWBjEX6CVij8jasqPzLInernI7uzCSciDYYad/b73eY83s+vclv2vJspa2eGVx3KO5sgApE4IyR3GANcCIfEAy/25uYjUBiAblHxwv3WWRIyHlSshkQBhXQuEVOiBIWN51ABrlQEk0vHmAYi1zQswaUyIclGUFW9888pLb9yY6rK7ToDXw/ZSY68oTzfoi0+Jcfy3H+N9FIBXVqXLwbAOWXnlphhvRHnlled5sFveODAzz3ijzX5RrojxU5SP6QL7Mj/GCVHexQBczuZFUq+8WJdpmyXn2DaoE+VS/s61/rOZHlOlAVzuPMsqXKnGnUab6aRLS4yrLWPPMFXIPAMwvopxzyvHIoI753rsEOOkV94GhyF4UWloyoFqWdngY6Lc/uP7vjqs3P+yiQ6TYnRE+RH6IjEOFRYnxpk8+LPUOOrm2O4iLT+qwdfdwiKvPAqipM1hV9GaC8zmAMVPgihfMtFpdlUFmO7Q6N8PZQBWgihtc6QqgFdO5QAPiouMC3/1QI+xsoHD2c+CGx8yXx3miovnGRflfuyv+bphXC+bgJvtsTNRzovxRIzvEYE/h7KXynzL3AjsF3rzmsOIQXxJAAAAAElFTkSuQmCC">
+                                    <div class="m-l-sm m-r-sm m-b-sm m-t-xs"><img class="antd-Card-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2UlEQVR4nO2XQQ7CMAwE/Qi2wEdblT8iEJ/p0ahSuHBBqF4nUXYkqzk1HXmbumaiIzD7xqpp8ce0+rl7Eey1+Ot082uaiJHumyYDssg0+/NzpcYMZJHL6sDid3pnQBbZ1ykySBBJkUGSCF0GiSJUGSSL0GRqiFBkaomEy6R82f+Yzezohq3McHZ0w1CLGs8BicQCdaSgaPUWLQT/+ppEfqB3JBjo+B0tWiCdUt9IZLhoZQGJjNYRaNbytobGLCCRgjoSDBStgqIVDBStgqLVarTQSNnwIsLyeQPqQo6psoICbQAAAABJRU5ErkJggg==">
                                                                       <div class="font-medium text-lg inline">知识</div>
                                     </div>
                                   '
@@ -177,10 +188,27 @@ amis:
                             "label": "数据表",
                             "required": true,
                             "reference_to": "b6_tables",
+                            "filters": ['type', '=', 'markdown'],
                             "sort_no": 20,
                             "is_wide": true,
                             "visible_on": "{{type == 'table' ? true : false}}",
                             "description": "从您的 数据表 中索引前 1,000 行数据。",
+                            "amis": {
+                              "className": "mb-4"
+                            }
+                          }
+                        },
+                        {
+                          "type": "steedos-field",
+                          "config": {
+                            "name": "blog",
+                            "type": "lookup",
+                            "label": "知识库",
+                            "required": true,
+                            "reference_to": "b6_blogs",
+                            "sort_no": 20,
+                            "is_wide": true,
+                            "visible_on": "{{type == 'blog' ? true : false}}",
                             "amis": {
                               "className": "mb-4"
                             }
@@ -211,7 +239,7 @@ amis:
                             "sort_no": 110,
                             "is_wide": true,
                             "required": true,
-                            "visible_on": "{{type != 'table' && type != 'document' ? true : false}}",
+                            "visible_on": "{{type != 'table' && type != 'document' && type != 'blog' ? true : false}}",
                             "amis": {
                                 "maxSize": 1048576,
                                 "accept": ".txt, .json, .pdf, .doc, .docx",
@@ -235,7 +263,7 @@ amis:
                       "api": {
                         "url": "/api/v1/b6_chatbots/functions/knowledge_source_api",
                         "method": "post",
-                        "requestAdaptor": "api.data = {id: context.recordId, action: 'addItem', item: {type: context.type, file: context.file, table: context.table, document: context.document, description: context.description} };\n\n\nreturn api;",
+                        "requestAdaptor": "api.data = {id: context.recordId, action: 'addItem', item: {type: context.type, file: context.file, table: context.table, document: context.document, blog: context.blog, description: context.description} };\n\n\nreturn api;",
                         "adaptor": "",
                         "messages": {
                         }

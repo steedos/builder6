@@ -1,0 +1,5 @@
+name: knowledge_sources.$.blog
+type: lookup
+label: Blog
+sort_no: 110
+reference_to: b6_blogs

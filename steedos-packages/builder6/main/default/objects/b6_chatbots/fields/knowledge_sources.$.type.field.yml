@@ -7,5 +7,7 @@ options:
     value: file
   - label: Table
     value: table
+  - label: Blog
+    value: blog
   - label: Document
     value: document
