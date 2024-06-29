@@ -1,6 +1,6 @@
 name: dataSourcesNoResultsMessage
 type: text
-label: Custom message
+label: 自定义消息
 group: Instrctions
 sort_no: 145
 is_wide: true
