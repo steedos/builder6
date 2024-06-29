@@ -19,7 +19,6 @@ show_as_qr: false
 sort_no: 130
 sortable: false
 static: false
-type: image
+type: text
 unique: false
-visible_on: '{{false}}'
 write_requires_master_read: false

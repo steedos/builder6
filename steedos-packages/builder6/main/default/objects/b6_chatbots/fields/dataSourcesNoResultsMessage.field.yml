@@ -1,0 +1,10 @@
+name: dataSourcesNoResultsMessage
+type: text
+label: Custom message
+group: Instrctions
+sort_no: 145
+is_wide: true
+visible_on: ${dataSourcesNoResultsMode === 'custom'}
+defaultValue: 抱歉，我不知道。
+amis:
+  clearValueOnHidden: false

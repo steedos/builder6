@@ -3,7 +3,7 @@ label: 智能助手
 description: 
 fields:
   avatarUrl:
-    label: 头像
+    label: 头像 Url
     help: 
     description: 
   company_id:
