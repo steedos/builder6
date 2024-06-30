@@ -12,7 +12,7 @@ label: 单价
 multiple: false
 precision: 18
 primary: false
-readonly: true
+readonly: false
 required: false
 scale: 2
 searchable: false
@@ -22,4 +22,5 @@ sortable: true
 static: false
 type: currency
 unique: false
+visible_on: "{{global.mode ==='read'}}"
 write_requires_master_read: false

@@ -2,5 +2,5 @@ name: description
 is_wide: true
 label: 备注
 rows: 2
-sort_no: 180
+sort_no: 280
 type: textarea

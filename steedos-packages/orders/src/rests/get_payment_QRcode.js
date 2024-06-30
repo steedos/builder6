@@ -1,11 +1,11 @@
 
 const WxPay = require('wechatpay-node-v3');
-const express = require('express');
-const QRCode = require('qrcode');
 module.exports = {
     rest: {
         method: 'POST',
-        fullPath: '/api/orders/user/get_payment_QRcode'
+        fullPath: '/api/orders/user/get_payment_QRcode',
+        authorization: false,
+        authentication: false
     },
     params: {
         price: { type: 'number' }, 
@@ -17,18 +17,28 @@ module.exports = {
         console.log("======>",ctx.params);
         try {
             const piclient_key_params = {
-
+                Bucket: 'wechat-pay-certs',
+                Key: 'apiclient_key.pem'
             };
             const apiclient_cert_params = {
-
+                Bucket: 'wechat-pay-certs',
+                Key: 'apiclient_cert.pem'
             };
             const wechatpay_params = {
-
+                Bucket: 'wechat-pay-certs',
+                Key: 'wechatpay.pem'
             };
             const piclient_key = await this.get_s3_data(piclient_key_params);
             const apiclient_cert = await this.get_s3_data(apiclient_cert_params);
             const cert = await this.get_s3_data(wechatpay_params);
             const config = {
+                appid: '', // 微信支付分配的公众账号ID
+                mchid: '', // 微信支付分配的商户号
+                key: '', // 商户平台设置的密钥
+                serial: '', // 商户API证书的序列号
+                platformCertificateSerial: '',
+                privateKey: piclient_key,
+                cert: cert
             };
             const pay = new WxPay({
                 appid: config.appid,
@@ -41,9 +51,9 @@ module.exports = {
             const params = {
                 description: name,
                 out_trade_no: `order_${Date.now()}`,
-                notify_url: 'https://automation.steedos.cn/api/v1/webhooks/tMXBhaKbjLlNynHLI7Ep3',
+                notify_url: `${root_url}/api/wechat/pay/callback`,
                 amount: {
-                    total: price,
+                    total: parseFloat(price),
                     currency: 'CNY'
                 },
                 scene_info: {

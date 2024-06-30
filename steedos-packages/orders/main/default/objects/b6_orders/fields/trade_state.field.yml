@@ -1,0 +1,14 @@
+name: trade_state
+group: 支付信息
+label: 支付状态
+omit: true
+sort_no: 230
+type: select
+defaultValue: PENDING
+options:
+  - label: 支付成功
+    value: SUCCESS
+  - label: 支付失败
+    value: FAILED
+  - label: 未支付
+    value: PENDING

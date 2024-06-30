@@ -1,4 +1,4 @@
-name: products
+name: product
 auto_fill_mapping:
   - from: price
     to: price

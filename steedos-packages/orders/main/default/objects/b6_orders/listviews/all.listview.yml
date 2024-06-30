@@ -1,12 +1,8 @@
 name: all
 columns:
   - field: name
-  - field: status
-  - field: financial_status
-  - field: current_subtotal_price
-  - field: current_total_discounts
-  - field: current_total_tax
-  - field: namcurrent_total_pricee
+  - field: out_trade_no
+  - field: trade_state
   - field: created
 filter_scope: space
 filters: []

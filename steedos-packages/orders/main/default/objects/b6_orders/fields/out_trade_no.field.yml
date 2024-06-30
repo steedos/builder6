@@ -1,4 +1,4 @@
-name: payment_id
+name: out_trade_no
 group: 支付信息
 label: 支付订单号
 omit: true

@@ -2,7 +2,9 @@ const AWS = require('aws-sdk');
 module.exports = {
     async handler(params) {
         AWS.config.update({
-
+            accessKeyId: '',
+            secretAccessKey: '',
+            region: ''
         });
         const s3 = new AWS.S3();
         return new Promise((resolve, reject) => {
