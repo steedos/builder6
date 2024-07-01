@@ -70,8 +70,11 @@ module.exports = {
                 name: outTradeNo,
                 trade_state: "PENDING"
             }
-            await ordersObj.insert(query);
-            return result
+            const order = await ordersObj.insert(query);
+            return {
+                ...result,
+                orderId: order._id
+            }
         } catch (error) {
             console.error(error);
         }
