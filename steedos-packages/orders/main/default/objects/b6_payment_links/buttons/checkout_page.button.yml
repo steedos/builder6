@@ -1,0 +1,6 @@
+name: checkout_page
+is_enable: true
+label: 支付结算页面
+locked: false
+'on': record
+visible: true

@@ -1,0 +1,11 @@
+name: page
+filterable: true
+index: false
+label: 所属页面
+required: true
+searchable: true
+hidden: false
+reference_to: b6_pages
+sort_no: 110
+readonly: false
+type: lookup
