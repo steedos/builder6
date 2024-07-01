@@ -13,6 +13,8 @@ module.exports = {
     },
     async handler(ctx) {
         const { price ,name } = ctx.params;
+        const rootUrl = process.env.ROOT_URL;
+        const ordersObj = this.getObject('b6_orders');
         console.log("=====>",111)
         console.log("======>",ctx.params);
         try {
@@ -48,10 +50,11 @@ module.exports = {
             });
             // console.log("==pay==", pay)
             // 创建订单
+            let outTradeNo = `order_${Date.now()}`;
             const params = {
                 description: name,
-                out_trade_no: `order_${Date.now()}`,
-                notify_url: `${root_url}/api/wechat/pay/callback`,
+                out_trade_no: outTradeNo,
+                notify_url: rootUrl + '/api/wechat/pay/callback',
                 amount: {
                     total: parseFloat(price),
                     currency: 'CNY'
@@ -62,6 +65,12 @@ module.exports = {
             };
             const result = await pay.transactions_native(params);
             console.log("========>",result)
+
+            const query = {
+                name: outTradeNo,
+                trade_state: "PENDING"
+            }
+            await ordersObj.insert(query);
             return result
         } catch (error) {
             console.error(error);

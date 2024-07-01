@@ -79,6 +79,7 @@ module.exports = {
                     console.log("decryptData-------:",decryptData);
                     let b6_order = await ordersObj.findOne({ filters: [['out_trade_no', "=", decryptData.out_trade_no]] });
                     if (b6_order){
+                        decryptData.name = decryptData.out_trade_no;
                         await ordersObj.update(b6_order._id, decryptData)
                     }
 

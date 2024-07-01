@@ -10,9 +10,9 @@ module.exports = {
         if (b6PaymentLinksObj){
             const b6PageId = b6PaymentLinksObj.data.page;
             const rootUrl= __meteor_runtime_config__.ROOT_URL;
-            const params = `?b6_page_id=${record_id}&root_url=${rootUrl}`;
+            const params = `?b6_payment_link_id=${record_id}&root_url=${rootUrl}`;
+            console.log("------",`${Meteor.settings.public.B6_PAYMENT_CHECKOUT_URL}${params}`);
             window.open(`${Meteor.settings.public.B6_PAYMENT_CHECKOUT_URL}${params}`)
         }
     }
-
 }

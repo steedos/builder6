@@ -1,8 +1,7 @@
 name: name
-formula: '{YYYY}{MM}{DD}{000000}'
 index: true
 label: 订单号
 required: true
 searchable: true
 sort_no: 160
-type: autonumber
+type: text
