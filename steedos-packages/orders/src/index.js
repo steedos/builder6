@@ -2,7 +2,7 @@
  * @Author: baozhoutao@steedos.com
  * @Date: 2023-08-09 11:47:34
  * @LastEditors: baozhoutao@steedos.com
- * @LastEditTime: 2024-05-31 16:21:22
+ * @LastEditTime: 2024-07-01 13:31:41
  * @Description: 
  */
 const path = require('path');
@@ -17,7 +17,7 @@ module.exports = {
     name: packageName,
     namespace: "steedos",
     mixins: [packageLoader],
-    dependencies: [],
+    dependencies: ['steedos-server'],
     metadata: {
         $package: {
             name: package.name,
@@ -34,6 +34,9 @@ module.exports = {
     methods: methods,
 
     async started() {
+        this.broker.call(`steedos-server.setSettings`, {PUBLIC_SETTINGS: {B6_PAYMENT_CHECKOUT_URL: process.env.B6_PAYMENT_CHECKOUT_URL}}).catch(()=>{
+              
+        })
     }
 
 }
