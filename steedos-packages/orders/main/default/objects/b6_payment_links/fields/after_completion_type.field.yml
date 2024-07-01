@@ -1,0 +1,32 @@
+name: after_completion_type
+create: true
+enable_enhanced_lookup: true
+enable_thousands: true
+filterable: false
+generated: false
+hidden: false
+index: false
+is_name: false
+is_wide: true
+label: 是否显示确认页面
+multiple: false
+primary: false
+readonly: false
+required: false
+searchable: false
+show_as_qr: false
+sort_no: 200
+sortable: false
+static: false
+type: select
+unique: false
+group: 支付后
+defaultValue: '"hosted_confirmation"'
+options:
+  - label: "显示确认页面"
+    value: hosted_confirmation
+  - label: "不显示确认页面"
+    value: redirect
+write_requires_master_read: false
+amis:
+  type: list-select

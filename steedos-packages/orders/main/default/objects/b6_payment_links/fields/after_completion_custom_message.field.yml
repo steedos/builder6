@@ -1,0 +1,15 @@
+name: after_completion_custom_message
+filterable: true
+index: false
+label: 自定义消息
+required: false
+searchable: true
+hidden: false
+defaultValue: "感谢付款"
+description: 
+sort_no: 215
+type: textarea
+rows: 2
+group: 支付后
+is_wide: true
+visible_on: "{{formData.after_completion_type=='hosted_confirmation'}}"

@@ -1,0 +1,12 @@
+name: after_completion_redirect_url
+filterable: true
+index: false
+label: 网站地址
+required: false
+searchable: true
+hidden: false
+sort_no: 220
+type: url
+group: 支付后
+is_wide: true
+visible_on: "{{formData.after_completion_type=='redirect'}}"

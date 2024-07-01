@@ -1,7 +1,7 @@
 name: trade_state
 group: 支付信息
 label: 支付状态
-omit: true
+omit: false
 sort_no: 230
 type: select
 defaultValue: PENDING
